@@ -3,11 +3,46 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "preview": "vite preview",
+        "develop": "vite --host",
+        "prod": "vite preview --host",
+        "build": "vite build",
+        "tsc": "tsc"
     },
     "devDependencies": {
         "axios": "^1.1.2",
         "laravel-vite-plugin": "^0.8.0",
-        "vite": "^4.0.0"
+        "vite": "^4.0.0",
+        "@types/d3-axis": "^3.0.2",
+        "@types/d3-format": "^3.0.1",
+        "@types/d3-scale": "^4.0.3",
+        "@types/d3-selection": "^3.0.5",
+        "@types/react-dom": "^18.2.4",
+        "@types/uuid": "^9.0.2",
+        "@vitejs/plugin-react": "^3.0.1",
+        "autoprefixer": "^10.4.7",
+        "eslint": "^8.34.0",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "postcss": "^8.4.14",
+        "postcss-styled-syntax": "^0.4.0",
+        "prettier": "2.8.3",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sass": "^1.58.0",
+        "stylelint": "^15.10.2",
+        "stylelint-config-standard": "^34.0.0",
+        "typescript": "^5.0.4",
+        "vite-plugin-svgr": "^2.4.0"
+    },
+    "dependencies": {
+        "d3-axis": "^3.0.0",
+        "d3-format": "^3.1.0",
+        "d3-scale": "^4.0.2",
+        "d3-selection": "^3.0.0",
+        "react-loading": "^2.0.3",
+        "react-router-dom": "^6.8.1",
+        "styled-components": "^6.0.7",
+        "uuid": "^9.0.0"
     }
 }

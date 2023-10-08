@@ -7,7 +7,12 @@
 import axios from 'axios';
 window.axios = axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+const axiosCommon = window.axios.defaults.headers.common;
+
+axiosCommon['X-Requested-With'] = 'XMLHttpRequest';
+axiosCommon['X-CSRF-TOKEN'] = (document.head.querySelector(
+    'meta[name="csrf-token"]',
+) as HTMLMetaElement).content;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

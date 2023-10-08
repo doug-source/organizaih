@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -96,7 +96,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,6 +110,45 @@ return [
     */
 
     'faker_locale' => 'en_US',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Available locales
+    |--------------------------------------------------------------------------
+    |
+    | List all locales that your application works with
+    |
+    */
+    'available_locales' => [
+        'Portuguese' => 'pt_BR',
+        'English' => 'en_US'
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Fallback Theming key
+    |--------------------------------------------------------------------------
+    |
+    | The fallback key determines the theming key to use when the current one
+    | is not available.
+    |
+    */
+
+    'fallback_theming_key' => 'light',
+
+    'theming_key' => 'light',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Available theming keys
+    |--------------------------------------------------------------------------
+    |
+    | List all theming keys that your application works with
+    |
+    */
+    'available_themes' => [
+        'light', 'dark'
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -168,6 +207,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\LocaleServiceProvider::class,
+        App\Providers\ThemeServiceProvider::class
     ])->toArray(),
 
     /*

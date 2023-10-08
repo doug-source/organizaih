@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cookie;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [UserController::class, 'login'])->name('login.page');
+Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
+
+Route::get('/language/{locale}', function ($locale) {
+    $oneYearDuration = 365 * 24 * 60 * 1;
+    Session::put('locale', $locale);
+    Cookie::queue('locale', $locale, $oneYearDuration);
+    return redirect()->back();
 });
