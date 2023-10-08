@@ -3,6 +3,6 @@ export * from './styled.d';
 
 export const endpoints = {
     login: {
-        auth: window.data.authAction,
+        auth: window.data.auth?.action,
     },
 };

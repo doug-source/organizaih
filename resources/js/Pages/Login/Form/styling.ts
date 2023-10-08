@@ -3,21 +3,17 @@ import { Button, LabelTextBtn_ } from '@/Components/Button';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
-export const SecondRow_ = styled.div`
-    ${({ theme }) => {
-        const secRowMeasure = theme.login.measures.secondRow;
+export const Row_ = styled.div<{ $show?: boolean }>`
+    ${({ theme, $show = true }) => {
+        const rowMeasure = theme.login.measures.row;
         return css`
-            margin-top: ${remOutput(secRowMeasure.margin.top)};
-        `;
-    }}
-`;
-
-export const ThirdRow_ = styled.div`
-    ${({ theme }) => {
-        const thirdRowMeasure = theme.login.measures.thirdRow;
-        return css`
-            display: block;
-            margin-top: ${remOutput(thirdRowMeasure.margin.top)};
+            margin-top: ${remOutput(rowMeasure.margin.top)};
+            ${!$show &&
+            css`
+                &:first-of-type {
+                    display: none;
+                }
+            `}
         `;
     }}
 `;
@@ -51,12 +47,11 @@ export const TextInput_ = styled(TextInput)`
     }}
 `;
 
-export const FourthRow_ = styled.div`
+export const RememberRow_ = styled(Row_)`
     ${({ theme }) => {
         const fourMeasure = theme.login.measures.fourthRow;
         return css`
             display: flex;
-            margin-top: ${remOutput(fourMeasure.margin.top)};
             justify-content: flex-end;
             align-items: center;
         `;

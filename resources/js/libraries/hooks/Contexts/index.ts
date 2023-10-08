@@ -1,4 +1,5 @@
 import {
+    AuthStatusServerContext,
     TokenRequestContext,
     TranslateContext,
     makeContextError,
@@ -15,4 +16,8 @@ export const useTranslate = () => {
 
 export const useTokenRequest = () => {
     return useContext(TokenRequestContext);
+};
+
+export const useAuthStatusServer = () => {
+    return useContext(AuthStatusServerContext);
 };

@@ -29,7 +29,14 @@ declare global {
                 sale: number;
             };
             themeKey: ThemeKey;
-            authAction: string;
+            auth: {
+                action?: string;
+                status: {
+                    errors: {
+                        status?: [string];
+                    };
+                };
+            };
         };
         axios: AxiosStatic;
     }

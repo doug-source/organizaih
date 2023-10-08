@@ -53,7 +53,7 @@ class LocaleServiceProvider extends ServiceProvider
     {
         $localeKey = $this->filterLocale($this->pickLocale());
 
-        view()->composer(['login.auth'], function ($view) use ($localeKey) {
+        view()->composer(['login.auth', 'app.main'], function ($view) use ($localeKey) {
             $view->with([
                 'locales' => json_encode(config('app.available_locales')),
                 'localeKey' => $localeKey,

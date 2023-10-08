@@ -1,4 +1,9 @@
-import { TokenRequest, Translate, TranslateData } from '@/libraries';
+import {
+    AuthStatusServer,
+    TokenRequest,
+    Translate,
+    TranslateData,
+} from '@/libraries';
 import { ReactNode } from 'react';
 
 const data = window.data;
@@ -7,7 +12,6 @@ const locale = ($html.getAttribute('lang') || 'pt-BR').replace('-', '_');
 const $meta: HTMLMetaElement | null = document.head.querySelector(
     'meta[name="csrf-token"]',
 );
-const tokenRequest = $meta?.content ?? '';
 
 type WrapContextsProps = {
     children: ReactNode;
@@ -17,13 +21,16 @@ const info = {
         data: data as unknown as TranslateData,
         locale,
     },
-    tokenRequest,
+    tokenRequest: $meta?.content ?? '',
+    authStatusServer: data.auth.status,
 };
 
 export const WrapContexts = ({ children }: WrapContextsProps) => {
     return (
-        <TokenRequest value={info.tokenRequest}>
-            <Translate value={info.translate}>{children}</Translate>
-        </TokenRequest>
+        <AuthStatusServer value={info.authStatusServer}>
+            <TokenRequest value={info.tokenRequest}>
+                <Translate value={info.translate}>{children}</Translate>
+            </TokenRequest>
+        </AuthStatusServer>
     );
 };

@@ -9,12 +9,17 @@ const pageKey = metaTagElement.content;
 
 function init() {
     const $containerApp = document.getElementById('container-app');
-    console.log(pageKey);
 
     if (pageKey === 'login') {
         import('./Pages/Login').then(({ Login }) => {
             if ($containerApp !== null) {
                 createRoot($containerApp).render(React.createElement(Login));
+            }
+        });
+    } else {
+        import('./Pages/App').then(({ App }) => {
+            if ($containerApp !== null) {
+                createRoot($containerApp).render(React.createElement(App));
             }
         });
     }

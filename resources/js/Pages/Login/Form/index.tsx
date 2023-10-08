@@ -1,16 +1,15 @@
 import { Checkbox, FieldError, InputLabel } from '@/Auth';
-import { useTranslate } from '@/libraries/hooks/Contexts';
+import { useAuthStatusServer, useTranslate } from '@/libraries/hooks/Contexts';
 import { useAuthHandler } from '@/libraries/submittions';
 import { AuthReducerEnum, useAuthReducer } from '../libraries';
 import {
     Button_,
-    FourthRow_,
     Link_,
-    SecondRow_,
+    RememberRow_,
+    Row_,
     TextInput_,
     ThirdRowLabel_,
     ThirdRowText_,
-    ThirdRow_,
 } from './styling';
 
 type FormProps = {};
@@ -22,9 +21,14 @@ export const Form = ({}: FormProps) => {
         state.email,
         state.password,
     );
+    const { errors: serverErrors } = useAuthStatusServer();
+    const statusError = errors.status || serverErrors.status?.shift();
     return (
         <form onSubmit={authHandler}>
-            <div>
+            <Row_ $show={Boolean(statusError)}>
+                <FieldError message={statusError} />
+            </Row_>
+            <Row_>
                 <div>
                     <InputLabel
                         htmlFor='email'
@@ -46,8 +50,8 @@ export const Form = ({}: FormProps) => {
                         })
                     }
                 />
-            </div>
-            <SecondRow_>
+            </Row_>
+            <Row_>
                 <div>
                     <InputLabel
                         htmlFor='password'
@@ -68,18 +72,18 @@ export const Form = ({}: FormProps) => {
                         })
                     }
                 />
-            </SecondRow_>
-            <ThirdRow_>
+            </Row_>
+            <RememberRow_>
                 <ThirdRowLabel_>
                     <Checkbox name='remember' />
                     <ThirdRowText_>
                         {translate('remember-me', true)}
                     </ThirdRowText_>
                 </ThirdRowLabel_>
-            </ThirdRow_>
-            <FourthRow_>
+            </RememberRow_>
+            <Row_>
                 <Link_ href='/'>{translate('forgot-password', true)}?</Link_>
-            </FourthRow_>
+            </Row_>
             <Button_
                 type='submit'
                 disabled={processing}

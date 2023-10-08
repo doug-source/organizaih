@@ -157,5 +157,6 @@
     "dark": "dark",
     "light": "light",
     "remember-me": "remember me",
-    "forgot-password": "did you forgot your password"
+    "forgot-password": "did you forgot your password",
+    "invalid-auth": "invalid email or password"
 }

@@ -157,5 +157,6 @@
     "dark": "escuro",
     "light": "claro",
     "remember-me": "lembrar-me",
-    "forgot-password": "esqueceu sua senha"
+    "forgot-password": "esqueceu sua senha",
+    "invalid-auth": "e-mail ou senha estão inválidos"
 }

@@ -87,6 +87,11 @@ export type LoginThemeMeasures = {
         fontSize: number;
         lineHeight: number;
     };
+    row: {
+        margin: {
+            top: number;
+        };
+    };
     secondRow: {
         margin: {
             top: number;

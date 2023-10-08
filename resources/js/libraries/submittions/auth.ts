@@ -2,15 +2,17 @@ import { endpoints } from '@/settings';
 import axios from 'axios';
 import { FormEvent, useCallback, useState } from 'react';
 
+type ErrorKeys = 'email' | 'password' | 'status';
+
 type CatchReturn = {
     response: {
         status: number;
         data: {
-            errors: Record<'email' | 'password', [string]>;
+            errors: Record<ErrorKeys, [string]>;
         };
     };
 };
-type ErrorsBox = Partial<Record<'email' | 'password', string>>;
+type ErrorsBox = Partial<Record<ErrorKeys, string>>;
 
 export const useAuthHandler = (email: string, password: string) => {
     const [processing, setProcessing] = useState(false);
@@ -34,8 +36,21 @@ export const useAuthHandler = (email: string, password: string) => {
                 })
                 .then((response) => {
                     setProcessing(false);
-                    console.log('THEN');
-                    console.log(response);
+                    switch (response.status) {
+                        case 200: {
+                            location.reload();
+                            break;
+                        }
+                        default: {
+                            // appDispatch({
+                            //     type: DataReducerEnum.LOADING,
+                            //     payload: false,
+                            // });
+                            console.log(
+                                `Unexpected Success Status: ${response.status}`,
+                            );
+                        }
+                    }
                 })
                 .catch(({ response }: CatchReturn) => {
                     switch (response.status) {

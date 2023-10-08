@@ -8,7 +8,16 @@
             {{ $localeKey }}: {!! $localeData !!},
             locales: {!! $locales !!},
             themeKey: {!! $themeKey !!},
-            authAction: {!! $authAction !!},
+            auth: {
+                action: {!! $authAction !!},
+                status: {
+                    errors: {
+                        @if($authStatus ?? FALSE)
+                            status: [ '{!! $authMsgStatus !!}' ]
+                        @endif
+                    },
+                },
+            },
         };
     </script>
     @vite('resources/js/Pages/Login/index.tsx')
