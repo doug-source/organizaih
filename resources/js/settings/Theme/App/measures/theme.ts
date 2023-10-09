@@ -989,13 +989,15 @@ export type AppThemeMeasures = {
         size: number;
     };
     main: {
+        closed: {
+            height: {
+                diff: number;
+            };
+        };
         container: {
             margin: {
                 top: number;
             };
-        };
-        row: {
-            height: string;
         };
         containerFluid: {
             width: string;
@@ -1008,6 +1010,12 @@ export type AppThemeMeasures = {
                     right: number;
                 };
             };
+        };
+        height: {
+            diff: number;
+        };
+        row: {
+            height: string;
         };
         spacer: {
             width: number;

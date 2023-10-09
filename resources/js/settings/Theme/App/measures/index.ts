@@ -52,7 +52,7 @@ export const measures = {
     itemSaver,
     list,
     loading,
-    main,
+    main: main(header, body),
     pagination,
     product,
     productCategory,
