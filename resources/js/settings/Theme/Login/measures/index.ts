@@ -3,6 +3,7 @@ import { fourthRow } from './fourthRow';
 import { guestLayout } from './guestLayout';
 import { input } from './input';
 import { link } from './link';
+import { loadingIcon } from './loadingIcon';
 import { remember } from './remember';
 import { row } from './row';
 import { secondRow } from './secondRow';
@@ -15,6 +16,7 @@ export const measures: LoginThemeMeasures = {
     guestLayout,
     input,
     link,
+    loadingIcon,
     remember,
     row,
     secondRow,

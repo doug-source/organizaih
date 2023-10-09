@@ -82,6 +82,13 @@ export type LoginThemeMeasures = {
         fontSize: number;
         lineHeight: number;
     };
+    loadingIcon: {
+        size: number;
+        icon: {
+            top: number;
+            height: string;
+        };
+    };
     remember: {
         marginLeft: number;
         fontSize: number;

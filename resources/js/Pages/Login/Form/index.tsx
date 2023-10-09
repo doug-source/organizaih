@@ -1,7 +1,11 @@
 import { Checkbox, FieldError, InputLabel } from '@/Auth';
-import { useAuthStatusServer, useTranslate } from '@/libraries/hooks/Contexts';
-import { useAuthHandler } from '@/libraries/submittions';
-import { AuthReducerEnum, useAuthReducer } from '../libraries';
+import { useTranslate } from '@/libraries/hooks';
+import {
+    AuthReducerEnum,
+    useAuthHandler,
+    useAuthReducer,
+    useAuthStatusServer,
+} from '../libraries';
 import {
     Button_,
     Link_,
@@ -12,9 +16,7 @@ import {
     ThirdRowText_,
 } from './styling';
 
-type FormProps = {};
-
-export const Form = ({}: FormProps) => {
+export const Form = () => {
     const translate = useTranslate();
     const [state, dispatch] = useAuthReducer();
     const [processing, authHandler, errors] = useAuthHandler(

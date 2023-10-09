@@ -5,6 +5,7 @@ import { body } from './body';
 import { btn } from './btn';
 import { forgotPassword } from './forgotPassword';
 import { guestLayout } from './guestLayout';
+import { loadingIcon } from './loadingIcon';
 import { remember } from './remember';
 
 export const LightTheme: LoginTheme = {
@@ -16,6 +17,7 @@ export const LightTheme: LoginTheme = {
         btn,
         forgotPassword,
         guestLayout,
+        loadingIcon,
         remember,
     },
 };

@@ -1,10 +1,6 @@
-import {
-    AuthStatusServer,
-    TokenRequest,
-    Translate,
-    TranslateData,
-} from '@/libraries';
-import { ReactNode } from 'react';
+import { TokenRequest, Translate, TranslateData } from '@/libraries';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
+import { AuthStatusServer, LoadingDispatch } from '../libraries';
 
 const data = window.data;
 const $html = document.head.parentElement!;
@@ -14,6 +10,7 @@ const $meta: HTMLMetaElement | null = document.head.querySelector(
 );
 
 type WrapContextsProps = {
+    loadingDispatch: ComponentPropsWithoutRef<typeof LoadingDispatch>['value'];
     children: ReactNode;
 };
 const info = {
@@ -25,12 +22,17 @@ const info = {
     authStatusServer: data.auth.status,
 };
 
-export const WrapContexts = ({ children }: WrapContextsProps) => {
+export const WrapContexts = ({
+    loadingDispatch,
+    children,
+}: WrapContextsProps) => {
     return (
-        <AuthStatusServer value={info.authStatusServer}>
-            <TokenRequest value={info.tokenRequest}>
-                <Translate value={info.translate}>{children}</Translate>
-            </TokenRequest>
-        </AuthStatusServer>
+        <LoadingDispatch value={loadingDispatch}>
+            <AuthStatusServer value={info.authStatusServer}>
+                <TokenRequest value={info.tokenRequest}>
+                    <Translate value={info.translate}>{children}</Translate>
+                </TokenRequest>
+            </AuthStatusServer>
+        </LoadingDispatch>
     );
 };

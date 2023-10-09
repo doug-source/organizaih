@@ -5,7 +5,7 @@ export type translateFn = (key: string, capitalize?: boolean) => string;
 
 export type TranslateData = Record<string, Record<string, string> | undefined>;
 
-export const useTranslate = (
+export const useTranslateToContext = (
     data: TranslateData,
     locale: string,
 ): translateFn =>

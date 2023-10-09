@@ -28,6 +28,25 @@ export type LoginTheme = {
         body: {
             color: string;
         };
+        btn: {
+            bg: string;
+            boxShadow: string;
+            text: {
+                color: string;
+            };
+            active: {
+                boxShadow: string;
+            };
+        };
+        forgotPassword: {
+            color: string;
+            hover: {
+                color: string;
+            };
+        };
+        loadingIcon: {
+            fill: string;
+        };
         guestLayout: {
             container: {
                 bg: string;
@@ -45,22 +64,6 @@ export type LoginTheme = {
         };
         remember: {
             color: string;
-        };
-        forgotPassword: {
-            color: string;
-            hover: {
-                color: string;
-            };
-        };
-        btn: {
-            bg: string;
-            boxShadow: string;
-            text: {
-                color: string;
-            };
-            active: {
-                boxShadow: string;
-            };
         };
     };
 };

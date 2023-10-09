@@ -31,6 +31,7 @@ export const LoginIconLink_ = styled.a`
     color: inherit;
     display: table;
     margin: auto;
+    position: relative;
 `;
 
 export const LoginIcon_ = styled(LoginIcon)`

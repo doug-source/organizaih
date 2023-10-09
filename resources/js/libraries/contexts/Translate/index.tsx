@@ -1,4 +1,8 @@
-import { TranslateData, translateFn, useTranslate } from '@/libraries/hooks';
+import {
+    TranslateData,
+    translateFn,
+    useTranslateToContext,
+} from '@/libraries/hooks';
 import { ReactNode, createContext } from 'react';
 
 export const TranslateContext = createContext<translateFn | null>(null);
@@ -10,7 +14,7 @@ type TranslateProps = {
 
 export const Translate = ({ value, children }: TranslateProps) => {
     const { data = {}, locale = 'pt-BR' } = value;
-    const translate: translateFn = useTranslate(data, locale);
+    const translate: translateFn = useTranslateToContext(data, locale);
     return (
         <TranslateContext.Provider value={translate}>
             {children}

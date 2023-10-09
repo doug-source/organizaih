@@ -1,6 +1,7 @@
 import { endpoints } from '@/settings';
 import axios from 'axios';
 import { FormEvent, useCallback, useState } from 'react';
+import { useLoadingDispatch } from '.';
 
 type ErrorKeys = 'email' | 'password' | 'status';
 
@@ -17,6 +18,7 @@ type ErrorsBox = Partial<Record<ErrorKeys, string>>;
 export const useAuthHandler = (email: string, password: string) => {
     const [processing, setProcessing] = useState(false);
     const [errors, setErrors] = useState<ErrorsBox>({});
+    const setLoading = useLoadingDispatch();
     const handler = useCallback(
         function (evt: FormEvent<HTMLFormElement>) {
             evt.preventDefault();
@@ -30,6 +32,7 @@ export const useAuthHandler = (email: string, password: string) => {
             formData.append('email', email);
             formData.append('password', password);
             setProcessing(true);
+            setLoading(true);
             setErrors({});
 
             axios
@@ -39,9 +42,9 @@ export const useAuthHandler = (email: string, password: string) => {
                     },
                 })
                 .then((response) => {
-                    setProcessing(false);
                     switch (response.status) {
                         case 200: {
+                            setLoading(false);
                             location.reload();
                             break;
                         }
@@ -50,11 +53,13 @@ export const useAuthHandler = (email: string, password: string) => {
                             //     type: DataReducerEnum.LOADING,
                             //     payload: false,
                             // });
+                            setLoading(false);
                             console.log(
                                 `Unexpected Success Status: ${response.status}`,
                             );
                         }
                     }
+                    setProcessing(false);
                 })
                 .catch(({ response }: CatchReturn) => {
                     switch (response.status) {
@@ -73,9 +78,8 @@ export const useAuthHandler = (email: string, password: string) => {
                             break;
                     }
 
+                    setLoading(false);
                     setProcessing(false);
-                    console.log('CATCH');
-                    console.log(response);
                 });
         },
         [email, password, setProcessing, setErrors],
