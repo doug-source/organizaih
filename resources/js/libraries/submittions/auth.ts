@@ -22,11 +22,15 @@ export const useAuthHandler = (email: string, password: string) => {
             evt.preventDefault();
 
             const url = endpoints.login.auth;
+            if (typeof url === 'undefined') {
+                return;
+            }
 
             const formData = new FormData();
             formData.append('email', email);
             formData.append('password', password);
             setProcessing(true);
+            setErrors({});
 
             axios
                 .post(url, formData, {
