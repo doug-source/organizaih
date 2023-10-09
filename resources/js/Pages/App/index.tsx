@@ -2,6 +2,7 @@ import { Theme } from '@/settings';
 import { Dispatch, createContext, useReducer } from 'react';
 import { HashRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import { Header } from './Components';
 import { WrapContexts, dataReducer, useConnectionChecker } from './libraries';
 import { Payload } from './libraries/payload';
 import { GlobalStyle } from './styling';
@@ -27,7 +28,7 @@ export const App = () => {
                     <ThemeProvider theme={state.theme}>
                         <>
                             <GlobalStyle />
-                            <h1>Foi</h1>
+                            <Header />
                         </>
                     </ThemeProvider>
                 </WrapContexts>

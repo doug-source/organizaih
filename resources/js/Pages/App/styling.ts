@@ -8,6 +8,9 @@ export const GlobalStyle = createGlobalStyle`
                 margin: 0;
                 overflow: hidden;
                 background-color: ${bgColor};
+                * {
+                    box-sizing: border-box;
+                }
             }
         `;
     }}

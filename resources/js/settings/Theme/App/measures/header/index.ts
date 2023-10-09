@@ -1,99 +1,21 @@
 import { DefaultTheme } from 'styled-components';
+import { dashboard } from './dashboard';
+
+const module = {
+    height: 90,
+    border: { width: 1 },
+};
 
 export const header: DefaultTheme['measures']['header'] = {
     border: {
-        width: 1,
+        width: module.border.width,
         radius: 8,
     },
     closed: {
         height: 27,
     },
-    dashboard: {
-        navbarNav: {
-            height: {
-                diff: 91,
-            },
-            padding: {
-                top: 8,
-                bottom: 8,
-                left: '10%',
-                right: '10%',
-            },
-            wide: {
-                padding: {
-                    top: 44.96,
-                    bottom: 44.96,
-                    left: 50,
-                    right: 50,
-                },
-                margin: 8,
-                borderRadius: 10,
-                border: {
-                    width: 1,
-                },
-                height: {
-                    diff: 99,
-                },
-            },
-            navItem: {
-                height: 197.248,
-                borderRadius: 8,
-                fontSize: 12,
-                width: '50%',
-                wide: {
-                    width: '100%',
-                    height: 40,
-                    spacing: {
-                        marginTop: 75.2,
-                    },
-                },
-                navLink: {
-                    icon: {
-                        size: 40,
-                        wide: {
-                            top: -10,
-                        },
-                        graph: {
-                            path: {
-                                1: {
-                                    strokeWidth: 3.5,
-                                },
-                                2: {
-                                    strokeWidth: 3.5,
-                                },
-                                3: {
-                                    strokeWidth: 3.5,
-                                },
-                                4: {
-                                    strokeWidth: 3.5,
-                                },
-                            },
-                        },
-                    },
-                    label: {
-                        bottom: -13,
-                    },
-                },
-                pack: {
-                    wide: {
-                        width: '40%',
-                        height: 15.04,
-                    },
-                    after: {
-                        wide: {
-                            width: 92,
-                            height: 96,
-                            borderRadius: 20,
-                            transform: {
-                                translate: ['-27%', '40%'],
-                            },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    height: 90,
+    dashboard: dashboard(module),
+    height: module.height,
     topItem: {
         closed: {
             minHeight: '100%',
@@ -113,7 +35,6 @@ export const header: DefaultTheme['measures']['header'] = {
                 marginLeft: 8,
             },
         },
-        minHeight: 93.28,
         padding: {
             top: 0,
             bottom: 0,

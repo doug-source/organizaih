@@ -596,7 +596,12 @@ export type AppThemeMeasures = {
                         left: number;
                         right: number;
                     };
-                    margin: number;
+                    margin: {
+                        top: number;
+                        bottom: number;
+                        left: number;
+                        right: number;
+                    };
                     borderRadius: number;
                     border: {
                         width: number;
@@ -683,7 +688,6 @@ export type AppThemeMeasures = {
                     marginLeft: number;
                 };
             };
-            minHeight: number;
             padding: {
                 top: number;
                 bottom: number;

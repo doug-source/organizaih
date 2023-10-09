@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Cookie;
 
 Route::get('/', [UserController::class, 'login'])->name('login.page');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
-Route::get('/logout', [UserController::class, 'logout'])->name('logout.page');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout.page');
 
 Route::get('/language/{locale}', function ($locale) {
     $oneYearDuration = 365 * 24 * 60 * 1;
