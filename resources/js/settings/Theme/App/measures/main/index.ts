@@ -1,10 +1,12 @@
 import { DefaultTheme } from 'styled-components';
 import { calcNavbarNavSpace } from './libraries';
 
-export const main = (
+type MainFunc = (
     header: DefaultTheme['measures']['header'],
     body: DefaultTheme['measures']['body'],
-): DefaultTheme['measures']['main'] => {
+) => DefaultTheme['measures']['main'];
+
+export const main: MainFunc = (header, body) => {
     const {
         dashboard: { navbarNav },
     } = header;
