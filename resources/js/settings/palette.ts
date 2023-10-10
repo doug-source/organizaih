@@ -1,4 +1,4 @@
-import { hexToRgb } from '@/libraries';
+import { hexToRgb } from '@/libraries/toolbox/Styling';
 
 export const blue = {
     1: 'blue',

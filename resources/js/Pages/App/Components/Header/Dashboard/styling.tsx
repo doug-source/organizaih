@@ -8,7 +8,7 @@ export const NavbarNav_ = styled.ul`
         const wideMeasure = navbarNavMeasure.wide;
         const wideTheme = theme.header.dashboard.navbarNav.wide;
         const { wideScreen } = theme.measures;
-        console.log(remOutput(navbarNavMeasure.height.diff));
+
         return css`
             position: absolute;
             right: 0;

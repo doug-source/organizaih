@@ -1,7 +1,7 @@
+import { AppDispatchContext } from '@/Pages/App';
+import { LocaleContext, TitleContext } from '@/Pages/App/libraries';
 import { makeContextError } from '@/libraries';
 import { useContext } from 'react';
-import { AppDispatchContext } from '../..';
-import { TitleContext } from '../contexts/Title';
 
 export const useAppDispatch = () => {
     const appDispatch = useContext(AppDispatchContext);
@@ -13,4 +13,12 @@ export const useAppDispatch = () => {
 
 export const useTitle = () => {
     return useContext(TitleContext);
+};
+
+export const useLocale = () => {
+    const localeData = useContext(LocaleContext);
+    if (localeData === null) {
+        throw makeContextError('useLocale', 'LocaleContext');
+    }
+    return localeData;
 };

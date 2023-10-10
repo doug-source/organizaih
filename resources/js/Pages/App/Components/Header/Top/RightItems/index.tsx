@@ -1,10 +1,10 @@
-import { Configuration } from '../../..';
+import { ConfigIcon } from '../../..';
 import { LogoutLinkSt_, RightItemsContainer_ } from './styling';
 
 export const RightItems = () => {
     return (
         <RightItemsContainer_>
-            <Configuration />
+            <ConfigIcon />
             <LogoutLinkSt_ />
         </RightItemsContainer_>
     );

@@ -7,7 +7,7 @@ type ConfigurationProps = {
     className?: string;
 };
 
-export const Configuration = ({ className }: ConfigurationProps) => {
+export const ConfigIcon = ({ className }: ConfigurationProps) => {
     const { pathname } = useLocation();
     const appDispatch = useAppDispatch();
     return (

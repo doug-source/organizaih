@@ -1,7 +1,7 @@
+import { BrandIcon } from '@/Pages/App/libraries/icons/asynchronous';
 import { remOutput } from '@/libraries';
 import { NavLink } from 'react-router-dom';
 import { css, styled } from 'styled-components';
-import { BrandIcon } from '../../libraries';
 
 export const NavLink_ = styled(NavLink)`
     width: auto;

@@ -18,11 +18,20 @@ use Illuminate\Support\Facades\Cookie;
 
 Route::get('/', [UserController::class, 'login'])->name('login.page');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout.page');
 
-Route::get('/language/{locale}', function ($locale) {
+Route::middleware('auth')->group(function () {
     $oneYearDuration = 365 * 24 * 60 * 1;
-    Session::put('locale', $locale);
-    Cookie::queue('locale', $locale, $oneYearDuration);
-    return redirect()->back();
+    Route::get('/language/{locale}', function ($locale) use ($oneYearDuration) {
+        Session::put('locale', $locale);
+        Cookie::queue('locale', $locale, $oneYearDuration);
+        return redirect()->back();
+    });
+    Route::get('/theme/{themingKey}', function ($themingKey) use ($oneYearDuration) {
+        Session::put('theme', $themingKey);
+        Cookie::queue('theme', $themingKey, $oneYearDuration);
+        return response('OK', 200);;
+    });
+
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout.page');
+    Route::get('/logout', [UserController::class, 'logout'])->name('log-out.page');
 });

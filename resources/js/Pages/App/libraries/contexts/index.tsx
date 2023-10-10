@@ -41,3 +41,7 @@ export const WrapContexts = ({
         </Loading>
     );
 };
+
+export { LoadingContext } from './Loading';
+export { LocaleContext } from './Locale';
+export { TitleContext } from './Title';

@@ -14,6 +14,13 @@ export const CustomerSVG = lazy(() =>
     }),
 );
 
+export const DayModeIcon = lazy(() =>
+    import('/resources/img/day-mode.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const GraphSVG = lazy(() =>
     import('/resources/img/graph.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
@@ -30,6 +37,13 @@ export const InventorySVG = lazy(() =>
 
 export const LogoutIcon = lazy(() =>
     import('/resources/img/logout.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const NightModeIcon = lazy(() =>
+    import('/resources/img/night-mode.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),

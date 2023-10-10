@@ -1,0 +1,46 @@
+import axios from 'axios';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+
+export type ErrorFromRequest = { response: { data: { errors: object } } };
+
+type DataDefine<T, W> = W extends { pagination: true }
+    ? { data: T[]; last_page: number; total: number }
+    : W extends T[]
+    ? T[]
+    : T;
+
+export type ApiData<T, W> = [
+    {
+        data: DataDefine<T, W> | undefined;
+        readonly status: boolean;
+        readonly error: ErrorFromRequest | null;
+    },
+    Dispatch<SetStateAction<string>>,
+];
+
+export const useAPI = <T, W>(endpoint = ''): ApiData<T, W> => {
+    const [status, setStatus] = useState(false);
+    const [data, setData] = useState<DataDefine<T, W>>();
+    const [error, setError] = useState<ErrorFromRequest | null>(null);
+    const [url, setUrl] = useState(endpoint);
+
+    useEffect(() => {
+        if (!url) {
+            return;
+        }
+        setData(undefined);
+        setStatus(false);
+        axios
+            .get(url)
+            .then((response) => {
+                const data = response.data as DataDefine<T, W>;
+                setData(data);
+            })
+            .then(() => setStatus(true))
+            .catch((error: ErrorFromRequest) => {
+                setError(error);
+            })
+            .catch(() => setStatus(true));
+    }, [url]);
+    return [{ data, status, error }, setUrl];
+};
