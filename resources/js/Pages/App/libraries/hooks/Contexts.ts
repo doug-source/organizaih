@@ -1,5 +1,9 @@
 import { AppDispatchContext } from '@/Pages/App';
-import { LocaleContext, TitleContext } from '@/Pages/App/libraries';
+import {
+    LocaleContext,
+    SelectionsContext,
+    TitleContext,
+} from '@/Pages/App/libraries';
 import { makeContextError } from '@/libraries';
 import { useContext } from 'react';
 
@@ -21,4 +25,12 @@ export const useLocale = () => {
         throw makeContextError('useLocale', 'LocaleContext');
     }
     return localeData;
+};
+
+export const useSelections = () => {
+    const selection = useContext(SelectionsContext);
+    if (selection === null) {
+        throw makeContextError('useSelections', 'SelectionsContext');
+    }
+    return selection;
 };

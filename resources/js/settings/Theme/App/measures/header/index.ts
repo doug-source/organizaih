@@ -46,7 +46,7 @@ export const header: DefaultTheme['measures']['header'] = {
                 height: '100%',
                 width: 32,
                 transform: {
-                    translate: [0, -7],
+                    translate: [0, -2],
                 },
             },
         },

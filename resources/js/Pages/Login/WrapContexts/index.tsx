@@ -1,4 +1,5 @@
-import { TokenRequest, Translate, TranslateData } from '@/libraries';
+import { TokenRequest, Translate } from '@/libraries';
+import { TranslateData } from '@/libraries/hooks';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 import { AuthStatusServer, LoadingDispatch } from '../libraries';
 

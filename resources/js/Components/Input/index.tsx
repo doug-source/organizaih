@@ -16,3 +16,5 @@ export const Input = forwardRef(function InputComponent(
         />
     );
 });
+
+export * from '@/Components/Input/styling';

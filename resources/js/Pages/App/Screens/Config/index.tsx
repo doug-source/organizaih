@@ -2,7 +2,8 @@ import {
     GateSwitcherCheckHandle,
     LanguageSwitcher,
 } from '@/Pages/App/Components';
-import { useInitPage, useTranslate } from '@/libraries';
+import { useInitPage } from '@/Pages/App/libraries/hooks';
+import { useTranslate } from '@/libraries';
 import { endpoints } from '@/settings';
 import { Suspense, useRef, useState } from 'react';
 import { useTheme } from 'styled-components';

@@ -10,6 +10,8 @@
 
         <link rel='icon' type='image/png' href='/img/web.png'>
 
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Roboto&family=Dangrek" rel="stylesheet">
+
         <title>
             @section('title')
                 &#65279;
@@ -17,7 +19,6 @@
         </title>
 
         @viteReactRefresh
-        @vite('resources/js/app.ts')
 
         @yield('scripts')
         @yield('stylesheets')

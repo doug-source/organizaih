@@ -9,7 +9,7 @@ const family = {
     7: "'LeagueSpartan', sans-serif",
     8: "'Helvetica Neue', Helvetica, Arial, sans-serif",
     9: "'Consolas', sans-serif",
-};
+} as const;
 
 export const fonts = {
     family,

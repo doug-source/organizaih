@@ -112,4 +112,14 @@ return [
 
     'password_timeout' => 10800,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Current Api Version
+    |--------------------------------------------------------------------------
+    |
+    | Here you may define the current api's version
+    |
+    */
+    'api-version' => env('API_VERSION')
+
 ];

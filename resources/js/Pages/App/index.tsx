@@ -1,11 +1,11 @@
 import { EmptyScreen, Header, Loading } from '@/Pages/App/Components';
 import {
-    Payload,
+    DataPayload,
     WrapContexts,
     dataReducer,
     useConnectionChecker,
 } from '@/Pages/App/libraries';
-import { ConfigRoutes } from '@/Pages/App/routes';
+import { ConfigRoutes, CustomerRoutes } from '@/Pages/App/routes';
 import {
     ContainerFluid_,
     GlobalStyle,
@@ -18,7 +18,7 @@ import { Dispatch, createContext, useReducer } from 'react';
 import { HashRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-type AppDispatchContextArg = Dispatch<Payload.Skeleton> | null;
+type AppDispatchContextArg = Dispatch<DataPayload.Skeleton> | null;
 export const AppDispatchContext = createContext<AppDispatchContextArg>(null);
 
 export const App = () => {
@@ -26,6 +26,22 @@ export const App = () => {
         title: '',
         loading: null,
         error: null,
+        selections: {
+            target: null,
+            action: null,
+            sales: {
+                customer: null,
+                product: null,
+                salesToSave: [],
+            },
+            inventories: {
+                product: null,
+                inventoriesToSave: [],
+            },
+            products: {
+                category: null,
+            },
+        },
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
     });
     useConnectionChecker(dispatch);
@@ -33,6 +49,7 @@ export const App = () => {
         <HashRouter>
             <AppDispatchContext.Provider value={dispatch}>
                 <WrapContexts
+                    selections={state.selections}
                     title={state.title}
                     statusloading={state.loading}
                 >
@@ -46,6 +63,7 @@ export const App = () => {
                                 <ContainerFluid_>
                                     <Row_>
                                         <ConfigRoutes />
+                                        <CustomerRoutes />
                                         <Routes>
                                             <Route
                                                 path='/'

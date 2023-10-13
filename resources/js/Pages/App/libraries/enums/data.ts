@@ -3,5 +3,7 @@ export const enum DataReducerEnum {
     ERROR = 'error',
     LOADING = 'loading',
 
+    SELECTION_CUSTOMER = 'selection-customer',
+
     CHANGE_THEME = 'change-theme',
 }

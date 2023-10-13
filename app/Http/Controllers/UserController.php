@@ -7,15 +7,23 @@ use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function login()
+    /**
+     * Execute the Web login.
+     *
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function login(Request $request)
     {
         if (!Auth::check()) {
             return view('login.auth', ['authAction' => json_encode(route('auth.user'))]);
         }
-        return view('app.main');
+        $userLogged = $request->user();
+        return view('app.main', ['tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken]);
     }
 
     /**
@@ -43,15 +51,32 @@ class UserController extends Controller
         return response()->json([
             'message' => $msg,
             'errors' => ['status' => [$msg]]
-        ], 422);
+        ], 403);
     }
 
-    public function logout()
+    /**
+     * Execute the Web logout.
+     *
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
     {
+        if ($request->has('tokenAuthApi')) {
+            $user = $request->user();
+            $tokenId = Str::before($request->input('tokenAuthApi'), '|');
+            $user->tokens()->where([
+                ['id', $tokenId],
+                ['tokenable_id', $user->id]
+            ])->delete();
+        }
         $this->logoutUser();
         return redirect()->route('login.page')->with('authAction', json_encode(route('auth.user')));
     }
 
+    /**
+     * Execute the user logout
+     */
     private function logoutUser()
     {
         Session::flush();

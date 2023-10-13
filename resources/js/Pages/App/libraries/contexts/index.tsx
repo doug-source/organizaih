@@ -1,7 +1,9 @@
+import { ReducerSelections } from '@/Pages/App/libraries/types/state';
 import { TokenRequest, Translate, TranslateData } from '@/libraries';
 import { ComponentProps, ReactNode } from 'react';
 import { Loading } from './Loading';
 import { Locale } from './Locale';
+import { Selections } from './Selections';
 import { Title } from './Title';
 
 const data = window.data;
@@ -19,12 +21,14 @@ const info = {
 };
 
 type WrapContextsProps = {
+    selections: ReducerSelections;
     title: string;
     statusloading: ComponentProps<typeof Loading>['value'];
     children: ReactNode;
 };
 
 export const WrapContexts = ({
+    selections,
     title = '',
     children,
     statusloading,
@@ -34,7 +38,11 @@ export const WrapContexts = ({
             <Locale value={locale}>
                 <Title value={title}>
                     <TokenRequest value={info.tokenRequest}>
-                        <Translate value={info.translate}>{children}</Translate>
+                        <Selections value={selections}>
+                            <Translate value={info.translate}>
+                                {children}
+                            </Translate>
+                        </Selections>
                     </TokenRequest>
                 </Title>
             </Locale>
@@ -44,4 +52,5 @@ export const WrapContexts = ({
 
 export { LoadingContext } from './Loading';
 export { LocaleContext } from './Locale';
+export { SelectionsContext } from './Selections';
 export { TitleContext } from './Title';

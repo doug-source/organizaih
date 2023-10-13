@@ -1,8 +1,10 @@
+import { DataReducerEnum } from '@/Pages/App/libraries/enums';
+import { DataPayload } from '@/Pages/App/libraries/types/payload';
 import { Dispatch, useCallback, useEffect } from 'react';
-import { DataReducerEnum } from '../enum';
-import { Payload } from '../payload';
 
-export const useConnectionChecker = (dispatch: Dispatch<Payload.Skeleton>) => {
+export const useConnectionChecker = (
+    dispatch: Dispatch<DataPayload.Skeleton>,
+) => {
     const offListener = useCallback(() => {
         dispatch({
             type: DataReducerEnum.ERROR,

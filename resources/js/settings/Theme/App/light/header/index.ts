@@ -39,6 +39,7 @@ export const header: DefaultTheme['header'] = {
             },
         },
         navbarNav: {
+            color: blue.darken,
             navItem: {
                 link: {
                     color: blue.darken,

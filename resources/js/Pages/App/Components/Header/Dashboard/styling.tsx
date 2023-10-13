@@ -6,7 +6,8 @@ export const NavbarNav_ = styled.ul`
     ${({ theme }) => {
         const navbarNavMeasure = theme.measures.header.dashboard.navbarNav;
         const wideMeasure = navbarNavMeasure.wide;
-        const wideTheme = theme.header.dashboard.navbarNav.wide;
+        const navbarNavTheme = theme.header.dashboard.navbarNav;
+        const wideTheme = navbarNavTheme.wide;
         const { wideScreen } = theme.measures;
 
         return css`
@@ -25,6 +26,7 @@ export const NavbarNav_ = styled.ul`
             justify-content: space-between;
             align-content: flex-start;
             overflow: auto;
+            color: ${navbarNavTheme.color};
 
             ${NavBar_}.dashboard & {
                 display: flex;

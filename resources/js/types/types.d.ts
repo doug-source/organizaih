@@ -1,9 +1,12 @@
 import { ThemeKey } from '@/settings';
 import { AxiosStatic } from 'axios';
+import { FunctionComponent } from 'react';
 
 export {};
+
 declare global {
     interface Window {
+        init: (Component: FunctionComponent<{}>) => void;
         data: {
             userNameLogged: string;
             columnSizeDB: {
@@ -37,6 +40,8 @@ declare global {
                     };
                 };
             };
+            apiVersion: string;
+            tokenAuth: string;
         };
         axios: AxiosStatic;
     }

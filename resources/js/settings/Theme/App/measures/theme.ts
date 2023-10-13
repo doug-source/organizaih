@@ -7,6 +7,7 @@ export type AppThemeMeasures = {
                 top: number;
             };
         };
+        padding: number;
     };
     config: {
         fieldset: {
@@ -720,6 +721,9 @@ export type AppThemeMeasures = {
                 };
             };
         };
+    };
+    html: {
+        lineHeight: number;
     };
     inputForm: {
         width: string;

@@ -2,7 +2,6 @@ import {
     black,
     blue,
     boxShadow,
-    gradient,
     gray,
     transparency,
     white,
@@ -12,10 +11,10 @@ import { DefaultTheme } from 'styled-components';
 export const list: DefaultTheme['list'] = {
     empty: {
         bg: {
-            color: transparency[7],
-            image: gradient.linear[8],
+            color: black[13],
+            image: 'none',
         },
-        color: blue.darken,
+        color: white[3],
     },
     item: {
         hover: {

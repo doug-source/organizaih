@@ -12,6 +12,7 @@ import { formItem } from './formItem';
 import { gateSwitcher } from './gateSwitcher';
 import { graph } from './graph';
 import { header } from './header';
+import { html } from './html';
 import { inputForm } from './inputForm';
 import { inventory } from './inventory';
 import { itemEditor } from './itemEditor';
@@ -46,6 +47,7 @@ export const measures = {
     gateSwitcher,
     graph,
     header,
+    html,
     inputForm,
     inventory,
     itemEditor,

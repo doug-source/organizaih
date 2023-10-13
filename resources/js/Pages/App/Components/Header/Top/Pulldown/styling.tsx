@@ -20,8 +20,6 @@ export const TopWrapBtn_ = styled.button`
             transform: translate(${translateValue});
             height: ${pulldownMeasure.btn.height};
             width: ${remOutput(pulldownMeasure.btn.width)};
-            background: transparent;
-            border-width: 0;
             cursor: pointer;
             @media ${wideScreen} {
                 display: none;

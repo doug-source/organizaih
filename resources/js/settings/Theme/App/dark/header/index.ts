@@ -26,6 +26,7 @@ export const header: DefaultTheme['header'] = {
             },
         },
         navbarNav: {
+            color: gray[20],
             navItem: {
                 link: {
                     color: gray[20],

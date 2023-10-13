@@ -454,6 +454,7 @@ export type AppTheme = {
                 };
             };
             navbarNav: {
+                color: string;
                 navItem: {
                     link: {
                         color: string;

@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CustomersResourceController;
+use App\Http\Controllers\Api\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::prefix('v1')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('v1')->group(function () {
+        Route::prefix('customers')->group(function () {
+            Route::get('/', [CustomersResourceController::class, 'index']);
+            Route::post('/', [CustomersResourceController::class, 'store']);
+            Route::get('{customerID}', [CustomersResourceController::class, 'show']);
+            Route::delete('{customerID}', [CustomersResourceController::class, 'destroy']);
+            Route::put('{customerID}', [CustomersResourceController::class, 'update']);
+        });
+    });
 });

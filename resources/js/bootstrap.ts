@@ -1,3 +1,5 @@
+import { createRoot } from 'react-dom/client';
+
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -5,14 +7,17 @@
  */
 
 import axios from 'axios';
+import { createElement } from 'react';
 window.axios = axios;
 
 const axiosCommon = window.axios.defaults.headers.common;
 
 axiosCommon['X-Requested-With'] = 'XMLHttpRequest';
-axiosCommon['X-CSRF-TOKEN'] = (document.head.querySelector(
-    'meta[name="csrf-token"]',
-) as HTMLMetaElement).content;
+axiosCommon['X-CSRF-TOKEN'] = (
+    document.head.querySelector('meta[name="csrf-token"]') as HTMLMetaElement
+).content;
+axiosCommon['Content-Type'] = 'application/json';
+axiosCommon['Accept'] = 'application/json';
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -35,3 +40,11 @@ axiosCommon['X-CSRF-TOKEN'] = (document.head.querySelector(
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+window.init = function (component) {
+    const $containerApp = document.getElementById('container-app');
+    if ($containerApp === null) {
+        return;
+    }
+    createRoot($containerApp).render(createElement(component));
+};

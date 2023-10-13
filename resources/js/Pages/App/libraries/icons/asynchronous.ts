@@ -1,7 +1,28 @@
 import { lazy } from 'react';
 
+export const AnonymousSVG = lazy(() =>
+    import('/resources/img/anonymous-person.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const ArrowSVG = lazy(() =>
+    import('/resources/img/down.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const BrandIcon = lazy(() =>
     import('/resources/img/brand.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const CloseSVG = lazy(() =>
+    import('/resources/img/closeIcon.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),
@@ -16,6 +37,13 @@ export const CustomerSVG = lazy(() =>
 
 export const DayModeIcon = lazy(() =>
     import('/resources/img/day-mode.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const EditSVG = lazy(() =>
+    import('/resources/img/edit.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),
@@ -49,6 +77,13 @@ export const NightModeIcon = lazy(() =>
     }),
 );
 
+export const PlusSVG = lazy(() =>
+    import('/resources/img/add.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const ProductSVG = lazy(() =>
     import('/resources/img/products.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
@@ -58,6 +93,13 @@ export const ProductSVG = lazy(() =>
 
 export const PulldownIcon = lazy(() =>
     import('/resources/img/pulldown.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const RemoveSVG = lazy(() =>
+    import('/resources/img/remove.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),

@@ -1,2 +1,2 @@
-export * from './App';
-export * from './Login';
+export * from '@/Pages/App';
+export * from '@/Pages/Login';

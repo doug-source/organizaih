@@ -27,6 +27,11 @@ export const LogoutLink = ({ label, className }: LogoutLinkProps) => {
                 name='_token'
                 value={tokenRequest}
             />
+            <input
+                type='hidden'
+                name='tokenAuthApi'
+                value={window.data.tokenAuth}
+            />
             <ExitLink_
                 href='/logout'
                 onClick={(

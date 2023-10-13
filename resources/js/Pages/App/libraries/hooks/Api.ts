@@ -23,6 +23,7 @@ export const useAPI = <T, W>(endpoint = ''): ApiData<T, W> => {
     const [data, setData] = useState<DataDefine<T, W>>();
     const [error, setError] = useState<ErrorFromRequest | null>(null);
     const [url, setUrl] = useState(endpoint);
+    const { tokenAuth } = window.data;
 
     useEffect(() => {
         if (!url) {
@@ -31,7 +32,11 @@ export const useAPI = <T, W>(endpoint = ''): ApiData<T, W> => {
         setData(undefined);
         setStatus(false);
         axios
-            .get(url)
+            .get(url, {
+                headers: {
+                    Authorization: `Bearer ${tokenAuth}`,
+                },
+            })
             .then((response) => {
                 const data = response.data as DataDefine<T, W>;
                 setData(data);
@@ -41,6 +46,28 @@ export const useAPI = <T, W>(endpoint = ''): ApiData<T, W> => {
                 setError(error);
             })
             .catch(() => setStatus(true));
-    }, [url]);
+    }, [url, tokenAuth]);
     return [{ data, status, error }, setUrl];
+};
+
+export const useDeleteAPI = (endpoint = '') => {
+    const [status, setStatus] = useState(false);
+    const [error, setError] = useState<ErrorFromRequest | null>(null);
+    const [url, setUrl] = useState(endpoint);
+
+    useEffect(() => {
+        if (!url) {
+            return;
+        }
+        setStatus(false);
+        setError(null);
+        axios
+            .delete(url)
+            .then(() => setStatus(true))
+            .catch((error: ErrorFromRequest) => {
+                setStatus(true);
+                setError(error);
+            });
+    }, [url]);
+    return [{ status, error }, setUrl] as const;
 };

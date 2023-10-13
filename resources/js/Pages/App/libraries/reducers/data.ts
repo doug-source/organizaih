@@ -1,12 +1,11 @@
+import { DataReducerEnum } from '@/Pages/App/libraries/enums';
+import { DataPayload, DataReducerState } from '@/Pages/App/libraries/types';
 import { Theme } from '@/settings';
-import { DataReducerEnum } from './enum';
-import { Payload } from './payload';
-import { ReducerState } from './state';
 
 export const dataReducer = (
-    state: ReducerState,
-    action: Payload.Skeleton,
-): ReducerState => {
+    state: DataReducerState,
+    action: DataPayload.Skeleton,
+): DataReducerState => {
     switch (action.type) {
         case DataReducerEnum.TITLE: {
             return {
@@ -27,12 +26,25 @@ export const dataReducer = (
             };
 
         case DataReducerEnum.CHANGE_THEME: {
-            let theme: ReducerState['theme'] = Theme.light;
+            let theme: DataReducerState['theme'] = Theme.light;
             if (state.theme.key === 'light') {
                 theme = Theme.dark;
             }
 
             return { ...state, theme };
+        }
+        case DataReducerEnum.SELECTION_CUSTOMER: {
+            const keyList = action.payload.key;
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    [keyList]: {
+                        ...state.selections[keyList],
+                        customer: action.payload.value,
+                    },
+                },
+            };
         }
         default: {
             const actionInvalid: never = action;

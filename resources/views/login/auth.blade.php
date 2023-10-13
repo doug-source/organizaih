@@ -20,7 +20,7 @@
             },
         };
     </script>
-    @vite('resources/js/Pages/Login/index.tsx')
+    @vite('resources/js/login.ts')
 @endsection
 
 @section('body')

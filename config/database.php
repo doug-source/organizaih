@@ -125,7 +125,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
@@ -147,5 +147,58 @@ return [
         ],
 
     ],
+
+    'column-sizes' => [
+        'customer' => [
+            'name' => env('COLUMN_SIZE_CUSTOMER_NAME', '250'),
+            'phone' => env('COLUMN_SIZE_CUSTOMER_PHONE', '11'),
+            'photo' => env('COLUMN_SIZE_CUSTOMER_PHOTO', '100')
+        ],
+        'product' => [
+            'name' => env('COLUMN_SIZE_PRODUCT_NAME', '250'),
+            'description' => env('COLUMN_SIZE_PRODUCT_DESCRIPTION', '250'),
+            'obs' => env('COLUMN_SIZE_PRODUCT_OBS', '500'),
+            'photo' => env('COLUMN_SIZE_PRODUCT_PHOTO', '100')
+        ],
+        'product-category' => [
+            'name' => env('COLUMN_SIZE_PRODUCT_CATEGORY_NAME', '250'),
+            'description' => env(
+                'COLUMN_SIZE_PRODUCT_CATEGORY_DESCRIPTION',
+                '250'
+            ),
+            'obs' => env('COLUMN_SIZE_PRODUCT_CATEGORY_OBS', '500')
+        ],
+        'address' => [
+            'street' => env('COLUMN_SIZE_ADDRESS_STREET', '250'),
+            'district' => env('COLUMN_SIZE_ADDRESS_DISTRICT', '250')
+        ],
+        'inventory' => [
+            'qty' => env('COLUMN_SIZE_INVENTORY_QTY', '4294967295')
+        ],
+        'sale' => [
+            'qty' => env('COLUMN_SIZE_SALE_QTY', '4294967295')
+        ],
+        'inventory-sale' => [
+            'qty_used' => env('COLUMN_SIZE_INVENTORY_SALE_QTY', '4294967295')
+        ]
+    ],
+
+    'columns-precisions' => [
+        'inventory' => [
+            'cost' => env('COLUMN_PRECISION_INVENTORY_COST', '8')
+        ],
+        'sale' => [
+            'price' => env('COLUMN_PRECISION_SALE_PRICE', '8')
+        ]
+    ],
+
+    'columns-scales' => [
+        'inventory' => [
+            'cost' => env('COLUMN_SCALE_INVENTORY_COST', '2')
+        ],
+        'sale' => [
+            'price' => env('COLUMN_SCALE_SALE_PRICE', '2')
+        ]
+    ]
 
 ];

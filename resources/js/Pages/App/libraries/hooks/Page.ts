@@ -1,6 +1,6 @@
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
+import { useTranslate } from '@/libraries';
 import { useEffect } from 'react';
-import { useTranslate } from '.';
 
 export const useInitPage = (keyTitle = '', loading = true) => {
     const appDispatch = useAppDispatch();
