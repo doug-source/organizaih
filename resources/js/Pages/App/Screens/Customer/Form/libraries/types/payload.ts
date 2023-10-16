@@ -1,5 +1,5 @@
 import { CustomerReducerEnum } from '@/Pages/App/Screens/Customer/Form/libraries/enums';
-import { IAddress, ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { IAddress, ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { Dispatch } from 'react';
 
 export namespace CustomerPayload {

@@ -7,7 +7,7 @@ import {
 } from '@/Pages/App/Screens/Customer/Form/libraries/contexts';
 import { CustomerReducerEnum } from '@/Pages/App/Screens/Customer/Form/libraries/enums';
 import { customerReducer } from '@/Pages/App/Screens/Customer/Form/libraries/reducers';
-import { ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { emptyCustomer } from '@/Pages/App/settings';
 import { formatDateByString, makeContextError } from '@/libraries';
 import { Dispatch, useCallback, useContext, useReducer } from 'react';

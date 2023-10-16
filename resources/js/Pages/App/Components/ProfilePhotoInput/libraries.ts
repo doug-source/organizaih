@@ -1,7 +1,7 @@
-import { ProfilePhoto } from '@/Pages/App/Components/ProfilePhoto';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { ComponentPropsWithRef, useEffect, useState } from 'react';
 
-type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhoto>;
+type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhotoInput>;
 
 export const useImgSrcChange = (photoUrl: ProfilePhotoProps['photo']) => {
     const [imgSrc, setImgSrc] = useState<string | null | undefined>();

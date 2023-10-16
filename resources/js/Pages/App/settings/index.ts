@@ -1,10 +1,10 @@
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import {
     customerTargets,
     productCategoryTargets,
     productTargets,
 } from '@/Pages/App/libraries/types/state';
 import { DefaultTheme } from 'styled-components';
-import { ICustomer } from '../Screens/Customer';
 
 type SelectionTargetsProps = {
     customer: typeof customerTargets;

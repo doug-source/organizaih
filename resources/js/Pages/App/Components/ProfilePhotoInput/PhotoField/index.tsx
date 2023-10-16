@@ -1,9 +1,9 @@
-import { ProfilePhoto } from '@/Pages/App/Components/ProfilePhoto';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import {
     makePhotoChange,
     makePhotoRef,
-} from '@/Pages/App/Components/ProfilePhoto/PhotoField/libraries';
-import { PhotoField_ } from '@/Pages/App/Components/ProfilePhoto/PhotoField/styling';
+} from '@/Pages/App/Components/ProfilePhotoInput/PhotoField/libraries';
+import { PhotoField_ } from '@/Pages/App/Components/ProfilePhotoInput/PhotoField/styling';
 import {
     ComponentPropsWithRef,
     Dispatch,
@@ -12,7 +12,7 @@ import {
     useRef,
 } from 'react';
 
-type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhoto>;
+type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhotoInput>;
 
 type PhotoFieldProps = {
     forwardedRef: ForwardedRef<HTMLInputElement>;

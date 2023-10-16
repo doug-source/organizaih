@@ -1,5 +1,5 @@
 import { buildFormData } from '@/Pages/App/Screens/Customer/Form/Base/libraries';
-import { ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { DataPayload, DataReducerEnum } from '@/Pages/App/libraries';
 import { endpoints } from '@/settings';

@@ -1,8 +1,8 @@
 import { BackPhotoBtn } from '@/Pages/App/Components/BackPhotoBtn';
-import { PhotoField } from '@/Pages/App/Components/ProfilePhoto/PhotoField';
-import { PreviewPhoto } from '@/Pages/App/Components/ProfilePhoto/PreviewPhoto';
-import { useImgSrcChange } from '@/Pages/App/Components/ProfilePhoto/libraries';
-import { ProfilePhoto_ } from '@/Pages/App/Components/ProfilePhoto/styling';
+import { PhotoField } from '@/Pages/App/Components/ProfilePhotoInput/PhotoField';
+import { PreviewPhoto } from '@/Pages/App/Components/ProfilePhotoInput/PreviewPhoto';
+import { useImgSrcChange } from '@/Pages/App/Components/ProfilePhotoInput/libraries';
+import { ProfilePhoto_ } from '@/Pages/App/Components/ProfilePhotoInput/styling';
 import {
     ForwardRefRenderFunction,
     ForwardedRef,
@@ -54,7 +54,7 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
     );
 };
 
-export const ProfilePhoto = forwardRef<
+export const ProfilePhotoInput = forwardRef<
     HTMLInputElement,
     ProfilePhotoInnerProps
 >(ProfilePhotoInner);

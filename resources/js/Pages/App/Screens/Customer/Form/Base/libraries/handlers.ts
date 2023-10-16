@@ -1,4 +1,8 @@
-import { DatePicker, ProfilePhoto, RadioToggle } from '@/Pages/App/Components';
+import {
+    DatePicker,
+    ProfilePhotoInput,
+    RadioToggle,
+} from '@/Pages/App/Components';
 import { CustomerReducerEnum } from '@/Pages/App/Screens/Customer/Form/libraries/enums';
 import { useCustomerDispatch } from '@/Pages/App/Screens/Customer/Form/libraries/hooks';
 import {
@@ -19,7 +23,7 @@ export const makeNameChange = (
 };
 
 type OnPhotoChangeValue = Parameters<
-    Required<ComponentPropsWithRef<typeof ProfilePhoto>>['onChange']
+    Required<ComponentPropsWithRef<typeof ProfilePhotoInput>>['onChange']
 >[0];
 
 export const makePhotoChange = (

@@ -1,14 +1,10 @@
 import {
+    Details as CustomerDetails,
     Form as CustomerForm,
     List as CustomerList,
 } from '@/Pages/App/Screens/Customer';
 import { ContainerCustomer_ } from '@/Pages/App/routes/Customer/styling';
 import { Outlet, Route, Routes } from 'react-router-dom';
-// import {
-// List as CustomerList,
-// Details as CustomerDetails,
-// Form as CustomerForm,
-// } from '../../components/Customer';
 
 export const CustomerRoutes = () => {
     return (
@@ -37,7 +33,6 @@ export const CustomerRoutes = () => {
                     </ContainerCustomer_>
                 }
             />
-            {/*
             <Route
                 path='/customers/:id'
                 element={
@@ -45,7 +40,7 @@ export const CustomerRoutes = () => {
                         <CustomerDetails />
                     </ContainerCustomer_>
                 }
-            /> */}
+            />
             <Route
                 path='/customers/:id/edit'
                 element={

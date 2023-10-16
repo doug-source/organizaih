@@ -1,4 +1,4 @@
-import { ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { formatRequestDate } from '@/libraries';
 import { RefObject } from 'react';
 

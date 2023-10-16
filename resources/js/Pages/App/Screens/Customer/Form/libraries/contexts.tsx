@@ -1,6 +1,6 @@
 import { customerReducer } from '@/Pages/App/Screens/Customer/Form/libraries/reducers';
 import { CustomerDispatchType } from '@/Pages/App/Screens/Customer/Form/libraries/types';
-import { ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { Dispatch, ReactNode, SetStateAction, createContext } from 'react';
 

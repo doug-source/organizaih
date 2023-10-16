@@ -1,11 +1,11 @@
-import { ProfilePhoto } from '@/Pages/App/Components/ProfilePhoto';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import {
     PhotoPreview_,
     PreviewImg_,
-} from '@/Pages/App/Components/ProfilePhoto/PreviewPhoto/styling';
+} from '@/Pages/App/Components/ProfilePhotoInput/PreviewPhoto/styling';
 import { ComponentPropsWithRef } from 'react';
 
-type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhoto>;
+type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhotoInput>;
 
 type PreviewPhotoProps = {
     imgSrc: string | null | undefined;

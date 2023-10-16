@@ -1,5 +1,5 @@
 import { Edit } from '@/Pages/App/Screens/Customer/Form/Edit';
-import { ICustomer } from '@/Pages/App/Screens/Customer/Form/types';
+import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import {
     useAPI,
     useAppDispatch,

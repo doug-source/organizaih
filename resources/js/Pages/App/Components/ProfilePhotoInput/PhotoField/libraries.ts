@@ -1,4 +1,4 @@
-import { ProfilePhoto } from '@/Pages/App/Components/ProfilePhoto';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import {
     ChangeEventHandler,
     ComponentPropsWithRef,
@@ -9,7 +9,7 @@ import {
     SetStateAction,
 } from 'react';
 
-type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhoto>;
+type ProfilePhotoProps = ComponentPropsWithRef<typeof ProfilePhotoInput>;
 
 type MakePhotoRefReturn =
     | ((instance: HTMLInputElement | null) => void)

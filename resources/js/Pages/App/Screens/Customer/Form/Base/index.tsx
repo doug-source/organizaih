@@ -3,7 +3,7 @@ import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
 import { FormItem } from '@/Pages/App/Components/FormItem';
 import { InputForm_ } from '@/Pages/App/Components/InputForm';
 import { InputNumber } from '@/Pages/App/Components/InputNumber';
-import { ProfilePhoto } from '@/Pages/App/Components/ProfilePhoto';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { RadioToggle } from '@/Pages/App/Components/RadioToggle';
 import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
 import { City } from '@/Pages/App/Screens/Customer/Form/Base/City';
@@ -105,7 +105,7 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
                 labelName='form--field_photo'
                 labelText={translate('photo', true) + ':'}
             >
-                <ProfilePhoto
+                <ProfilePhotoInput
                     ref={inputFile}
                     iconNoPhoto={
                         <Suspense>
