@@ -106,6 +106,7 @@ export const List = () => {
                     }
                     return (
                         <ListItem
+                            key={data.id}
                             data={data}
                             index={index}
                             urlPrefix='/customers'

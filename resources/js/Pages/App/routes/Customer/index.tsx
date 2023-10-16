@@ -45,7 +45,7 @@ export const CustomerRoutes = () => {
                         <CustomerDetails />
                     </ContainerCustomer_>
                 }
-            />
+            /> */}
             <Route
                 path='/customers/:id/edit'
                 element={
@@ -53,7 +53,7 @@ export const CustomerRoutes = () => {
                         <CustomerForm />
                     </ContainerCustomer_>
                 }
-            /> */}
+            />
             <Route
                 path='*'
                 element={<Outlet />}

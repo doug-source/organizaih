@@ -44,7 +44,7 @@ class CheckerFactory implements CheckerFactoryScheme
     private static function selectGetChecker(FormRequest $formRequest): ?Checker
     {
         $path = $formRequest->decodedPath();
-        if (preg_match('|^api\/customers\/\d+$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/customers\/\d+$|', $path) === 1) {
             return new Show();
         }
         return new Plain();
