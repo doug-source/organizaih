@@ -33,6 +33,11 @@ type overlay = {
 export type AppTheme = {
     key: ThemeKey;
     measures: AppThemeMeasures;
+    backBtn: {
+        icon: {
+            fill: string;
+        };
+    };
     body: {
         bg: {
             color: string;
