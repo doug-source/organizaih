@@ -3,6 +3,8 @@ import {
     productCategoryTargets,
     productTargets,
 } from '@/Pages/App/libraries/types/state';
+import { DefaultTheme } from 'styled-components';
+import { ICustomer } from '../Screens/Customer';
 
 type SelectionTargetsProps = {
     customer: typeof customerTargets;
@@ -67,3 +69,66 @@ export const makeEmptySelections = () => ({
         category: null,
     },
 });
+
+export const emptyCustomer: ICustomer = {
+    id: 0,
+    name: '',
+    photo: '',
+    sex: 'M',
+    phone_1: '',
+    phone_2: '',
+    birthday: null,
+
+    address_id: 0,
+    address: {
+        street: '',
+        number: 1,
+        district: '',
+        city: {
+            id: 0,
+            name: '',
+        },
+        state: {
+            id: 0,
+            name: '',
+        },
+    },
+
+    raw_sex: 'M',
+    birthday_formatted: '',
+    raw_phone1: '',
+    raw_phone2: '',
+    updated_at: '',
+    created_at: '',
+};
+
+export const stateCitySelection = {
+    stateAcronym: 'RS',
+    cityName: 'Sapucaia do Sul',
+};
+
+export const sexSettingList = (
+    translate: (key: string, uppercase?: boolean) => string,
+    { male, female }: DefaultTheme['radioToggle'],
+) => [
+    {
+        value: 'M',
+        label: translate('male', true),
+        style: {
+            backgroundColor: male.bg,
+            color: male.color,
+            shadowColor: male.shadowColor,
+            borderColor: male.border.color,
+        },
+    },
+    {
+        value: 'F',
+        label: translate('female', true),
+        style: {
+            backgroundColor: female.bg,
+            color: female.color,
+            shadowColor: female.shadowColor,
+            borderColor: female.border.color,
+        },
+    },
+];

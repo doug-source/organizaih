@@ -14,8 +14,22 @@ export const ArrowSVG = lazy(() =>
     }),
 );
 
+export const BackFileSVG = lazy(() =>
+    import('/resources/img/back.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const BrandIcon = lazy(() =>
     import('/resources/img/brand.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const CalendarIcon = lazy(() =>
+    import('/resources/img/calendar.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),

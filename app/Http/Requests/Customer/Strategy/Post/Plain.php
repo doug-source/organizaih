@@ -10,6 +10,9 @@ use Illuminate\Support\Str;
 class Plain implements Checker
 {
     /** @var int */
+    private $city;
+
+    /** @var int */
     private $customerNameMaxSize = 0;
 
     /** @var int */
@@ -18,12 +21,13 @@ class Plain implements Checker
     /** @var int */
     private $addressDistrictMaxSize = 0;
 
-    /** @var int */
-    private $city;
-
     public function __construct(FormRequest $formRequest)
     {
         $this->city = $formRequest->input('city');
+
+        $this->customerNameMaxSize = config('database.column-sizes.customer.name');
+        $this->addressStreetMaxSize = config('database.column-sizes.address.street');
+        $this->addressDistrictMaxSize = config('database.column-sizes.address.district');
     }
 
     /**
@@ -36,10 +40,6 @@ class Plain implements Checker
      */
     public function all(FormRequest $formRequest, array $requestInputs): array
     {
-        $this->customerNameMaxSize = config('database.column-sizes.customer.name');
-        $this->addressStreetMaxSize = config('database.column-sizes.address.street');
-        $this->addressDistrictMaxSize = config('database.column-sizes.address.district');
-
         return [
             ...$requestInputs
         ];

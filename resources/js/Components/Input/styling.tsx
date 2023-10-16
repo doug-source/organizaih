@@ -3,27 +3,27 @@ import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
 
 export const Input_ = styled.input`
-    appearance: none;
     ${({ theme }) => {
         const { wideScreen, mediumScreen } = theme.measures;
         const inputMeasures = theme.generic.measures.input;
         const inputTheme = theme.generic.input;
         return css`
+            background: ${inputTheme.bg};
+            border-color: ${inputTheme.border.color};
+            border-width: ${remOutput(
+                extractThemeNumber(theme, inputMeasures.border.width),
+            )};
+            border-radius: ${remOutput(inputMeasures.border.radius)};
             padding-top: ${remOutput(inputMeasures.padding.top)};
             padding-bottom: ${remOutput(inputMeasures.padding.bottom)};
             padding-left: ${remOutput(inputMeasures.padding.left)};
             padding-right: ${remOutput(inputMeasures.padding.right)};
-            text-indent: ${remOutput(inputMeasures.textIndent)};
             font-size: ${remOutput(inputMeasures.fontSize)};
             line-height: ${remOutput(inputMeasures.lineHeight)};
-            border-width: ${remOutput(
-                extractThemeNumber(theme, inputMeasures.border.width),
-            )};
+
+            text-indent: ${remOutput(inputMeasures.textIndent)};
             border-style: solid;
-            border-color: ${inputTheme.border.color};
-            border-radius: ${remOutput(inputMeasures.border.radius)};
             font-family: ${fonts.family[1]};
-            background: ${inputTheme.bg};
             box-shadow: ${inputTheme.boxShadow};
             color: ${inputTheme.color};
 

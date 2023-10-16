@@ -11,6 +11,11 @@ class Plain implements Checker
     /** @var int */
     private $customerNameMaxSize = 0;
 
+    public function __construct()
+    {
+        $this->customerNameMaxSize = config('database.column-sizes.customer.name');
+    }
+
     /**
      * Get all of the input and files for the request and organize the fields
      * to be validated.
@@ -21,8 +26,6 @@ class Plain implements Checker
      */
     public function all(FormRequest $formRequest, array $requestInputs): array
     {
-        $this->customerNameMaxSize = config('database.column-sizes.customer.name');
-
         return [
             ...$requestInputs,
             'page' => $formRequest->query('page'),

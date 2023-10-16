@@ -1,4 +1,5 @@
 import {
+    black,
     blue,
     boxShadow,
     gray,
@@ -15,6 +16,7 @@ export const radioToggle: DefaultTheme['radioToggle'] = {
             color: gray[5],
         },
         boxShadow: boxShadow[33],
+        colorNot: black[1],
     },
     male: {
         bg: blue.lighten[2],

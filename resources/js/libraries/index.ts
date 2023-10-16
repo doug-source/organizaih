@@ -2,6 +2,7 @@ export * from './contexts';
 export * from './hooks';
 export * from './icons';
 export * from './toolbox';
+export * from './types';
 
 export const firstUpperCase = (str: string): string => {
     const strVal = str.trim();

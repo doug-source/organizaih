@@ -776,6 +776,7 @@ export type AppTheme = {
                 color: string;
             };
             boxShadow: string;
+            colorNot: string;
         };
         male: {
             bg: string;

@@ -15,6 +15,7 @@ export const radioToggle: DefaultTheme['radioToggle'] = {
             color: gray[5],
         },
         boxShadow: boxShadow[33],
+        colorNot: 'inherit',
     },
     male: {
         bg: blue.lighten[2],

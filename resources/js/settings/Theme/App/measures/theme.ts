@@ -1,6 +1,15 @@
 import { ThemeKey } from '@/settings';
 
 export type AppThemeMeasures = {
+    backBtn: {
+        margin: {
+            left: number;
+            top: number;
+        };
+        svg: {
+            size: number;
+        };
+    };
     body: {
         section: {
             padding: {
@@ -329,7 +338,10 @@ export type AppThemeMeasures = {
             width: Record<ThemeKey, number>;
             radius: Record<ThemeKey, number>;
         };
-        textIndent: number;
+        padding: {
+            right: number;
+            left: number;
+        };
         pseudo: {
             size: number;
             before: {
@@ -1150,15 +1162,6 @@ export type AppThemeMeasures = {
         padding: {
             top: number;
             bottom: number;
-        };
-        backBtn: {
-            margin: {
-                left: number;
-                top: number;
-            };
-            svg: {
-                size: number;
-            };
         };
         photoField: {
             marginLeft: number;

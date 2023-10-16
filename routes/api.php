@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CustomersResourceController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CitiesResourceController;
+use App\Http\Controllers\Api\StatesResourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +36,7 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::delete('{customerID}', [CustomersResourceController::class, 'destroy']);
             Route::put('{customerID}', [CustomersResourceController::class, 'update']);
         });
+        Route::get('state/{stateID}/cities', [CitiesResourceController::class, 'index']);
+        Route::get('states', [StatesResourceController::class, 'index']);
     });
 });

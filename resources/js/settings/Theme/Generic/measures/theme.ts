@@ -1,6 +1,20 @@
 import { ThemeKey } from '@/settings';
 
 export type GenericThemeMeasures = {
+    fields: {
+        border: {
+            width: number;
+        };
+        borderRadius: number;
+        fontSize: number;
+        lineHeight: number;
+        padding: {
+            top: number;
+            bottom: number;
+            left: number;
+            right: number;
+        };
+    };
     input: {
         border: {
             radius: number;

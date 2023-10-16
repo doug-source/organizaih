@@ -49,3 +49,31 @@ export const extractThemeNumber = (
     }
     return value[theme.key];
 };
+
+const getCssStyle = (element: Element, prop: string) => {
+    return window.getComputedStyle(element, null).getPropertyValue(prop);
+};
+
+const getCanvasFont = (el = document.body) => {
+    const fontWeight = getCssStyle(el, 'font-weight') ?? 'normal';
+    const fontSize = getCssStyle(el, 'font-size') ?? '16px';
+    const fontFamily = getCssStyle(el, 'font-family') ?? 'Times New Roman';
+
+    return `${fontWeight} ${fontSize} ${fontFamily}`;
+};
+
+const canvas = document.createElement('canvas');
+
+const getTextWidth = (text: string, font: string) => {
+    const context = canvas.getContext('2d');
+    if (!context) {
+        return 0;
+    }
+    context.font = font;
+    const metrics = context.measureText(text);
+    return metrics.width;
+};
+
+export const getElementTextWidth = (text: string, el: HTMLElement) => {
+    return getTextWidth(text, getCanvasFont(el));
+};

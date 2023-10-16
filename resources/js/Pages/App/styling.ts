@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         const bgColor = theme.body.bg.color;
         const bodyMeasure = theme.measures.body;
         const htmlMeasure = theme.measures.html;
+        const fieldsMeasure = theme.generic.measures.fields;
         return css`
             html {
                 line-height: ${remOutput(htmlMeasure.lineHeight)};
@@ -36,10 +37,7 @@ export const GlobalStyle = createGlobalStyle`
                     border-collapse: collapse;
                     border-spacing: 0;
                 }
-                button,
-                [type='button'],
-                [type='reset'],
-                [type='submit'] {
+                button {
                     background-color: transparent;
                     background-image: none;
                 }
@@ -65,6 +63,21 @@ export const GlobalStyle = createGlobalStyle`
                 embed,
                 object {
                     display: block;
+                }
+                textarea,
+                select {
+                    appearance: none;
+                    background-color: #fff;
+                    border-color: #6b7280;
+                    border-width: ${remOutput(fieldsMeasure.border.width)};
+                    border-radius: ${remOutput(fieldsMeasure.borderRadius)};
+                    padding-top: ${remOutput(fieldsMeasure.padding.top)};
+                    padding-right: ${remOutput(fieldsMeasure.padding.right)};
+                    padding-bottom: ${remOutput(fieldsMeasure.padding.bottom)};
+                    padding-left: ${remOutput(fieldsMeasure.padding.left)};
+                    font-size: ${remOutput(fieldsMeasure.fontSize)};
+                    line-height: ${remOutput(fieldsMeasure.lineHeight)};
+                    --tw-shadow: 0 0 #0000;
                 }
             }
         `;

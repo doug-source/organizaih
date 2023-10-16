@@ -1,3 +1,4 @@
+import { backBtn } from './backBtn';
 import { body } from './body';
 import { config } from './config';
 import { confirmDialog } from './confirmDialog';
@@ -33,6 +34,7 @@ const widthLarge = '1024px';
 const widthMedium = '512px';
 
 export const measures = {
+    backBtn,
     body,
     config,
     confirmDialog,

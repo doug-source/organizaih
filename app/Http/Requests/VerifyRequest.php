@@ -42,8 +42,7 @@ abstract class VerifyRequest extends FormRequest
     }
 
     /**
-     * Used by access the url argument 'customerID' (if present) included
-     * on the url to validate it
+     * Used by access the arguments built before validation
      *
      * @param array|mixed|null $keys
      * @return array
