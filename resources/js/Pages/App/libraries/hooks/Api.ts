@@ -54,6 +54,7 @@ export const useDeleteAPI = (endpoint = '') => {
     const [status, setStatus] = useState(false);
     const [error, setError] = useState<ErrorFromRequest | null>(null);
     const [url, setUrl] = useState(endpoint);
+    const { tokenAuth } = window.data;
 
     useEffect(() => {
         if (!url) {
@@ -62,7 +63,11 @@ export const useDeleteAPI = (endpoint = '') => {
         setStatus(false);
         setError(null);
         axios
-            .delete(url)
+            .delete(url, {
+                headers: {
+                    Authorization: `Bearer ${tokenAuth}`,
+                },
+            })
             .then(() => setStatus(true))
             .catch((error: ErrorFromRequest) => {
                 setStatus(true);
