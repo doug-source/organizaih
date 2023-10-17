@@ -1,13 +1,13 @@
 import { PhotoItem_ } from '@/Pages/App/Components/DefinePhoto';
-import { AnonymousPhoto_ } from '@/Pages/App/Components/ProfilePhotoOutput/styling';
 
 type PhotoProps = {
     url: string | null;
+    iconNoPhoto: JSX.Element;
 };
 
-export const ProfilePhotoOutput = ({ url }: PhotoProps) => {
+export const ProfilePhotoOutput = ({ url, iconNoPhoto }: PhotoProps) => {
     if (!url) {
-        return <AnonymousPhoto_ />;
+        return iconNoPhoto;
     }
     return <PhotoItem_ $url={url} />;
 };

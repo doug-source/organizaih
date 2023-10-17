@@ -2,6 +2,8 @@ import {
     DefineItem,
     DefineItemValue_,
 } from '@/Pages/App/Components/DefineItem';
+import { mixinPhoto } from '@/Pages/App/Components/DefinePhoto';
+import { Anonymous } from '@/Pages/App/Components/ProfilePhotoOutput/icon';
 import {
     defineValueTextColor,
     makeLinearGradientStyle,
@@ -31,4 +33,8 @@ export const DefineItemCustomer_ = styled(DefineItem)<DefineItemCustomerProps>`
             color: ${defineValueTextColor(theme, $sex)};
         }
     `}
+`;
+
+export const AnonymousPhoto_ = styled(Anonymous)`
+    ${mixinPhoto}
 `;

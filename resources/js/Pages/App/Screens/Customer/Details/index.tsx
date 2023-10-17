@@ -4,6 +4,7 @@ import {
     useCustomerDetailsResponse,
 } from '@/Pages/App/Screens/Customer/Details/libraries';
 import {
+    AnonymousPhoto_,
     DefineItemCustomer_,
     DetailsContainer_,
 } from '@/Pages/App/Screens/Customer/Details/styling';
@@ -29,7 +30,10 @@ const Details = () => {
                 valueText={customer.name}
                 $sex={sex}
             >
-                <ProfilePhotoOutput url={customer.photo} />
+                <ProfilePhotoOutput
+                    url={customer.photo}
+                    iconNoPhoto={<AnonymousPhoto_ />}
+                />
             </DefineItemCustomer_>
             <DefineItemCustomer_
                 labelText={translate('customer-fields-sex', true) + ':'}
