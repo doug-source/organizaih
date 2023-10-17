@@ -1,8 +1,12 @@
 import { ICustomerListData } from '@/Pages/App/Screens/Customer/List/types';
+import { IProductListData } from '@/Pages/App/Screens/Product/List/types';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
 import {
     DataReducerState,
+    ReducerSelections,
+    SelectionsTargetKeys,
     customerTargets,
+    productTargets,
 } from '@/Pages/App/libraries/types/state';
 
 export namespace DataPayload {
@@ -18,6 +22,47 @@ export namespace DataPayload {
         type: DataReducerEnum.LOADING;
         payload: DataReducerState['loading'];
     };
+    type SelectionTarget = {
+        type: DataReducerEnum.SELECTION_TARGET;
+        payload: SelectionsTargetKeys;
+    };
+    type SelectionAction = {
+        type: DataReducerEnum.SELECTION_ACTION;
+        payload: ReducerSelections['action'];
+    };
+    type SelectionClear = {
+        type: DataReducerEnum.SELECTION_CLEAR;
+    };
+    type SelectionProduct = {
+        type: DataReducerEnum.SELECTION_PRODUCT;
+        payload: {
+            key: (typeof productTargets)[number];
+            value: IProductListData | null;
+        };
+    };
+    // type SelectionProductCategory = {
+    //     type: DataReducerEnum.SELECTION_PRODUCT_CATEGORY;
+    //     payload: {
+    //         key: (typeof productCategoryTargets)[number];
+    //         value: IProductCategory | null;
+    //     };
+    // };
+    // type SelectionSalesSavedItemAddAll = {
+    //     type: DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL;
+    //     payload: ProductToSale[];
+    // };
+    // type SelectionInventoriesSavedItemAddAll = {
+    //     type: DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL;
+    //     payload: ProductToInventory[];
+    // };
+    // type WindowResize = {
+    //     type: DataReducerEnum.WINDOW_RESIZE;
+    //     payload: {
+    //         width: ReducerState['windowWidth'];
+    //         height: ReducerState['windowHeight'];
+    //     };
+    // };
+
     type ChangeTheme = {
         type: DataReducerEnum.CHANGE_THEME;
     };
@@ -32,6 +77,14 @@ export namespace DataPayload {
         | Title
         | Error
         | Loading
+        | SelectionTarget
+        | SelectionAction
+        | SelectionClear
+        | SelectionProduct
+        // | SelectionProductCategory
+        // | SelectionSalesSavedItemAddAll
+        // | SelectionInventoriesSavedItemAddAll
+        // | WindowResize
         | ChangeTheme
         | SelectionCustomer;
 }

@@ -39,7 +39,7 @@ import { useTranslate } from '@/libraries';
 import { Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const List = () => {
+const List = () => {
     const translate = useTranslate();
     const appDispatch = useAppDispatch();
     const { target } = useParams() as { target: SelectionTargetKey };
@@ -96,6 +96,11 @@ export const List = () => {
                                 index={index}
                                 action={action}
                                 target={target}
+                                iconNoPhoto={
+                                    <Suspense>
+                                        <AnonymousSVG_ />
+                                    </Suspense>
+                                }
                                 onClick={makeClientSelection(
                                     appDispatch,
                                     target,
@@ -132,3 +137,4 @@ export const List = () => {
 };
 
 export * from './types';
+export { List as CustomerList };

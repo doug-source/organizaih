@@ -14,6 +14,7 @@ type ListSelectRowProps = {
     index: number;
     target: string;
     action: string;
+    iconNoPhoto: JSX.Element;
     onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
@@ -22,6 +23,7 @@ export const ListSelectRow = ({
     index,
     target,
     action,
+    iconNoPhoto,
     onClick = () => {},
 }: ListSelectRowProps) => (
     <DataListItem_>

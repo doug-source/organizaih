@@ -11,7 +11,7 @@ import { useInitPage } from '@/Pages/App/libraries/hooks';
 import { useTranslate } from '@/libraries';
 import { useParams } from 'react-router-dom';
 
-export const Details = () => {
+const Details = () => {
     const translate = useTranslate();
     const { id } = useParams();
     const [store] = useCustomerDetailsRequest(Number(id));
@@ -84,3 +84,5 @@ export const Details = () => {
         </DetailsContainer_>
     );
 };
+
+export { Details as CustomerDetails };

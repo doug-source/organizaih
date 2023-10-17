@@ -1,7 +1,7 @@
 import {
-    Details as CustomerDetails,
-    Form as CustomerForm,
-    List as CustomerList,
+    CustomerDetails,
+    CustomerForm,
+    CustomerList,
 } from '@/Pages/App/Screens/Customer';
 import { ContainerCustomer_ } from '@/Pages/App/routes/Customer/styling';
 import { Outlet, Route, Routes } from 'react-router-dom';

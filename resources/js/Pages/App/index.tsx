@@ -5,7 +5,11 @@ import {
     dataReducer,
     useConnectionChecker,
 } from '@/Pages/App/libraries';
-import { ConfigRoutes, CustomerRoutes } from '@/Pages/App/routes';
+import {
+    ConfigRoutes,
+    CustomerRoutes,
+    ProductRoutes,
+} from '@/Pages/App/routes';
 import {
     ContainerFluid_,
     GlobalStyle,
@@ -64,6 +68,7 @@ export const App = () => {
                                     <Row_>
                                         <ConfigRoutes />
                                         <CustomerRoutes />
+                                        <ProductRoutes />
                                         <Routes>
                                             <Route
                                                 path='/'

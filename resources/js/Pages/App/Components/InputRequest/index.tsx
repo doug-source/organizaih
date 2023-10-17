@@ -33,3 +33,5 @@ export const InputRequest = ({
         </Label_>
     );
 };
+
+export { Label_ };

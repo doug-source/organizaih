@@ -2,6 +2,8 @@ export * from './AddButton';
 export * from './BackPhotoBtn';
 export * from './Bar';
 export * from './BrandItem';
+export * from './CategoryBtn';
+export * from './CategoryTools';
 export * from './CityDropdown';
 export * from './ConfigIcon';
 export * from './Confirmation';

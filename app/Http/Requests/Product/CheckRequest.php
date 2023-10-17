@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Http\Requests\Product;
+
+use App\Http\Requests\VerifyRequest;
+use App\Http\Requests\Product\Strategy\CheckerFactory;
+
+class CheckRequest extends VerifyRequest
+{
+    public function __construct()
+    {
+        parent::__construct(new CheckerFactory());
+    }
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return auth()->check();
+    }
+}

@@ -9,7 +9,7 @@ import { ErrorsType } from '@/Pages/App/Screens/types';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-export const Form = () => {
+const Form = () => {
     const [errors, setErrors] = useState<ErrorsType>({});
 
     const [data, dispatch] = useCustomerReducer();
@@ -48,3 +48,4 @@ export const Form = () => {
 export * from './Base';
 export * from './Create';
 export * from './Edit';
+export { Form as CustomerForm };
