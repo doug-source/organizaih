@@ -70,6 +70,22 @@ export const makeEmptySelections = () => ({
     },
 });
 
+export const makeEmptyProduct = () => ({
+    id: 0,
+    name: '',
+    photo: '',
+    description: '',
+    obs: '',
+    created_at: '',
+    category: {
+        id: 1,
+        name: '',
+        description: '',
+        obs: '',
+        created_at: '',
+    },
+});
+
 export const emptyCustomer: ICustomer = {
     id: 0,
     name: '',

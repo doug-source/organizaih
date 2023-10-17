@@ -1,0 +1,164 @@
+import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
+import { FormItem } from '@/Pages/App/Components/FormItem';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
+import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
+import { dettachCategoryName } from '@/Pages/App/Screens/Product/Form/Base/libraries';
+import {
+    makeCatSelectionClick,
+    makeDescriptionChange,
+    makeNameChange,
+    makeObsChange,
+    makeProfilePhotoChange,
+} from '@/Pages/App/Screens/Product/Form/Base/libraries/handlers';
+import { useProductSubmit } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks/submittions';
+import {
+    CategoryContainer_,
+    CategoryInfo_,
+    FormItemPhoto_,
+    ProductInput_,
+    ProductsIcon_,
+    SelectCategoryLink_,
+} from '@/Pages/App/Screens/Product/Form/Base/styling';
+import {
+    useErrors,
+    useErrorsSetter,
+    useProduct,
+    useProductDispatch,
+} from '@/Pages/App/Screens/Product/Form/libraries/hooks';
+import { useAppDispatch } from '@/Pages/App/libraries';
+import { columnSizeDB } from '@/Pages/App/settings';
+import { useTokenRequest, useTranslate } from '@/libraries';
+import { ComponentPropsWithoutRef, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTheme } from 'styled-components';
+
+type BaseProps = ComponentPropsWithoutRef<'form'>;
+
+const Base = ({ method, ...props }: BaseProps) => {
+    const translate = useTranslate();
+    const tokenRequest = useTokenRequest();
+    const appDispatch = useAppDispatch();
+    const product = useProduct();
+    const errors = useErrors();
+    const setErrors = useErrorsSetter();
+    const dispatch = useProductDispatch();
+    const navigate = useNavigate();
+
+    const inputFile = useRef<HTMLInputElement | null>(null);
+    const theme = useTheme();
+    const submitBtnTheme = theme.product.form.base.submitBtn;
+    const onProductSubmit = useProductSubmit(
+        navigate,
+        product,
+        product.category,
+        inputFile,
+        setErrors,
+    );
+
+    return (
+        <DefaultForm_
+            {...props}
+            onSubmit={onProductSubmit}
+            method='POST'
+            encType='multipart/form-data'
+        >
+            <input
+                type='hidden'
+                name='_token'
+                value={tokenRequest}
+            />
+            {Boolean(method) && (
+                <input
+                    type='hidden'
+                    name='_method'
+                    value={method}
+                />
+            )}
+            <FormItemPhoto_
+                errorData={errors.photo}
+                labelName='form--field_photo'
+                labelText={translate('photo', true) + ':'}
+            >
+                <ProfilePhotoInput
+                    ref={inputFile}
+                    iconNoPhoto={<ProductsIcon_ />}
+                    photo={product.photo}
+                    photoChosen={product.photoChosen}
+                    onChange={makeProfilePhotoChange(dispatch)}
+                />
+            </FormItemPhoto_>
+            <FormItem
+                errorData={errors.name}
+                labelName='form--field_name'
+                labelText={translate('name', true) + ':'}
+            >
+                <ProductInput_
+                    id='form--field_name'
+                    name='name'
+                    value={product.name}
+                    maxLength={columnSizeDB.product}
+                    onChange={makeNameChange(dispatch)}
+                    required
+                />
+            </FormItem>
+            <FormItem
+                errorData={errors.category}
+                labelName='form--field_category'
+                labelText={translate('category', true) + ':'}
+            >
+                <CategoryContainer_>
+                    <SelectCategoryLink_
+                        to='/product-categories/select/products'
+                        onClick={makeCatSelectionClick(appDispatch)}
+                    >
+                        <CategoryInfo_>
+                            <div className='category-info-data'>
+                                <div>
+                                    {dettachCategoryName(product, translate)}
+                                </div>
+                            </div>
+                        </CategoryInfo_>
+                    </SelectCategoryLink_>
+                </CategoryContainer_>
+            </FormItem>
+            <FormItem
+                errorData={errors.description}
+                labelName='form--field_description'
+                labelText={translate('description', true) + ':'}
+            >
+                <ProductInput_
+                    as='textarea'
+                    id='form--field_description'
+                    rows={2}
+                    value={product.description ?? ''}
+                    name='description'
+                    maxLength={columnSizeDB.productDescription}
+                    onChange={makeDescriptionChange(dispatch)}
+                />
+            </FormItem>
+            <FormItem
+                errorData={errors.obs}
+                labelName='form--field_obs'
+                labelText={translate('obs', true) + ':'}
+            >
+                <ProductInput_
+                    as='textarea'
+                    id='form--field_obs'
+                    rows={5}
+                    value={product.obs ?? ''}
+                    name='obs'
+                    maxLength={columnSizeDB.productObs}
+                    onChange={makeObsChange(dispatch)}
+                />
+            </FormItem>
+            <SubmitBtn_
+                as='input'
+                $color={submitBtnTheme.color}
+                disabled={!navigator.onLine}
+                value={translate('save', true)}
+            />
+        </DefaultForm_>
+    );
+};
+
+export { Base as ProductFormBase };

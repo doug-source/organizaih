@@ -1,4 +1,4 @@
-import { ProductList } from '@/Pages/App/Screens/Product';
+import { ProductForm, ProductList } from '@/Pages/App/Screens/Product';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -13,7 +13,7 @@ export const ProductRoutes = () => {
                     </Container_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/products/create'
                 element={
                     <Container_>
@@ -22,18 +22,19 @@ export const ProductRoutes = () => {
                 }
             />
             <Route
-                path='/products/:id'
-                element={
-                    <Container_>
-                        <ProductDetails />
-                    </Container_>
-                }
-            />
-            <Route
                 path='/products/:id/edit'
                 element={
                     <Container_>
                         <ProductForm />
+                    </Container_>
+                }
+            />
+            {/*
+            <Route
+                path='/products/:id'
+                element={
+                    <Container_>
+                        <ProductDetails />
                     </Container_>
                 }
             />

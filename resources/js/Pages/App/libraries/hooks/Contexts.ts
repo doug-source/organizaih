@@ -1,5 +1,6 @@
 import { AppDispatchContext } from '@/Pages/App';
 import {
+    LoadingContext,
     LocaleContext,
     SelectionsContext,
     TitleContext,
@@ -33,4 +34,8 @@ export const useSelections = () => {
         throw makeContextError('useSelections', 'SelectionsContext');
     }
     return selection;
+};
+
+export const useLoadingStatus = () => {
+    return useContext(LoadingContext);
 };

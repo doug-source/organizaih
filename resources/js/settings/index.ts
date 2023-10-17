@@ -21,6 +21,8 @@ export const endpoints = {
         list: `/api/${apiVersion}/products`,
         data: (id: number) => `/api/${apiVersion}/products/${id}`,
         delete: (id: number) => `/api/${apiVersion}/products/${id}`,
+        store: `/api/${apiVersion}/products`,
+        update: (id: number) => `/api/${apiVersion}/products/${id}`,
     },
     theming: {
         update: (themeKey: string) => `/theme/${themeKey}`,
