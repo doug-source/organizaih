@@ -1,6 +1,5 @@
-import { City } from '@/Pages/App/Screens/Customer/Form/Base/City';
-import { ICity } from '@/Pages/App/Screens/Customer/Form/Base/City/libraries';
-import { StateIdentifier } from '@/Pages/App/Screens/Customer/Form/Base/State/libraries';
+import { CityDropdown } from '@/Pages/App/Components/CityDropdown';
+import { ICity } from '@/Pages/App/Components/CityDropdown/libraries/types';
 import {
     DataReducerEnum,
     useAPI,
@@ -11,7 +10,10 @@ import { stateCitySelection } from '@/Pages/App/settings';
 import { endpoints } from '@/settings';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 
-export const useCityRequest = (stateID: StateIdentifier) => {
+type CityProps = ComponentPropsWithoutRef<typeof CityDropdown>;
+type StateID = CityProps['stateID'];
+
+export const useCityRequest = (stateID: StateID) => {
     const appDispatch = useAppDispatch();
     const [cityStore, requestCities] = useAPI<ICity, ICity[]>();
     useGenericErrorHandler(cityStore.error);
@@ -43,7 +45,6 @@ export const useCityResponse = (cityStore: Store) => {
     return [cityList] as const;
 };
 
-type CityProps = ComponentPropsWithoutRef<typeof City>;
 type CityListArg = ReturnType<typeof useCityResponse>[0];
 
 export const usePreSelection = (

@@ -1,5 +1,5 @@
-import { State } from '@/Pages/App/Screens/Customer/Form/Base/State';
-import { IState } from '@/Pages/App/Screens/Customer/Form/Base/State/libraries/types';
+import { StateDropdown } from '@/Pages/App/Components/StateDropdown';
+import { IState } from '@/Pages/App/Components/StateDropdown/libraries/types';
 import { useAPI, useGenericErrorHandler } from '@/Pages/App/libraries';
 import { stateCitySelection } from '@/Pages/App/settings';
 import { endpoints } from '@/settings';
@@ -26,7 +26,7 @@ export const useStateResponse = (stateStore: Store) => {
     return [stateList] as const;
 };
 
-type StateProps = ComponentPropsWithoutRef<typeof State>;
+type StateProps = ComponentPropsWithoutRef<typeof StateDropdown>;
 type StateListArg = ReturnType<typeof useStateResponse>[0];
 
 export const usePreSelection = (

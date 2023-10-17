@@ -1,10 +1,9 @@
-import { FormItem } from '@/Pages/App/Components';
+import { Dropdown, FormItem } from '@/Pages/App/Components';
 import {
     usePreSelection,
     useStateRequest,
     useStateResponse,
-} from '@/Pages/App/Screens/Customer/Form/Base/State/libraries';
-import { DropdownCustomer_ } from '@/Pages/App/Screens/Customer/Form/Base/styling';
+} from '@/Pages/App/Components/StateDropdown/libraries/hooks';
 import { ComponentPropsWithoutRef } from 'react';
 
 type FormItemProps = ComponentPropsWithoutRef<typeof FormItem>;
@@ -18,7 +17,7 @@ type StateProps = {
     preSelection: boolean;
 };
 
-export const State = ({
+export const StateDropdown = ({
     stateID,
     stateLabelText,
     stateSelectOption,
@@ -36,11 +35,12 @@ export const State = ({
             labelName='form--field_state'
             labelText={stateLabelText}
         >
-            <DropdownCustomer_
+            <Dropdown
                 value={stateID}
                 name='state'
                 onChange={(evt) => onStateChange(Number(evt.target.value))}
                 disabled={!navigator.onLine}
+                required={true}
             >
                 <option
                     value='0'
@@ -56,7 +56,7 @@ export const State = ({
                         {state.name}
                     </option>
                 ))}
-            </DropdownCustomer_>
+            </Dropdown>
         </FormItem>
     );
 };

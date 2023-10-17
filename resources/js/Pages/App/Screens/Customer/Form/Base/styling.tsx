@@ -1,10 +1,7 @@
 import { Input_ } from '@/Components/Input';
-import { Dropdown } from '@/Pages/App/Components';
 import { FormItem, Label_ } from '@/Pages/App/Components/FormItem';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
-
-export const DropdownCustomer_ = styled(Dropdown).attrs({ required: true })``;
 
 export const InputNumber_ = styled(Input_)`
     ${({ theme }) => {

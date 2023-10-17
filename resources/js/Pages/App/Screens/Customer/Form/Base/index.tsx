@@ -1,3 +1,4 @@
+import { CityDropdown } from '@/Pages/App/Components';
 import { DatePicker } from '@/Pages/App/Components/DatePicker';
 import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
 import { FormItem } from '@/Pages/App/Components/FormItem';
@@ -5,9 +6,8 @@ import { InputForm_ } from '@/Pages/App/Components/InputForm';
 import { InputNumber } from '@/Pages/App/Components/InputNumber';
 import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { RadioToggle } from '@/Pages/App/Components/RadioToggle';
+import { StateDropdown } from '@/Pages/App/Components/StateDropdown';
 import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
-import { City } from '@/Pages/App/Screens/Customer/Form/Base/City';
-import { State } from '@/Pages/App/Screens/Customer/Form/Base/State';
 import {
     useCityChange,
     useCustomerSubmit,
@@ -172,7 +172,7 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
                     onDateChanged={makeDatePickerChange(dispatch)}
                 />
             </FormItem>
-            <State
+            <StateDropdown
                 stateID={customer.address.state.id}
                 stateError={errors.state}
                 stateLabelText={translate('customer-fields-state', true) + ':'}
@@ -180,7 +180,7 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
                 preSelection={preSelection}
                 onStateChange={useStateChange(dispatch)}
             />
-            <City
+            <CityDropdown
                 stateID={customer.address.state.id}
                 cityID={customer.address.city.id}
                 cityError={errors.city}

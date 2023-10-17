@@ -1,11 +1,9 @@
-import { FormItem } from '@/Pages/App/Components';
+import { Dropdown, FormItem } from '@/Pages/App/Components';
 import {
     useCityRequest,
     useCityResponse,
     usePreSelection,
-} from '@/Pages/App/Screens/Customer/Form/Base/City/libraries';
-import { StateIdentifier } from '@/Pages/App/Screens/Customer/Form/Base/State/libraries';
-import { DropdownCustomer_ } from '@/Pages/App/Screens/Customer/Form/Base/styling';
+} from '@/Pages/App/Components/CityDropdown/libraries';
 import { ComponentPropsWithoutRef } from 'react';
 
 type FormItemProps = ComponentPropsWithoutRef<typeof FormItem>;
@@ -16,11 +14,11 @@ type CityProps = {
     cityError: FormItemProps['errorData'];
     citySelectOption: string;
     onCityChange: (cityID: number) => void;
-    stateID: StateIdentifier;
+    stateID: number;
     preSelection: boolean;
 };
 
-export const City = ({
+export const CityDropdown = ({
     cityID,
     cityLabelText,
     citySelectOption,
@@ -39,11 +37,12 @@ export const City = ({
             labelName='form--field_city'
             labelText={cityLabelText}
         >
-            <DropdownCustomer_
+            <Dropdown
                 value={cityID}
                 name='city'
                 onChange={(evt) => onCityChange(Number(evt.target.value))}
                 disabled={!navigator.onLine}
+                required={true}
             >
                 <option
                     value='0'
@@ -59,7 +58,7 @@ export const City = ({
                         {city.name}
                     </option>
                 ))}
-            </DropdownCustomer_>
+            </Dropdown>
         </FormItem>
     );
 };
