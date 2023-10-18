@@ -1,27 +1,22 @@
 import { buildFormData } from '@/Pages/App/Screens/Customer/Form/Base/libraries';
 import { ICustomer } from '@/Pages/App/Screens/Customer/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
-import { DataPayload, DataReducerEnum } from '@/Pages/App/libraries';
+import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
 import { endpoints } from '@/settings';
 import axios from 'axios';
-import {
-    Dispatch,
-    FormEvent,
-    RefObject,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react';
+import { FormEvent, RefObject, useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-type AppDispatch = Dispatch<DataPayload.Skeleton>;
 type ThenableCallback = (response: { status: number }) => void;
 
-const useThenableCallback = (appDispatch: AppDispatch): ThenableCallback => {
+const useThenableCallback = (): ThenableCallback => {
+    const appDispatch = useAppDispatch();
+    const navigate = useNavigate();
     return useCallback(
         (response) => {
             switch (response.status) {
                 case 200: {
-                    history.back();
+                    navigate('/customers');
                     break;
                 }
                 default: {
@@ -35,7 +30,7 @@ const useThenableCallback = (appDispatch: AppDispatch): ThenableCallback => {
                 }
             }
         },
-        [history.back, appDispatch],
+        [navigate, appDispatch],
     );
 };
 
@@ -47,10 +42,9 @@ type CatchResponse = {
 };
 type CatchCallback = (error: CatchResponse) => void;
 
-const useCatchCallback = (
-    appDispatch: AppDispatch,
-    setErrors: ErrorsSetterType,
-): CatchCallback => {
+const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
+    const appDispatch = useAppDispatch();
+    const navigate = useNavigate();
     return useCallback(
         ({ response }) => {
             switch (response.status) {
@@ -67,7 +61,7 @@ const useCatchCallback = (
                 }
                 case 403:
                 case 404: {
-                    history.back();
+                    navigate('/customers');
                     break;
                 }
                 default: {
@@ -77,7 +71,7 @@ const useCatchCallback = (
                 }
             }
         },
-        [history.back, appDispatch, setErrors],
+        [navigate, appDispatch, setErrors],
     );
 };
 
@@ -92,17 +86,17 @@ const useCustomerEndpoint = (customerInput: ICustomer) => {
             setEndpoint(endpoints.customer.store);
         }
     }, [customerInput.id, endpoints.customer]);
-    return [endpoint];
+    return [endpoint] as const;
 };
 
 export function useCustomerSubmit(
     customerInput: ICustomer,
     inputFile: RefObject<HTMLInputElement>,
     setErrors: ErrorsSetterType,
-    appDispatch: Dispatch<DataPayload.Skeleton>,
 ) {
-    const thenCallback = useThenableCallback(appDispatch);
-    const catchCallback = useCatchCallback(appDispatch, setErrors);
+    const appDispatch = useAppDispatch();
+    const thenCallback = useThenableCallback();
+    const catchCallback = useCatchCallback(setErrors);
 
     const formData = buildFormData(customerInput, inputFile);
     const [url] = useCustomerEndpoint(customerInput);

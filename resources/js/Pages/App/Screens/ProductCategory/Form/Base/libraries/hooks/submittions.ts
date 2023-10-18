@@ -1,17 +1,10 @@
-import { buildFormData } from '@/Pages/App/Screens/Product/Form/Base/libraries';
-import { IProduct } from '@/Pages/App/Screens/Product/types';
+import { buildFormData } from '@/Pages/App/Screens/ProductCategory/Form/Base/libraries';
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
 import { endpoints } from '@/settings';
 import axios from 'axios';
-import {
-    FormEvent,
-    MutableRefObject,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type ThenableCallback = (response: { status: number }) => void;
@@ -23,7 +16,7 @@ const useThenableCallback = (): ThenableCallback => {
         (response) => {
             switch (response.status) {
                 case 200: {
-                    navigate('/products');
+                    navigate('/product-categories');
                     break;
                 }
                 default: {
@@ -32,12 +25,12 @@ const useThenableCallback = (): ThenableCallback => {
                         payload: false,
                     });
                     console.log(
-                        `Unexpected Success Status: ${response.status}`,
+                        'Unexpected Success Status: ' + response.status,
                     );
                 }
             }
         },
-        [history.back, appDispatch],
+        [navigate, appDispatch],
     );
 };
 
@@ -68,8 +61,7 @@ const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
                 }
                 case 403:
                 case 404: {
-                    // NOT FOUND
-                    navigate('/products');
+                    navigate('/product-categories');
                     break;
                 }
                 default: {
@@ -79,36 +71,40 @@ const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
                 }
             }
         },
-        [navigate, appDispatch, setErrors],
+        [setErrors, appDispatch, navigate],
     );
 };
 
-const useProductEndpoint = (productInput: IProduct) => {
-    const [endpoint, setEndpoint] = useState(endpoints.product.store);
+const useProductCategoryEndpoint = (
+    productCategoryInput: IProductCategory | null,
+) => {
+    const [endpoint, setEndpoint] = useState(endpoints.productCategory.store);
     useEffect(() => {
-        if (productInput.id) {
+        if (productCategoryInput === null) {
+            return;
+        }
+        if (productCategoryInput.id) {
             // edit
-            setEndpoint(endpoints.product.update(productInput.id));
+            setEndpoint(
+                endpoints.productCategory.update(productCategoryInput.id),
+            );
         } else {
             // create
-            setEndpoint(endpoints.product.store);
+            setEndpoint(endpoints.productCategory.store);
         }
-    }, [productInput.id, endpoints.product]);
+    }, [productCategoryInput?.id, endpoints.productCategory]);
     return [endpoint] as const;
 };
 
-export const useProductSubmit = (
-    productInput: IProduct,
-    categorySelected: IProductCategory,
-    inputFile: MutableRefObject<HTMLInputElement | null>,
+export const useProductCategorySubmit = (
+    productCategoryInput: IProductCategory | null,
     setErrors: ErrorsSetterType,
 ) => {
     const appDispatch = useAppDispatch();
     const thenCallback = useThenableCallback();
     const catchCallback = useCatchCallback(setErrors);
-
-    const [url] = useProductEndpoint(productInput);
-    const formData = buildFormData(productInput, categorySelected, inputFile);
+    const [url] = useProductCategoryEndpoint(productCategoryInput);
+    const formData = buildFormData(productCategoryInput);
     const { tokenAuth } = window.data;
 
     return useCallback(
@@ -132,10 +128,10 @@ export const useProductSubmit = (
             navigator.onLine,
             url,
             appDispatch,
-            thenCallback,
-            catchCallback,
             tokenAuth,
             formData,
+            thenCallback,
+            catchCallback,
         ],
     );
 };

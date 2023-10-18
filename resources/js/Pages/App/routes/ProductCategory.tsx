@@ -1,4 +1,8 @@
-import { ProductCategoryList } from '@/Pages/App/Screens/ProductCategory';
+import {
+    ProductCategoryCreate,
+    ProductCategoryEdit,
+    ProductCategoryList,
+} from '@/Pages/App/Screens/ProductCategory';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -10,14 +14,6 @@ export const ProductCategoryRoutes = () => {
                 element={
                     <Container_>
                         <ProductCategoryList />
-                    </Container_>
-                }
-            />
-            {/* <Route
-                path='/product-categories/:id'
-                element={
-                    <Container_>
-                        <ProductCategoryDetails />
                     </Container_>
                 }
             />
@@ -42,6 +38,14 @@ export const ProductCategoryRoutes = () => {
                 element={
                     <Container_>
                         <ProductCategoryList />
+                    </Container_>
+                }
+            />
+            {/* <Route
+                path='/product-categories/:id'
+                element={
+                    <Container_>
+                        <ProductCategoryDetails />
                     </Container_>
                 }
             /> */}

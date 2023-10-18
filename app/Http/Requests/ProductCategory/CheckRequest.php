@@ -3,9 +3,7 @@
 namespace App\Http\Requests\ProductCategory;
 
 use App\Http\Requests\VerifyRequest;
-use App\Http\Requests\Checker;
 use App\Http\Requests\ProductCategory\Strategy\CheckerFactory;
-use Illuminate\Foundation\Http\FormRequest;
 
 class CheckRequest extends VerifyRequest
 {

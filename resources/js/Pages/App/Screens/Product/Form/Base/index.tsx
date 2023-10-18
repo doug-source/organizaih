@@ -29,7 +29,6 @@ import { useAppDispatch } from '@/Pages/App/libraries';
 import { columnSizeDB } from '@/Pages/App/settings';
 import { useTokenRequest, useTranslate } from '@/libraries';
 import { ComponentPropsWithoutRef, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
 type BaseProps = ComponentPropsWithoutRef<'form'>;
@@ -42,13 +41,11 @@ const Base = ({ method, ...props }: BaseProps) => {
     const errors = useErrors();
     const setErrors = useErrorsSetter();
     const dispatch = useProductDispatch();
-    const navigate = useNavigate();
 
     const inputFile = useRef<HTMLInputElement | null>(null);
     const theme = useTheme();
     const submitBtnTheme = theme.product.form.base.submitBtn;
     const onProductSubmit = useProductSubmit(
-        navigate,
         product,
         product.category,
         inputFile,

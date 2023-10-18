@@ -34,7 +34,6 @@ import {
     useErrors,
     useErrorsSetter,
 } from '@/Pages/App/Screens/Customer/Form/libraries/hooks';
-import { useAppDispatch } from '@/Pages/App/libraries';
 import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { columnSizeDB, sexSettingList } from '@/Pages/App/settings';
 import { useTokenRequest, useTranslate } from '@/libraries';
@@ -49,7 +48,6 @@ type BaseProps = ComponentPropsWithoutRef<'form'> & {
 
 export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
     const translate = useTranslate();
-    const appDispatch = useAppDispatch();
     const tokenRequest = useTokenRequest();
     const customer = useCustomer();
     const dispatch = useCustomerDispatch();
@@ -59,12 +57,7 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
     const inputFile = useRef<HTMLInputElement>(null);
     const inputNumberRef = useRef<HTMLInputElement>(null);
 
-    const onCustomerSubmit = useCustomerSubmit(
-        customer,
-        inputFile,
-        setErrors,
-        appDispatch,
-    );
+    const onCustomerSubmit = useCustomerSubmit(customer, inputFile, setErrors);
 
     const theme = useTheme();
     return (

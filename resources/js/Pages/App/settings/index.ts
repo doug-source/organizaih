@@ -86,6 +86,14 @@ export const makeEmptyProduct = () => ({
     },
 });
 
+export const makeEmptyProductCategory = () => ({
+    id: 0,
+    name: '',
+    photo: '',
+    description: '',
+    obs: '',
+});
+
 export const emptyCustomer: ICustomer = {
     id: 0,
     name: '',

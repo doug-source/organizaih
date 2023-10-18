@@ -28,6 +28,8 @@ export const endpoints = {
         list: `/api/${apiVersion}/product-categories`,
         data: (id: number) => `/api/${apiVersion}/product-categories/${id}`,
         delete: (id: number) => `/api/${apiVersion}/product-categories/${id}`,
+        store: `/api/${apiVersion}/product-categories`,
+        update: (id: number) => `/api/${apiVersion}/product-categories/${id}`,
     },
     theming: {
         update: (themeKey: string) => `/theme/${themeKey}`,

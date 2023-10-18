@@ -50,7 +50,7 @@ abstract class VerifyRequest extends FormRequest
     public function all($keys = NULL)
     {
         $request = parent::all($keys);
-        return $this->checker->all($this, $request);
+        return $this->getChecker()->all($this, $request);
     }
 
     /**
