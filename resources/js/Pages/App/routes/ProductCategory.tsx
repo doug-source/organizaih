@@ -1,5 +1,6 @@
 import {
     ProductCategoryCreate,
+    ProductCategoryDetails,
     ProductCategoryEdit,
     ProductCategoryList,
 } from '@/Pages/App/Screens/ProductCategory';
@@ -41,14 +42,14 @@ export const ProductCategoryRoutes = () => {
                     </Container_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/product-categories/:id'
                 element={
                     <Container_>
                         <ProductCategoryDetails />
                     </Container_>
                 }
-            /> */}
+            />
             <Route
                 path='*'
                 element={<Outlet />}
