@@ -1,13 +1,11 @@
 import { List as GenericList } from '@/Pages/App/Components';
 import { CategoryTools } from '@/Pages/App/Components/CategoryTools';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
 import {
     SelectionTargetKey,
     makeConfirmCancel,
-    makeListHandlers,
     makeToolHandlers,
     mountItem,
     useConfirmYes,
@@ -39,7 +37,6 @@ const List = () => {
 
     const { action } = useSelections() || {};
     const toolsHandlers = makeToolHandlers();
-    const listHandlers = makeListHandlers();
 
     const onConfirmYes = useConfirmYes(dispatch, doRemotion, state.idRemoved);
     const onConfirmCancel = makeConfirmCancel(dispatch);
@@ -75,12 +72,8 @@ const List = () => {
             </Tools>
             <GenericList
                 dataList={state.products}
-                urlPrefix='/products'
+                makeItem={mountItem(target, action, dispatch, appDispatch)}
                 emptyListKey='product-empty-list'
-                iconNoPhoto={<ProductsIcon className='products-list-default' />}
-                onRemove={listHandlers.makeItemRemove(dispatch)}
-                onUpdate={listHandlers.makeItemUpdate(appDispatch)}
-                makeItem={mountItem(target, action, appDispatch)}
             />
             <Confirmation
                 showConfirm={Boolean(state.idRemoved && state.preConfirm)}

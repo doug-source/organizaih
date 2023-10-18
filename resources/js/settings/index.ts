@@ -24,6 +24,11 @@ export const endpoints = {
         store: `/api/${apiVersion}/products`,
         update: (id: number) => `/api/${apiVersion}/products/${id}`,
     },
+    productCategory: {
+        list: `/api/${apiVersion}/product-categories`,
+        data: (id: number) => `/api/${apiVersion}/product-categories/${id}`,
+        delete: (id: number) => `/api/${apiVersion}/product-categories/${id}`,
+    },
     theming: {
         update: (themeKey: string) => `/theme/${themeKey}`,
     },

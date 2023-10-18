@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CustomersResourceController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CitiesResourceController;
+use App\Http\Controllers\Api\ProductCategoriesResourceController;
 use App\Http\Controllers\Api\ProductsResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
 
@@ -45,6 +46,13 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('{productID}', [ProductsResourceController::class, 'show']);
             Route::put('{productID}', [ProductsResourceController::class, 'update']);
             Route::delete('{productID}', [ProductsResourceController::class, 'destroy']);
+        });
+        Route::prefix('product-categories')->group(function () {
+            Route::get('/', [ProductCategoriesResourceController::class, 'index']);
+            Route::post('/', [ProductCategoriesResourceController::class, 'store']);
+            Route::get('{productCategoryID}', [ProductCategoriesResourceController::class, 'show']);
+            Route::put('{productCategoryID}', [ProductCategoriesResourceController::class, 'update']);
+            Route::delete('{productCategoryID}', [ProductCategoriesResourceController::class, 'destroy']);
         });
     });
 });

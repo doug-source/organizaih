@@ -5,6 +5,7 @@ import {
 } from '@/Pages/App/Components';
 import { ListItem } from '@/Pages/App/Components/ListItem';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
+import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { ToolsType } from '@/Pages/App/Components/Tools';
 import {
     makeChangeGroup,
@@ -89,18 +90,25 @@ const List = () => {
                 dataList={state.customers}
                 emptyListKey='customer-empty-list'
                 makeItem={(data: ICustomerListData, index: number) => {
+                    const image = (
+                        <PhotoListItem
+                            iconNoPhoto={
+                                <Suspense>
+                                    <AnonymousSVG_ />
+                                </Suspense>
+                            }
+                            photo={data.photo}
+                        />
+                    );
                     if (action && target) {
                         return (
                             <ListSelectRow
+                                key={data.id}
                                 data={data}
                                 index={index}
                                 action={action}
                                 target={target}
-                                iconNoPhoto={
-                                    <Suspense>
-                                        <AnonymousSVG_ />
-                                    </Suspense>
-                                }
+                                image={image}
                                 onClick={makeClientSelection(
                                     appDispatch,
                                     target,
@@ -115,11 +123,7 @@ const List = () => {
                             data={data}
                             index={index}
                             urlPrefix='/customers'
-                            iconNoPhoto={
-                                <Suspense>
-                                    <AnonymousSVG_ />
-                                </Suspense>
-                            }
+                            image={image}
                             onRemove={makeRemoveItem(dispatch, data)}
                         />
                     );

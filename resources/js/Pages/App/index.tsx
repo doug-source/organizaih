@@ -8,6 +8,7 @@ import {
 import {
     ConfigRoutes,
     CustomerRoutes,
+    ProductCategoryRoutes,
     ProductRoutes,
 } from '@/Pages/App/routes';
 import {
@@ -69,6 +70,7 @@ export const App = () => {
                                         <ConfigRoutes />
                                         <CustomerRoutes />
                                         <ProductRoutes />
+                                        <ProductCategoryRoutes />
                                         <Routes>
                                             <Route
                                                 path='/'

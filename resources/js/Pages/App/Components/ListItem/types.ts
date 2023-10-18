@@ -1,4 +1,4 @@
-export type ListItemType = {
+export type ListItemScheme = {
     id: number;
     title?: string;
     name: string;

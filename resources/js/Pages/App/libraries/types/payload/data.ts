@@ -1,11 +1,13 @@
 import { ICustomerListData } from '@/Pages/App/Screens/Customer/List/types';
 import { IProductListData } from '@/Pages/App/Screens/Product/List/types';
+import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
 import {
     DataReducerState,
     ReducerSelections,
     SelectionsTargetKeys,
     customerTargets,
+    productCategoryTargets,
     productTargets,
 } from '@/Pages/App/libraries/types/state';
 
@@ -40,13 +42,13 @@ export namespace DataPayload {
             value: IProductListData | null;
         };
     };
-    // type SelectionProductCategory = {
-    //     type: DataReducerEnum.SELECTION_PRODUCT_CATEGORY;
-    //     payload: {
-    //         key: (typeof productCategoryTargets)[number];
-    //         value: IProductCategory | null;
-    //     };
-    // };
+    type SelectionProductCategory = {
+        type: DataReducerEnum.SELECTION_PRODUCT_CATEGORY;
+        payload: {
+            key: (typeof productCategoryTargets)[number];
+            value: IProductCategory | null;
+        };
+    };
     // type SelectionSalesSavedItemAddAll = {
     //     type: DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL;
     //     payload: ProductToSale[];
@@ -81,7 +83,7 @@ export namespace DataPayload {
         | SelectionAction
         | SelectionClear
         | SelectionProduct
-        // | SelectionProductCategory
+        | SelectionProductCategory
         // | SelectionSalesSavedItemAddAll
         // | SelectionInventoriesSavedItemAddAll
         // | WindowResize

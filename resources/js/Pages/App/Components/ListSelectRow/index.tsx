@@ -1,20 +1,17 @@
 import {
     DataListItem_,
-    ListItemType,
     TextContent_,
     TextItem_,
 } from '@/Pages/App/Components/ListItem';
-import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
-import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
-import { MouseEventHandler, Suspense } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 
 type ListSelectRowProps = {
-    data: ListItemType;
+    data: { name: string };
     index: number;
     target: string;
     action: string;
-    iconNoPhoto: JSX.Element;
+    image?: ReactNode;
     onClick?: MouseEventHandler<HTMLAnchorElement>;
 };
 
@@ -23,24 +20,19 @@ export const ListSelectRow = ({
     index,
     target,
     action,
-    iconNoPhoto,
+    image,
     onClick = () => {},
 }: ListSelectRowProps) => (
     <DataListItem_>
         <div>{index + 1}</div>
-        <NavLink
-            to={`/${target}/${action}`}
-            onClick={onClick}
-        >
-            <PhotoListItem
-                iconNoPhoto={
-                    <Suspense>
-                        <AnonymousSVG />
-                    </Suspense>
-                }
-                photo={data.photo}
-            />
-        </NavLink>
+        {image && (
+            <NavLink
+                to={`/${target}/${action}`}
+                onClick={onClick}
+            >
+                {image}
+            </NavLink>
+        )}
         <TextItem_ title={data.name}>
             <TextContent_>
                 <NavLink

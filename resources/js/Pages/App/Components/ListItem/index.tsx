@@ -4,17 +4,15 @@ import {
     TextContent_,
     TextItem_,
 } from '@/Pages/App/Components/ListItem/styling';
-import { ListItemType } from '@/Pages/App/Components/ListItem/types';
 import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
-import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
 import { ReactNode } from 'react';
 
 type ListItemProps = {
-    data: ListItemType;
+    data: { id: number; name: string };
     index: number;
     urlPrefix?: string;
-    iconNoPhoto?: ReactNode;
+    image?: ReactNode;
     onRemove?: (id: number) => void;
     onUpdate?: () => void;
 };
@@ -22,8 +20,8 @@ type ListItemProps = {
 export const ListItem = ({
     data,
     index,
-    iconNoPhoto,
     urlPrefix,
+    image,
     onRemove,
     onUpdate,
 }: ListItemProps) => {
@@ -34,11 +32,8 @@ export const ListItem = ({
     return (
         <DataListItem_>
             <div>{index + 1}</div>
-            <PhotoListItem
-                iconNoPhoto={iconNoPhoto}
-                photo={data.photo}
-            />
-            <TextItem_ title={data.title}>
+            {image}
+            <TextItem_ title={data.name}>
                 <TextContent_>
                     <NavLink_
                         to={`${urlPrefix}/${data.id}`}
