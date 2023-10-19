@@ -14,6 +14,14 @@ export const endpoints = {
         store: `/api/${apiVersion}/customers`,
         update: (id: number) => `/api/${apiVersion}/customers/${id}`,
     },
+    inventory: {
+        list: `/api/${apiVersion}/inventories`,
+        data: (id: number) => `/api/${apiVersion}/inventories/${id}`,
+        summary: `/api/${apiVersion}/inventories/summary`,
+        delete: (id: number) => `/api/${apiVersion}/inventories/item/${id}`,
+        item: (id: number) => `/api/${apiVersion}/inventories/item/${id}`,
+        deleteAll: (id: number) => `/api/inventories/${id}`,
+    },
     login: {
         auth: window.data.auth?.action,
     },

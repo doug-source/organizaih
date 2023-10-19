@@ -33,7 +33,7 @@ export const mountItem = (
                 data,
                 index,
                 urlPrefix: '/products',
-                image,
+                innerColumns: image,
                 onRemove: listHandlers.makeItemRemove(dispatch),
                 onUpdate: listHandlers.makeItemUpdate(appDispatch),
             });

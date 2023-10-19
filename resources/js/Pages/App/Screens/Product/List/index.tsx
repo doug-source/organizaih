@@ -1,6 +1,6 @@
-import { List as GenericList } from '@/Pages/App/Components';
 import { CategoryTools } from '@/Pages/App/Components/CategoryTools';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
+import { List as GenericList } from '@/Pages/App/Components/List';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
 import {

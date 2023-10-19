@@ -8,6 +8,7 @@ import {
 import {
     ConfigRoutes,
     CustomerRoutes,
+    InventoryRoutes,
     ProductCategoryRoutes,
     ProductRoutes,
 } from '@/Pages/App/routes';
@@ -71,6 +72,7 @@ export const App = () => {
                                         <CustomerRoutes />
                                         <ProductRoutes />
                                         <ProductCategoryRoutes />
+                                        <InventoryRoutes />
                                         <Routes>
                                             <Route
                                                 path='/'

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CustomersResourceController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CitiesResourceController;
+use App\Http\Controllers\Api\InventoriesResourceController;
 use App\Http\Controllers\Api\ProductCategoriesResourceController;
 use App\Http\Controllers\Api\ProductsResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
@@ -53,6 +54,16 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('{productCategoryID}', [ProductCategoriesResourceController::class, 'show']);
             Route::put('{productCategoryID}', [ProductCategoriesResourceController::class, 'update']);
             Route::delete('{productCategoryID}', [ProductCategoriesResourceController::class, 'destroy']);
+        });
+        Route::prefix('inventories')->group(function () {
+            Route::get('/', [InventoriesResourceController::class, 'index']);
+            Route::get('/summary/{productID}', [InventoriesResourceController::class, 'summary']);
+            Route::get('{productID}', [InventoriesResourceController::class, 'show']);
+            Route::get('/item/{inventoryItemID}', [InventoriesResourceController::class, 'showItem']);
+            Route::post('/', [InventoriesResourceController::class, 'store']);
+            Route::put('/item/{inventoryItemID}', [InventoriesResourceController::class, 'update']);
+            Route::delete('{productID}', [InventoriesResourceController::class, 'destroy']);
+            Route::delete('/item/{inventoryItemID}', [InventoriesResourceController::class, 'destroyItem']);
         });
     });
 });

@@ -123,7 +123,7 @@ const List = () => {
                             data={data}
                             index={index}
                             urlPrefix='/customers'
-                            image={image}
+                            innerColumns={image}
                             onRemove={makeRemoveItem(dispatch, data)}
                         />
                     );

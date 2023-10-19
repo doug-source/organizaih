@@ -12,7 +12,7 @@ type ListItemProps = {
     data: { id: number; name: string };
     index: number;
     urlPrefix?: string;
-    image?: ReactNode;
+    innerColumns?: ReactNode;
     onRemove?: (id: number) => void;
     onUpdate?: () => void;
 };
@@ -21,7 +21,7 @@ export const ListItem = ({
     data,
     index,
     urlPrefix,
-    image,
+    innerColumns,
     onRemove,
     onUpdate,
 }: ListItemProps) => {
@@ -32,7 +32,7 @@ export const ListItem = ({
     return (
         <DataListItem_>
             <div>{index + 1}</div>
-            {image}
+            {innerColumns}
             <TextItem_ title={data.name}>
                 <TextContent_>
                     <NavLink_
