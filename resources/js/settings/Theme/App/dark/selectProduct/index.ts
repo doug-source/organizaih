@@ -1,4 +1,4 @@
-import { black, orange, red } from '@/settings/palette';
+import { green, orange, red } from '@/settings/palette';
 import { DefaultTheme } from 'styled-components';
 
 export const selectProduct: DefaultTheme['selectProduct'] = {
@@ -6,7 +6,7 @@ export const selectProduct: DefaultTheme['selectProduct'] = {
         fill: {
             box: orange[2],
             tape: red[6],
-            hand: black[1],
+            hand: green[1],
         },
     },
 };

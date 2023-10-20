@@ -78,6 +78,7 @@ const List = () => {
                 makeItem={(data, index) => {
                     return (
                         <InventoryListItem_
+                            key={data.id}
                             data={data}
                             index={index}
                             urlPrefix='/inventories'
@@ -109,6 +110,7 @@ const List = () => {
                                     </TextItemQty_>
                                 </>
                             }
+                            updateBtn={false}
                         />
                     );
                 }}

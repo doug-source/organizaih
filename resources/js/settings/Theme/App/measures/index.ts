@@ -27,6 +27,8 @@ import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
 import { radioToggle } from './radioToggle';
 import { sale } from './sale';
+import { selectProduct } from './selectProduct';
+import { selectorsBox } from './selectorsBox';
 import { submitForm } from './submitForm';
 import { tools } from './tools';
 
@@ -63,6 +65,8 @@ export const measures = {
     profilePhoto,
     radioToggle,
     sale,
+    selectorsBox,
+    selectProduct,
     submitForm,
     tools,
 

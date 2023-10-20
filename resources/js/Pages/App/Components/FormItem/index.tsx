@@ -31,4 +31,4 @@ export const FormItem = ({
     </FormItem_>
 );
 
-export { Label_ };
+export { FormItem_, Label_ };

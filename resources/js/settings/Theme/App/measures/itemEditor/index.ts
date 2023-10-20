@@ -42,7 +42,10 @@ export const itemEditor: DefaultTheme['measures']['itemEditor'] = {
             height: '100%',
             itemData: {
                 dataInputs: {
-                    minWidth: 5,
+                    gap: 8,
+                    input: {
+                        minWidth: 5,
+                    },
                 },
                 gap: 8,
                 generalItem: {
@@ -65,7 +68,7 @@ export const itemEditor: DefaultTheme['measures']['itemEditor'] = {
                     },
                 },
                 height: '100%',
-                minWidth: 206,
+                minWidth: 164,
             },
         },
         padding: 8,

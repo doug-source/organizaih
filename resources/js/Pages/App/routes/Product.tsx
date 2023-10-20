@@ -41,14 +41,14 @@ export const ProductRoutes = () => {
                     </Container_>
                 }
             />
-            {/*<Route
+            <Route
                 path='/products/select/:target'
                 element={
                     <Container_>
                         <ProductList />
                     </Container_>
                 }
-            /> */}
+            />
             <Route
                 path='*'
                 element={<Outlet />}

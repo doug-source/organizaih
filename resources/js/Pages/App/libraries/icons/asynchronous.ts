@@ -126,8 +126,22 @@ export const RemoveSVG = lazy(() =>
     }),
 );
 
+export const RemoveRedSVG = lazy(() =>
+    import('/resources/img/removeRED.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const SaleSVG = lazy(() =>
     import('/resources/img/sale.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
+export const SelectProductSVG = lazy(() =>
+    import('/resources/img/selectProduct.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),

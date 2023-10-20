@@ -114,18 +114,18 @@ export const dataReducer = (
         //         },
         //     };
         // }
-        // case DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL: {
-        //     return {
-        //         ...state,
-        //         selections: {
-        //             ...state.selections,
-        //             inventories: {
-        //                 ...state.selections.inventories,
-        //                 inventoriesToSave: action.payload,
-        //             },
-        //         },
-        //     };
-        // }
+        case DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL: {
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    inventories: {
+                        ...state.selections.inventories,
+                        inventoriesToSave: action.payload,
+                    },
+                },
+            };
+        }
         // case DataReducerEnum.WINDOW_RESIZE: {
         //     return {
         //         ...state,

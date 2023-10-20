@@ -43,15 +43,6 @@ export const inventory: DefaultTheme['measures']['inventory'] = {
     },
     form: {
         base: {
-            selectors: {
-                icons: {
-                    top: 9,
-                    size: 63,
-                },
-                container: {
-                    gap: 16,
-                },
-            },
             padding: {
                 top: 16,
             },

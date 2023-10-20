@@ -20,7 +20,9 @@ export const endpoints = {
         summary: `/api/${apiVersion}/inventories/summary`,
         delete: (id: number) => `/api/${apiVersion}/inventories/item/${id}`,
         item: (id: number) => `/api/${apiVersion}/inventories/item/${id}`,
-        deleteAll: (id: number) => `/api/inventories/${id}`,
+        deleteAll: (id: number) => `/api/${apiVersion}/inventories/${id}`,
+        store: `/api/${apiVersion}/inventories`,
+        update: (id: number) => `/api/${apiVersion}/inventories/item/${id}`,
     },
     login: {
         auth: window.data.auth?.action,

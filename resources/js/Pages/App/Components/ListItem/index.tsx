@@ -6,15 +6,19 @@ import {
 } from '@/Pages/App/Components/ListItem/styling';
 import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
-import { ReactNode } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
+
+type ListItemBtnsProps = ComponentPropsWithoutRef<typeof ListItemButtons>;
 
 type ListItemProps = {
     data: { id: number; name: string };
     index: number;
     urlPrefix?: string;
     innerColumns?: ReactNode;
-    onRemove?: (id: number) => void;
-    onUpdate?: () => void;
+    onRemove?: ListItemBtnsProps['onRemove'];
+    updateBtn?: ListItemBtnsProps['updateBtn'];
+    onUpdate?: ListItemBtnsProps['onUpdate'];
+    removeBtn?: ListItemBtnsProps['removeBtn'];
 };
 
 export const ListItem = ({
@@ -22,7 +26,9 @@ export const ListItem = ({
     index,
     urlPrefix,
     innerColumns,
+    removeBtn = true,
     onRemove,
+    updateBtn = true,
     onUpdate,
 }: ListItemProps) => {
     const appDispatch = useAppDispatch();
@@ -51,7 +57,9 @@ export const ListItem = ({
             <ListItemButtons
                 urlPrefix={urlPrefix}
                 id={data.id}
+                removeBtn={removeBtn}
                 onRemove={onRemove}
+                updateBtn={updateBtn}
                 onUpdate={onUpdate}
             />
         </DataListItem_>

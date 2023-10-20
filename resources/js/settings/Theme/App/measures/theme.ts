@@ -783,15 +783,6 @@ export type AppThemeMeasures = {
         };
         form: {
             base: {
-                selectors: {
-                    icons: {
-                        top: number;
-                        size: number;
-                    };
-                    container: {
-                        gap: number;
-                    };
-                };
                 padding: {
                     top: number;
                 };
@@ -821,7 +812,10 @@ export type AppThemeMeasures = {
                 height: string;
                 itemData: {
                     dataInputs: {
-                        minWidth: number;
+                        gap: number;
+                        input: {
+                            minWidth: number;
+                        };
                     };
                     gap: number;
                     generalItem: {
@@ -1306,6 +1300,15 @@ export type AppThemeMeasures = {
         };
         list: {
             item: { child: { fontSize: number } };
+        };
+    };
+    selectorsBox: {
+        gap: number;
+    };
+    selectProduct: {
+        icon: {
+            top: number;
+            size: number;
         };
     };
     submitForm: {

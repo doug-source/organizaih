@@ -1,5 +1,30 @@
 import { TouchEventHandler, useEffect, useState } from 'react';
 
+export const useLongTouchPress = (timer: number) => {
+    const [isLongTouch, setLongTouch] = useState(false);
+    let timerKey: NodeJS.Timeout;
+
+    const touchMoveListener = () => {
+        clearTimeout(timerKey);
+        setLongTouch(false);
+    };
+    const touchEndListener = touchMoveListener;
+
+    const touchStartListener = () => {
+        setLongTouch(false);
+        timerKey = setTimeout(() => setLongTouch(true), timer);
+    };
+
+    return [
+        isLongTouch,
+        {
+            touchstart: touchStartListener,
+            touchmove: touchMoveListener,
+            touchend: touchEndListener,
+        },
+    ] as const;
+};
+
 type touchDirectionHandlers = Readonly<{
     touchstart: TouchEventHandler<HTMLDivElement>;
     touchmove: TouchEventHandler<HTMLDivElement>;
