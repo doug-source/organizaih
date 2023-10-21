@@ -85,4 +85,4 @@ export const DefineItem = ({
     );
 };
 
-export { DefineItemValue_ };
+export { DefineItemValue_, DefineItemWrap_ };

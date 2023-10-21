@@ -8,6 +8,7 @@ import { customer } from './customer';
 import { datepicker } from './datepicker';
 import { dialog } from './dialog';
 import { dropdown } from './dropdown';
+import { entryItem } from './entryItem';
 import { formItem } from './formItem';
 import { gateSwitcher } from './gateSwitcher';
 import { graph } from './graph';
@@ -41,6 +42,7 @@ export const DarkTheme: AppTheme = {
     datepicker,
     dialog,
     dropdown,
+    entryItem,
     formItem,
     gateSwitcher,
     graph,

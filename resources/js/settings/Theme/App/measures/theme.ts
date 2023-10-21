@@ -372,6 +372,32 @@ export type AppThemeMeasures = {
             };
         };
     };
+    entryActionsItem: {
+        right: number;
+    };
+    entryDataItem: {
+        gap: number;
+    };
+    entryItem: {
+        padding: number;
+        first: {
+            border: {
+                topRight: {
+                    radius: number;
+                };
+            };
+        };
+        last: {
+            border: {
+                bottomRight: {
+                    radius: number;
+                };
+            };
+        };
+    };
+    entryList: {
+        gap: number;
+    };
     formItem: {
         errorMsg: {
             border: {
@@ -747,37 +773,10 @@ export type AppThemeMeasures = {
                     radius: number;
                 };
                 wrap: {
-                    padding: {
-                        right: number;
-                    };
+                    padding: number;
                 };
-                entryList: {
-                    data: {
-                        gap: number;
-                    };
-                    actions: {
-                        right: number;
-                    };
-                    entry: {
-                        padding: number;
-                        first: {
-                            border: {
-                                topRight: {
-                                    radius: number;
-                                };
-                            };
-                        };
-                        last: {
-                            border: {
-                                bottomRight: {
-                                    radius: number;
-                                };
-                            };
-                        };
-                    };
-                    entries: {
-                        gap: number;
-                    };
+                entries: {
+                    marginTop: number;
                 };
             };
         };

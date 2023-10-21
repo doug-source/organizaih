@@ -9,6 +9,10 @@ import { defineItem } from './defineItem';
 import { definePhoto } from './definePhoto';
 import { dialog } from './dialog';
 import { dropdown } from './dropdown';
+import { entryActionsItem } from './entryActionsItem';
+import { entryDataItem } from './entryDataItem';
+import { entryItem } from './entryItem';
+import { entryList } from './entryList';
 import { formItem } from './formItem';
 import { gateSwitcher } from './gateSwitcher';
 import { graph } from './graph';
@@ -47,6 +51,10 @@ export const measures = {
     definePhoto,
     dialog,
     dropdown,
+    entryActionsItem,
+    entryDataItem,
+    entryList,
+    entryItem,
     formItem,
     gateSwitcher,
     graph,

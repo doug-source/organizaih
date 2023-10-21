@@ -48,3 +48,9 @@ export const endpoints = {
         list: `/api/${apiVersion}/states`,
     },
 };
+
+export const redirects = {
+    inventory: {
+        edit: (id: number) => `/inventories/${id}/edit`,
+    },
+};

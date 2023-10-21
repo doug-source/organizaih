@@ -1,4 +1,8 @@
-import { InventoryForm, InventoryList } from '@/Pages/App/Screens/Inventory';
+import {
+    InventoryDetails,
+    InventoryForm,
+    InventoryList,
+} from '@/Pages/App/Screens/Inventory';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -21,7 +25,7 @@ export const InventoryRoutes = () => {
                     </Container_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/inventories/:id'
                 element={
                     <Container_>
@@ -36,7 +40,7 @@ export const InventoryRoutes = () => {
                         <InventoryForm />
                     </Container_>
                 }
-            /> */}
+            />
             <Route
                 path='*'
                 element={<Outlet />}

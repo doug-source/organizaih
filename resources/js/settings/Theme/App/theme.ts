@@ -279,6 +279,9 @@ export type AppTheme = {
             };
         };
     };
+    entryItem: {
+        bg: string;
+    };
     formItem: {
         error: {
             color: string;
@@ -546,9 +549,6 @@ export type AppTheme = {
             defineItems: {
                 bg: string;
                 color: string;
-                entry: {
-                    bg: string;
-                };
             };
         };
         form: {

@@ -1,4 +1,4 @@
-import { green, purple, white } from '@/settings/palette';
+import { purple, white } from '@/settings/palette';
 import { DefaultTheme } from 'styled-components';
 
 export const inventory: DefaultTheme['inventory'] = {
@@ -6,9 +6,6 @@ export const inventory: DefaultTheme['inventory'] = {
         defineItems: {
             bg: purple.lighten[3],
             color: white[1],
-            entry: {
-                bg: green.lighten[3],
-            },
         },
     },
     form: {

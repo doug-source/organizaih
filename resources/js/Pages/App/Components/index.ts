@@ -14,6 +14,7 @@ export * from './DefinePhoto';
 export * from './Dialog';
 export * from './Dropdown';
 export * from './EmptyScreen';
+export * from './EntryDataItem';
 export * from './FiltersBar';
 export * from './FormItem';
 export * from './GateSwitcher';
