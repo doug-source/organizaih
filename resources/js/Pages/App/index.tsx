@@ -11,6 +11,7 @@ import {
     InventoryRoutes,
     ProductCategoryRoutes,
     ProductRoutes,
+    SaleRoutes,
 } from '@/Pages/App/routes';
 import {
     ContainerFluid_,
@@ -73,6 +74,7 @@ export const App = () => {
                                         <ProductRoutes />
                                         <ProductCategoryRoutes />
                                         <InventoryRoutes />
+                                        <SaleRoutes />
                                         <Routes>
                                             <Route
                                                 path='/'

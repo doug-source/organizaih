@@ -120,9 +120,11 @@ const List = () => {
                     return (
                         <ListItem
                             key={data.id}
-                            data={data}
+                            contentLinked={data.name}
+                            id={data.id}
+                            urlLink={`/customers/${data.id}`}
+                            titleLink={data.name}
                             index={index}
-                            urlPrefix='/customers'
                             innerColumns={image}
                             onRemove={makeRemoveItem(dispatch, data)}
                         />

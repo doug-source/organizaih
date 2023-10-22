@@ -18,6 +18,28 @@ export type AppThemeMeasures = {
         };
         padding: number;
     };
+    boundaryDateInputs: {
+        gap: number;
+        wide: {
+            gap: number;
+        };
+        datepicker: {
+            padding: {
+                top: number;
+                bottom: number;
+                left: number;
+                right: number;
+            };
+            wide: {
+                padding: {
+                    top: number;
+                    bottom: number;
+                    left: number;
+                    right: number;
+                };
+            };
+        };
+    };
     config: {
         fieldset: {
             border: {
@@ -1234,28 +1256,6 @@ export type AppThemeMeasures = {
             };
         };
         filtersBar: {
-            datepickers: {
-                gap: number;
-                wide: {
-                    gap: number;
-                };
-                datepicker: {
-                    padding: {
-                        top: number;
-                        bottom: number;
-                        left: number;
-                        right: number;
-                    };
-                    wide: {
-                        padding: {
-                            top: number;
-                            bottom: number;
-                            left: number;
-                            right: number;
-                        };
-                    };
-                };
-            };
             gap: number;
             wide: {
                 gap: number;

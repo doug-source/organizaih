@@ -150,7 +150,7 @@ const Details = () => {
                                             const { id } = items[index];
                                             return (
                                                 <ListItemButtons
-                                                    urlPrefix='/inventories'
+                                                    urlLink={`/inventories/${id}`}
                                                     id={id}
                                                     onUpdate={() =>
                                                         appDispatch({

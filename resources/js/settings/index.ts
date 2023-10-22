@@ -44,6 +44,19 @@ export const endpoints = {
     theming: {
         update: (themeKey: string) => `/theme/${themeKey}`,
     },
+    sale: {
+        list: `/api/${apiVersion}/sales`,
+        data: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
+        edit: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
+        delete: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
+
+        productQty: `/api/${apiVersion}/sales/products/count`,
+        productsSold: (qty: number) =>
+            `/api/${apiVersion}/sales/products/${qty}`,
+        customerQty: `/api/${apiVersion}/sales/customers/count`,
+        customersBuyer: (qty: number) =>
+            `/api/${apiVersion}/sales/customers/${qty}`,
+    },
     state: {
         list: `/api/${apiVersion}/states`,
     },

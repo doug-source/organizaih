@@ -84,3 +84,5 @@ export const DatePicker = ({
         </Container_>
     );
 };
+
+export { DatepickerInput_ };

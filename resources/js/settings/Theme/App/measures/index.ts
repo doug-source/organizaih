@@ -1,5 +1,6 @@
 import { backBtn } from './backBtn';
 import { body } from './body';
+import { boundaryDateInputs } from './boundaryDateInputs';
 import { config } from './config';
 import { confirmDialog } from './confirmDialog';
 import { customer } from './customer';
@@ -42,6 +43,7 @@ const widthMedium = '512px';
 export const measures = {
     backBtn,
     body,
+    boundaryDateInputs,
     config,
     confirmDialog,
     customer,

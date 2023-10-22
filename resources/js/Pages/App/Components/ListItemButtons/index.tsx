@@ -14,7 +14,7 @@ import { Suspense } from 'react';
 
 type ListItemButtonsProps = {
     updateBtn?: boolean;
-    urlPrefix?: string;
+    urlLink?: string;
     id: number;
     removeBtn?: boolean;
     onRemove?: (id: number) => void;
@@ -23,7 +23,7 @@ type ListItemButtonsProps = {
 
 export const ListItemButtons = ({
     updateBtn = true,
-    urlPrefix,
+    urlLink,
     id,
 
     removeBtn = true,
@@ -37,7 +37,7 @@ export const ListItemButtons = ({
                 <>
                     <ListItemEditButton
                         show={updateBtn}
-                        to={`${urlPrefix}/${id}/edit`}
+                        to={`${urlLink}/edit`}
                         onClick={() => {
                             onUpdate && onUpdate();
                             appDispatch({

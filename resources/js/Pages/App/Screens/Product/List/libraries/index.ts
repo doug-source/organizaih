@@ -30,9 +30,11 @@ export const mountItem = (
         if (!target || !action) {
             return createElement(ListItem, {
                 key: data.id,
-                data,
+                contentLinked: data.name,
+                id: data.id,
+                urlLink: `/products/${data.id}`,
+                titleLink: data.name,
                 index,
-                urlPrefix: '/products',
                 innerColumns: image,
                 onRemove: listHandlers.makeItemRemove(dispatch),
                 onUpdate: listHandlers.makeItemUpdate(appDispatch),

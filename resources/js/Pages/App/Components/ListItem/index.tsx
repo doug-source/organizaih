@@ -11,38 +11,44 @@ import { ComponentPropsWithoutRef, ReactNode } from 'react';
 type ListItemBtnsProps = ComponentPropsWithoutRef<typeof ListItemButtons>;
 
 type ListItemProps = {
-    data: { id: number; name: string };
+    id: number;
     index: number;
-    urlPrefix?: string;
     innerColumns?: ReactNode;
     onRemove?: ListItemBtnsProps['onRemove'];
     updateBtn?: ListItemBtnsProps['updateBtn'];
     onUpdate?: ListItemBtnsProps['onUpdate'];
     removeBtn?: ListItemBtnsProps['removeBtn'];
+
+    contentLinked: ReactNode;
+    titleLink?: string;
+    urlLink: string;
 };
 
 export const ListItem = ({
-    data,
+    id,
     index,
-    urlPrefix,
     innerColumns,
     removeBtn = true,
     onRemove,
     updateBtn = true,
     onUpdate,
+
+    contentLinked,
+    titleLink,
+    urlLink,
 }: ListItemProps) => {
     const appDispatch = useAppDispatch();
-    if (!urlPrefix) {
+    if (!urlLink) {
         return null;
     }
     return (
         <DataListItem_>
             <div>{index + 1}</div>
             {innerColumns}
-            <TextItem_ title={data.name}>
+            <TextItem_ title={titleLink}>
                 <TextContent_>
                     <NavLink_
-                        to={`${urlPrefix}/${data.id}`}
+                        to={urlLink}
                         onClick={() =>
                             appDispatch({
                                 type: DataReducerEnum.TITLE,
@@ -50,13 +56,13 @@ export const ListItem = ({
                             })
                         }
                     >
-                        {data.name}
+                        {contentLinked}
                     </NavLink_>
                 </TextContent_>
             </TextItem_>
             <ListItemButtons
-                urlPrefix={urlPrefix}
-                id={data.id}
+                urlLink={urlLink}
+                id={id}
                 removeBtn={removeBtn}
                 onRemove={onRemove}
                 updateBtn={updateBtn}

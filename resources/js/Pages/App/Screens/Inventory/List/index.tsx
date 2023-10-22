@@ -79,9 +79,11 @@ const List = () => {
                     return (
                         <InventoryListItem_
                             key={data.id}
-                            data={data}
+                            contentLinked={data.name}
+                            id={data.id}
+                            urlLink={`/inventories/${data.id}`}
+                            titleLink={data.name}
                             index={index}
-                            urlPrefix='/inventories'
                             onRemove={() => {
                                 dispatch({
                                     type: DeletionReducerEnum.PREPARE_DELETE,

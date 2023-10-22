@@ -109,9 +109,11 @@ const List = () => {
                         return (
                             <ListItemProdCategory_
                                 key={data.id}
-                                data={data}
+                                contentLinked={data.name}
+                                id={data.id}
+                                urlLink={`/product-categories/${data.id}`}
+                                titleLink={data.name}
                                 index={index}
-                                urlPrefix='/product-categories'
                                 onRemove={() => {
                                     dispatch({
                                         type: DeletionReducerEnum.PREPARE_DELETE,
