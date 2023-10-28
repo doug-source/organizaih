@@ -17,14 +17,14 @@ export const CustomerRoutes = () => {
                     </ContainerCustomer_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/customers/select/:target'
                 element={
                     <ContainerCustomer_>
                         <CustomerList />
                     </ContainerCustomer_>
                 }
-            /> */}
+            />
             <Route
                 path='/customers/create'
                 element={

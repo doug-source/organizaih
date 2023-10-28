@@ -1,6 +1,9 @@
 import { ICustomerListData } from '@/Pages/App/Screens/Customer/List/types';
 import { IProductListData } from '@/Pages/App/Screens/Product/List/types';
-import { ProductToInventory } from '@/Pages/App/Screens/Product/types';
+import {
+    ProductToInventory,
+    ProductToSale,
+} from '@/Pages/App/Screens/Product/types';
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
 import {
@@ -50,10 +53,10 @@ export namespace DataPayload {
             value: IProductCategory | null;
         };
     };
-    // type SelectionSalesSavedItemAddAll = {
-    //     type: DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL;
-    //     payload: ProductToSale[];
-    // };
+    type SelectionSalesSavedItemAddAll = {
+        type: DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL;
+        payload: ProductToSale[];
+    };
     type SelectionInventoriesSavedItemAddAll = {
         type: DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL;
         payload: ProductToInventory[];
@@ -85,7 +88,7 @@ export namespace DataPayload {
         | SelectionClear
         | SelectionProduct
         | SelectionProductCategory
-        // | SelectionSalesSavedItemAddAll
+        | SelectionSalesSavedItemAddAll
         | SelectionInventoriesSavedItemAddAll
         // | WindowResize
         | ChangeTheme

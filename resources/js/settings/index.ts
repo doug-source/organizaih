@@ -49,6 +49,8 @@ export const endpoints = {
         data: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
         edit: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
         delete: (saleID: number) => `/api/${apiVersion}/sales/${saleID}`,
+        store: `/api/${apiVersion}/sales`,
+        update: (saleID: number) => `/api/${apiVersion}/sales${saleID}`,
 
         productQty: `/api/${apiVersion}/sales/products/count`,
         productsSold: (qty: number) =>

@@ -1,12 +1,9 @@
-import { black, blue, gray, green, purple, white } from '@/settings/palette';
+import { blue, gray, green, purple, white } from '@/settings/palette';
 import { DefaultTheme } from 'styled-components';
 
 export const sale: DefaultTheme['sale'] = {
     form: {
         base: {
-            submitBtn: {
-                color: white[1],
-            },
             notice: {
                 bg: gray[18],
                 color: white[1],
@@ -14,13 +11,10 @@ export const sale: DefaultTheme['sale'] = {
                     bg: green.lighten[3],
                 },
             },
-            saleSelectors: {
-                icons: {
-                    customer: {
-                        fill: {
-                            person: blue.lighten[1],
-                            hand: black[1],
-                        },
+            selectors: {
+                customer: {
+                    anonymousIcon: {
+                        fill: 'currentColor',
                     },
                 },
             },

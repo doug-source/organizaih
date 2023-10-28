@@ -1,12 +1,9 @@
-import { black, blue, transparency, white } from '@/settings/palette';
+import { black, blue, transparency } from '@/settings/palette';
 import { DefaultTheme } from 'styled-components';
 
 export const product: DefaultTheme['product'] = {
     form: {
         base: {
-            submitBtn: {
-                color: white[1],
-            },
             formItem: {
                 categoryInfo: {
                     border: {

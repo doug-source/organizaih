@@ -1,10 +1,13 @@
 import { Input_ } from '@/Components/Input';
-import { remOutput } from '@/libraries';
-import { styled } from 'styled-components';
+import { remOutput } from '@/libraries/toolbox/Styling';
+import { css, styled } from 'styled-components';
 
 export const InputField_ = styled(Input_)`
-    width: ${({ theme }) => {
-        const inputWidth = theme.measures.tools.inputRequest.input.width;
-        return remOutput(inputWidth);
+    ${({ theme }) => {
+        const inputMeasure = theme.measures.tools.inputRequest.input;
+        return css`
+            width: ${inputMeasure.width};
+            height: ${remOutput(inputMeasure.height)};
+        `;
     }};
 `;

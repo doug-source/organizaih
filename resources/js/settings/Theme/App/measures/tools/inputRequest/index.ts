@@ -15,7 +15,10 @@ export const inputRequest: DefaultTheme['measures']['tools']['inputRequest'] = {
         },
     },
     input: {
-        width: 177,
+        width: '100%',
+        maxWidth: 177,
+        minWidth: 133,
+        height: 40,
     },
     label: {
         gap: 8,

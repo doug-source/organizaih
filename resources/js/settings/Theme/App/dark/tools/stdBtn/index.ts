@@ -1,4 +1,4 @@
-import { black, boxShadow, gradient, transparency } from '@/settings/palette';
+import { boxShadow, gradient, transparency } from '@/settings/palette';
 import { DefaultTheme } from 'styled-components';
 
 export const stdBtn: DefaultTheme['tools']['stdBtn'] = {
@@ -7,5 +7,5 @@ export const stdBtn: DefaultTheme['tools']['stdBtn'] = {
         color: transparency[0],
     },
     boxShadow: `${boxShadow[10]}, ${boxShadow[11]}`,
-    color: black[14],
+    color: 'inherit',
 };

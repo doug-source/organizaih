@@ -4,9 +4,6 @@ import { DefaultTheme } from 'styled-components';
 export const product: DefaultTheme['product'] = {
     form: {
         base: {
-            submitBtn: {
-                color: 'inherit',
-            },
             formItem: {
                 categoryInfo: {
                     border: {

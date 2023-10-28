@@ -1,8 +1,8 @@
 import {
+    InventoryItemIdentifier,
     buildFormData,
     prepareInventoryItem,
-} from '@/Pages/App/Screens/Inventory/Form/Base/Fields/libraries';
-import { InventoryItemIdentifier } from '@/Pages/App/Screens/Inventory/Form/Base/libraries';
+} from '@/Pages/App/Screens/Inventory/Form/Base/libraries';
 import { ProductToInventory } from '@/Pages/App/Screens/Product/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
@@ -81,7 +81,7 @@ const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
                     appDispatch({
                         type: DataReducerEnum.SELECTION_CLEAR,
                     });
-                    navigate('/product-categories');
+                    navigate('/inventories');
                     break;
                 }
                 default: {
@@ -158,6 +158,7 @@ export const useInventorySubmit = (
             tokenAuth,
             thenCallback,
             catchCallback,
+            axios,
         ],
     );
 };

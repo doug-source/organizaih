@@ -1,13 +1,10 @@
 import { ICustomerListData } from '@/Pages/App/Screens/Customer';
+import {
+    ProductToInventory,
+    ProductToSale,
+} from '@/Pages/App/Screens/Product/types';
+import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { DefaultTheme } from 'styled-components';
-
-/**
- * Temporary
- */
-type ProductToSale = any;
-type ProductToInventory = any;
-type IProductCategory = any;
-/***************************/
 
 export const customerTargets = ['sales'] as const;
 export const productTargets = ['sales', 'inventories'] as const;

@@ -140,6 +140,13 @@ export const SaleSVG = lazy(() =>
     }),
 );
 
+export const SelectCustomerSVG = lazy(() =>
+    import('/resources/img/selectCustomer.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);
+
 export const SelectProductSVG = lazy(() =>
     import('/resources/img/selectProduct.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;

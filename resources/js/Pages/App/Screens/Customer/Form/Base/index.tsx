@@ -1,13 +1,12 @@
 import { CityDropdown } from '@/Pages/App/Components';
 import { DatePicker } from '@/Pages/App/Components/DatePicker';
-import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
+import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
 import { FormItem } from '@/Pages/App/Components/FormItem';
 import { InputForm_ } from '@/Pages/App/Components/InputForm';
 import { InputNumber } from '@/Pages/App/Components/InputNumber';
 import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { RadioToggle } from '@/Pages/App/Components/RadioToggle';
 import { StateDropdown } from '@/Pages/App/Components/StateDropdown';
-import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
 import {
     useCityChange,
     useCustomerSubmit,
@@ -36,19 +35,16 @@ import {
 } from '@/Pages/App/Screens/Customer/Form/libraries/hooks';
 import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { columnSizeDB, sexSettingList } from '@/Pages/App/settings';
-import { useTokenRequest, useTranslate } from '@/libraries';
+import { useTranslate } from '@/libraries';
 import { ComponentPropsWithoutRef, Suspense, useRef } from 'react';
 import { useTheme } from 'styled-components';
 
-export type FormItemProps = ComponentPropsWithoutRef<typeof FormItem>;
-
-type BaseProps = ComponentPropsWithoutRef<'form'> & {
+type BaseProps = {
     preSelection?: boolean;
-};
+} & Omit<ComponentPropsWithoutRef<typeof DefaultForm>, 'children' | 'disabled'>;
 
-export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
+export const Base = ({ preSelection = false, ...remain }: BaseProps) => {
     const translate = useTranslate();
-    const tokenRequest = useTokenRequest();
     const customer = useCustomer();
     const dispatch = useCustomerDispatch();
     const errors = useErrors();
@@ -61,24 +57,10 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
 
     const theme = useTheme();
     return (
-        <DefaultForm_
-            {...props}
+        <DefaultForm
+            {...remain}
             onSubmit={onCustomerSubmit}
-            method='POST'
-            encType='multipart/form-data'
         >
-            <input
-                type='hidden'
-                name='_token'
-                value={tokenRequest}
-            />
-            {Boolean(method) && (
-                <input
-                    type='hidden'
-                    name='_method'
-                    value={method}
-                />
-            )}
             <FormItem
                 errorData={errors.name}
                 labelName='form--field_name'
@@ -226,13 +208,6 @@ export const Base = ({ preSelection = false, method, ...props }: BaseProps) => {
                     required
                 />
             </FormItem>
-            <SubmitBtn_
-                as='input'
-                $borderColor={theme.submitForm.border.color}
-                $color={theme.submitForm.color}
-                disabled={!navigator.onLine}
-                value={translate('save', true)}
-            />
-        </DefaultForm_>
+        </DefaultForm>
     );
 };

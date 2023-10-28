@@ -64,12 +64,13 @@ export const sale: DefaultTheme['measures']['sale'] = {
                         size: 48,
                     },
                 },
-                icons: {
-                    size: 63,
-                    top: 9,
-                },
+            },
+            topRow: {
                 wide: {
                     gap: 16,
+                },
+                transform: {
+                    translate: [0, 9],
                 },
             },
         },

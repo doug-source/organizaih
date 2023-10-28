@@ -26,8 +26,9 @@ import { radioToggle } from './radioToggle';
 import { reactLoading } from './reactLoading';
 import { routes } from './routes';
 import { sale } from './sale';
+import { selectCustomer } from './selectCustomer';
 import { selectProduct } from './selectProduct';
-import { submitForm } from './submitForm';
+import { submitBtn } from './submitBtn';
 import { tools } from './tools';
 
 export const LightTheme: AppTheme = {
@@ -44,7 +45,6 @@ export const LightTheme: AppTheme = {
     dropdown,
     entryItem,
     formItem,
-    submitForm,
     gateSwitcher,
     graph,
     header,
@@ -61,6 +61,8 @@ export const LightTheme: AppTheme = {
     routes,
     sale,
     selectProduct,
+    selectCustomer,
+    submitBtn,
     radioToggle,
     tools,
 };

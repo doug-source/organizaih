@@ -102,18 +102,18 @@ export const dataReducer = (
                 },
             };
         }
-        // case DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL: {
-        //     return {
-        //         ...state,
-        //         selections: {
-        //             ...state.selections,
-        //             sales: {
-        //                 ...state.selections.sales,
-        //                 salesToSave: action.payload,
-        //             },
-        //         },
-        //     };
-        // }
+        case DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL: {
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    sales: {
+                        ...state.selections.sales,
+                        salesToSave: action.payload,
+                    },
+                },
+            };
+        }
         case DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL: {
             return {
                 ...state,

@@ -1,7 +1,6 @@
-import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
+import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
 import { FormItem } from '@/Pages/App/Components/FormItem';
 import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
-import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
 import { dettachCategoryName } from '@/Pages/App/Screens/Product/Form/Base/libraries';
 import {
     makeCatSelectionClick,
@@ -27,15 +26,16 @@ import {
 } from '@/Pages/App/Screens/Product/Form/libraries/hooks';
 import { useAppDispatch } from '@/Pages/App/libraries';
 import { columnSizeDB } from '@/Pages/App/settings';
-import { useTokenRequest, useTranslate } from '@/libraries';
+import { useTranslate } from '@/libraries';
 import { ComponentPropsWithoutRef, useRef } from 'react';
-import { useTheme } from 'styled-components';
 
-type BaseProps = ComponentPropsWithoutRef<'form'>;
+type BaseProps = Omit<
+    ComponentPropsWithoutRef<typeof DefaultForm>,
+    'children' | 'disabled'
+>;
 
-const Base = ({ method, ...props }: BaseProps) => {
+const Base = (props: BaseProps) => {
     const translate = useTranslate();
-    const tokenRequest = useTokenRequest();
     const appDispatch = useAppDispatch();
     const product = useProduct();
     const errors = useErrors();
@@ -43,8 +43,6 @@ const Base = ({ method, ...props }: BaseProps) => {
     const dispatch = useProductDispatch();
 
     const inputFile = useRef<HTMLInputElement | null>(null);
-    const theme = useTheme();
-    const submitBtnTheme = theme.product.form.base.submitBtn;
     const onProductSubmit = useProductSubmit(
         product,
         product.category,
@@ -53,24 +51,10 @@ const Base = ({ method, ...props }: BaseProps) => {
     );
 
     return (
-        <DefaultForm_
+        <DefaultForm
             {...props}
             onSubmit={onProductSubmit}
-            method='POST'
-            encType='multipart/form-data'
         >
-            <input
-                type='hidden'
-                name='_token'
-                value={tokenRequest}
-            />
-            {Boolean(method) && (
-                <input
-                    type='hidden'
-                    name='_method'
-                    value={method}
-                />
-            )}
             <FormItemPhoto_
                 errorData={errors.photo}
                 labelName='form--field_photo'
@@ -148,13 +132,7 @@ const Base = ({ method, ...props }: BaseProps) => {
                     onChange={makeObsChange(dispatch)}
                 />
             </FormItem>
-            <SubmitBtn_
-                as='input'
-                $color={submitBtnTheme.color}
-                disabled={!navigator.onLine}
-                value={translate('save', true)}
-            />
-        </DefaultForm_>
+        </DefaultForm>
     );
 };
 

@@ -26,8 +26,9 @@ import { radioToggle } from './radioToggle';
 import { reactLoading } from './reactLoading';
 import { routes } from './routes';
 import { sale } from './sale';
+import { selectCustomer } from './selectCustomer';
 import { selectProduct } from './selectProduct';
-import { submitForm } from './submitForm';
+import { submitBtn } from './submitBtn';
 import { tools } from './tools';
 
 export const DarkTheme: AppTheme = {
@@ -61,6 +62,7 @@ export const DarkTheme: AppTheme = {
     routes,
     sale,
     selectProduct,
-    submitForm,
+    selectCustomer,
+    submitBtn,
     tools,
 };

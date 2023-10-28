@@ -1223,6 +1223,9 @@ export type AppThemeMeasures = {
             edgeBorderRadius: [number, number, number, number];
         };
     };
+    requestBtn: {
+        maxHeight: number;
+    };
     sale: {
         details: {
             defineItems: {
@@ -1287,9 +1290,10 @@ export type AppThemeMeasures = {
                             size: number;
                         };
                     };
-                    icons: {
-                        size: number;
-                        top: number;
+                };
+                topRow: {
+                    transform: {
+                        translate: [number, number];
                     };
                     wide: {
                         gap: number;
@@ -1304,13 +1308,17 @@ export type AppThemeMeasures = {
     selectorsBox: {
         gap: number;
     };
-    selectProduct: {
+    selectCustomer: {
         icon: {
-            top: number;
             size: number;
         };
     };
-    submitForm: {
+    selectProduct: {
+        icon: {
+            size: number;
+        };
+    };
+    submitBtn: {
         padding: {
             top: number;
             bottom: number;
@@ -1349,6 +1357,7 @@ export type AppThemeMeasures = {
         };
         bar: {
             padding: number;
+            gap: number;
         };
         btn: {
             border: {
@@ -1402,7 +1411,10 @@ export type AppThemeMeasures = {
                 };
             };
             input: {
-                width: number;
+                maxWidth: number;
+                minWidth: number;
+                width: string;
+                height: number;
             };
             label: {
                 gap: number;

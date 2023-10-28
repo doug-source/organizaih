@@ -1,5 +1,7 @@
-import { InputField } from '@/Pages/App/Components/InputField';
-import { Label_ } from '@/Pages/App/Components/InputRequest/styling';
+import {
+    InputField_,
+    Label_,
+} from '@/Pages/App/Components/InputRequest/styling';
 import { LabelText } from '@/Pages/App/Components/LabelText';
 import { RequestBtn } from '@/Pages/App/Components/RequestBtn';
 import { createRef } from 'react';
@@ -21,7 +23,7 @@ export const InputRequest = ({
     return (
         <Label_>
             <LabelText toolLabelKey={toolLabelKey} />
-            <InputField
+            <InputField_
                 ref={inputRef}
                 placeholderKey={placeholderKey}
                 maxLength={maxLength}

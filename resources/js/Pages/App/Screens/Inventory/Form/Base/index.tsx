@@ -1,9 +1,9 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
+import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
 import { ItemEditor } from '@/Pages/App/Components/ItemEditor';
 import { ItemSaver } from '@/Pages/App/Components/ItemSaver';
 import { SelectProduct } from '@/Pages/App/Components/SelectProduct';
 import { SelectorsBox } from '@/Pages/App/Components/SelectorsBox';
-import { Fields } from '@/Pages/App/Screens/Inventory/Form/Base/Fields';
 import {
     useConfirmHandlers,
     useInventoryReducer,
@@ -11,7 +11,9 @@ import {
     useItemSaverDependencies,
 } from '@/Pages/App/Screens/Inventory/Form/Base/libraries';
 import { useProductSelectionHandler } from '@/Pages/App/Screens/Inventory/Form/Base/libraries/hooks';
+import { useInventorySubmit } from '@/Pages/App/Screens/Inventory/Form/Base/libraries/hooks/submittions';
 import {
+    DefaultForm_,
     InventoryDataContainer_,
     ProductsIconItemEditor_,
     ProductsIconItemSaver_,
@@ -21,11 +23,11 @@ import { columnSizeDB } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries/hooks';
 import { ComponentPropsWithoutRef } from 'react';
 
-type BaseProps = ComponentPropsWithoutRef<'form'> & {
+type BaseProps = {
     inventoryItemID?: number;
-};
+} & Omit<ComponentPropsWithoutRef<typeof DefaultForm>, 'children' | 'disabled'>;
 
-const Base = ({ inventoryItemID, ...props }: BaseProps) => {
+const Base = ({ inventoryItemID, ...remain }: BaseProps) => {
     const translate = useTranslate();
     const localeData = useLocale();
 
@@ -53,6 +55,11 @@ const Base = ({ inventoryItemID, ...props }: BaseProps) => {
     );
     const onSelectionClick = useProductSelectionHandler(inventoryItemID, state);
     const [locale] = localeData;
+    const onSubmit = useInventorySubmit(
+        state.productsToInventory,
+        null,
+        inventoryItemID,
+    );
 
     return (
         <>
@@ -86,10 +93,9 @@ const Base = ({ inventoryItemID, ...props }: BaseProps) => {
                     onTouchStart={onTouchStart}
                 />
             </InventoryDataContainer_>
-            <Fields
-                state={state}
-                inventoryItemID={inventoryItemID}
-                {...props}
+            <DefaultForm_
+                onSubmit={onSubmit}
+                {...remain}
             />
             <Confirmation
                 showConfirm={Boolean(state.optionsConfirm)}

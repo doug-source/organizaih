@@ -51,9 +51,11 @@ export const DatePickers_ = styled.div`
             display: flex;
             flex: 1;
             gap: ${remOutput(dateInputsMeasure.gap)};
+            flex-wrap: wrap;
 
             @media ${wideScreen} {
                 gap: ${remOutput(dateInputsMeasure.wide.gap)};
+                flex-wrap: nowrap;
             }
         `;
     }}

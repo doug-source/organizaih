@@ -1,6 +1,5 @@
-import { DefaultForm_ } from '@/Pages/App/Components/DefaultForm';
+import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
 import { FormItem } from '@/Pages/App/Components/FormItem';
-import { SubmitBtn_ } from '@/Pages/App/Components/SubmitForm';
 import { DispatchFn } from '@/Pages/App/Screens/ProductCategory/Form/Base/libraries';
 import {
     makeDescriptionChange,
@@ -12,58 +11,39 @@ import { ProdCategoryInput_ } from '@/Pages/App/Screens/ProductCategory/Form/Bas
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { columnSizeDB } from '@/Pages/App/settings';
-import { useTokenRequest, useTranslate } from '@/libraries';
+import { useTranslate } from '@/libraries';
 import { ComponentPropsWithoutRef } from 'react';
-import { useTheme } from 'styled-components';
 
-type BaseProps = ComponentPropsWithoutRef<'form'> & {
+type BaseProps = {
     productCategory: IProductCategory | null;
     errors: ErrorsType;
     setErrors: ErrorsSetterType;
     dispatch: DispatchFn;
-};
+} & Omit<ComponentPropsWithoutRef<typeof DefaultForm>, 'children' | 'disabled'>;
 
 const Base = ({
-    method,
     productCategory,
     errors,
     setErrors = () => {},
     dispatch = (f) => f,
-    ...props
+    ...remain
 }: BaseProps) => {
     const translate = useTranslate();
-    const tokenRequest = useTokenRequest();
     const onNameChange = makeNameChange(dispatch);
     const onDescriptionChange = makeDescriptionChange(dispatch);
     const onObsChange = makeObsChange(dispatch);
-    const theme = useTheme();
-    const submitBtnTheme = theme.productCategory.form.base.submitBtn;
     const onProductCategorySubmit = useProductCategorySubmit(
         productCategory,
         setErrors,
     );
-
     if (productCategory === null) {
         return null;
     }
     return (
-        <DefaultForm_
-            {...props}
+        <DefaultForm
+            {...remain}
             onSubmit={onProductCategorySubmit}
-            method='POST'
         >
-            <input
-                type='hidden'
-                name='_token'
-                value={tokenRequest}
-            />
-            {Boolean(method) && (
-                <input
-                    type='hidden'
-                    name='_method'
-                    value={method}
-                />
-            )}
             <FormItem
                 errorData={errors?.name}
                 labelName='form--field_name'
@@ -108,13 +88,7 @@ const Base = ({
                     onChange={onObsChange}
                 />
             </FormItem>
-            <SubmitBtn_
-                as='input'
-                $color={submitBtnTheme.color}
-                disabled={!navigator.onLine}
-                value={translate('save', true)}
-            />
-        </DefaultForm_>
+        </DefaultForm>
     );
 };
 

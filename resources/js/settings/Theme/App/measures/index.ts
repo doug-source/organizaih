@@ -1,3 +1,4 @@
+import { DefaultTheme } from 'styled-components';
 import { backBtn } from './backBtn';
 import { body } from './body';
 import { boundaryDateInputs } from './boundaryDateInputs';
@@ -31,16 +32,18 @@ import { product } from './product';
 import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
 import { radioToggle } from './radioToggle';
+import { requestBtn } from './requestBtn';
 import { sale } from './sale';
+import { selectCustomer } from './selectCustomer';
 import { selectProduct } from './selectProduct';
 import { selectorsBox } from './selectorsBox';
-import { submitForm } from './submitForm';
+import { submitBtn } from './submitBtn';
 import { tools } from './tools';
 
 const widthLarge = '1024px';
 const widthMedium = '512px';
 
-export const measures = {
+export const measures: DefaultTheme['measures'] = {
     backBtn,
     body,
     boundaryDateInputs,
@@ -74,10 +77,12 @@ export const measures = {
     productCategory,
     profilePhoto,
     radioToggle,
+    requestBtn,
     sale,
     selectorsBox,
     selectProduct,
-    submitForm,
+    selectCustomer,
+    submitBtn,
     tools,
 
     wideScreen: `screen and (min-width: ${widthLarge})`,

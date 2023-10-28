@@ -37,7 +37,9 @@ export const DefineItem = ({
                             <DefineItemLabel_>{labelText}</DefineItemLabel_>
                         )}
                         {valueText && (
-                            <DefineItemValue_>{valueText}</DefineItemValue_>
+                            <DefineItemValue_ title={valueText}>
+                                {valueText}
+                            </DefineItemValue_>
                         )}
                     </DefineItemWrap_>
                     {children}

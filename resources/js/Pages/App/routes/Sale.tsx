@@ -1,7 +1,7 @@
-import { SaleList } from '@/Pages/App/Screens/Sales';
+import { SaleForm, SaleList } from '@/Pages/App/Screens/Sales';
 import { Container_ } from '@/Pages/App/routes/styling';
 import { Outlet, Route, Routes } from 'react-router-dom';
-// , SaleDetails, SaleForm
+// , SaleDetails
 
 export const SaleRoutes = () => {
     return (
@@ -14,7 +14,7 @@ export const SaleRoutes = () => {
                     </Container_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/sales/create'
                 element={
                     <Container_>
@@ -22,7 +22,7 @@ export const SaleRoutes = () => {
                     </Container_>
                 }
             />
-            <Route
+            {/* <Route
                 path='/sales/:id'
                 element={
                     <Container_>

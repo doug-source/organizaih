@@ -722,9 +722,6 @@ export type AppTheme = {
     product: {
         form: {
             base: {
-                submitBtn: {
-                    color: string;
-                };
                 formItem: {
                     categoryInfo: {
                         border: {
@@ -756,13 +753,6 @@ export type AppTheme = {
         };
     };
     productCategory: {
-        form: {
-            base: {
-                submitBtn: {
-                    color: string;
-                };
-            };
-        };
         tools: {
             categoriesBtn: stdBtn;
         };
@@ -809,9 +799,6 @@ export type AppTheme = {
     sale: {
         form: {
             base: {
-                submitBtn: {
-                    color: string;
-                };
                 notice: {
                     bg: string;
                     color: string;
@@ -819,13 +806,10 @@ export type AppTheme = {
                         bg: string;
                     };
                 };
-                saleSelectors: {
-                    icons: {
-                        customer: {
-                            fill: {
-                                person: string;
-                                hand: string;
-                            };
+                selectors: {
+                    customer: {
+                        anonymousIcon: {
+                            fill: string;
                         };
                     };
                 };
@@ -862,7 +846,15 @@ export type AppTheme = {
             };
         };
     };
-    submitForm: stdBtn;
+    selectCustomer: {
+        icon: {
+            fill: {
+                person: string;
+                hand: string;
+            };
+        };
+    };
+    submitBtn: stdBtn;
     tools: {
         addBtn: {
             boxShadow: string;

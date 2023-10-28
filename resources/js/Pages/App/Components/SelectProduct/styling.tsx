@@ -7,8 +7,6 @@ export const SelectProductSVG_ = styled(SelectProductSVG)`
         const selectProductTheme = theme.selectProduct;
         const iconMeasure = theme.measures.selectProduct.icon;
         return css`
-            position: relative;
-            top: ${remOutput(iconMeasure.top)};
             width: ${remOutput(iconMeasure.size)};
             height: ${remOutput(iconMeasure.size)};
 

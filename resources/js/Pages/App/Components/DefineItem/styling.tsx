@@ -23,7 +23,7 @@ const childSimilarStyle = css`
     ${({ theme }) => {
         const defineItemMeasure = theme.measures.defineItem;
         return css`
-            padding-left: ${remOutput(defineItemMeasure.remain.padding.left)}
+            padding-left: ${remOutput(defineItemMeasure.remain.padding.left)};
             flex-grow: 1;
             display: flex;
             flex-direction: column;

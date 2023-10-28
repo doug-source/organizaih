@@ -8,6 +8,7 @@ export const Bar_ = styled.div`
         return css`
             display: flex;
             justify-content: space-between;
+            gap: ${remOutput(barMeasure.gap)};
             @media ${wideScreen} {
                 padding-top: ${remOutput(barMeasure.padding)};
                 padding-bottom: ${remOutput(barMeasure.padding)};

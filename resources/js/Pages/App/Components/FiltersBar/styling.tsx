@@ -4,4 +4,5 @@ export const FiltersBar_ = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    min-width: 0;
 `;

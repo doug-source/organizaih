@@ -1,3 +1,4 @@
+import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { commafyList, remifyList } from '@/Pages/App/libraries';
 import { remOutput } from '@/libraries/toolbox/Styling';
@@ -65,6 +66,16 @@ export const InventoryDataContainer_ = styled.div`
             display: flex;
             flex-direction: column;
             gap: ${remOutput(containerMeasure.gap)};
+        `;
+    }}
+`;
+
+export const DefaultForm_ = styled(DefaultForm)`
+    ${({ theme }) => {
+        const baseTheme = theme.measures.inventory.form.base;
+        return css`
+            height: auto;
+            padding-top: ${remOutput(baseTheme.padding.top)};
         `;
     }}
 `;
