@@ -1,4 +1,4 @@
-import { SaleForm, SaleList } from '@/Pages/App/Screens/Sales';
+import { SaleDetails, SaleForm, SaleList } from '@/Pages/App/Screens/Sales';
 import { Container_ } from '@/Pages/App/routes/styling';
 import { Outlet, Route, Routes } from 'react-router-dom';
 // , SaleDetails
@@ -22,7 +22,7 @@ export const SaleRoutes = () => {
                     </Container_>
                 }
             />
-            {/* <Route
+            <Route
                 path='/sales/:id'
                 element={
                     <Container_>
@@ -37,7 +37,7 @@ export const SaleRoutes = () => {
                         <SaleForm />
                     </Container_>
                 }
-            /> */}
+            />
             <Route
                 path='*'
                 element={<Outlet />}

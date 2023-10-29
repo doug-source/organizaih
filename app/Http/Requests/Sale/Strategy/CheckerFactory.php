@@ -48,19 +48,19 @@ class CheckerFactory implements CheckerFactoryScheme
     private static function selectGetChecker(FormRequest $formRequest): Checker
     {
         $path = $formRequest->decodedPath();
-        if (preg_match('|^api\/sales\/products\/\d+$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/sales\/products\/\d+$|', $path) === 1) {
             return new ShowByProductQty();
         }
-        if (preg_match('|^api\/sales\/products\/count$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/sales\/products\/count$|', $path) === 1) {
             return new ShowProductQty();
         }
-        if (preg_match('|^api\/sales\/customers\/\d+$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/sales\/customers\/\d+$|', $path) === 1) {
             return new ShowByCustomerQty();
         }
-        if (preg_match('|^api\/sales\/customers\/count$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/sales\/customers\/count$|', $path) === 1) {
             return new ShowCustomerQty();
         }
-        if (preg_match('|^api\/sales\/\d+$|', $path) === 1) {
+        if (preg_match('|^api\/v\d+\/sales\/\d+$|', $path) === 1) {
             return new Show();
         }
         return new Plain();

@@ -1,4 +1,4 @@
-import { ProfilePhotoOutput } from '@/Pages/App/Components';
+import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
 import {
     useCustomerDetailsRequest,
     useCustomerDetailsResponse,
