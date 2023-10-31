@@ -7,8 +7,7 @@ import { WrapContexts } from './WrapContexts';
 import { GlobalStyle, LoadingIcon_ } from './styling';
 
 export const Login = () => {
-    // const theme = window.data.themeKey === 'light' ? Theme.light : Theme.dark;
-    const theme = Theme.dark;
+    const theme = window.data.themeKey === 'light' ? Theme.light : Theme.dark;
     const [loading, setLoading] = useState(false);
     return (
         <ThemeProvider theme={theme}>

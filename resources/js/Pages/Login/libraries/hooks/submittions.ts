@@ -49,10 +49,6 @@ export const useAuthHandler = (email: string, password: string) => {
                             break;
                         }
                         default: {
-                            // appDispatch({
-                            //     type: DataReducerEnum.LOADING,
-                            //     payload: false,
-                            // });
                             setLoading(false);
                             console.log(
                                 `Unexpected Success Status: ${response.status}`,
