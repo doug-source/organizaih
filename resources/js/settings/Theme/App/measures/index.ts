@@ -21,6 +21,7 @@ import { graph } from './graph';
 import { header } from './header';
 import { html } from './html';
 import { inputForm } from './inputForm';
+import { inputRange } from './inputRange';
 import { inventory } from './inventory';
 import { itemEditor } from './itemEditor';
 import { itemSaver } from './itemSaver';
@@ -66,6 +67,7 @@ export const measures: DefaultTheme['measures'] = {
     header,
     html,
     inputForm,
+    inputRange,
     inventory,
     itemEditor,
     itemSaver,

@@ -13,6 +13,7 @@ import { formItem } from './formItem';
 import { gateSwitcher } from './gateSwitcher';
 import { graph } from './graph';
 import { header } from './header';
+import { inputRange } from './inputRange';
 import { inputRequest } from './inputRequest';
 import { inventory } from './inventory';
 import { itemEditor } from './itemEditor';
@@ -48,6 +49,7 @@ export const DarkTheme: AppTheme = {
     gateSwitcher,
     graph,
     header,
+    inputRange,
     inputRequest,
     inventory,
     itemEditor,

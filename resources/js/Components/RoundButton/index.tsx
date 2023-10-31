@@ -35,4 +35,4 @@ export const RoundButton = ({
     </RoundBtn_>
 );
 
-export { RoundBtnStyle, type RoundBtnProps } from './styling';
+export { RoundBtnStyle, RoundBtn_, type RoundBtnProps } from './styling';

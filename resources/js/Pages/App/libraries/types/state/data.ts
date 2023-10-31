@@ -44,6 +44,8 @@ export type ReducerSelections = {
 export type DataReducerState = {
     title: string;
     loading: boolean | null;
+    windowWidth: number | null;
+    windowHeight: number | null;
     error: (object & { customMessage?: [string] }) | null;
     selections: ReducerSelections;
     theme: DefaultTheme;

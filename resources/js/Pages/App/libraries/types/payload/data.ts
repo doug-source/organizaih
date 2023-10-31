@@ -61,13 +61,13 @@ export namespace DataPayload {
         type: DataReducerEnum.SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL;
         payload: ProductToInventory[];
     };
-    // type WindowResize = {
-    //     type: DataReducerEnum.WINDOW_RESIZE;
-    //     payload: {
-    //         width: ReducerState['windowWidth'];
-    //         height: ReducerState['windowHeight'];
-    //     };
-    // };
+    type WindowResize = {
+        type: DataReducerEnum.WINDOW_RESIZE;
+        payload: {
+            width: DataReducerState['windowWidth'];
+            height: DataReducerState['windowHeight'];
+        };
+    };
 
     type ChangeTheme = {
         type: DataReducerEnum.CHANGE_THEME;
@@ -90,7 +90,7 @@ export namespace DataPayload {
         | SelectionProductCategory
         | SelectionSalesSavedItemAddAll
         | SelectionInventoriesSavedItemAddAll
-        // | WindowResize
+        | WindowResize
         | ChangeTheme
         | SelectionCustomer;
 }

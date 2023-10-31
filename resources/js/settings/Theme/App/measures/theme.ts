@@ -474,75 +474,6 @@ export type AppThemeMeasures = {
         };
     };
     graph: {
-        bar: {
-            qty: {
-                slider: {
-                    control: {
-                        border: {
-                            radius: number;
-                        };
-                        fontSize: number;
-                        height: number;
-                        width: number;
-                    };
-                    currentValue: {
-                        after: {
-                            border: {
-                                width: number;
-                            };
-                        };
-                        border: {
-                            radius: number;
-                        };
-                        height: number;
-                        padding: {
-                            top: number;
-                            bottom: number;
-                            left: number;
-                            right: number;
-                        };
-                        size: number;
-                        width: number;
-                    };
-                    inputRange: {
-                        width: number;
-                    };
-                    label: {
-                        fontSize: number;
-                    };
-                    leftBorder: {
-                        height: number;
-                        left: number;
-                    };
-                    pack: {
-                        after: {
-                            edgeLower: {
-                                height: number;
-                            };
-                        };
-                        before: {
-                            edgeUpper: {
-                                widthRemoved: number;
-                                height: number;
-                            };
-                        };
-                        border: {
-                            radius: number;
-                        };
-                        gap: number;
-                    };
-                    rightBorder: {
-                        right: number;
-                    };
-                    stdBorder: {
-                        width: number;
-                    };
-                };
-                qtyText: {
-                    fontSize: number;
-                };
-            };
-        };
         gateSwitcher: {
             label: {
                 height: number;
@@ -787,6 +718,74 @@ export type AppThemeMeasures = {
     };
     inputForm: {
         width: string;
+    };
+    inputRange: {
+        slider: {
+            control: {
+                border: {
+                    radius: number;
+                };
+                fontSize: number;
+                height: number;
+                width: number;
+            };
+            currentValue: {
+                after: {
+                    border: {
+                        width: number;
+                    };
+                };
+                border: {
+                    radius: number;
+                };
+                height: number;
+                padding: {
+                    top: number;
+                    bottom: number;
+                    left: number;
+                    right: number;
+                };
+                size: number;
+                width: number;
+            };
+            input: {
+                width: number;
+                height: number;
+            };
+            label: {
+                fontSize: number;
+            };
+            leftBorder: {
+                height: number;
+                left: number;
+            };
+            pack: {
+                after: {
+                    edgeLower: {
+                        height: number;
+                    };
+                };
+                before: {
+                    edgeUpper: {
+                        widthRemoved: number;
+                        height: number;
+                    };
+                };
+                border: {
+                    radius: number;
+                };
+                gap: number;
+            };
+            rightBorder: {
+                right: number;
+            };
+            stdBorder: {
+                width: number;
+            };
+        };
+        qtyText: {
+            fontSize: number;
+        };
     };
     inventory: {
         details: {

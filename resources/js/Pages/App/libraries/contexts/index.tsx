@@ -5,6 +5,7 @@ import { Loading } from './Loading';
 import { Locale } from './Locale';
 import { Selections } from './Selections';
 import { Title } from './Title';
+import { WindowSizes } from './WindowSizes';
 
 const data = window.data;
 const $html = document.head.parentElement!;
@@ -24,29 +25,38 @@ type WrapContextsProps = {
     selections: ReducerSelections;
     title: string;
     statusloading: ComponentProps<typeof Loading>['value'];
+    windowWidth: ComponentProps<typeof WindowSizes>['width'];
+    windowHeight: ComponentProps<typeof WindowSizes>['height'];
     children: ReactNode;
 };
 
 export const WrapContexts = ({
     selections,
     title = '',
+    windowWidth,
+    windowHeight,
     children,
     statusloading,
 }: WrapContextsProps) => {
     return (
-        <Loading value={statusloading}>
-            <Locale value={locale}>
-                <Title value={title}>
-                    <TokenRequest value={info.tokenRequest}>
-                        <Selections value={selections}>
-                            <Translate value={info.translate}>
-                                {children}
-                            </Translate>
-                        </Selections>
-                    </TokenRequest>
-                </Title>
-            </Locale>
-        </Loading>
+        <WindowSizes
+            width={windowWidth}
+            height={windowHeight}
+        >
+            <Loading value={statusloading}>
+                <Locale value={locale}>
+                    <Title value={title}>
+                        <TokenRequest value={info.tokenRequest}>
+                            <Selections value={selections}>
+                                <Translate value={info.translate}>
+                                    {children}
+                                </Translate>
+                            </Selections>
+                        </TokenRequest>
+                    </Title>
+                </Locale>
+            </Loading>
+        </WindowSizes>
     );
 };
 
@@ -54,3 +64,4 @@ export { LoadingContext } from './Loading';
 export { LocaleContext } from './Locale';
 export { SelectionsContext } from './Selections';
 export { TitleContext } from './Title';
+export { WindowSizesContext } from './WindowSizes';

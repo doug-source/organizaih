@@ -238,3 +238,7 @@ export class DateManager {
         };
     }
 }
+
+export const makeDtStartEndpoint = (endpoint: string, date: Date) => {
+    return `${endpoint}?dtStart=${formatRequestDate(date, 'Y-m')}`;
+};

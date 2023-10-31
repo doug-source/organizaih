@@ -4,9 +4,18 @@ import {
     LocaleContext,
     SelectionsContext,
     TitleContext,
+    WindowSizesContext,
 } from '@/Pages/App/libraries';
 import { makeContextError } from '@/libraries';
 import { useContext } from 'react';
+
+export const useWindowSizes = () => {
+    const windowSizes = useContext(WindowSizesContext);
+    if (windowSizes === null) {
+        throw makeContextError('useWindowSizes', 'WindowSizesContext');
+    }
+    return windowSizes;
+};
 
 export const useAppDispatch = () => {
     const appDispatch = useContext(AppDispatchContext);

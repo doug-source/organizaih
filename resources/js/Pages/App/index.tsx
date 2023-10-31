@@ -6,6 +6,10 @@ import {
     useConnectionChecker,
 } from '@/Pages/App/libraries';
 import {
+    useStarterWindowResize,
+    useWindowResizeHandler,
+} from '@/Pages/App/libraries/hooks/Window';
+import {
     ConfigRoutes,
     CustomerRoutes,
     GraphRoutes,
@@ -33,6 +37,8 @@ export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
         title: '',
         loading: null,
+        windowWidth: null,
+        windowHeight: null,
         error: null,
         selections: {
             target: null,
@@ -53,12 +59,16 @@ export const App = () => {
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
     });
     useConnectionChecker(dispatch);
+    useStarterWindowResize(state, dispatch);
+    useWindowResizeHandler(dispatch);
     return (
         <HashRouter>
             <AppDispatchContext.Provider value={dispatch}>
                 <WrapContexts
                     selections={state.selections}
                     title={state.title}
+                    windowHeight={state.windowHeight}
+                    windowWidth={state.windowWidth}
                     statusloading={state.loading}
                 >
                     <ThemeProvider theme={state.theme}>

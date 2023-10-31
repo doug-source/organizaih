@@ -5,3 +5,4 @@ export * from './Error';
 export * from './Page';
 export * from './String';
 export * from './Touch';
+export * from './Window';

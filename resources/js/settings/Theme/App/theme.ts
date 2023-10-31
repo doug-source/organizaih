@@ -541,6 +541,86 @@ export type AppTheme = {
             svg: { path: { fill: string } };
         };
     };
+    inputRange: {
+        qtyText: {
+            fill: string;
+        };
+        slider: {
+            control: {
+                active: {
+                    bg: string;
+                    boxShadow: string;
+                };
+                bg: string;
+                boxShadow: string;
+                color: string;
+                hover: {
+                    bg: string;
+                };
+                icon: {
+                    before: {
+                        textShadow: string;
+                        actived: {
+                            color: string;
+                            textShadow: string;
+                        };
+                    };
+                };
+            };
+            currentValue: {
+                after: {
+                    border: {
+                        bottom: {
+                            color: string;
+                        };
+                        top: {
+                            color: string;
+                        };
+                        right: {
+                            color: string;
+                        };
+                    };
+                };
+                bg: string;
+                color: string;
+            };
+            label: {
+                color: string;
+            };
+            leftBorder: {
+                before: {
+                    bg: string;
+                };
+            };
+            pack: {
+                bg: string;
+                after: {
+                    edgeLower: {
+                        bg: string;
+                    };
+                };
+                before: {
+                    edgeUpper: {
+                        bg: string;
+                    };
+                };
+            };
+            stdBorder: {
+                bg: string;
+            };
+        };
+        refLine: {
+            stroke: {
+                color: string;
+            };
+        };
+        rect: {
+            fill: string;
+            selected: {
+                fill: string;
+            };
+        };
+    };
     inputRequest: {
         btn: stdBtn;
     };

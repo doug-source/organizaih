@@ -126,13 +126,13 @@ export const dataReducer = (
                 },
             };
         }
-        // case DataReducerEnum.WINDOW_RESIZE: {
-        //     return {
-        //         ...state,
-        //         windowWidth: action.payload.width,
-        //         windowHeight: action.payload.height,
-        //     };
-        // }
+        case DataReducerEnum.WINDOW_RESIZE: {
+            return {
+                ...state,
+                windowWidth: action.payload.width,
+                windowHeight: action.payload.height,
+            };
+        }
 
         case DataReducerEnum.CHANGE_THEME: {
             let theme: DataReducerState['theme'] = Theme.light;

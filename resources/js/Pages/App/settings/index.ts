@@ -156,3 +156,15 @@ export const sexSettingList = (
         },
     },
 ];
+
+export const barGraphBasic = {
+    margins: {
+        top: 20,
+        bottom: 60,
+        right: 10,
+        left: 40,
+    },
+    paddingInner: 0.1,
+    paddingOuter: 0.2,
+    minItemsQty: 1,
+};
