@@ -1,4 +1,4 @@
-import ReactLoading from 'react-loading';
+import { LoadingIcon_ } from '@/Components/LoadingIcon/styling';
 
 type LoadingIconProps = {
     show: boolean;
@@ -11,7 +11,7 @@ export const LoadingIcon = ({ className, show, size }: LoadingIconProps) => {
         return null;
     }
     return (
-        <ReactLoading
+        <LoadingIcon_
             type='spinningBubbles'
             className={className}
             width={size}
