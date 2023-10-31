@@ -28,6 +28,7 @@ class Plain implements Checker
         return [
             'email' => 'required|email',
             'password' => 'required',
+            'remember' => 'nullable|in:yes,on,1,true'
         ];
     }
 
@@ -36,7 +37,8 @@ class Plain implements Checker
         return [
             'email.required' => Str::of(__('validation-required'))->ucfirst(),
             'email.email' => Str::of(trim(__('validation-invalid-male', ['subject' => ''])))->ucfirst(),
-            'password.required' => Str::of(__('validation-required'))->ucfirst()
+            'password.required' => Str::of(__('validation-required'))->ucfirst(),
+            'remember.in' => Str::of(__('validation-invalid-male', ['subject' => __('remember-me')]))->ucfirst()
         ];
     }
 }

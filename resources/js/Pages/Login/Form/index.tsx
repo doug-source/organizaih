@@ -22,6 +22,7 @@ export const Form = () => {
     const [processing, authHandler, errors] = useAuthHandler(
         state.email,
         state.password,
+        state.remember,
     );
     const { errors: serverErrors } = useAuthStatusServer();
     const statusError = errors.status || serverErrors.status?.shift();
@@ -77,7 +78,16 @@ export const Form = () => {
             </Row_>
             <RememberRow_>
                 <ThirdRowLabel_>
-                    <Checkbox name='remember' />
+                    <Checkbox
+                        name='remember'
+                        checked={state.remember}
+                        onChange={(evt) => {
+                            dispatch({
+                                type: AuthReducerEnum.CHANGE_REMEMBER,
+                                payload: Boolean(evt.target.checked),
+                            });
+                        }}
+                    />
                     <ThirdRowText_>
                         {translate('remember-me', true)}
                     </ThirdRowText_>

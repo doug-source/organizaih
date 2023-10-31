@@ -3,6 +3,7 @@ import { AuthReducerEnum } from './enums';
 export type AuthReducerState = {
     email: string;
     password: string;
+    remember: boolean;
     errors: Partial<Record<'email' | 'password', string>>;
 };
 
@@ -15,12 +16,20 @@ namespace Payload {
         type: AuthReducerEnum.CHANGE_PASSWORD;
         payload: AuthReducerState['password'];
     };
+    type ChangeRemember = {
+        type: AuthReducerEnum.CHANGE_REMEMBER;
+        payload: boolean;
+    };
     type TriggerErrors = {
         type: AuthReducerEnum.TRIGGER_ERRORS;
         payload: AuthReducerState['errors'];
     };
 
-    export type Skeleton = ChangeEmail | ChangePassword | TriggerErrors;
+    export type Skeleton =
+        | ChangeEmail
+        | ChangePassword
+        | ChangeRemember
+        | TriggerErrors;
 }
 
 export const authReducer = (
@@ -44,6 +53,12 @@ export const authReducer = (
             return {
                 ...state,
                 errors: action.payload,
+            };
+        }
+        case AuthReducerEnum.CHANGE_REMEMBER: {
+            return {
+                ...state,
+                remember: action.payload,
             };
         }
         default: {

@@ -15,7 +15,17 @@ type CatchReturn = {
 };
 type ErrorsBox = Partial<Record<ErrorKeys, string>>;
 
-export const useAuthHandler = (email: string, password: string) => {
+type AuthHandlerFn = (
+    email: string,
+    password: string,
+    remember: boolean,
+) => readonly [
+    boolean,
+    (evt: FormEvent<HTMLFormElement>) => void,
+    Partial<Record<ErrorKeys, string>>,
+];
+
+export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
     const [processing, setProcessing] = useState(false);
     const [errors, setErrors] = useState<ErrorsBox>({});
     const setLoading = useLoadingDispatch();
@@ -31,6 +41,8 @@ export const useAuthHandler = (email: string, password: string) => {
             const formData = new FormData();
             formData.append('email', email);
             formData.append('password', password);
+            remember && formData.append('remember', 'on');
+
             setProcessing(true);
             setLoading(true);
             setErrors({});
@@ -78,7 +90,7 @@ export const useAuthHandler = (email: string, password: string) => {
                     setProcessing(false);
                 });
         },
-        [email, password, setProcessing, setErrors],
+        [email, password, remember, setProcessing, setErrors],
     );
 
     return [processing, handler, errors] as const;

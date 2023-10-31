@@ -34,7 +34,7 @@ class UserController extends Controller
     public function auth(CheckRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        if (!Auth::attempt($credentials)) {
+        if (!Auth::attempt($credentials, $request->remember)) {
             return $this->buildInvalidAuth();
         }
         return response('OK', 200);
