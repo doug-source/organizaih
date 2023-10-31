@@ -1,11 +1,9 @@
 import { Checkbox, FieldError, InputLabel } from '@/Auth';
+import { AuthReducerEnum } from '@/Pages/Login/libraries/enums';
+import { useAuthStatusServer } from '@/Pages/Login/libraries/hooks/contexts';
+import { useAuthReducer } from '@/Pages/Login/libraries/hooks/reducers';
+import { useAuthHandler } from '@/Pages/Login/libraries/hooks/submittions';
 import { useTranslate } from '@/libraries/hooks';
-import {
-    AuthReducerEnum,
-    useAuthHandler,
-    useAuthReducer,
-    useAuthStatusServer,
-} from '../libraries';
 import {
     Button_,
     Link_,

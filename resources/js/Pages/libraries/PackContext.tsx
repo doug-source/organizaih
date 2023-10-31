@@ -1,7 +1,8 @@
+import { LoadingDispatch } from '@/Pages/libraries/contexts';
+import { AuthStatusServer } from '@/Pages/libraries/contexts/AuthStatusServer';
 import { TokenRequest, Translate } from '@/libraries';
 import { TranslateData } from '@/libraries/hooks';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
-import { AuthStatusServer, LoadingDispatch } from '../libraries';
 
 const data = window.data;
 const $html = document.head.parentElement!;
@@ -10,7 +11,7 @@ const $meta: HTMLMetaElement | null = document.head.querySelector(
     'meta[name="csrf-token"]',
 );
 
-type WrapContextsProps = {
+type PackContextProps = {
     loadingDispatch: ComponentPropsWithoutRef<typeof LoadingDispatch>['value'];
     children: ReactNode;
 };
@@ -23,10 +24,10 @@ const info = {
     authStatusServer: data.auth.status,
 };
 
-export const WrapContexts = ({
+export const PackContext = ({
     loadingDispatch,
     children,
-}: WrapContextsProps) => {
+}: PackContextProps) => {
     return (
         <LoadingDispatch value={loadingDispatch}>
             <AuthStatusServer value={info.authStatusServer}>

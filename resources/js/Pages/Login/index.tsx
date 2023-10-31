@@ -1,10 +1,10 @@
 import { GuestLayout } from '@/Auth';
 import { LoadingIcon } from '@/Components/LoadingIcon';
+import { PackContext } from '@/Pages/libraries/PackContext';
 import { Theme } from '@/settings';
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Form } from './Form';
-import { WrapContexts } from './WrapContexts';
 import { GlobalStyle } from './styling';
 
 export const Login = () => {
@@ -12,7 +12,7 @@ export const Login = () => {
     const [loading, setLoading] = useState(false);
     return (
         <ThemeProvider theme={theme}>
-            <WrapContexts loadingDispatch={setLoading}>
+            <PackContext loadingDispatch={setLoading}>
                 <GlobalStyle />
                 <GuestLayout
                     loading={
@@ -24,7 +24,7 @@ export const Login = () => {
                 >
                     <Form />
                 </GuestLayout>
-            </WrapContexts>
+            </PackContext>
         </ThemeProvider>
     );
 };

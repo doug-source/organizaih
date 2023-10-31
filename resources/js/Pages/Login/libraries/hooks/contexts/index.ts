@@ -1,9 +1,7 @@
+import { AuthStatusServerContext } from '@/Pages/libraries/contexts/AuthStatusServer';
+import { LoadingDispatchContext } from '@/Pages/libraries/contexts/LoadingDispatch';
 import { makeContextError } from '@/libraries';
 import { useContext } from 'react';
-import {
-    AuthStatusServerContext,
-    LoadingDispatchContext,
-} from '../../contexts';
 
 export const useAuthStatusServer = () => {
     return useContext(AuthStatusServerContext);
