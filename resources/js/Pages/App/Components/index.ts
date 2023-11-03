@@ -7,6 +7,7 @@ export * from './BrandItem';
 export * from './CategoryBtn';
 export * from './CategoryTools';
 export * from './CityDropdown';
+export * from './CloseDialogIcon';
 export * from './ConfigIcon';
 export * from './Confirmation';
 export * from './CustomersSales';

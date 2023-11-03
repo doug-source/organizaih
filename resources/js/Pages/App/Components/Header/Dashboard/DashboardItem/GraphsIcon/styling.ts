@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css, styled } from 'styled-components';
 import { GraphsIconItem } from './Item';
 
 export const GraphsIcon = styled(GraphsIconItem)`

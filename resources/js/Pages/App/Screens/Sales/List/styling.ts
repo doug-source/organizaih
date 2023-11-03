@@ -3,8 +3,6 @@ import { ContainerBtn_ } from '@/Pages/App/Components/LinkedButton';
 import { Tools } from '@/Pages/App/Components/Tools';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
-// import { FiltersBar_, Tools } from '../../../shared';
-// import { BtnAdd_ } from '../../../shared/Tools/AddButton/styling';
 
 export const Tools_ = styled(Tools)`
     ${({ theme }) => {

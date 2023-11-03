@@ -1,8 +1,7 @@
+import { CloseDialogIcon } from '@/Pages/App/Components/CloseDialogIcon';
 import { commafyList, remifyList } from '@/Pages/App/libraries';
-import { CloseSVG } from '@/Pages/App/libraries/icons/asynchronous';
-import { remOutput } from '@/libraries';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { fonts } from '@/settings';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
 import { css, styled } from 'styled-components';
 
 export const Dialog_ = styled.div`
@@ -54,25 +53,7 @@ export const Section_ = styled.section`
     }}
 `;
 
-type CloseDialogProps = ComponentPropsWithoutRef<'svg'> & {
-    onClose?: () => void;
-};
-
-const CloseDialogItem = ({
-    className,
-    onClose,
-    ...remain
-}: CloseDialogProps) => (
-    <Suspense>
-        <CloseSVG
-            className={className}
-            onClick={onClose}
-            {...remain}
-        />
-    </Suspense>
-);
-
-export const CloseDialog = styled(CloseDialogItem)`
+export const CloseDialog = styled(CloseDialogIcon)`
     ${({ theme }) => {
         const closeMeasure = theme.measures.dialog.close;
         return css`
