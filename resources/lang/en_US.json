@@ -158,5 +158,17 @@
     "light": "light",
     "remember-me": "remember me",
     "forgot-password": "did you forgot your password",
-    "invalid-auth": "invalid email or password"
+    "password-confirmation": "password confirmation",
+    "invalid-auth": "invalid email or password",
+    "register-account": "register a new account",
+    "new-account": "new account",
+    "register": "register",
+    "user": "user",
+    "registration-effected": "registration effected",
+    "min-letters": "letters minimum quantity: :min",
+    "min-uppercases": "uppercases minimum quantity: :min",
+    "min-lowercases": "lowercases minimum quantity: :min",
+    "min-digits": "numbers minimum quantity: :min",
+    "min-special-char": "special characteres minimum quantity: :min",
+    "pass-confirm-invalid": "password and confirmation are different"
 }

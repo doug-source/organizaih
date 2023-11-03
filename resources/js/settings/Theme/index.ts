@@ -1,18 +1,18 @@
 import { DefaultTheme } from 'styled-components';
 import { ThemeData as AppTheme } from './App';
+import { ThemeData as GateTheme } from './Gate';
 import { ThemeData as GenericTheme } from './Generic';
-import { ThemeData as LoginTheme } from './Login';
 
 const lightData = {
     ...AppTheme.light,
-    ...LoginTheme.light,
     ...GenericTheme.light,
+    ...GateTheme.light,
 };
 
 const DarkData = {
     ...AppTheme.dark,
-    ...LoginTheme.dark,
     ...GenericTheme.dark,
+    ...GateTheme.dark,
 };
 
 type ThemeBox = { light: DefaultTheme; dark: DefaultTheme };

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Response;
 
 Route::get('/', [UserController::class, 'login'])->name('login.page');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
+Route::post('/register', [UserController::class, 'register']);
 
 Route::middleware('auth')->group(function () {
     $oneYearDuration = 365 * 24 * 60 * 1;

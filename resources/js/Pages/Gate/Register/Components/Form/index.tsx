@@ -1,0 +1,131 @@
+import { Button } from '@/Pages/Gate/Components/Button';
+import { FieldError } from '@/Pages/Gate/Components/FieldError';
+import { FieldSuccess } from '@/Pages/Gate/Components/FieldSuccess';
+import { InputLabel } from '@/Pages/Gate/Components/InputLabel';
+import { Row } from '@/Pages/Gate/Components/Row';
+import { TextInput } from '@/Pages/Gate/Components/TextInput';
+import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
+import { useRegisterReducer } from '@/Pages/Gate/Register/libraries/hooks/reducers';
+import { useRegisterHandler } from '@/Pages/Gate/Register/libraries/hooks/submittions';
+import { useStatusServer } from '@/Pages/Gate/libraries/contexts/hooks';
+import { useTranslate } from '@/libraries/hooks';
+import { useState } from 'react';
+
+export const Form = () => {
+    const translate = useTranslate();
+    const [successMsg, setSuccessMsg] = useState('');
+
+    const [state, dispatch] = useRegisterReducer();
+    const [processing, registerHandler, errors] = useRegisterHandler(
+        state.name,
+        state.email,
+        state.password,
+        state.password_confirmation,
+        setSuccessMsg,
+    );
+    const { errors: serverErrors } = useStatusServer();
+    const statusError = errors.status || serverErrors.status?.shift();
+    return (
+        <form onSubmit={registerHandler}>
+            <Row $show={Boolean(statusError)}>
+                <FieldError message={statusError} />
+            </Row>
+            <Row $show={Boolean(successMsg)}>
+                <FieldSuccess message={successMsg} />
+            </Row>
+            <Row>
+                <div>
+                    <InputLabel
+                        htmlFor='name'
+                        value={translate('name', true)}
+                    />
+                    <FieldError message={errors.name} />
+                </div>
+                <TextInput
+                    id='name'
+                    name='name'
+                    value={state.name}
+                    isFocused={true}
+                    autoComplete='no'
+                    onChange={(evt) =>
+                        dispatch({
+                            type: RegisterReducerEnum.CHANGE_NAME,
+                            payload: evt.target.value,
+                        })
+                    }
+                />
+            </Row>
+            <Row>
+                <div>
+                    <InputLabel
+                        htmlFor='email'
+                        value={translate('Email', true)}
+                    />
+                    <FieldError message={errors.email} />
+                </div>
+                <TextInput
+                    id='email'
+                    type='email'
+                    name='email'
+                    value={state.email}
+                    autoComplete='no'
+                    onChange={(evt) =>
+                        dispatch({
+                            type: RegisterReducerEnum.CHANGE_EMAIL,
+                            payload: evt.target.value,
+                        })
+                    }
+                />
+            </Row>
+            <Row>
+                <div>
+                    <InputLabel
+                        htmlFor='password'
+                        value={translate('Password', true)}
+                    />
+                    <FieldError message={errors.password} />
+                </div>
+                <TextInput
+                    id='password'
+                    type='password'
+                    name='password'
+                    value={state.password}
+                    autoComplete='no'
+                    onChange={(evt) =>
+                        dispatch({
+                            type: RegisterReducerEnum.CHANGE_PASSWORD,
+                            payload: evt.target.value,
+                        })
+                    }
+                />
+            </Row>
+            <Row>
+                <div>
+                    <InputLabel
+                        htmlFor='password_confirmation'
+                        value={translate('password-confirmation', true)}
+                    />
+                    <FieldError message={errors.password_confirmation} />
+                </div>
+                <TextInput
+                    id='password_confirmation'
+                    type='password'
+                    name='password_confirmation'
+                    value={state.password_confirmation}
+                    autoComplete='no'
+                    onChange={(evt) =>
+                        dispatch({
+                            type: RegisterReducerEnum.CHANGE_PASSWORD_CONFIRMATION,
+                            payload: evt.target.value,
+                        })
+                    }
+                />
+            </Row>
+            <Button
+                type='submit'
+                disabled={processing}
+                strBtnText={translate('register', true)}
+            />
+        </form>
+    );
+};

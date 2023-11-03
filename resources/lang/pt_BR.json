@@ -158,5 +158,17 @@
     "light": "claro",
     "remember-me": "lembrar-me",
     "forgot-password": "esqueceu sua senha",
-    "invalid-auth": "e-mail ou senha estão inválidos"
+    "password-confirmation": "confirmação de senha",
+    "invalid-auth": "e-mail ou senha estão inválidos",
+    "register-account": "registrar uma nova conta",
+    "new-account": "nova conta",
+    "register": "registrar",
+    "user": "usuário",
+    "registration-effected": "registro efetivado",
+    "min-letters": "quantidade mínima de letras: :min",
+    "min-uppercases": "quantidade mínima de maiúsculas: :min",
+    "min-lowercases": "quantidade mínima de minúsculas: :min",
+    "min-digits": "quantidade mínima de números: :min",
+    "min-special-char": "quantidade mínima de caracteres especiais: :min",
+    "pass-confirm-invalid": "senha e confirmação são diferentes"
 }

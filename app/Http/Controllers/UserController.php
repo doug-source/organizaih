@@ -27,6 +27,19 @@ class UserController extends Controller
     }
 
     /**
+     * Return the user register view.
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function register()
+    {
+        return view('register.main', [
+            'registerAction' => json_encode(config('app.url_register_user')),
+            'successAction' => route('login.page')
+        ]);
+    }
+
+    /**
      * Execute the Authentication
      *
      * @param \App\Http\Requests\Auth\CheckRequest $request

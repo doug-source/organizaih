@@ -227,4 +227,9 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    /*
+    * Used to communication between api and web routes...
+    */
+    'url_register_user' => '/user'
+
 ];

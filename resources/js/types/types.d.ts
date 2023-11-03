@@ -4,6 +4,15 @@ import { FunctionComponent } from 'react';
 
 export {};
 
+type ServerInfo = {
+    action?: string;
+    status: {
+        errors: {
+            status?: [string];
+        };
+    };
+};
+
 declare global {
     interface Window {
         init: (Component: FunctionComponent<{}>) => void;
@@ -32,16 +41,11 @@ declare global {
                 sale: number;
             };
             themeKey: ThemeKey;
-            auth: {
-                action?: string;
-                status: {
-                    errors: {
-                        status?: [string];
-                    };
-                };
-            };
             apiVersion: string;
             tokenAuth: string;
+
+            auth: ServerInfo;
+            register: ServerInfo;
         };
         axios: AxiosStatic;
     }

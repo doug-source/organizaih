@@ -27,6 +27,10 @@ export const endpoints = {
     login: {
         auth: window.data.auth?.action,
     },
+    register: {
+        create: '/register',
+        store: `/api/${apiVersion}${window.data.register?.action}`,
+    },
     product: {
         list: `/api/${apiVersion}/products`,
         data: (id: number) => `/api/${apiVersion}/products/${id}`,

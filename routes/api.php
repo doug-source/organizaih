@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\ProductCategoriesResourceController;
 use App\Http\Controllers\Api\ProductsResourceController;
 use App\Http\Controllers\Api\SalesResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
+use App\Http\Controllers\Api\UsersResourceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,9 @@ use App\Http\Controllers\Api\StatesResourceController;
 Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+    $routeRegister = config('app.url_register_user');
+    Route::post($routeRegister, [UsersResourceController::class, 'store']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {

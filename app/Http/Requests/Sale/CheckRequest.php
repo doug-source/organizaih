@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Sale;
 
-use App\Http\Requests\Checker;
 use App\Http\Requests\Sale\Strategy\CheckerFactory;
 use App\Http\Requests\VerifyRequest;
 
