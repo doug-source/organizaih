@@ -3,8 +3,8 @@ import { css, styled } from 'styled-components';
 
 export const FieldError_ = styled.span`
     ${({ theme }) => {
-        const errorTheme = theme.generic.gate.fieldMessage.error;
-        const errorMeasure = theme.generic.measures.gate.fieldMessage;
+        const errorTheme = theme.gate.fieldMessage.error;
+        const errorMeasure = theme.gate.measures.fieldMessage;
         return css`
             margin-left: ${remOutput(errorMeasure.margin.left)};
             font-size: ${remOutput(errorMeasure.fontSize)};

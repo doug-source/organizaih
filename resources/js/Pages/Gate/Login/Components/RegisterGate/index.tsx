@@ -1,35 +1,20 @@
 import {
-    RegisterBtn_,
-    RegisterGateForm_,
+    RegisterGateDiv_,
     RegisterGateRow_,
 } from '@/Pages/Gate/Login/Components/RegisterGate/styling';
-import { useTokenRequest, useTranslate } from '@/libraries/hooks';
+import { Link_ } from '@/Pages/Gate/Login/styling';
+import { useTranslate } from '@/libraries/hooks';
 import { endpoints } from '@/settings';
-import { createRef } from 'react';
 
 export const RegisterGate = () => {
     const translate = useTranslate();
-    const formRef = createRef<HTMLFormElement>();
-    const csrfToken = useTokenRequest();
     return (
-        <RegisterGateForm_
-            ref={formRef}
-            action={endpoints.register.create}
-            method='POST'
-        >
-            <input
-                type='hidden'
-                name='_token'
-                value={csrfToken}
-            />
+        <RegisterGateDiv_>
             <RegisterGateRow_>
-                <RegisterBtn_
-                    as='button'
-                    type='submit'
-                >
+                <Link_ href={endpoints.register.create}>
                     {translate('register-account', true)}
-                </RegisterBtn_>
+                </Link_>
             </RegisterGateRow_>
-        </RegisterGateForm_>
+        </RegisterGateDiv_>
     );
 };

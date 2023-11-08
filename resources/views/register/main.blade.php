@@ -18,7 +18,11 @@
                         @endif
                     },
                 },
+                @if(isset($fields))
+                    fields: {!! $fields !!},
+                @endif
             },
+            googleAuthUrl: '{!! $googleAuthUrl !!}',
         };
     </script>
     @vite('resources/js/register.ts')

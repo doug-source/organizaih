@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Response;
 |
 */
 
+$registerUrl = config('app.routes.urls.register_form');
+
 Route::get('/', [UserController::class, 'login'])->name('login.page');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
-Route::post('/register', [UserController::class, 'register']);
+Route::get($registerUrl, [UserController::class, 'register']);
 
 Route::middleware('auth')->group(function () {
     $oneYearDuration = 365 * 24 * 60 * 1;
@@ -32,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/theme/{themingKey}', function ($themingKey) use ($oneYearDuration) {
         Session::put('theme', $themingKey);
         Cookie::queue('theme', $themingKey, $oneYearDuration);
-        return response('OK', 200);;
+        return response('OK', 200);
     });
 
     Route::post('/logout', [UserController::class, 'logout'])->name('logout.page');

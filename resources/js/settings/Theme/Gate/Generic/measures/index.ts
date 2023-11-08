@@ -1,6 +1,6 @@
-import { GenericThemeMeasures } from '../theme';
+import { GateGenericThemeMeasures } from '@/settings/Theme/Gate/Generic/measures/theme';
 
-export const gate: GenericThemeMeasures['gate'] = {
+export const measures: GateGenericThemeMeasures = {
     textInput: {
         borderRadius: 6,
         margin: {
@@ -21,6 +21,27 @@ export const gate: GenericThemeMeasures['gate'] = {
         lineHeight: 20,
         margin: {
             left: 8,
+        },
+    },
+    googleCredentials: {
+        row: {
+            margin: {
+                top: 8,
+            },
+            borderRadius: 8,
+            border: {
+                width: 1,
+            },
+        },
+        icon: {
+            size: 40,
+        },
+        text: {
+            font: {
+                size: 14,
+                weight: 500,
+            },
+            lineHeight: 20,
         },
     },
     guestLayout: {

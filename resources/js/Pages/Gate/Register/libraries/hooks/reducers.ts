@@ -1,10 +1,10 @@
 import { registerReducer } from '@/Pages/Gate/Register/libraries/reducer';
 import { useReducer } from 'react';
 
-export const useRegisterReducer = () => {
+export const useRegisterReducer = ({ name = '', email = '' } = {}) => {
     const [state, dispatch] = useReducer(registerReducer, {
-        name: '',
-        email: '',
+        name,
+        email,
         password: '',
         password_confirmation: '',
         errors: {},

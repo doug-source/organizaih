@@ -1,20 +1,22 @@
 import { ReactNode, createContext } from 'react';
 
-type ServerErrors = { errors: { status?: [string] } };
+type ServerStatus = {
+    errors: { status?: [string] };
+};
 
-export const StatusServerContext = createContext<ServerErrors>({
+export const StatusServerContext = createContext<ServerStatus>({
     errors: {},
 });
 
 type StatusServerProps = {
-    value: ServerErrors;
+    value: ServerStatus;
     children: ReactNode;
 };
 
 export const StatusServer = ({ value, children }: StatusServerProps) => {
-    const errors = value;
+    const status = value;
     return (
-        <StatusServerContext.Provider value={errors}>
+        <StatusServerContext.Provider value={status}>
             {children}
         </StatusServerContext.Provider>
     );

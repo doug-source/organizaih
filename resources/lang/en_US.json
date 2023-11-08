@@ -170,5 +170,8 @@
     "min-lowercases": "lowercases minimum quantity: :min",
     "min-digits": "numbers minimum quantity: :min",
     "min-special-char": "special characteres minimum quantity: :min",
-    "pass-confirm-invalid": "password and confirmation are different"
+    "pass-confirm-invalid": "password and confirmation are different",
+    "sign-in-google": "sign-in with Google",
+    "sign-up-google": "register with Google",
+    "user-already-registered": "user already registered"
 }

@@ -16,6 +16,7 @@ export const Register = () => {
             <PackContext
                 loadingDispatch={setLoading}
                 type='register-gate'
+                fields={window.data?.register?.fields}
             >
                 <GlobalStyle />
                 <GuestLayout

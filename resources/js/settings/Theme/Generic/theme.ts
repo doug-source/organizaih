@@ -10,50 +10,6 @@ export type GenericTheme = {
                 color: string;
             };
         };
-        gate: {
-            btn: {
-                bg: string;
-                boxShadow: string;
-                text: {
-                    color: string;
-                };
-                active: {
-                    boxShadow: string;
-                };
-            };
-            fieldMessage: {
-                error: {
-                    color: string;
-                };
-                success: {
-                    color: string;
-                };
-            };
-            guestLayout: {
-                container: {
-                    bg: string;
-                };
-                loginIcon: {
-                    fill: string;
-                };
-                main: {
-                    bg: string;
-                    boxShadow: string;
-                    border: {
-                        color: string;
-                    };
-                };
-            };
-            inputText: {
-                border: {
-                    color: string;
-                };
-                boxShadow: string;
-            };
-            label: {
-                color: string;
-            };
-        };
         input: {
             bg: string;
             border: {

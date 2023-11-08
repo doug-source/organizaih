@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Library\GoogleClient;
+use App\Models\User;
+use GuzzleHttp\Exception\ClientException;
 
 class UserController extends Controller
 {
@@ -19,24 +22,77 @@ class UserController extends Controller
      */
     public function login(Request $request)
     {
-        if (!Auth::check()) {
-            return view('login.auth', ['authAction' => json_encode(route('auth.user'))]);
+        $googleClient = new GoogleClient();
+        $googleClient->init();
+
+        try {
+
+            if ($googleClient->authorize($request->input('code'))) {
+                $user = new User();
+                $data = $googleClient->getData();
+                $userFound = $user->where('email', $data->email)->first();
+                if (!$userFound) {
+                    return view('login.auth', [
+                        'authAction' => json_encode(route('auth.user')),
+                        'googleAuthUrl' => $googleClient->generateAuthLink(),
+                        'authStatus' => TRUE,
+                        'authMsgStatus' => 'Usuário não registrado'
+                    ]);
+                }
+                Auth::login($userFound);
+                return redirect()->to('/');
+            }
+            if (!Auth::check()) {
+                return view('login.auth', [
+                    'authAction' => json_encode(route('auth.user')),
+                    'googleAuthUrl' => $googleClient->generateAuthLink()
+                ]);
+            }
+            $userLogged = $request->user();
+            return view('app.main', [
+                'tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken,
+            ]);
+        } catch (ClientException $th) {
+            return redirect()->to('/');
         }
-        $userLogged = $request->user();
-        return view('app.main', ['tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken]);
     }
 
     /**
      * Return the user register view.
      *
+     * @param Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function register()
+    public function register(Request $request)
     {
-        return view('register.main', [
-            'registerAction' => json_encode(config('app.url_register_user')),
-            'successAction' => route('login.page')
-        ]);
+        $googleClient = new GoogleClient(config('app.routes.urls.register_form'));
+        $googleClient->init();
+
+        $variables = [
+            'registerAction' => json_encode(config('app.routes.urls.register_user')),
+            'successAction' => route('login.page'),
+            'googleAuthUrl' => $googleClient->generateAuthLink()
+        ];
+
+        try {
+            if ($googleClient->authorize($request->input('code'))) {
+                $user = new User();
+                $data = $googleClient->getData();
+                $userFound = $user->where('email', $data->email)->first();
+                if ($userFound) {
+                    $variables['gateStatus'] = TRUE;
+                    $variables['gateMsgStatus'] = Str::of(__('user-already-registered'))->ucfirst();
+                } else {
+                    $variables['fields'] = json_encode([
+                        'email' => $data->email,
+                        'name' => $data->name
+                    ]);
+                }
+            }
+            return view('register.main', $variables);
+        } catch (ClientException $th) {
+            return redirect()->to('/');
+        }
     }
 
     /**

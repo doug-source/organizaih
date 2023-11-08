@@ -4,8 +4,8 @@ import { css, styled } from 'styled-components';
 
 export const Button_ = styled(Button)`
     ${({ theme }) => {
-        const btnTheme = theme.generic.gate.btn;
-        const btnMeasure = theme.generic.measures.gate.btn;
+        const btnTheme = theme.gate.btn;
+        const btnMeasure = theme.gate.measures.btn;
         return css`
             background: ${btnTheme.bg};
             box-shadow: ${btnTheme.boxShadow};

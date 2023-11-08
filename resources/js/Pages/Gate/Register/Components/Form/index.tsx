@@ -1,13 +1,17 @@
 import { Button } from '@/Pages/Gate/Components/Button';
 import { FieldError } from '@/Pages/Gate/Components/FieldError';
 import { FieldSuccess } from '@/Pages/Gate/Components/FieldSuccess';
+import { GoogleCredentials } from '@/Pages/Gate/Components/GoogleCredentials';
 import { InputLabel } from '@/Pages/Gate/Components/InputLabel';
 import { Row } from '@/Pages/Gate/Components/Row';
 import { TextInput } from '@/Pages/Gate/Components/TextInput';
 import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
 import { useRegisterReducer } from '@/Pages/Gate/Register/libraries/hooks/reducers';
 import { useRegisterHandler } from '@/Pages/Gate/Register/libraries/hooks/submittions';
-import { useStatusServer } from '@/Pages/Gate/libraries/contexts/hooks';
+import {
+    useRegisterFields,
+    useStatusServer,
+} from '@/Pages/Gate/libraries/contexts/hooks';
 import { useTranslate } from '@/libraries/hooks';
 import { useState } from 'react';
 
@@ -15,7 +19,10 @@ export const Form = () => {
     const translate = useTranslate();
     const [successMsg, setSuccessMsg] = useState('');
 
-    const [state, dispatch] = useRegisterReducer();
+    const { errors: serverErrors } = useStatusServer();
+    const fields = useRegisterFields();
+
+    const [state, dispatch] = useRegisterReducer(fields);
     const [processing, registerHandler, errors] = useRegisterHandler(
         state.name,
         state.email,
@@ -23,7 +30,6 @@ export const Form = () => {
         state.password_confirmation,
         setSuccessMsg,
     );
-    const { errors: serverErrors } = useStatusServer();
     const statusError = errors.status || serverErrors.status?.shift();
     return (
         <form onSubmit={registerHandler}>
@@ -121,6 +127,11 @@ export const Form = () => {
                     }
                 />
             </Row>
+            <GoogleCredentials
+                show={!fields}
+                link={window.data.googleAuthUrl ?? ''}
+                text={translate('sign-up-google', true)}
+            />
             <Button
                 type='submit'
                 disabled={processing}

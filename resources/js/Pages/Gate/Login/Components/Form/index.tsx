@@ -1,16 +1,21 @@
 import { Button } from '@/Pages/Gate/Components/Button';
 import { FieldError } from '@/Pages/Gate/Components/FieldError';
+import { GoogleCredentials } from '@/Pages/Gate/Components/GoogleCredentials';
 import { InputLabel } from '@/Pages/Gate/Components/InputLabel';
 import { Row } from '@/Pages/Gate/Components/Row';
 import { TextInput } from '@/Pages/Gate/Components/TextInput';
 import { Checkbox } from '@/Pages/Gate/Login/Components/Checkbox';
+import {
+    ForgotPasswordLink_,
+    RememberRow_,
+    ThirdRowLabel_,
+    ThirdRowText_,
+} from '@/Pages/Gate/Login/Components/Form/styling';
 import { AuthReducerEnum } from '@/Pages/Gate/Login/libraries/enums';
 import { useAuthReducer } from '@/Pages/Gate/Login/libraries/hooks/reducers';
 import { useAuthHandler } from '@/Pages/Gate/Login/libraries/hooks/submittions';
-import { Link_ } from '@/Pages/Gate/Login/styling';
 import { useStatusServer } from '@/Pages/Gate/libraries/contexts/hooks';
 import { useTranslate } from '@/libraries/hooks';
-import { RememberRow_, ThirdRowLabel_, ThirdRowText_ } from './styling';
 
 export const Form = () => {
     const translate = useTranslate();
@@ -72,6 +77,12 @@ export const Form = () => {
                     }
                 />
             </Row>
+            <Row>
+                <GoogleCredentials
+                    link={window.data.googleAuthUrl ?? ''}
+                    text={translate('sign-in-google', true)}
+                />
+            </Row>
             <RememberRow_>
                 <ThirdRowLabel_>
                     <Checkbox
@@ -90,7 +101,9 @@ export const Form = () => {
                 </ThirdRowLabel_>
             </RememberRow_>
             <Row>
-                <Link_ href='/'>{translate('forgot-password', true)}?</Link_>
+                <ForgotPasswordLink_ href='/'>
+                    {translate('forgot-password', true)}?
+                </ForgotPasswordLink_>
             </Row>
             <Button
                 type='submit'

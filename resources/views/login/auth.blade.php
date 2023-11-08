@@ -12,12 +12,13 @@
                 action: {!! $authAction !!},
                 status: {
                     errors: {
-                        @if($authStatus ?? FALSE)
+                        @if(isset($authStatus))
                             status: [ '{!! $authMsgStatus !!}' ]
                         @endif
                     },
                 },
             },
+            googleAuthUrl: '{!! $googleAuthUrl !!}',
         };
     </script>
     @vite('resources/js/login.ts')

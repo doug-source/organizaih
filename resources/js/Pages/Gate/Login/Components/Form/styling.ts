@@ -52,3 +52,9 @@ export const RegisterGateRow_ = styled(Row)`
         `;
     }}
 `;
+
+export const ForgotPasswordLink_ = styled(Link_)`
+    && {
+        text-decoration: underline;
+    }
+`;

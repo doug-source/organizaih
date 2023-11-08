@@ -9,6 +9,15 @@ export const GlobalStyle = createGlobalStyle`
                 overflow: hidden;
                 color: ${bodyTheme.color};
             }
+            a,
+            a:link,
+            a:visited,
+            a:hover,
+            a:active {
+                color: inherit;
+                text-decoration: none;
+                outline: 0;
+            }
         `;
     }}
 `;

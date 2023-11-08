@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components';
 export const Container_ = styled.div`
     ${({ theme }) => {
         const { wideScreen, mediumScreen } = theme.measures;
-        const containerTheme = theme.generic.gate.guestLayout.container;
+        const containerTheme = theme.gate.guestLayout.container;
         const {
             guestLayout: { container: containerMeasure },
-        } = theme.generic.measures.gate;
+        } = theme.gate.measures;
         return css`
             display: flex;
             padding-top: ${remOutput(containerMeasure.padding.top)};
@@ -37,10 +37,10 @@ export const LoginIconLink_ = styled.a`
 
 export const LoginIcon_ = styled(LoginIcon)`
     ${({ theme }) => {
-        const loginIconTheme = theme.generic.gate.guestLayout.loginIcon;
+        const loginIconTheme = theme.gate.guestLayout.loginIcon;
         const {
             guestLayout: { loginIcon: loginIconMeasure },
-        } = theme.generic.measures.gate;
+        } = theme.gate.measures;
         return css`
             width: ${remOutput(loginIconMeasure.size)};
             height: ${remOutput(loginIconMeasure.size)};
@@ -52,10 +52,10 @@ export const LoginIcon_ = styled(LoginIcon)`
 export const Main_ = styled.main`
     ${({ theme }) => {
         const { wideScreen, mediumScreen } = theme.measures;
-        const mainTheme = theme.generic.gate.guestLayout.main;
+        const mainTheme = theme.gate.guestLayout.main;
         const {
             guestLayout: { main: mainMeasure },
-        } = theme.generic.measures.gate;
+        } = theme.gate.measures;
         return css`
             position: relative;
             overflow: visible;

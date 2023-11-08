@@ -13,6 +13,13 @@ type ServerInfo = {
     };
 };
 
+type RegisterFields = {
+    fields?: {
+        name: string;
+        email: string;
+    };
+};
+
 declare global {
     interface Window {
         init: (Component: FunctionComponent<{}>) => void;
@@ -45,7 +52,8 @@ declare global {
             tokenAuth: string;
 
             auth: ServerInfo;
-            register: ServerInfo;
+            register: ServerInfo & RegisterFields;
+            googleAuthUrl?: string;
         };
         axios: AxiosStatic;
     }

@@ -170,5 +170,8 @@
     "min-lowercases": "quantidade mínima de minúsculas: :min",
     "min-digits": "quantidade mínima de números: :min",
     "min-special-char": "quantidade mínima de caracteres especiais: :min",
-    "pass-confirm-invalid": "senha e confirmação são diferentes"
+    "pass-confirm-invalid": "senha e confirmação são diferentes",
+    "sign-in-google": "logar com Google",
+    "sign-up-google": "registrar com Google",
+    "user-already-registered": "usuário já cadastrado"
 }

@@ -1,20 +1,24 @@
+import { ThemeData as GateGenericThemeValues } from '@/settings/Theme/Gate/Generic';
 import { ThemeData as LoginThemeValues } from './Login';
 import { ThemeData as RegisterThemeValues } from './Register';
-import { GateTheme } from './theme';
 
-const lightData: GateTheme = {
+import { GateItemTheme, GateTheme } from './theme';
+
+const lightData = {
+    ...GateGenericThemeValues.light,
     ...LoginThemeValues.light,
     ...RegisterThemeValues.light,
 };
 
-const darkData: GateTheme = {
+const darkData = {
+    ...GateGenericThemeValues.dark,
     ...LoginThemeValues.dark,
     ...RegisterThemeValues.dark,
 };
 
-export const ThemeData = {
+export const ThemeData: GateTheme = {
     light: lightData,
     dark: darkData,
 };
 
-export { type GateTheme };
+export { type GateItemTheme, type GateTheme };

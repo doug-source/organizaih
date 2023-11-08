@@ -228,8 +228,29 @@ return [
     ])->toArray(),
 
     /*
-    * Used to communication between api and web routes...
+    |--------------------------------------------------------------------------
+    | Google credentials
+    |--------------------------------------------------------------------------
+    |
+    | The google credentials used by application to sign in using user's google account info
+    |
     */
-    'url_register_user' => '/user'
+    'google' => [
+        'client' => [
+            'id' => env('GOOGLE_CLIENT_ID'),
+            'secret' => env('GOOGLE_CLIENT_SECRET')
+        ],
+    ],
+
+    /*
+    * Route's urls used to communication between api and web routes...
+    */
+    'routes' => [
+        'urls' => [
+            'register_user' => '/user',
+            'register_form' => '/register',
+            'login_form' => '/form'
+        ]
+    ],
 
 ];

@@ -30,7 +30,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-    $routeRegister = config('app.url_register_user');
+    $routeRegister = config('app.routes.urls.register_user');
     Route::post($routeRegister, [UsersResourceController::class, 'store']);
 });
 

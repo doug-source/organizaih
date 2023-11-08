@@ -1,5 +1,6 @@
 import { detachStatusServer } from '@/Pages/Gate/libraries';
 import { LoadingDispatch, StatusServer } from '@/Pages/Gate/libraries/contexts';
+import { RegisterFields } from '@/Pages/Gate/libraries/contexts/RegisterFields';
 import { TokenRequest, Translate } from '@/libraries';
 import { TranslateData } from '@/libraries/hooks';
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
@@ -13,6 +14,7 @@ const $meta: HTMLMetaElement | null = document.head.querySelector(
 
 type PackContextProps = {
     loadingDispatch: ComponentPropsWithoutRef<typeof LoadingDispatch>['value'];
+    fields: ComponentPropsWithoutRef<typeof RegisterFields>['value'];
     type: Parameters<typeof detachStatusServer>[1];
     children: ReactNode;
 };
@@ -26,6 +28,7 @@ const info = {
 
 export const PackContext = ({
     loadingDispatch,
+    fields,
     type,
     children,
 }: PackContextProps) => {
@@ -33,9 +36,11 @@ export const PackContext = ({
     return (
         <LoadingDispatch value={loadingDispatch}>
             <StatusServer value={statusServer}>
-                <TokenRequest value={info.tokenRequest}>
-                    <Translate value={info.translate}>{children}</Translate>
-                </TokenRequest>
+                <RegisterFields value={fields}>
+                    <TokenRequest value={info.tokenRequest}>
+                        <Translate value={info.translate}>{children}</Translate>
+                    </TokenRequest>
+                </RegisterFields>
             </StatusServer>
         </LoadingDispatch>
     );

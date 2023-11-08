@@ -3,14 +3,7 @@ import { Link_ } from '@/Pages/Gate/Login/styling';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
-export const RegisterGateRow_ = styled(Row)`
-    ${Link_} {
-        text-decoration: none;
-        cursor: pointer;
-    }
-`;
-
-export const RegisterGateForm_ = styled.form`
+export const RegisterGateDiv_ = styled.div`
     ${({ theme }) => {
         const rowMeasure = theme.login.measures.newAccountRow;
         return css`
@@ -24,7 +17,9 @@ export const RegisterGateForm_ = styled.form`
     }}
 `;
 
-export const RegisterBtn_ = styled(Link_)`
-    border-width: 0;
-    background-color: transparent;
+export const RegisterGateRow_ = styled(Row)`
+    ${Link_} {
+        text-decoration: none;
+        cursor: pointer;
+    }
 `;

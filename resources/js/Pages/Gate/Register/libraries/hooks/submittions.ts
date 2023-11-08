@@ -82,7 +82,9 @@ export const useRegisterHandler: RegisterHandlerFn = (
                             setSuccessMsg(
                                 `${translate('registration-effected', true)}!`,
                             );
-                            setTimeout(() => history.back(), 3000);
+                            setTimeout(() => {
+                                location.href = location.origin;
+                            }, 2500);
                             break;
                         }
                         default: {
