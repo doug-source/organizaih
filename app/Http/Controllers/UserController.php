@@ -26,21 +26,8 @@ class UserController extends Controller
         $googleClient->init();
 
         try {
-
             if ($googleClient->authorize($request->input('code'))) {
-                $user = new User();
-                $data = $googleClient->getData();
-                $userFound = $user->where('email', $data->email)->first();
-                if (!$userFound) {
-                    return view('login.auth', [
-                        'authAction' => json_encode(route('auth.user')),
-                        'googleAuthUrl' => $googleClient->generateAuthLink(),
-                        'authStatus' => TRUE,
-                        'authMsgStatus' => 'Usuário não registrado'
-                    ]);
-                }
-                Auth::login($userFound);
-                return redirect()->to('/');
+                return $this->executeGoogleLogin($googleClient);
             }
             if (!Auth::check()) {
                 return view('login.auth', [
@@ -55,6 +42,20 @@ class UserController extends Controller
         } catch (ClientException $th) {
             return redirect()->to('/');
         }
+    }
+
+    /**
+     * Search the user registered based on email provided by Google credentials
+     *
+     *
+     * @param \App\Library\GoogleClient $googleClient
+     * @return ?mixed
+     */
+    private function getGoogleUser(GoogleClient $googleClient)
+    {
+        $data = $googleClient->getData();
+        $user = new User();
+        return $user->where('email', $data->email)->first();
     }
 
     /**
@@ -76,23 +77,60 @@ class UserController extends Controller
 
         try {
             if ($googleClient->authorize($request->input('code'))) {
-                $user = new User();
-                $data = $googleClient->getData();
-                $userFound = $user->where('email', $data->email)->first();
-                if ($userFound) {
-                    $variables['gateStatus'] = TRUE;
-                    $variables['gateMsgStatus'] = Str::of(__('user-already-registered'))->ucfirst();
-                } else {
-                    $variables['fields'] = json_encode([
-                        'email' => $data->email,
-                        'name' => $data->name
-                    ]);
-                }
+                $variables = [
+                    ...$variables,
+                    ...$this->executeGoogleRegister($googleClient)
+                ];
             }
             return view('register.main', $variables);
         } catch (ClientException $th) {
             return redirect()->to('/');
         }
+    }
+
+    /**
+     * Execute the login based on Google credentials
+     *
+     * @param \App\Library\GoogleClient $googleClient
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    private function executeGoogleLogin(GoogleClient $googleClient)
+    {
+        $userFound = $this->getGoogleUser($googleClient);
+        if (!$userFound) {
+            return view('login.auth', [
+                'authAction' => json_encode(route('auth.user')),
+                'googleAuthUrl' => $googleClient->generateAuthLink(),
+                'authStatus' => TRUE,
+                'authMsgStatus' => 'Usuário não registrado'
+            ]);
+        }
+        Auth::login($userFound);
+        return redirect()->to('/');
+    }
+
+    /**
+     * Define the session's parameters used during the register and based on Google credentials
+     *
+     * @param \App\Library\GoogleClient $googleClient
+     * @return array The session's paramenters
+     */
+    private function executeGoogleRegister(GoogleClient $googleClient)
+    {
+        $userFound = $this->getGoogleUser($googleClient);;
+        if ($userFound) {
+            return [
+                'gateStatus' => TRUE,
+                'gateMsgStatus' => Str::of(__('user-already-registered'))->ucfirst()
+            ];
+        }
+        $data = $googleClient->getData();
+        return [
+            'fields' => json_encode([
+                'email' => $data->email,
+                'name' => $data->name
+            ])
+        ];
     }
 
     /**
