@@ -233,6 +233,16 @@ class UserController extends Controller
     }
 
     /**
+     * Show the "forgot password" screen
+     *
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function forgotPassword()
+    {
+        return view('auth.forgot-password');
+    }
+
+    /**
      * Execute the user logout
      */
     private function logoutUser()

@@ -20,7 +20,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer(['login.auth', 'app.main', 'register.main'], function ($view) {
+        view()->composer(['login.auth', 'app.main', 'register.main', 'auth.forgot-password'], function ($view) {
             $view->with([
                 'themeKey' => json_encode(Cookie::get('theme') ?? config('app.theming_key'))
             ]);

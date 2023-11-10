@@ -188,5 +188,10 @@
 
     "hello": "olá",
 
+    "reset-password-title": "Redefinição de senha",
+    "reset-password": "redefinir sua senha",
+    "continue": "continuar",
+    "insert-email": "insira seu e-mail",
+
     "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": "Se você está tendo dificuldades clicando no botão \":actionText\", copie e cole a URL abaixo\ndentro de seu navegador:"
 }

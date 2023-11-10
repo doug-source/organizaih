@@ -60,3 +60,5 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/email/verify/{id}/{hash}', [UserController::class, 'emailVerifyFinal'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [UserController::class, 'emailVerifyResend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::get('/forgot-password', [UserController::class, 'forgotPassword'])->middleware('guest')->name('password.request');

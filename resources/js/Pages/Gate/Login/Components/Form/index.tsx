@@ -101,7 +101,7 @@ export const Form = () => {
                 </ThirdRowLabel_>
             </RememberRow_>
             <Row>
-                <ForgotPasswordLink_ href='/'>
+                <ForgotPasswordLink_ href='/forgot-password'>
                     {translate('forgot-password', true)}?
                 </ForgotPasswordLink_>
             </Row>

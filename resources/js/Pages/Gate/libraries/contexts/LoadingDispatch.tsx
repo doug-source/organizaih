@@ -1,7 +1,7 @@
 import { Dispatch, ReactElement, SetStateAction, createContext } from 'react';
 
 type LoadingDispatchProps = {
-    value: Dispatch<SetStateAction<boolean>>;
+    value: Dispatch<SetStateAction<boolean>> | null;
     children?: ReactElement | null;
 };
 
