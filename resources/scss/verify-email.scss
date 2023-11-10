@@ -1,0 +1,81 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+}
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 0.0625rem solid black;
+    border-radius: 0.5rem;
+    max-width: 95%;
+    @media screen and (min-width: 512px) {
+        max-width: 65%;
+    }
+    @media screen and (min-width: 1024px) {
+        max-width: 40%;
+    }
+    svg {
+        position: absolute;
+        top: auto;
+        bottom: calc(100% + 1rem);
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 5rem;
+        height: 5rem;
+    }
+
+    * {
+        font-family: 'Lato', sans-serif;
+    }
+    h1 {
+        border-bottom: 0.0625rem solid black;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0.5rem;
+        text-align: center;
+    }
+    p {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+        padding-top: 0.5rem;
+        text-align: center;
+    }
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        button {
+            cursor: pointer;
+            appearance: none;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            padding-right: 1rem;
+            padding-left: 1rem;
+            box-shadow: none;
+            border-width: 0;
+            border-radius: 0.5rem;
+            background-color: #30b3ff;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            &:hover {
+                background-color: #40a5df;
+            }
+        }
+    }
+    .message {
+        padding: 0.5rem;
+        text-align: center;
+        color: #1aa606;
+    }
+}

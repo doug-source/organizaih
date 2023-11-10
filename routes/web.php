@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,4 +54,9 @@ Route::middleware('auth')->group(function () {
         $response->header('Content-Type', $type);
         return $response;
     });
+
+    Route::get('/email/verify', [UserController::class, 'emailVerify'])->name('verification.notice');
 });
+
+Route::get('/email/verify/{id}/{hash}', [UserController::class, 'emailVerifyFinal'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [UserController::class, 'emailVerifyResend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');

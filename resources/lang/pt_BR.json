@@ -173,5 +173,20 @@
     "pass-confirm-invalid": "senha e confirmação são diferentes",
     "sign-in-google": "logar com Google",
     "sign-up-google": "registrar com Google",
-    "user-already-registered": "usuário já cadastrado"
+    "user-already-registered": "usuário já cadastrado",
+
+    "verify-email-warn-title": "verifique seu email",
+    "verify-email-warn-text": "antes de continuar é preciso verificar seu e-mail, enviamos um link de ativação",
+    "verify-email-warn-text-otherwise": "se você não recebeu o email, clique no botão abaixo",
+    "verify-email-warn-text-btn": "re-enviar a ativação",
+    "verification-link-sent": "link de verificação enviado",
+
+    "confirmation-email": "confirmação de email",
+    "confirmation-email-text": "clique no botão abaixo para verificar seu endereço de email:",
+    "click-here": "clique aqui",
+    "regards": "atenciosamente",
+
+    "hello": "olá",
+
+    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\ninto your web browser:": "Se você está tendo dificuldades clicando no botão \":actionText\", copie e cole a URL abaixo\ndentro de seu navegador:"
 }

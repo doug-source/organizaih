@@ -7,6 +7,7 @@ use App\Models\AllowedRegister;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\User\CheckRequest;
+use Illuminate\Auth\Events\Registered;
 
 class UsersResourceController extends Controller
 {
@@ -18,7 +19,9 @@ class UsersResourceController extends Controller
     public function store(CheckRequest $request)
     {
         $fields = $request->only(['name', 'email', 'password']);
-        User::create($fields);
+        $user = User::create($fields);
+        event(new Registered($user));
+
         $allowed = DB::table('allowed_registers')->where('email', $request->email)->first();
         AllowedRegister::destroy($allowed->id);
 
