@@ -44,7 +44,7 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
             remember && formData.append('remember', 'on');
 
             setProcessing(true);
-            setLoading(true);
+            setLoading && setLoading(true);
             setErrors({});
 
             axios
@@ -56,12 +56,12 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
                 .then((response) => {
                     switch (response.status) {
                         case 200: {
-                            setLoading(false);
+                            setLoading && setLoading(false);
                             location.reload();
                             break;
                         }
                         default: {
-                            setLoading(false);
+                            setLoading && setLoading(false);
                             console.log(
                                 `Unexpected Success Status: ${response.status}`,
                             );
@@ -86,11 +86,11 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
                             break;
                     }
 
-                    setLoading(false);
+                    setLoading && setLoading(false);
                     setProcessing(false);
                 });
         },
-        [email, password, remember, setProcessing, setErrors],
+        [email, password, remember, setLoading, setProcessing, setErrors],
     );
 
     return [processing, handler, errors] as const;

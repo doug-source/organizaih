@@ -66,7 +66,7 @@ export const useRegisterHandler: RegisterHandlerFn = (
             formData.append('password_confirmation', password_confirmation);
 
             setProcessing(true);
-            setLoading(true);
+            setLoading && setLoading(true);
             setErrors({});
 
             axios
@@ -78,7 +78,7 @@ export const useRegisterHandler: RegisterHandlerFn = (
                 .then((response) => {
                     switch (response.status) {
                         case 200: {
-                            setLoading(false);
+                            setLoading && setLoading(false);
                             setSuccessMsg(
                                 `${translate('registration-effected', true)}!`,
                             );
@@ -88,7 +88,7 @@ export const useRegisterHandler: RegisterHandlerFn = (
                             break;
                         }
                         default: {
-                            setLoading(false);
+                            setLoading && setLoading(false);
                             console.log(
                                 `Unexpected Success Status: ${response.status}`,
                             );
@@ -112,7 +112,7 @@ export const useRegisterHandler: RegisterHandlerFn = (
                             break;
                     }
 
-                    setLoading(false);
+                    setLoading && setLoading(false);
                     setProcessing(false);
                 });
         },
