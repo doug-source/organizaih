@@ -14,7 +14,7 @@ const $meta: HTMLMetaElement | null = document.head.querySelector(
 
 type PackContextProps = {
     loadingDispatch: ComponentPropsWithoutRef<typeof LoadingDispatch>['value'];
-    fields: ComponentPropsWithoutRef<typeof RegisterFields>['value'];
+    fields?: ComponentPropsWithoutRef<typeof RegisterFields>['value'];
     type: Parameters<typeof detachStatusServer>[1];
     children: ReactNode;
 };
