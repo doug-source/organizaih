@@ -1,7 +1,9 @@
+import { AuthReducerEnum } from '@/Pages/Gate/Login/libraries/enums';
+import { useAuthReducer } from '@/Pages/Gate/Login/libraries/hooks/reducers';
 import { ErrorKeys } from '@/Pages/Gate/Login/libraries/types';
 import { handleCatchErrors } from '@/Pages/Gate/libraries';
 import { useLoadingDispatch } from '@/Pages/Gate/libraries/contexts/hooks';
-import { CatchReturn, ErrorsBox } from '@/Pages/Gate/libraries/types';
+import { CatchReturn, ThenDataReturn } from '@/Pages/Gate/libraries/types';
 import { endpoints } from '@/settings';
 import axios from 'axios';
 import { FormEvent, useCallback, useState } from 'react';
@@ -10,15 +12,16 @@ type AuthHandlerFn = (
     email: string,
     password: string,
     remember: boolean,
-) => readonly [
-    boolean,
-    (evt: FormEvent<HTMLFormElement>) => void,
-    Partial<Record<ErrorKeys, string>>,
-];
+    dispatch: ReturnType<typeof useAuthReducer>[1],
+) => readonly [boolean, (evt: FormEvent<HTMLFormElement>) => void];
 
-export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
+export const useAuthHandler: AuthHandlerFn = (
+    email,
+    password,
+    remember,
+    dispatch,
+) => {
     const [processing, setProcessing] = useState(false);
-    const [errors, setErrors] = useState<ErrorsBox<ErrorKeys>>({});
     const setLoading = useLoadingDispatch();
     const handler = useCallback(
         function (evt: FormEvent<HTMLFormElement>) {
@@ -36,16 +39,19 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
 
             setProcessing(true);
             setLoading && setLoading(true);
-            setErrors({});
+            dispatch({
+                type: AuthReducerEnum.TRIGGER_ERRORS,
+                payload: {},
+            });
 
             axios
-                .post(url, formData, {
+                .post<ThenDataReturn>(url, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 })
-                .then((response) => {
-                    switch (response.status) {
+                .then(({ status }) => {
+                    switch (status) {
                         case 200: {
                             setLoading && setLoading(false);
                             location.reload();
@@ -53,30 +59,39 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
                         }
                         default: {
                             setLoading && setLoading(false);
-                            console.log(
-                                `Unexpected Success Status: ${response.status}`,
-                            );
+                            console.log(`Unexpected Success Status: ${status}`);
+                            setProcessing(false);
                         }
                     }
-                    setProcessing(false);
                 })
                 .catch(({ response }: CatchReturn<ErrorKeys>) => {
                     switch (response.status) {
                         case 422:
                         case 403: {
-                            handleCatchErrors(response, setErrors);
+                            handleCatchErrors(response, (error) => {
+                                dispatch({
+                                    type: AuthReducerEnum.TRIGGER_ERRORS,
+                                    payload: error,
+                                });
+                            });
                             break;
                         }
                         default:
                             break;
                     }
-
                     setLoading && setLoading(false);
                     setProcessing(false);
                 });
         },
-        [email, password, remember, setLoading, setProcessing, setErrors],
+        [
+            email,
+            password,
+            remember,
+            setLoading,
+            setProcessing,
+            handleCatchErrors,
+        ],
     );
 
-    return [processing, handler, errors] as const;
+    return [processing, handler] as const;
 };

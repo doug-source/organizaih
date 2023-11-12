@@ -1,10 +1,12 @@
 import { AuthReducerEnum } from '@/Pages/Gate/Login/libraries/enums';
+import { ErrorKeys } from '@/Pages/Gate/Login/libraries/types';
+import { ErrorsBox } from '@/Pages/Gate/libraries/types';
 
 export type AuthReducerState = {
     email: string;
     password: string;
     remember: boolean;
-    errors: Partial<Record<'email' | 'password', string>>;
+    errors: ErrorsBox<ErrorKeys>;
 };
 
 namespace Payload {
@@ -49,16 +51,16 @@ export const authReducer = (
                 password: action.payload,
             };
         }
-        case AuthReducerEnum.TRIGGER_ERRORS: {
-            return {
-                ...state,
-                errors: action.payload,
-            };
-        }
         case AuthReducerEnum.CHANGE_REMEMBER: {
             return {
                 ...state,
                 remember: action.payload,
+            };
+        }
+        case AuthReducerEnum.TRIGGER_ERRORS: {
+            return {
+                ...state,
+                errors: action.payload,
             };
         }
         default: {

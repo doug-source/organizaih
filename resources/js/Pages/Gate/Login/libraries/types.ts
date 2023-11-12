@@ -1,1 +1,3 @@
-export type ErrorKeys = 'email' | 'password' | 'status';
+export type DefaultErrorKeys = 'email' | 'password';
+
+export type ErrorKeys = DefaultErrorKeys | 'status';

@@ -20,13 +20,14 @@ import { useTranslate } from '@/libraries/hooks';
 export const Form = () => {
     const translate = useTranslate();
     const [state, dispatch] = useAuthReducer();
-    const [processing, authHandler, errors] = useAuthHandler(
+    const [processing, authHandler] = useAuthHandler(
         state.email,
         state.password,
         state.remember,
+        dispatch,
     );
     const { errors: serverErrors } = useStatusServer();
-    const statusError = errors.status || serverErrors.status?.shift();
+    const statusError = state.errors.status || serverErrors.status?.shift();
     return (
         <form onSubmit={authHandler}>
             <Row $show={Boolean(statusError)}>
@@ -38,7 +39,7 @@ export const Form = () => {
                         htmlFor='email'
                         value={translate('Email', true)}
                     />
-                    <FieldError message={errors.email} />
+                    <FieldError message={state.errors.email} />
                 </div>
                 <TextInput
                     id='email'
@@ -61,7 +62,7 @@ export const Form = () => {
                         htmlFor='password'
                         value={translate('Password', true)}
                     />
-                    <FieldError message={errors.password} />
+                    <FieldError message={state.errors.password} />
                 </div>
                 <TextInput
                     id='password'
