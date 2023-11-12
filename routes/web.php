@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,17 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('logout.page');
     Route::get('/logout', [UserController::class, 'logout'])->name('log-out.page');
 
-    Route::get('/storage/app/{folder}/{filename}', function ($folder, $filename) {
-        $path = storage_path() . "/app/$folder/$filename";
-        if (!File::exists($path)) {
-            return response()->json(['message' => 'Image not found.'], 404);
-        }
-        $file = File::get($path);
-        $type = File::mimeType($path);
-        $response = Response::make($file, 200);
-        $response->header('Content-Type', $type);
-        return $response;
-    });
+    Route::get('/storage/app/{folder}/{filename}', [ImageController::class, 'find']);
 
     Route::get('/email/verify', [UserController::class, 'emailVerify'])->name('verification.notice');
 });
