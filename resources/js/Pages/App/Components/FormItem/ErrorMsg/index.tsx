@@ -10,3 +10,5 @@ export const ErrorMsg = ({ errorData }: ErrorMsgProps) => {
     }
     return <ErrorMsg_>{errorData[0]}</ErrorMsg_>;
 };
+
+export { ErrorMsg_ };

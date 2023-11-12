@@ -1,5 +1,5 @@
 import { Input_ } from '@/Components/Input';
-import { FormItem, Label_ } from '@/Pages/App/Components/FormItem';
+import { ErrorMsg_, FormItem, Label_ } from '@/Pages/App/Components/FormItem';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
@@ -15,12 +15,14 @@ export const InputNumber_ = styled(Input_)`
 
 export const FormItemPhoto_ = styled(FormItem)`
     ${({ theme }) => {
-        const formFieldMeasure = theme.measures.customer.form.base.formField;
+        const { photo: photoMeasure } =
+            theme.measures.customer.form.base.formField;
         return css`
             ${Label_} {
-                margin-left: ${remOutput(
-                    formFieldMeasure.photo.label.margin.left,
-                )};
+                margin-left: ${remOutput(photoMeasure.label.margin.left)};
+            }
+            ${ErrorMsg_} {
+                margin-left: ${remOutput(photoMeasure.error.margin.left)};
             }
         `;
     }}

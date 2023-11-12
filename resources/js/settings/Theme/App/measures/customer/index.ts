@@ -23,6 +23,11 @@ export const customer: DefaultTheme['measures']['customer'] = {
                             left: 80,
                         },
                     },
+                    error: {
+                        margin: {
+                            left: 64,
+                        },
+                    },
                 },
             },
         },

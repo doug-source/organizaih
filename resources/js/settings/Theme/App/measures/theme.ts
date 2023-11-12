@@ -141,6 +141,11 @@ export type AppThemeMeasures = {
                                 left: number;
                             };
                         };
+                        error: {
+                            margin: {
+                                left: number;
+                            };
+                        };
                     };
                 };
             };

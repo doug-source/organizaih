@@ -31,4 +31,5 @@ export const FormItem = ({
     </FormItem_>
 );
 
+export * from './ErrorMsg';
 export { FormItem_, Label_ };
