@@ -6,7 +6,13 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/js/app.ts'],
+            input: [
+                'resources/js/app.ts',
+                'resources/js/forgot-password.ts',
+                'resources/js/reset-password.ts',
+                'resources/js/login.ts',
+                'resources/js/register.ts',
+            ],
             refresh: true,
         }),
         svgr(),
