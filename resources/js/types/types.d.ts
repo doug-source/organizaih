@@ -10,6 +10,7 @@ type ServerInfo = {
         errors: {
             status?: [string];
         };
+        message: string;
     };
 };
 
@@ -18,6 +19,13 @@ type RegisterFields = {
         name: string;
         email: string;
     };
+};
+
+type ResetPasswordFields = {
+    fields?: {
+        email: string;
+    };
+    token: string;
 };
 
 declare global {
@@ -54,6 +62,8 @@ declare global {
             auth: ServerInfo;
             register: ServerInfo & RegisterFields;
             googleAuthUrl?: string;
+
+            resetPassword: ServerInfo & ResetPasswordFields;
         };
         axios: AxiosStatic;
     }

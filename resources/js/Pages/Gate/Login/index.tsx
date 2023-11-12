@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 
 export const Login = () => {
     const theme = window.data.themeKey === 'light' ? Theme.light : Theme.dark;
+    const { loadingIcon: loadingIconMeasure } = theme.gate.measures.guestLayout;
     const [loading, setLoading] = useState(false);
     return (
         <ThemeProvider theme={theme}>
@@ -22,7 +23,7 @@ export const Login = () => {
                     loading={
                         <LoadingIcon
                             show={loading}
-                            size={theme.login.measures.loadingIcon.size}
+                            size={loadingIconMeasure.size}
                         />
                     }
                 >

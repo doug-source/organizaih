@@ -2,6 +2,7 @@ import { ReactNode, createContext } from 'react';
 
 type ServerStatus = {
     errors: { status?: [string] };
+    message?: string;
 };
 
 export const StatusServerContext = createContext<ServerStatus>({

@@ -35,7 +35,7 @@ export const LightTheme: GateGenericTheme = {
             container: {
                 bg: white[6],
             },
-            loginIcon: {
+            gateIcon: {
                 fill: 'currentColor',
             },
             main: {

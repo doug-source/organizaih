@@ -26,7 +26,7 @@ export type GateGenericTheme = {
             container: {
                 bg: string;
             };
-            loginIcon: {
+            gateIcon: {
                 fill: string;
             };
             main: {

@@ -1,4 +1,9 @@
+import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
+import { useRegisterReducer } from '@/Pages/Gate/Register/libraries/hooks/reducers';
+import { ErrorKeys } from '@/Pages/Gate/Register/libraries/types';
+import { handleCatchErrors } from '@/Pages/Gate/libraries';
 import { useLoadingDispatch } from '@/Pages/Gate/libraries/contexts/hooks';
+import { CatchReturn, ThenDataReturn } from '@/Pages/Gate/libraries/types';
 import { useTranslate } from '@/libraries/hooks';
 import { endpoints } from '@/settings';
 import axios from 'axios';
@@ -10,22 +15,12 @@ import {
     useState,
 } from 'react';
 
-type ErrorKeys =
-    | 'name'
-    | 'email'
-    | 'password'
-    | 'password_confirmation'
-    | 'status';
-
-type CatchReturn = {
-    response: {
-        status: number;
-        data: {
-            errors: Record<ErrorKeys, [string]>;
-        };
-    };
-};
-type ErrorsBox = Partial<Record<ErrorKeys, string>>;
+// type ErrorKeys =
+//     | 'name'
+//     | 'email'
+//     | 'password'
+//     | 'password_confirmation'
+//     | 'status';
 
 type RegisterHandlerFn = (
     name: string,
@@ -33,11 +28,8 @@ type RegisterHandlerFn = (
     password: string,
     password_confirmation: string,
     setSuccessMsg: Dispatch<SetStateAction<string>>,
-) => readonly [
-    boolean,
-    (evt: FormEvent<HTMLFormElement>) => void,
-    Partial<Record<ErrorKeys, string>>,
-];
+    dispatch: ReturnType<typeof useRegisterReducer>[1],
+) => readonly [boolean, (evt: FormEvent<HTMLFormElement>) => void];
 
 export const useRegisterHandler: RegisterHandlerFn = (
     name,
@@ -45,16 +37,17 @@ export const useRegisterHandler: RegisterHandlerFn = (
     password,
     password_confirmation,
     setSuccessMsg,
+    dispatch,
 ) => {
     const translate = useTranslate();
     const [processing, setProcessing] = useState(false);
-    const [errors, setErrors] = useState<ErrorsBox>({});
+    // const [errors, setErrors] = useState<ErrorsBox>({});
     const setLoading = useLoadingDispatch();
     const handler = useCallback(
         function (evt: FormEvent<HTMLFormElement>) {
             evt.preventDefault();
 
-            const url = endpoints.register.store;
+            const url = endpoints.register.store();
             if (typeof url === 'undefined' || processing === true) {
                 return;
             }
@@ -67,16 +60,19 @@ export const useRegisterHandler: RegisterHandlerFn = (
 
             setProcessing(true);
             setLoading && setLoading(true);
-            setErrors({});
+            dispatch({
+                type: RegisterReducerEnum.TRIGGER_ERRORS,
+                payload: {},
+            });
 
             axios
-                .post(url, formData, {
+                .post<ThenDataReturn>(url, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
                     },
                 })
-                .then((response) => {
-                    switch (response.status) {
+                .then(({ status }) => {
+                    switch (status) {
                         case 200: {
                             setLoading && setLoading(false);
                             setSuccessMsg(
@@ -89,23 +85,20 @@ export const useRegisterHandler: RegisterHandlerFn = (
                         }
                         default: {
                             setLoading && setLoading(false);
-                            console.log(
-                                `Unexpected Success Status: ${response.status}`,
-                            );
+                            console.log(`Unexpected Success Status: ${status}`);
                         }
                     }
                 })
-                .catch(({ response }: CatchReturn) => {
+                .catch(({ response }: CatchReturn<ErrorKeys>) => {
                     switch (response.status) {
-                        case 422: {
-                            const { errors } = response.data;
-                            setErrors(
-                                Object.fromEntries(
-                                    Object.entries(errors).map(
-                                        ([key, list]) => [key, list[0]],
-                                    ),
-                                ),
-                            );
+                        case 422:
+                        case 403: {
+                            handleCatchErrors(response, (error) => {
+                                dispatch({
+                                    type: RegisterReducerEnum.TRIGGER_ERRORS,
+                                    payload: error,
+                                });
+                            });
                             break;
                         }
                         default:
@@ -121,15 +114,16 @@ export const useRegisterHandler: RegisterHandlerFn = (
             name,
             email,
             password,
+            password_confirmation,
             processing,
-            setErrors,
+            dispatch,
             setLoading,
             setProcessing,
             setSuccessMsg,
             translate,
-            setTimeout,
+            handleCatchErrors,
         ],
     );
 
-    return [processing, handler, errors] as const;
+    return [processing, handler] as const;
 };

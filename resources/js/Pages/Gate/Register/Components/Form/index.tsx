@@ -5,13 +5,11 @@ import { GoogleCredentials } from '@/Pages/Gate/Components/GoogleCredentials';
 import { InputLabel } from '@/Pages/Gate/Components/InputLabel';
 import { Row } from '@/Pages/Gate/Components/Row';
 import { TextInput } from '@/Pages/Gate/Components/TextInput';
+import { useRegisterFields } from '@/Pages/Gate/Register/libraries/contexts/hooks';
 import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
 import { useRegisterReducer } from '@/Pages/Gate/Register/libraries/hooks/reducers';
 import { useRegisterHandler } from '@/Pages/Gate/Register/libraries/hooks/submittions';
-import {
-    useRegisterFields,
-    useStatusServer,
-} from '@/Pages/Gate/libraries/contexts/hooks';
+import { useStatusServer } from '@/Pages/Gate/libraries/contexts/hooks';
 import { useTranslate } from '@/libraries/hooks';
 import { useState } from 'react';
 
@@ -23,14 +21,15 @@ export const Form = () => {
     const fields = useRegisterFields();
 
     const [state, dispatch] = useRegisterReducer(fields);
-    const [processing, registerHandler, errors] = useRegisterHandler(
+    const [processing, registerHandler] = useRegisterHandler(
         state.name,
         state.email,
         state.password,
         state.password_confirmation,
         setSuccessMsg,
+        dispatch,
     );
-    const statusError = errors.status || serverErrors.status?.shift();
+    const statusError = state.errors.status || serverErrors.status?.shift();
     return (
         <form onSubmit={registerHandler}>
             <Row $show={Boolean(statusError)}>
@@ -45,14 +44,15 @@ export const Form = () => {
                         htmlFor='name'
                         value={translate('name', true)}
                     />
-                    <FieldError message={errors.name} />
+                    <FieldError message={state.errors.name} />
                 </div>
                 <TextInput
                     id='name'
                     name='name'
                     value={state.name}
-                    isFocused={true}
+                    isFocused={!fields}
                     autoComplete='no'
+                    readOnly={Boolean(fields)}
                     onChange={(evt) =>
                         dispatch({
                             type: RegisterReducerEnum.CHANGE_NAME,
@@ -67,7 +67,7 @@ export const Form = () => {
                         htmlFor='email'
                         value={translate('Email', true)}
                     />
-                    <FieldError message={errors.email} />
+                    <FieldError message={state.errors.email} />
                 </div>
                 <TextInput
                     id='email'
@@ -75,6 +75,7 @@ export const Form = () => {
                     name='email'
                     value={state.email}
                     autoComplete='no'
+                    readOnly={Boolean(fields)}
                     onChange={(evt) =>
                         dispatch({
                             type: RegisterReducerEnum.CHANGE_EMAIL,
@@ -89,13 +90,14 @@ export const Form = () => {
                         htmlFor='password'
                         value={translate('Password', true)}
                     />
-                    <FieldError message={errors.password} />
+                    <FieldError message={state.errors.password} />
                 </div>
                 <TextInput
                     id='password'
                     type='password'
                     name='password'
                     value={state.password}
+                    isFocused={Boolean(fields)}
                     autoComplete='no'
                     onChange={(evt) =>
                         dispatch({
@@ -111,7 +113,7 @@ export const Form = () => {
                         htmlFor='password_confirmation'
                         value={translate('password-confirmation', true)}
                     />
-                    <FieldError message={errors.password_confirmation} />
+                    <FieldError message={state.errors.password_confirmation} />
                 </div>
                 <TextInput
                     id='password_confirmation'

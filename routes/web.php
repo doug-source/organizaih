@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Str;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +58,9 @@ Route::middleware('auth')->group(function () {
 Route::get('/email/verify/{id}/{hash}', [UserController::class, 'emailVerifyFinal'])->middleware(['auth', 'signed'])->name('verification.verify');
 Route::post('/email/verification-notification', [UserController::class, 'emailVerifyResend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/forgot-password', [UserController::class, 'forgotPassword'])->middleware('guest')->name('password.request');
+Route::middleware('guest')->group(function () {
+    Route::get('/forgot-password', [UserController::class, 'forgotPasswordBefore'])->name('password.request');
+    Route::post('/forgot-password', [UserController::class, 'forgotPasswordAfter'])->name('password.email');
+    Route::get('/reset-password/{token}', [UserController::class, 'resetPassword'])->name('password.reset');
+    Route::post('/reset-password', [UserController::class, 'updatePassword'])->name('password.update');
+});

@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\Cookie;
 
 class ThemeServiceProvider extends ServiceProvider
 {
+    /** @var array The key list of views */
+    private array $viewList = [
+        'login.auth',
+        'app.main',
+        'register.main',
+        'auth.forgot-password',
+        'auth.reset-password'
+    ];
+
     /**
      * Register services.
      */
@@ -20,7 +29,7 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer(['login.auth', 'app.main', 'register.main', 'auth.forgot-password'], function ($view) {
+        view()->composer($this->viewList, function ($view) {
             $view->with([
                 'themeKey' => json_encode(Cookie::get('theme') ?? config('app.theming_key'))
             ]);

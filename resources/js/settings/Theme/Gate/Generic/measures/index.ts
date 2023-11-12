@@ -56,8 +56,13 @@ export const measures: GateGenericThemeMeasures = {
                 },
             },
         },
-        loginIcon: {
+        gateIcon: {
             size: 80,
+        },
+        loadingIcon: {
+            size: 30,
+            top: 10,
+            height: '100%',
         },
         main: {
             padding: {

@@ -1,13 +1,13 @@
 import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
+import { ErrorKeys } from '@/Pages/Gate/Register/libraries/types';
+import { ErrorsBox } from '@/Pages/Gate/libraries/types';
 
 export type RegisterReducerState = {
     name: string;
     email: string;
     password: string;
     password_confirmation: string;
-    errors: Partial<
-        Record<'name' | 'email' | 'password' | 'password_confirmation', string>
-    >;
+    errors: ErrorsBox<ErrorKeys>;
 };
 
 namespace RegisterPayload {

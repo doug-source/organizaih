@@ -9,6 +9,15 @@ use Illuminate\Support\Facades\App;
 
 class LocaleServiceProvider extends ServiceProvider
 {
+    /** @var array The key list of views */
+    private array $viewList = [
+        'login.auth',
+        'app.main',
+        'register.main',
+        'auth.forgot-password',
+        'auth.reset-password'
+    ];
+
     /**
      * Define the current locale code
      *
@@ -53,7 +62,7 @@ class LocaleServiceProvider extends ServiceProvider
     {
         $localeKey = $this->filterLocale($this->pickLocale());
 
-        view()->composer(['login.auth', 'app.main', 'register.main', 'auth.forgot-password'], function ($view) use ($localeKey) {
+        view()->composer($this->viewList, function ($view) use ($localeKey) {
             $view->with([
                 'locales' => json_encode(config('app.available_locales')),
                 'localeKey' => $localeKey,

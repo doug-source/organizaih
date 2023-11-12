@@ -1,7 +1,6 @@
 import { checkbox } from './checkbox';
 import { fourthRow } from './fourthRow';
 import { link } from './link';
-import { loadingIcon } from './loadingIcon';
 import { newAccountRow } from './newAccountRow';
 import { remember } from './remember';
 import { row } from './row';
@@ -13,7 +12,6 @@ export const measures: LoginThemeMeasures = {
     checkbox,
     fourthRow,
     link,
-    loadingIcon,
     newAccountRow,
     remember,
     row,

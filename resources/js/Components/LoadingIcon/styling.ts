@@ -4,7 +4,7 @@ import { css, styled } from 'styled-components';
 
 export const LoadingIcon_ = styled(ReactLoading)`
     ${({ theme }) => {
-        const iconMeasure = theme.login.measures.loadingIcon.icon;
+        const loadingIconMeasure = theme.gate.measures.guestLayout.loadingIcon;
         const iconTheme = theme.login.loadingIcon;
         return css`
             position: absolute;
@@ -14,8 +14,8 @@ export const LoadingIcon_ = styled(ReactLoading)`
             margin-right: auto;
             svg {
                 position: absolute;
-                top: ${remOutput(iconMeasure.top)};
-                height: ${iconMeasure.height};
+                top: ${remOutput(loadingIconMeasure.top)};
+                height: ${loadingIconMeasure.height};
                 fill: ${iconTheme.fill};
             }
         `;

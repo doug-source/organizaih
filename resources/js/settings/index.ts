@@ -29,7 +29,19 @@ export const endpoints = {
     },
     register: {
         create: '/register',
-        store: `/api/${apiVersion}${window.data.register?.action}`,
+        store: () => {
+            const { action } = window.data.register;
+            if (!action) {
+                return;
+            }
+            return `/api/${apiVersion}${action}`;
+        },
+    },
+    forgotPassword: {
+        create: '/forgot-password',
+    },
+    resetPassword: {
+        update: '/reset-password',
     },
     product: {
         list: `/api/${apiVersion}/products`,
@@ -66,10 +78,10 @@ export const endpoints = {
     state: {
         list: `/api/${apiVersion}/states`,
     },
-};
+} as const;
 
 export const redirects = {
     inventory: {
         edit: (id: number) => `/inventories/${id}/edit`,
     },
-};
+} as const;

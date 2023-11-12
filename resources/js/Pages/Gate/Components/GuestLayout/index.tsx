@@ -1,5 +1,5 @@
 import { ReactNode, Suspense } from 'react';
-import { Container_, LoginIconLink_, LoginIcon_, Main_ } from './styling';
+import { Container_, GateIcon_, LoginIconLink_, Main_ } from './styling';
 
 type GuestLayoutProps = {
     loading?: ReactNode;
@@ -13,7 +13,7 @@ export const GuestLayout = ({ loading, children }: GuestLayoutProps) => {
                 <LoginIconLink_ href='/'>
                     {loading}
                     <Suspense>
-                        <LoginIcon_ />
+                        <GateIcon_ />
                     </Suspense>
                 </LoginIconLink_>
                 <Main_>{children}</Main_>

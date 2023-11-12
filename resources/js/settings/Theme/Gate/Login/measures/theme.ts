@@ -12,13 +12,6 @@ export type LoginThemeMeasures = {
         fontSize: number;
         lineHeight: number;
     };
-    loadingIcon: {
-        size: number;
-        icon: {
-            top: number;
-            height: string;
-        };
-    };
     newAccountRow: {
         margin: {
             top: number;

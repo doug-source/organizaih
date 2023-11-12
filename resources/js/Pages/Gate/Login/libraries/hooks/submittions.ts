@@ -1,19 +1,10 @@
+import { ErrorKeys } from '@/Pages/Gate/Login/libraries/types';
+import { handleCatchErrors } from '@/Pages/Gate/libraries';
 import { useLoadingDispatch } from '@/Pages/Gate/libraries/contexts/hooks';
+import { CatchReturn, ErrorsBox } from '@/Pages/Gate/libraries/types';
 import { endpoints } from '@/settings';
 import axios from 'axios';
 import { FormEvent, useCallback, useState } from 'react';
-
-type ErrorKeys = 'email' | 'password' | 'status';
-
-type CatchReturn = {
-    response: {
-        status: number;
-        data: {
-            errors: Record<ErrorKeys, [string]>;
-        };
-    };
-};
-type ErrorsBox = Partial<Record<ErrorKeys, string>>;
 
 type AuthHandlerFn = (
     email: string,
@@ -27,7 +18,7 @@ type AuthHandlerFn = (
 
 export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
     const [processing, setProcessing] = useState(false);
-    const [errors, setErrors] = useState<ErrorsBox>({});
+    const [errors, setErrors] = useState<ErrorsBox<ErrorKeys>>({});
     const setLoading = useLoadingDispatch();
     const handler = useCallback(
         function (evt: FormEvent<HTMLFormElement>) {
@@ -69,17 +60,11 @@ export const useAuthHandler: AuthHandlerFn = (email, password, remember) => {
                     }
                     setProcessing(false);
                 })
-                .catch(({ response }: CatchReturn) => {
+                .catch(({ response }: CatchReturn<ErrorKeys>) => {
                     switch (response.status) {
-                        case 422: {
-                            const { errors } = response.data;
-                            setErrors(
-                                Object.fromEntries(
-                                    Object.entries(errors).map(
-                                        ([key, list]) => [key, list[0]],
-                                    ),
-                                ),
-                            );
+                        case 422:
+                        case 403: {
+                            handleCatchErrors(response, setErrors);
                             break;
                         }
                         default:

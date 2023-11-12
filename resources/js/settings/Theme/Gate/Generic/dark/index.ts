@@ -36,7 +36,7 @@ export const DarkTheme: GateGenericTheme = {
             container: {
                 bg: black[6],
             },
-            loginIcon: {
+            gateIcon: {
                 fill: 'currentColor',
             },
             main: {

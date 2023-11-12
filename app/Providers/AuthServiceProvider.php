@@ -4,10 +4,13 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Str;
 use Illuminate\Support\HtmlString;
+use Illuminate\Auth\Notifications\{
+    ResetPassword,
+    VerifyEmail
+};
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,16 +29,33 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        VerifyEmail::toMailUsing(function (object $notifiable, string $url) {
+        $lastLine = Str::of(__('regards'))->ucfirst();
+        $app = config('app.name');
+
+        VerifyEmail::toMailUsing(function (object $notifiable, string $url) use ($lastLine, $app) {
             $greeting = Str::of(__('hello'))->ucfirst() . ", {$notifiable->name}";
-            $lastLine = Str::of(__('regards'))->ucfirst();
-            $app = config('app.name');
 
             return (new MailMessage)
                 ->greeting($greeting)
                 ->subject(Str::of(__('confirmation-email'))->ucfirst())
                 ->line(Str::of(__('confirmation-email-text'))->ucfirst())
                 ->action(Str::of(__('click-here'))->ucfirst(), $url)
+                ->salutation(new HtmlString("$lastLine, <br><br>{$app}"));
+        });
+
+        ResetPassword::toMailUsing(function (object $notifiable, string $url) use ($lastLine, $app) {
+            $greeting = Str::of(__('hello'))->ucfirst() . ", {$notifiable->name}";
+            $expireLine = Str::of(__('forgot-password-expire-line', [
+                'time' => config('auth.passwords.users.expire')
+            ]))->ucfirst();
+            $otherwiseLine = Str::of(__('forgot-password-otherwise-line'))->ucfirst();
+
+            return (new MailMessage)
+                ->greeting($greeting)
+                ->subject(Str::of(__('forgot-password-title'))->ucfirst())
+                ->line(Str::of(__('forgot-password-text'))->ucfirst())
+                ->action(Str::of(__('forgot-password-action'))->ucfirst(), $url)
+                ->line(new HtmlString("$expireLine<br><br>$otherwiseLine"))
                 ->salutation(new HtmlString("$lastLine, <br><br>{$app}"));
         });
     }

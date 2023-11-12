@@ -1,5 +1,6 @@
 import { ThemeData as ForgotPasswordThemeValues } from '@/settings/Theme/Gate/ForgotPassword';
 import { ThemeData as GateGenericThemeValues } from '@/settings/Theme/Gate/Generic';
+import { ThemeData as ResetPasswordThemeValues } from '@/settings/Theme/Gate/ResetPassword';
 import { ThemeData as LoginThemeValues } from './Login';
 import { ThemeData as RegisterThemeValues } from './Register';
 
@@ -10,6 +11,7 @@ const lightData = {
     ...LoginThemeValues.light,
     ...RegisterThemeValues.light,
     ...ForgotPasswordThemeValues.light,
+    ...ResetPasswordThemeValues.light,
 };
 
 const darkData = {
@@ -17,6 +19,7 @@ const darkData = {
     ...LoginThemeValues.dark,
     ...RegisterThemeValues.dark,
     ...ForgotPasswordThemeValues.dark,
+    ...ResetPasswordThemeValues.dark,
 };
 
 export const ThemeData: GateTheme = {

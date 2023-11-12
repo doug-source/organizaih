@@ -49,8 +49,13 @@ export type GateGenericThemeMeasures = {
                 };
             };
         };
-        loginIcon: {
+        gateIcon: {
             size: number;
+        };
+        loadingIcon: {
+            size: number;
+            top: number;
+            height: string;
         };
         main: {
             padding: {

@@ -1,4 +1,4 @@
-import { LoginIcon, remOutput } from '@/libraries';
+import { GateIcon, remOutput } from '@/libraries';
 import styled, { css } from 'styled-components';
 
 export const Container_ = styled.div`
@@ -35,16 +35,14 @@ export const LoginIconLink_ = styled.a`
     position: relative;
 `;
 
-export const LoginIcon_ = styled(LoginIcon)`
+export const GateIcon_ = styled(GateIcon)`
     ${({ theme }) => {
-        const loginIconTheme = theme.gate.guestLayout.loginIcon;
-        const {
-            guestLayout: { loginIcon: loginIconMeasure },
-        } = theme.gate.measures;
+        const gateIconTheme = theme.gate.guestLayout.gateIcon;
+        const gateIconMeasure = theme.gate.measures.guestLayout.gateIcon;
         return css`
-            width: ${remOutput(loginIconMeasure.size)};
-            height: ${remOutput(loginIconMeasure.size)};
-            fill: ${loginIconTheme.fill};
+            width: ${remOutput(gateIconMeasure.size)};
+            height: ${remOutput(gateIconMeasure.size)};
+            fill: ${gateIconTheme.fill};
         `;
     }}
 `;
