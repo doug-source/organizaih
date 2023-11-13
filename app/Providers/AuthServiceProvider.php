@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
                 ->salutation(new HtmlString("$lastLine, <br><br>{$app}"));
         });
 
-        ResetPassword::toMailUsing(function (object $notifiable, string $url) use ($lastLine, $app) {
+        ResetPassword::toMailUsing(function (object $notifiable, string $token) use ($lastLine, $app) {
             $greeting = Str::of(__('hello'))->ucfirst() . ", {$notifiable->name}";
             $expireLine = Str::of(__('forgot-password-expire-line', [
                 'time' => config('auth.passwords.users.expire')
@@ -54,7 +54,13 @@ class AuthServiceProvider extends ServiceProvider
                 ->greeting($greeting)
                 ->subject(Str::of(__('forgot-password-title'))->ucfirst())
                 ->line(Str::of(__('forgot-password-text'))->ucfirst())
-                ->action(Str::of(__('forgot-password-action'))->ucfirst(), $url)
+                ->action(
+                    Str::of(__('forgot-password-action'))->ucfirst(),
+                    url(config('app.url') . route('password.reset', [
+                        'token' => $token,
+                        'email' => $notifiable->email
+                    ], false))
+                )
                 ->line(new HtmlString("$expireLine<br><br>$otherwiseLine"))
                 ->salutation(new HtmlString("$lastLine, <br><br>{$app}"));
         });
