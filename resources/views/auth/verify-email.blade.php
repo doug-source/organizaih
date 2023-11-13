@@ -9,7 +9,7 @@
 
 @section('body')
     <main>
-        @svg('LoginIcon.svg')
+        @svg('GateIcon.svg')
 
         <h1>{{ $title }}</h1>
         <p>
