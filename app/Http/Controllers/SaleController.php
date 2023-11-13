@@ -473,7 +473,7 @@ class SaleController
         if ($dtEnd) {
             $whereClauses[] = ['sales.created_at', '<=', "$dtEnd 23:59:59"];
         }
-        $query = $query->select($fields)->where($whereClauses)->groupBy('id');
+        $query = $query->select($fields)->where($whereClauses);
 
         if ($pagination) {
             return $query->paginate($perPage);
