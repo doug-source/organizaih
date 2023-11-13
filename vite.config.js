@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/js/reset-password.ts',
                 'resources/js/login.ts',
                 'resources/js/register.ts',
+                'resources/scss/verify-email.scss',
             ],
             refresh: true,
         }),
