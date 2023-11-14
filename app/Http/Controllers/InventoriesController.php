@@ -222,7 +222,7 @@ class InventoriesController
             ])
             ->orderBy('inventories.created_at')
             ->groupBy([
-                'id', 'qty', 'cost', 'productID', 'productName', 'productPhoto'
+                'id', 'qty', 'cost', 'productID', 'productName', 'productPhoto', 'created_at'
             ]);
 
         if (count($productListID) > 0) {
