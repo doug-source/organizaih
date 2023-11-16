@@ -56,9 +56,11 @@ export const useProductFormInit = (
     return useCallback(
         (product: IProduct) => {
             let payload = product;
+            const productName = selections.products.name || product.name;
             if (selections.products.category !== null) {
                 payload = {
                     ...product,
+                    name: productName,
                     category: selections.products.category,
                 };
             }

@@ -18,6 +18,7 @@ import {
     ProductRoutes,
     SaleRoutes,
 } from '@/Pages/App/routes';
+import { makeEmptySelections } from '@/Pages/App/settings';
 import {
     ContainerFluid_,
     GlobalStyle,
@@ -40,22 +41,7 @@ export const App = () => {
         windowWidth: null,
         windowHeight: null,
         error: null,
-        selections: {
-            target: null,
-            action: null,
-            sales: {
-                customer: null,
-                product: null,
-                salesToSave: [],
-            },
-            inventories: {
-                product: null,
-                inventoriesToSave: [],
-            },
-            products: {
-                category: null,
-            },
-        },
+        selections: makeEmptySelections(),
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
     });
     useConnectionChecker(dispatch);

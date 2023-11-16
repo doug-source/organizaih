@@ -5,10 +5,10 @@ import { dettachCategoryName } from '@/Pages/App/Screens/Product/Form/Base/libra
 import {
     makeCatSelectionClick,
     makeDescriptionChange,
-    makeNameChange,
     makeObsChange,
     makeProfilePhotoChange,
 } from '@/Pages/App/Screens/Product/Form/Base/libraries/handlers';
+import { useProductNameHandler } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks';
 import { useProductSubmit } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks/submittions';
 import {
     CategoryContainer_,
@@ -49,6 +49,7 @@ const Base = (props: BaseProps) => {
         inputFile,
         setErrors,
     );
+    const productNameHandler = useProductNameHandler(dispatch);
 
     return (
         <DefaultForm
@@ -78,7 +79,7 @@ const Base = (props: BaseProps) => {
                     name='name'
                     value={product.name}
                     maxLength={columnSizeDB.product}
-                    onChange={makeNameChange(dispatch)}
+                    onChange={productNameHandler}
                     required
                 />
             </FormItem>

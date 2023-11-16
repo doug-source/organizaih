@@ -79,6 +79,13 @@ export namespace DataPayload {
             value: ICustomerListData | null;
         };
     };
+    type SelectionProductName = {
+        type: DataReducerEnum.SELECTION_PRODUCT_NAME;
+        payload: {
+            key: (typeof productCategoryTargets)[number];
+            value: string;
+        };
+    };
     export type Skeleton =
         | Title
         | Error
@@ -88,6 +95,7 @@ export namespace DataPayload {
         | SelectionClear
         | SelectionProduct
         | SelectionProductCategory
+        | SelectionProductName
         | SelectionSalesSavedItemAddAll
         | SelectionInventoriesSavedItemAddAll
         | WindowResize

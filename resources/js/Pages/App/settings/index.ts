@@ -4,6 +4,7 @@ import {
     productCategoryTargets,
     productTargets,
 } from '@/Pages/App/libraries/types/state';
+import { DataReducerState } from '@/Pages/App/libraries/types/state/data';
 import { DefaultTheme } from 'styled-components';
 
 type SelectionTargetsProps = {
@@ -53,22 +54,24 @@ export const columnScaleDB = {
     sale: columnScaleRef.sale,
 };
 
-export const makeEmptySelections = () => ({
-    target: null,
-    action: null,
-    sales: {
-        customer: null,
-        product: null,
-        salesToSave: [],
-    },
-    inventories: {
-        product: null,
-        inventoriesToSave: [],
-    },
-    products: {
-        category: null,
-    },
-});
+export const makeEmptySelections: () => DataReducerState['selections'] =
+    () => ({
+        target: null,
+        action: null,
+        sales: {
+            customer: null,
+            product: null,
+            salesToSave: [],
+        },
+        inventories: {
+            product: null,
+            inventoriesToSave: [],
+        },
+        products: {
+            name: '',
+            category: null,
+        },
+    });
 
 export const makeEmptyProduct = () => ({
     id: 0,

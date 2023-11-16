@@ -20,17 +20,6 @@ export const makeProfilePhotoChange = (dispatch: DispatchFn) => {
     };
 };
 
-export const makeNameChange = (
-    dispatch: DispatchFn,
-): ChangeEventHandler<HTMLInputElement> => {
-    return (evt) => {
-        dispatch({
-            type: ProductReducerEnum.CHANGE_PRODUCT,
-            payload: { field: 'name', value: evt.target.value },
-        });
-    };
-};
-
 export const makeCatSelectionClick = (appDispatch: AppDispatchFn) => {
     return () => {
         appDispatch({

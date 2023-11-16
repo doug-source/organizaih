@@ -13,6 +13,7 @@ export const enum DataReducerEnum {
     SELECTION_CUSTOMER = 'selection-customer',
     SELECTION_PRODUCT = 'selection-product',
     SELECTION_PRODUCT_CATEGORY = 'selection-product-category',
+    SELECTION_PRODUCT_NAME = 'selection-product-name',
 
     SELECTION_SALES_SAVED_ITEM_ADD_ALL = 'selection-sales-saved-item-add-all',
     SELECTION_INVENTORIES_SAVED_ITEM_ADD_ALL = 'selection-inventories-saved-item-add-all',

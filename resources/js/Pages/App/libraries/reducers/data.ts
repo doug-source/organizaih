@@ -1,5 +1,6 @@
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
-import { DataPayload, DataReducerState } from '@/Pages/App/libraries/types';
+import { DataPayload } from '@/Pages/App/libraries/types';
+import { DataReducerState } from '@/Pages/App/libraries/types/state/data';
 import { makeEmptySelections } from '@/Pages/App/settings';
 import { Theme } from '@/settings';
 
@@ -98,6 +99,19 @@ export const dataReducer = (
                     [keyList]: {
                         ...state.selections[keyList],
                         category: action.payload.value,
+                    },
+                },
+            };
+        }
+        case DataReducerEnum.SELECTION_PRODUCT_NAME: {
+            const keyList = action.payload.key;
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    [keyList]: {
+                        ...state.selections[keyList],
+                        name: action.payload.value,
                     },
                 },
             };
