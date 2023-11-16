@@ -3,7 +3,7 @@ import { ProductReducerEnum } from '@/Pages/App/Screens/Product/Form/libraries/e
 import { useProductDispatch } from '@/Pages/App/Screens/Product/Form/libraries/hooks';
 import { AppDispatchFn } from '@/Pages/App/Screens/Product/List/libraries';
 import { DataReducerEnum } from '@/Pages/App/libraries';
-import { ChangeEventHandler, ComponentPropsWithRef } from 'react';
+import { ComponentPropsWithRef } from 'react';
 
 type ValueArg = Parameters<
     Required<ComponentPropsWithRef<typeof ProfilePhotoInput>>['onChange']
@@ -29,17 +29,6 @@ export const makeCatSelectionClick = (appDispatch: AppDispatchFn) => {
         appDispatch({
             type: DataReducerEnum.SELECTION_TARGET,
             payload: 'products',
-        });
-    };
-};
-
-export const makeObsChange = (
-    dispatch: DispatchFn,
-): ChangeEventHandler<HTMLTextAreaElement> => {
-    return (evt) => {
-        dispatch({
-            type: ProductReducerEnum.CHANGE_PRODUCT,
-            payload: { field: 'obs', value: evt.target.value },
         });
     };
 };

@@ -32,6 +32,7 @@ export type ReducerSelectionsInventories = {
 export type ReducerSelectionsProducts = {
     name: string;
     description: string;
+    obs: string;
     category: IProductCategory | null;
 };
 

@@ -53,3 +53,26 @@ export const useProductDescriptionHandler = (
         [dispatch, appDispatch],
     );
 };
+
+export const useProductObsHandler = (
+    dispatch: DispathFn,
+): ChangeEventHandler<HTMLTextAreaElement> => {
+    const appDispatch = useAppDispatch();
+    return useCallback(
+        (evt) => {
+            const obsValue = evt.target.value;
+            dispatch({
+                type: ProductReducerEnum.CHANGE_PRODUCT,
+                payload: { field: 'obs', value: evt.target.value },
+            });
+            appDispatch({
+                type: DataReducerEnum.SELECTION_PRODUCT_OBS,
+                payload: {
+                    key: 'products',
+                    value: obsValue,
+                },
+            });
+        },
+        [dispatch],
+    );
+};

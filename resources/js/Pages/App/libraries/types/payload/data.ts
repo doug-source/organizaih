@@ -82,7 +82,8 @@ export namespace DataPayload {
     type SelectionProductProperty = {
         type:
             | DataReducerEnum.SELECTION_PRODUCT_NAME
-            | DataReducerEnum.SELECTION_PRODUCT_DESCRIPTION;
+            | DataReducerEnum.SELECTION_PRODUCT_DESCRIPTION
+            | DataReducerEnum.SELECTION_PRODUCT_OBS;
         payload: {
             key: (typeof productCategoryTargets)[number];
             value: string;

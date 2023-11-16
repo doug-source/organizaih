@@ -4,12 +4,12 @@ import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { dettachCategoryName } from '@/Pages/App/Screens/Product/Form/Base/libraries';
 import {
     makeCatSelectionClick,
-    makeObsChange,
     makeProfilePhotoChange,
 } from '@/Pages/App/Screens/Product/Form/Base/libraries/handlers';
 import {
     useProductDescriptionHandler,
     useProductNameHandler,
+    useProductObsHandler,
 } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks';
 import { useProductSubmit } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks/submittions';
 import {
@@ -53,6 +53,7 @@ const Base = (props: BaseProps) => {
     );
     const productNameHandler = useProductNameHandler(dispatch);
     const productDescriptionHandler = useProductDescriptionHandler(dispatch);
+    const productObsHandler = useProductObsHandler(dispatch);
 
     return (
         <DefaultForm
@@ -133,7 +134,7 @@ const Base = (props: BaseProps) => {
                     value={product.obs ?? ''}
                     name='obs'
                     maxLength={columnSizeDB.productObs}
-                    onChange={makeObsChange(dispatch)}
+                    onChange={productObsHandler}
                 />
             </FormItem>
         </DefaultForm>

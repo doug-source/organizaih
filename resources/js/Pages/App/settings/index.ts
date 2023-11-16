@@ -70,6 +70,7 @@ export const makeEmptySelections: () => DataReducerState['selections'] =
         products: {
             name: '',
             description: '',
+            obs: '',
             category: null,
         },
     });

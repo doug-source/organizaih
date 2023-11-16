@@ -76,11 +76,13 @@ export const useProductFormInit = (
                 selections,
                 product,
             );
+            const productObs = detachProductValue('obs', selections, product);
             if (selections.products.category !== null) {
                 payload = {
                     ...product,
                     name: productName,
                     description: productDescription,
+                    obs: productObs,
                     category: selections.products.category,
                 };
             }
