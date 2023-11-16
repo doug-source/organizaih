@@ -79,8 +79,10 @@ export namespace DataPayload {
             value: ICustomerListData | null;
         };
     };
-    type SelectionProductName = {
-        type: DataReducerEnum.SELECTION_PRODUCT_NAME;
+    type SelectionProductProperty = {
+        type:
+            | DataReducerEnum.SELECTION_PRODUCT_NAME
+            | DataReducerEnum.SELECTION_PRODUCT_DESCRIPTION;
         payload: {
             key: (typeof productCategoryTargets)[number];
             value: string;
@@ -95,7 +97,7 @@ export namespace DataPayload {
         | SelectionClear
         | SelectionProduct
         | SelectionProductCategory
-        | SelectionProductName
+        | SelectionProductProperty
         | SelectionSalesSavedItemAddAll
         | SelectionInventoriesSavedItemAddAll
         | WindowResize

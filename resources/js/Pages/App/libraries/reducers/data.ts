@@ -116,6 +116,19 @@ export const dataReducer = (
                 },
             };
         }
+        case DataReducerEnum.SELECTION_PRODUCT_DESCRIPTION: {
+            const keyList = action.payload.key;
+            return {
+                ...state,
+                selections: {
+                    ...state.selections,
+                    [keyList]: {
+                        ...state.selections[keyList],
+                        description: action.payload.value,
+                    },
+                },
+            };
+        }
         case DataReducerEnum.SELECTION_SALES_SAVED_ITEM_ADD_ALL: {
             return {
                 ...state,

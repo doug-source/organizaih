@@ -33,20 +33,6 @@ export const makeCatSelectionClick = (appDispatch: AppDispatchFn) => {
     };
 };
 
-export const makeDescriptionChange = (
-    dispatch: DispatchFn,
-): ChangeEventHandler<HTMLTextAreaElement> => {
-    return (evt) => {
-        dispatch({
-            type: ProductReducerEnum.CHANGE_PRODUCT,
-            payload: {
-                field: 'description',
-                value: evt.target.value,
-            },
-        });
-    };
-};
-
 export const makeObsChange = (
     dispatch: DispatchFn,
 ): ChangeEventHandler<HTMLTextAreaElement> => {

@@ -6,8 +6,10 @@ import { ChangeEventHandler, useCallback } from 'react';
 
 export * from './submittions';
 
+type DispathFn = ReturnType<typeof useProductDispatch>;
+
 export const useProductNameHandler = (
-    dispatch: ReturnType<typeof useProductDispatch>,
+    dispatch: DispathFn,
 ): ChangeEventHandler<HTMLInputElement> => {
     const appDispatch = useAppDispatch();
     return useCallback(
@@ -22,6 +24,29 @@ export const useProductNameHandler = (
                 payload: {
                     key: 'products',
                     value: nameValue,
+                },
+            });
+        },
+        [dispatch, appDispatch],
+    );
+};
+
+export const useProductDescriptionHandler = (
+    dispatch: DispathFn,
+): ChangeEventHandler<HTMLTextAreaElement> => {
+    const appDispatch = useAppDispatch();
+    return useCallback(
+        (evt) => {
+            const descriptionValue = evt.target.value;
+            dispatch({
+                type: ProductReducerEnum.CHANGE_PRODUCT,
+                payload: { field: 'description', value: evt.target.value },
+            });
+            appDispatch({
+                type: DataReducerEnum.SELECTION_PRODUCT_DESCRIPTION,
+                payload: {
+                    key: 'products',
+                    value: descriptionValue,
                 },
             });
         },

@@ -69,6 +69,7 @@ export const makeEmptySelections: () => DataReducerState['selections'] =
         },
         products: {
             name: '',
+            description: '',
             category: null,
         },
     });

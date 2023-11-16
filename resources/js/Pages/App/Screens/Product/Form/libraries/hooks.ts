@@ -49,6 +49,20 @@ export const useProductFormErrors = () => {
     return [errors, setErrors] as const;
 };
 
+type ReducerSelections = ReturnType<typeof useSelections>;
+type Fields = Exclude<
+    keyof ReducerSelections['products'] & keyof IProduct,
+    'category'
+>;
+
+const detachProductValue = (
+    field: Fields,
+    selections: ReducerSelections,
+    product: IProduct,
+) => {
+    return selections.products[field] || product[field];
+};
+
 export const useProductFormInit = (
     dispatch: Dispatch<Parameters<typeof productReducer>[1]>,
 ) => {
@@ -56,11 +70,17 @@ export const useProductFormInit = (
     return useCallback(
         (product: IProduct) => {
             let payload = product;
-            const productName = selections.products.name || product.name;
+            const productName = detachProductValue('name', selections, product);
+            const productDescription = detachProductValue(
+                'description',
+                selections,
+                product,
+            );
             if (selections.products.category !== null) {
                 payload = {
                     ...product,
                     name: productName,
+                    description: productDescription,
                     category: selections.products.category,
                 };
             }

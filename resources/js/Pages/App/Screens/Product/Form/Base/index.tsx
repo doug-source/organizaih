@@ -4,11 +4,13 @@ import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
 import { dettachCategoryName } from '@/Pages/App/Screens/Product/Form/Base/libraries';
 import {
     makeCatSelectionClick,
-    makeDescriptionChange,
     makeObsChange,
     makeProfilePhotoChange,
 } from '@/Pages/App/Screens/Product/Form/Base/libraries/handlers';
-import { useProductNameHandler } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks';
+import {
+    useProductDescriptionHandler,
+    useProductNameHandler,
+} from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks';
 import { useProductSubmit } from '@/Pages/App/Screens/Product/Form/Base/libraries/hooks/submittions';
 import {
     CategoryContainer_,
@@ -50,6 +52,7 @@ const Base = (props: BaseProps) => {
         setErrors,
     );
     const productNameHandler = useProductNameHandler(dispatch);
+    const productDescriptionHandler = useProductDescriptionHandler(dispatch);
 
     return (
         <DefaultForm
@@ -115,7 +118,7 @@ const Base = (props: BaseProps) => {
                     value={product.description ?? ''}
                     name='description'
                     maxLength={columnSizeDB.productDescription}
-                    onChange={makeDescriptionChange(dispatch)}
+                    onChange={productDescriptionHandler}
                 />
             </FormItem>
             <FormItem
