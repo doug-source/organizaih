@@ -84,7 +84,7 @@ const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
 };
 
 const useProductEndpoint = (productInput: IProduct) => {
-    const [endpoint, setEndpoint] = useState(endpoints.product.store);
+    const [endpoint, setEndpoint] = useState<string>(endpoints.product.store);
     useEffect(() => {
         if (productInput.id) {
             // edit
