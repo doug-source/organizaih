@@ -8,7 +8,7 @@ import { ProductReducerEnum } from '@/Pages/App/Screens/Product/Form/libraries/e
 import { productReducer } from '@/Pages/App/Screens/Product/Form/libraries/reducers';
 import { IProduct } from '@/Pages/App/Screens/Product/types';
 import { ErrorsType } from '@/Pages/App/Screens/types';
-import { useSelections } from '@/Pages/App/libraries';
+import { usePhotoFile, useSelections } from '@/Pages/App/libraries/hooks';
 import { makeContextError } from '@/libraries';
 import { Dispatch, useCallback, useContext, useState } from 'react';
 
@@ -67,27 +67,25 @@ export const useProductFormInit = (
     dispatch: Dispatch<Parameters<typeof productReducer>[1]>,
 ) => {
     const selections = useSelections();
+    const photoFile = usePhotoFile();
     return useCallback(
         (product: IProduct) => {
-            let payload = product;
-            const productName = detachProductValue('name', selections, product);
-            const productDescription = detachProductValue(
-                'description',
-                selections,
-                product,
-            );
-            const productObs = detachProductValue('obs', selections, product);
-            if (selections.products.category !== null) {
-                payload = {
+            dispatch({
+                type: ProductReducerEnum.CHANGE_PRODUCT_ALL,
+                payload: {
                     ...product,
-                    name: productName,
-                    description: productDescription,
-                    obs: productObs,
-                    category: selections.products.category,
-                };
-            }
-            dispatch({ type: ProductReducerEnum.CHANGE_PRODUCT_ALL, payload });
+                    name: detachProductValue('name', selections, product),
+                    description: detachProductValue(
+                        'description',
+                        selections,
+                        product,
+                    ),
+                    obs: detachProductValue('obs', selections, product),
+                    photoChosen: photoFile?.name ?? product.photoChosen,
+                    category: selections.products.category ?? product.category,
+                },
+            });
         },
-        [dispatch, selections.products.category],
+        [dispatch, selections.products.category, photoFile],
     );
 };

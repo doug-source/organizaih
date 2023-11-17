@@ -12,11 +12,14 @@ export const PhotoPreview_ = styled.div`
             margin-right: ${remOutput(previewMeasure.marginRight)};
             position: absolute;
             top: 0;
+            bottom: 0;
 
             svg {
                 width: ${remOutput(previewMeasure.svg.width)};
                 height: ${remOutput(previewMeasure.svg.height)};
-                fill: ${previewTheme.personCircle.fill};
+                > * {
+                    fill: ${previewTheme.svg.fill};
+                }
             }
         `;
     }}

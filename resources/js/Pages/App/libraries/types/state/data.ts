@@ -51,5 +51,6 @@ export type DataReducerState = {
     windowHeight: number | null;
     error: (object & { customMessage?: [string] }) | null;
     selections: ReducerSelections;
+    photo?: File;
     theme: DefaultTheme;
 };

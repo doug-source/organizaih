@@ -5,9 +5,11 @@ import { AppDispatchFn } from '@/Pages/App/Screens/Product/List/libraries';
 import { DataReducerEnum } from '@/Pages/App/libraries';
 import { ComponentPropsWithRef } from 'react';
 
-type ValueArg = Parameters<
+type ChangeArgs = Parameters<
     Required<ComponentPropsWithRef<typeof ProfilePhotoInput>>['onChange']
->[0];
+>;
+
+type ValueArg = ChangeArgs[0];
 
 type DispatchFn = ReturnType<typeof useProductDispatch>;
 

@@ -799,6 +799,11 @@ export type AppTheme = {
             };
         };
     };
+    photoFile: {
+        icon: {
+            fill: string;
+        };
+    };
     product: {
         form: {
             base: {
@@ -839,7 +844,7 @@ export type AppTheme = {
     };
     profilePhoto: {
         previewPhoto: {
-            personCircle: {
+            svg: {
                 fill: string;
             };
         };

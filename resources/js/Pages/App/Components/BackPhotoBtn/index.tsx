@@ -1,5 +1,6 @@
 import { BackPhotoBtn_ } from '@/Pages/App/Components/BackPhotoBtn/styling';
-import { BackFileSVG } from '@/Pages/App/libraries';
+import { BackFileSVG, DataReducerEnum } from '@/Pages/App/libraries';
+import { useAppDispatch } from '@/Pages/App/libraries/hooks';
 import { useTranslate } from '@/libraries';
 import { Dispatch, MutableRefObject, SetStateAction, Suspense } from 'react';
 
@@ -19,6 +20,7 @@ export const BackPhotoBtn = ({
     photoInputRef,
 }: BackPhotoBtnProps) => {
     const translate = useTranslate();
+    const appDispatch = useAppDispatch();
     if (!photoChosen) {
         return null;
     }
@@ -32,6 +34,9 @@ export const BackPhotoBtn = ({
                 if (photoInput !== null) {
                     photoInput.value = '';
                 }
+                appDispatch({
+                    type: DataReducerEnum.CHANGE_PHOTO,
+                });
             }}
         >
             <Suspense>

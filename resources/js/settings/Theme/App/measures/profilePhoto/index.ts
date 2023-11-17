@@ -5,10 +5,6 @@ export const profilePhoto: DefaultTheme['measures']['profilePhoto'] = {
         top: 8,
         bottom: 8,
     },
-    photoField: {
-        marginLeft: 80,
-        fontSize: 16,
-    },
     photoPreview: {
         marginRight: 16,
         svg: {

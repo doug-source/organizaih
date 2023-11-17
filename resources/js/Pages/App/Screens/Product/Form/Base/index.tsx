@@ -48,7 +48,6 @@ const Base = (props: BaseProps) => {
     const onProductSubmit = useProductSubmit(
         product,
         product.category,
-        inputFile,
         setErrors,
     );
     const productNameHandler = useProductNameHandler(dispatch);

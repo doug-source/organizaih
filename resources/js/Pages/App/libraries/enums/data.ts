@@ -5,6 +5,7 @@ export const enum DataReducerEnum {
     WINDOW_RESIZE = 'window-resize',
 
     CHANGE_THEME = 'change-theme',
+    CHANGE_PHOTO = 'change-photo',
 
     SELECTION_TARGET = 'selection-target',
     SELECTION_ACTION = 'selection-action',

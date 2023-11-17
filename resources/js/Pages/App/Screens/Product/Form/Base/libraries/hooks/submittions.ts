@@ -3,15 +3,10 @@ import { IProduct } from '@/Pages/App/Screens/Product/types';
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
+import { usePhotoFile } from '@/Pages/App/libraries/hooks/Contexts';
 import { endpoints } from '@/settings';
 import axios from 'axios';
-import {
-    FormEvent,
-    MutableRefObject,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react';
+import { FormEvent, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 type ThenableCallback = (response: { status: number }) => void;
@@ -23,6 +18,9 @@ const useThenableCallback = (): ThenableCallback => {
         (response) => {
             switch (response.status) {
                 case 200: {
+                    appDispatch({
+                        type: DataReducerEnum.CHANGE_PHOTO,
+                    });
                     navigate('/products');
                     break;
                 }
@@ -100,15 +98,15 @@ const useProductEndpoint = (productInput: IProduct) => {
 export const useProductSubmit = (
     productInput: IProduct,
     categorySelected: IProductCategory,
-    inputFile: MutableRefObject<HTMLInputElement | null>,
     setErrors: ErrorsSetterType,
 ) => {
     const appDispatch = useAppDispatch();
     const thenCallback = useThenableCallback();
     const catchCallback = useCatchCallback(setErrors);
+    const photoFile = usePhotoFile();
 
     const [url] = useProductEndpoint(productInput);
-    const formData = buildFormData(productInput, categorySelected, inputFile);
+    const formData = buildFormData(productInput, categorySelected, photoFile);
     const { tokenAuth } = window.data;
 
     return useCallback(
@@ -117,6 +115,7 @@ export const useProductSubmit = (
             if (!navigator.onLine) {
                 return;
             }
+
             appDispatch({ type: DataReducerEnum.LOADING, payload: true });
             axios
                 .post(url, formData, {
@@ -136,6 +135,7 @@ export const useProductSubmit = (
             catchCallback,
             tokenAuth,
             formData,
+            photoFile,
         ],
     );
 };

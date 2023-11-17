@@ -1101,6 +1101,33 @@ export type AppThemeMeasures = {
             };
         };
     };
+    photoFile: {
+        container: {
+            marginLeft: number;
+            padding: number;
+            width: number;
+            height: number;
+            border: {
+                width: number;
+            };
+            borderRadius: number;
+            heading: {
+                fontSize: number;
+                maxWidth: number;
+                lineHeight: number;
+            };
+        };
+        icon: {
+            flexBasis: number;
+            height: string;
+        };
+        input: {
+            height: string;
+            width: {
+                diff: number;
+            };
+        };
+    };
     product: {
         category: {
             dataListItem: {
@@ -1181,10 +1208,6 @@ export type AppThemeMeasures = {
         padding: {
             top: number;
             bottom: number;
-        };
-        photoField: {
-            marginLeft: number;
-            fontSize: number;
         };
         photoPreview: {
             marginRight: number;

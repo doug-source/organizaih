@@ -1,7 +1,7 @@
 import { IProduct } from '@/Pages/App/Screens/Product/types';
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
+import { DataReducerState } from '@/Pages/App/libraries/types/state/data';
 import { translateFn } from '@/libraries';
-import { RefObject } from 'react';
 
 export const dettachCategoryName = (
     product: IProduct,
@@ -17,7 +17,7 @@ export const dettachCategoryName = (
 export const buildFormData = (
     productInput: IProduct,
     categorySelected: IProductCategory,
-    inputFile: RefObject<HTMLInputElement>,
+    fileToUpload?: DataReducerState['photo'],
 ) => {
     const formData = new FormData();
     const {
@@ -26,7 +26,6 @@ export const buildFormData = (
         photo,
         ...product
     } = productInput;
-    const file: File | undefined = (inputFile.current?.files || [])[0];
 
     formData.append('name', product.name);
     formData.append('description', product.description || '');
@@ -35,8 +34,8 @@ export const buildFormData = (
         'productCategory',
         String(categorySelected?.id || product.category.id),
     );
-    if (photoChosen && file) {
-        formData.append('photo', file);
+    if (photoChosen && fileToUpload) {
+        formData.append('photo', fileToUpload);
     }
     if (product.id) {
         // edit

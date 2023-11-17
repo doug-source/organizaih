@@ -182,6 +182,12 @@ export const dataReducer = (
 
             return { ...state, theme };
         }
+        case DataReducerEnum.CHANGE_PHOTO: {
+            return {
+                ...state,
+                photo: action.payload,
+            };
+        }
         default: {
             const actionInvalid: never = action;
             throw new Error('Type invalid.', { cause: actionInvalid });

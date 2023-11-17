@@ -12,6 +12,9 @@ const makeAddClick = (appDispatch: AppDispatchFn) => {
         appDispatch({
             type: DataReducerEnum.SELECTION_CLEAR,
         });
+        appDispatch({
+            type: DataReducerEnum.CHANGE_PHOTO,
+        });
     };
 };
 
@@ -90,6 +93,9 @@ const makeItemUpdate = (appDispatch: AppDispatchFn) => {
     return () => {
         appDispatch({
             type: DataReducerEnum.SELECTION_CLEAR,
+        });
+        appDispatch({
+            type: DataReducerEnum.CHANGE_PHOTO,
         });
     };
 };

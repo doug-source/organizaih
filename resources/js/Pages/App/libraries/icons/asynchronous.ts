@@ -160,3 +160,10 @@ export const UserIcon = lazy(() =>
         return { default: Svg };
     }),
 );
+
+export const UploadIcon = lazy(() =>
+    import('/resources/img/upload-square-icon.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);

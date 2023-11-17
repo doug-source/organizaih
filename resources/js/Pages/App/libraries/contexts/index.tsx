@@ -3,6 +3,7 @@ import { TokenRequest, Translate, TranslateData } from '@/libraries';
 import { ComponentProps, ReactNode } from 'react';
 import { Loading } from './Loading';
 import { Locale } from './Locale';
+import { Photo } from './Photo';
 import { Selections } from './Selections';
 import { Title } from './Title';
 import { WindowSizes } from './WindowSizes';
@@ -27,6 +28,7 @@ type WrapContextsProps = {
     statusloading: ComponentProps<typeof Loading>['value'];
     windowWidth: ComponentProps<typeof WindowSizes>['width'];
     windowHeight: ComponentProps<typeof WindowSizes>['height'];
+    photo: ComponentProps<typeof Photo>['value'];
     children: ReactNode;
 };
 
@@ -37,6 +39,7 @@ export const WrapContexts = ({
     windowHeight,
     children,
     statusloading,
+    photo,
 }: WrapContextsProps) => {
     return (
         <WindowSizes
@@ -48,9 +51,11 @@ export const WrapContexts = ({
                     <Title value={title}>
                         <TokenRequest value={info.tokenRequest}>
                             <Selections value={selections}>
-                                <Translate value={info.translate}>
-                                    {children}
-                                </Translate>
+                                <Photo value={photo}>
+                                    <Translate value={info.translate}>
+                                        {children}
+                                    </Translate>
+                                </Photo>
                             </Selections>
                         </TokenRequest>
                     </Title>
@@ -62,6 +67,7 @@ export const WrapContexts = ({
 
 export { LoadingContext } from './Loading';
 export { LocaleContext } from './Locale';
+export { PhotoContext } from './Photo';
 export { SelectionsContext } from './Selections';
 export { TitleContext } from './Title';
 export { WindowSizesContext } from './WindowSizes';

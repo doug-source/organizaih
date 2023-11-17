@@ -47,6 +47,7 @@ export const productReducer = (
                     photo: action.payload.photo || '',
                     description: action.payload.description,
                     obs: action.payload.obs,
+                    photoChosen: action.payload.photoChosen,
                     category: {
                         ...action.payload.category,
                     },

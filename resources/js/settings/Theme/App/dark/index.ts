@@ -20,6 +20,7 @@ import { itemEditor } from './itemEditor';
 import { itemSaver } from './itemSaver';
 import { list } from './list';
 import { pagination } from './pagination';
+import { photoFile } from './photoFile';
 import { product } from './product';
 import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
@@ -56,6 +57,7 @@ export const DarkTheme: AppTheme = {
     itemSaver,
     list,
     pagination,
+    photoFile,
     product,
     productCategory,
     profilePhoto,

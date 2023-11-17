@@ -29,6 +29,7 @@ import { list } from './list';
 import { loading } from './loading';
 import { main } from './main';
 import { pagination } from './pagination';
+import { photoFile } from './photoFile';
 import { product } from './product';
 import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
@@ -75,6 +76,7 @@ export const measures: DefaultTheme['measures'] = {
     loading,
     main: main(header, body),
     pagination,
+    photoFile,
     product,
     productCategory,
     profilePhoto,

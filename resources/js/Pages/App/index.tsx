@@ -42,6 +42,7 @@ export const App = () => {
         windowHeight: null,
         error: null,
         selections: makeEmptySelections(),
+        photo: undefined,
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
     });
     useConnectionChecker(dispatch);
@@ -56,6 +57,7 @@ export const App = () => {
                     windowHeight={state.windowHeight}
                     windowWidth={state.windowWidth}
                     statusloading={state.loading}
+                    photo={state.photo}
                 >
                     <ThemeProvider theme={state.theme}>
                         <>

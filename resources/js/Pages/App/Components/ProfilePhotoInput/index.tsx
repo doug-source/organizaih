@@ -1,8 +1,9 @@
 import { BackPhotoBtn } from '@/Pages/App/Components/BackPhotoBtn';
-import { PhotoField } from '@/Pages/App/Components/ProfilePhotoInput/PhotoField';
+import { PhotoFile as PhotoFileInput } from '@/Pages/App/Components/PhotoFile';
 import { PreviewPhoto } from '@/Pages/App/Components/ProfilePhotoInput/PreviewPhoto';
 import { useImgSrcChange } from '@/Pages/App/Components/ProfilePhotoInput/libraries';
 import { ProfilePhoto_ } from '@/Pages/App/Components/ProfilePhotoInput/styling';
+import { usePhotoFile } from '@/Pages/App/libraries/hooks/Contexts';
 import {
     ForwardRefRenderFunction,
     ForwardedRef,
@@ -31,11 +32,11 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
 ) => {
     const [imgSrc, setImgSrc] = useImgSrcChange(photoUrl);
     const photoInputRef = useRef<HTMLInputElement | null>(null);
-
+    const photoFile = usePhotoFile();
     return (
         <ProfilePhoto_>
             <BackPhotoBtn
-                photoChosen={photoChosen}
+                photoChosen={photoChosen ?? photoFile?.name}
                 photoUrl={photoUrl}
                 setImgSrc={setImgSrc}
                 photoInputRef={photoInputRef}
@@ -45,9 +46,8 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
                 iconNoPhoto={iconNoPhoto}
                 imgSrc={imgSrc}
             />
-            <PhotoField
+            <PhotoFileInput
                 forwardedRef={ref}
-                setImgSrc={setImgSrc}
                 onChange={onChange}
             />
         </ProfilePhoto_>

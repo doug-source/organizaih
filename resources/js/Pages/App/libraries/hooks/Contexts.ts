@@ -2,6 +2,7 @@ import { AppDispatchContext } from '@/Pages/App';
 import {
     LoadingContext,
     LocaleContext,
+    PhotoContext,
     SelectionsContext,
     TitleContext,
     WindowSizesContext,
@@ -47,4 +48,8 @@ export const useSelections = () => {
 
 export const useLoadingStatus = () => {
     return useContext(LoadingContext);
+};
+
+export const usePhotoFile = () => {
+    return useContext(PhotoContext);
 };
