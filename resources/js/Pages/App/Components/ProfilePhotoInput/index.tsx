@@ -9,6 +9,7 @@ import {
     ForwardedRef,
     forwardRef,
     useRef,
+    useState,
 } from 'react';
 
 type ProfilePhotoInnerProps = {
@@ -33,6 +34,7 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
     const [imgSrc, setImgSrc] = useImgSrcChange(photoUrl);
     const photoInputRef = useRef<HTMLInputElement | null>(null);
     const photoFile = usePhotoFile();
+    const [fileInputKey, setFileInputKey] = useState(Date.now());
     return (
         <ProfilePhoto_>
             <BackPhotoBtn
@@ -40,13 +42,17 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
                 photoUrl={photoUrl}
                 setImgSrc={setImgSrc}
                 photoInputRef={photoInputRef}
-                onChange={onChange}
+                onChange={(value) => {
+                    onChange(value);
+                    setFileInputKey(Date.now());
+                }}
             />
             <PreviewPhoto
                 iconNoPhoto={iconNoPhoto}
                 imgSrc={imgSrc}
             />
             <PhotoFileInput
+                key={fileInputKey}
                 forwardedRef={ref}
                 onChange={onChange}
             />
