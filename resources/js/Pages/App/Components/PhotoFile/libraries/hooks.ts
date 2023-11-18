@@ -22,6 +22,6 @@ export const usePhotoHandler = (
             });
             onChange && onChange($input.value);
         },
-        [appDispatch],
+        [appDispatch, onChange],
     );
 };
