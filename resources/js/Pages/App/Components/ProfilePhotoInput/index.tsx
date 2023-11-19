@@ -1,10 +1,11 @@
 import { BackPhotoBtn } from '@/Pages/App/Components/BackPhotoBtn';
 import { PhotoFile as PhotoFileInput } from '@/Pages/App/Components/PhotoFile';
-import { PreviewPhoto } from '@/Pages/App/Components/ProfilePhotoInput/PreviewPhoto';
+import { PreviewPhotoInput } from '@/Pages/App/Components/PreviewPhotoInput';
 import { useImgSrcChange } from '@/Pages/App/Components/ProfilePhotoInput/libraries';
 import { ProfilePhoto_ } from '@/Pages/App/Components/ProfilePhotoInput/styling';
 import { usePhotoFile } from '@/Pages/App/libraries/hooks/Contexts';
 import {
+    ComponentPropsWithoutRef,
     ForwardRefRenderFunction,
     ForwardedRef,
     forwardRef,
@@ -12,8 +13,12 @@ import {
     useState,
 } from 'react';
 
+type PreviewPhotoInputProps = ComponentPropsWithoutRef<
+    typeof PreviewPhotoInput
+>;
+
 type ProfilePhotoInnerProps = {
-    iconNoPhoto: JSX.Element;
+    iconNoPhoto: PreviewPhotoInputProps['iconNoPhoto'];
     photo?: string | null;
     photoChosen?: string;
     onChange?: (value: string) => void;
@@ -47,7 +52,7 @@ const ProfilePhotoInner: ForwardRefRenderFunction<
                     setFileInputKey(Date.now());
                 }}
             />
-            <PreviewPhoto
+            <PreviewPhotoInput
                 iconNoPhoto={iconNoPhoto}
                 imgSrc={imgSrc}
             />

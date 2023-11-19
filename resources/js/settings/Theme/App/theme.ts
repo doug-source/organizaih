@@ -804,6 +804,11 @@ export type AppTheme = {
             fill: string;
         };
     };
+    previewPhotoInput: {
+        svg: {
+            fill: string;
+        };
+    };
     product: {
         form: {
             base: {
@@ -840,13 +845,6 @@ export type AppTheme = {
     productCategory: {
         tools: {
             categoriesBtn: stdBtn;
-        };
-    };
-    profilePhoto: {
-        previewPhoto: {
-            svg: {
-                fill: string;
-            };
         };
     };
     radioToggle: {

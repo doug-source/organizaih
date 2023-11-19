@@ -3,8 +3,8 @@ import { css, styled } from 'styled-components';
 
 export const PhotoPreview_ = styled.div`
     ${({ theme }) => {
-        const previewMeasure = theme.measures.profilePhoto.photoPreview;
-        const previewTheme = theme.profilePhoto.previewPhoto;
+        const previewMeasure = theme.measures.previewPhotoInput;
+        const previewTheme = theme.previewPhotoInput;
         return css`
             display: flex;
             align-items: center;
@@ -27,7 +27,7 @@ export const PhotoPreview_ = styled.div`
 
 export const PreviewImg_ = styled.img.attrs({ alt: '' })`
     ${({ theme }) => {
-        const previewMeasure = theme.measures.profilePhoto.photoPreview;
+        const previewMeasure = theme.measures.previewPhotoInput;
         return css`
             width: ${remOutput(previewMeasure.svg.width)};
             height: ${remOutput(previewMeasure.svg.height)};

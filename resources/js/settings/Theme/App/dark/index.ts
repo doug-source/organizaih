@@ -21,9 +21,9 @@ import { itemSaver } from './itemSaver';
 import { list } from './list';
 import { pagination } from './pagination';
 import { photoFile } from './photoFile';
+import { previewPhotoInput } from './previewPhotoInput';
 import { product } from './product';
 import { productCategory } from './productCategory';
-import { profilePhoto } from './profilePhoto';
 import { radioToggle } from './radioToggle';
 import { reactLoading } from './reactLoading';
 import { routes } from './routes';
@@ -58,9 +58,9 @@ export const DarkTheme: AppTheme = {
     list,
     pagination,
     photoFile,
+    previewPhotoInput,
     product,
     productCategory,
-    profilePhoto,
     radioToggle,
     reactLoading,
     routes,

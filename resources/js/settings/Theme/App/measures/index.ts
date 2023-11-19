@@ -30,6 +30,7 @@ import { loading } from './loading';
 import { main } from './main';
 import { pagination } from './pagination';
 import { photoFile } from './photoFile';
+import { previewPhotoInput } from './previewPhotoInput';
 import { product } from './product';
 import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
@@ -77,6 +78,7 @@ export const measures: DefaultTheme['measures'] = {
     main: main(header, body),
     pagination,
     photoFile,
+    previewPhotoInput,
     product,
     productCategory,
     profilePhoto,

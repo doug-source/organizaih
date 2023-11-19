@@ -40,6 +40,7 @@ export * from './List';
 export * from './Loading';
 export * from './LogoutLink';
 export * from './Pagination';
+export * from './PreviewPhotoInput';
 export * from './ProductsSales';
 export * from './ProfilePhotoInput';
 export * from './ProfilePhotoOutput';

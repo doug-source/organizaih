@@ -5,11 +5,4 @@ export const profilePhoto: DefaultTheme['measures']['profilePhoto'] = {
         top: 8,
         bottom: 8,
     },
-    photoPreview: {
-        marginRight: 16,
-        svg: {
-            width: 64,
-            height: 67.65,
-        },
-    },
 };

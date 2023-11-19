@@ -1128,6 +1128,13 @@ export type AppThemeMeasures = {
             };
         };
     };
+    previewPhotoInput: {
+        marginRight: number;
+        svg: {
+            width: number;
+            height: number;
+        };
+    };
     product: {
         category: {
             dataListItem: {
@@ -1208,13 +1215,6 @@ export type AppThemeMeasures = {
         padding: {
             top: number;
             bottom: number;
-        };
-        photoPreview: {
-            marginRight: number;
-            svg: {
-                width: number;
-                height: number;
-            };
         };
     };
     productCategory: {
