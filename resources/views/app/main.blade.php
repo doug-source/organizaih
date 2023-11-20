@@ -33,7 +33,8 @@
             },
             themeKey: {!! $themeKey !!},
             apiVersion: '{!! config('auth.api-version') !!}',
-            tokenAuth: '{!! $tokenAuth !!}'
+            tokenAuth: '{!! $tokenAuth !!}',
+            abilities: {!! $abilities !!}
         };
     </script>
     @vite('resources/js/app.ts')

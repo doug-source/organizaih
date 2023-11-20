@@ -48,8 +48,10 @@ class UserController extends Controller
             if (!$userLogged->email_verified_at) {
                 return redirect()->route('verification.notice');
             }
+
             return view('app.main', [
                 'tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken,
+                'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('name')
             ]);
         } catch (ClientException $th) {
             return redirect()->to('/');

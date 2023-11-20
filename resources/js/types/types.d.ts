@@ -64,6 +64,7 @@ declare global {
             googleAuthUrl?: string;
 
             resetPassword: ServerInfo & ResetPasswordFields;
+            abilities: string[];
         };
         axios: AxiosStatic;
     }
