@@ -1,0 +1,39 @@
+<?php
+
+use App\Models\Role;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('ability_role', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('ability_id')->constrained()->onDelete('CASCADE');
+            $table->foreignId('role_id')->constrained()->onDelete('CASCADE');
+            $table->unique('ability_id', 'role_id');
+            $table->timestamps();
+        });
+        $roleID = DB::table('roles')->where('name', 'super-admin')->value('id');
+        $abilitiesIDs = DB::table('abilities')->whereIn('name', [
+            'login',
+            'settings',
+            'logout',
+        ])->pluck('id')->toArray();
+        Role::find($roleID)->abilities()->attach($abilitiesIDs);
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('ability_role');
+    }
+};

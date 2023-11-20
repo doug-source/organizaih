@@ -253,4 +253,9 @@ return [
         ]
     ],
 
+    /*
+    * Email used as first super-admin account
+    */
+    'super_admin_mail' => env('SUPER_ADMIN_EMAIL', 'fake@mysite.com')
+
 ];
