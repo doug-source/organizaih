@@ -51,7 +51,7 @@ class UserController extends Controller
 
             return view('app.main', [
                 'tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken,
-                'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('name')
+                'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('id')
             ]);
         } catch (ClientException $th) {
             return redirect()->to('/');
