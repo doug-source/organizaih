@@ -1,4 +1,4 @@
-import { Config } from '@/Pages/App/Screens';
+import { Config } from '@/Pages/App/Screens/Config';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
