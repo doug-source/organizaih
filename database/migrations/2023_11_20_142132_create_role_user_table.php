@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('role_id')->constrained()->onDelete('CASCADE');
             $table->foreignId('user_id')->constrained()->onDelete('CASCADE');
-            $table->unique('role_id', 'user_id');
+            $table->unique(['role_id', 'user_id']);
             $table->timestamps();
         });
         $userID = DB::table('users')->where('email', config('app.super_admin_mail'))->value('id');
