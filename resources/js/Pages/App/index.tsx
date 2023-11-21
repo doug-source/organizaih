@@ -12,8 +12,10 @@ import {
     useStarterWindowResize,
     useWindowResizeHandler,
 } from '@/Pages/App/libraries/hooks/Window';
-import { ConfigRoutesAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
-import { CustomerRoutes } from '@/Pages/App/routes/Customer';
+import {
+    ConfigRoutesAsync,
+    CustomerRoutesAsync,
+} from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { GraphRoutes } from '@/Pages/App/routes/Graph';
 import { InventoryRoutes } from '@/Pages/App/routes/Inventory';
 import { ProductRoutes } from '@/Pages/App/routes/Product';
@@ -37,6 +39,7 @@ export const AppDispatchContext = createContext<AppDispatchContextArg>(null);
 
 const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
 const hasMenu = hasAbility(AbilitiesEnum.MENU);
+const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -77,7 +80,11 @@ export const App = () => {
                                                 <ConfigRoutesAsync />
                                             </Suspense>
                                         )}
-                                        <CustomerRoutes />
+                                        {hasCustomerScreen && (
+                                            <Suspense>
+                                                <CustomerRoutesAsync />
+                                            </Suspense>
+                                        )}
                                         <ProductRoutes />
                                         <ProductCategoryRoutes />
                                         <InventoryRoutes />

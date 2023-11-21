@@ -41,3 +41,11 @@ export const DashboardAsync = lazy(() =>
         };
     }),
 );
+
+export const CustomerRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/Customer').then(({ CustomerRoutes }) => {
+        return {
+            default: CustomerRoutes,
+        };
+    }),
+);
