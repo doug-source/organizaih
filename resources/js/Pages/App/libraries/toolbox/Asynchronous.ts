@@ -49,3 +49,21 @@ export const CustomerRoutesAsync = lazy(() =>
         };
     }),
 );
+
+export const ProductRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/Product').then(({ ProductRoutes }) => {
+        return {
+            default: ProductRoutes,
+        };
+    }),
+);
+
+export const ProductCategoryRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/ProductCategory').then(
+        ({ ProductCategoryRoutes }) => {
+            return {
+                default: ProductCategoryRoutes,
+            };
+        },
+    ),
+);

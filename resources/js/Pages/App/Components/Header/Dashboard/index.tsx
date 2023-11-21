@@ -15,6 +15,7 @@ import { NavbarNav_ } from './styling';
 
 const hasLogout = hasAbility(AbilitiesEnum.LOGIN);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
+const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 
 export const Dashboard = () => {
     const translate = useTranslate();
@@ -27,11 +28,13 @@ export const Dashboard = () => {
                     titleMenuKey='menu-customer'
                 />
             )}
-            <DashboardItem
-                link='/products'
-                icon={<ProductsIcon />}
-                titleMenuKey='menu-products'
-            />
+            {hasProductScreen && (
+                <DashboardItem
+                    link='/products'
+                    icon={<ProductsIcon />}
+                    titleMenuKey='menu-products'
+                />
+            )}
             <DashboardItem
                 link='/inventories'
                 icon={<InventoryIcon />}

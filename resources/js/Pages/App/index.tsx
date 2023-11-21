@@ -15,11 +15,11 @@ import {
 import {
     ConfigRoutesAsync,
     CustomerRoutesAsync,
+    ProductCategoryRoutesAsync,
+    ProductRoutesAsync,
 } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { GraphRoutes } from '@/Pages/App/routes/Graph';
 import { InventoryRoutes } from '@/Pages/App/routes/Inventory';
-import { ProductRoutes } from '@/Pages/App/routes/Product';
-import { ProductCategoryRoutes } from '@/Pages/App/routes/ProductCategory';
 import { SaleRoutes } from '@/Pages/App/routes/Sale';
 import { hasAbility, makeEmptySelections } from '@/Pages/App/settings';
 import {
@@ -40,6 +40,7 @@ export const AppDispatchContext = createContext<AppDispatchContextArg>(null);
 const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
 const hasMenu = hasAbility(AbilitiesEnum.MENU);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
+const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -85,8 +86,16 @@ export const App = () => {
                                                 <CustomerRoutesAsync />
                                             </Suspense>
                                         )}
-                                        <ProductRoutes />
-                                        <ProductCategoryRoutes />
+                                        {hasProductScreen && (
+                                            <Suspense>
+                                                <ProductRoutesAsync />
+                                            </Suspense>
+                                        )}
+                                        {hasProductScreen && (
+                                            <Suspense>
+                                                <ProductCategoryRoutesAsync />
+                                            </Suspense>
+                                        )}
                                         <InventoryRoutes />
                                         <SaleRoutes />
                                         <GraphRoutes />
