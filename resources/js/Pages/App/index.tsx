@@ -36,6 +36,7 @@ type AppDispatchContextArg = Dispatch<DataPayload.Skeleton> | null;
 export const AppDispatchContext = createContext<AppDispatchContextArg>(null);
 
 const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
+const hasMenu = hasAbility(AbilitiesEnum.MENU);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -67,9 +68,9 @@ export const App = () => {
                             <GlobalStyle />
                             <Header />
                             <Main_>
-                                <Spacer_ />
+                                {hasMenu && <Spacer_ />}
                                 <Loading show={state.loading} />
-                                <ContainerFluid_>
+                                <ContainerFluid_ $hasMenu={hasMenu}>
                                     <Row_>
                                         {hasSettings && (
                                             <Suspense>

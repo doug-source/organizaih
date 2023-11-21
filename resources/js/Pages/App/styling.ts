@@ -118,15 +118,19 @@ export const Spacer_ = styled.div`
     }}
 `;
 
-export const ContainerFluid_ = styled.div`
-    ${({ theme }) => {
+type ContainerFluidProp_ = {
+    $hasMenu?: boolean;
+};
+
+export const ContainerFluid_ = styled.div<ContainerFluidProp_>`
+    ${({ theme, $hasMenu = false }) => {
         const mainMeasure = theme.measures.main;
         const containerFluidMeasure = mainMeasure.containerFluid;
-        const spacerMeasure = mainMeasure.spacer;
-        const widthCalc = `${containerFluidMeasure.width} - ${remOutput(
-            spacerMeasure.width,
-        )}`;
         const { wideScreen } = theme.measures;
+        let widthCalc = containerFluidMeasure.width;
+        if ($hasMenu) {
+            widthCalc += ` - ${remOutput(mainMeasure.spacer.width)}`;
+        }
 
         return css`
             height: ${containerFluidMeasure.height};

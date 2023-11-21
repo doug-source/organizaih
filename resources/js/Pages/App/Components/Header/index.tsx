@@ -1,8 +1,13 @@
+import { Header_, Nav_, NavBar_ } from '@/Pages/App/Components/Header/styling';
+import { Top } from '@/Pages/App/Components/Header/Top';
+import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
+import { useToggleSecondWord } from '@/Pages/App/libraries/hooks';
+import { DashboardAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
+import { hasAbility } from '@/Pages/App/settings';
+import { Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useToggleSecondWord } from '../../libraries';
-import { Dashboard } from './Dashboard';
-import { Header_, Nav_, NavBar_ } from './styling';
-import { Top } from './Top';
+
+const hasMenu = hasAbility(AbilitiesEnum.MENU);
 
 export const Header = () => {
     const { pathname } = useLocation();
@@ -12,14 +17,17 @@ export const Header = () => {
             <Nav_>
                 <NavBar_ className={pathname === '/' ? 'dashboard' : ''}>
                     <Top onTopWrappped={() => toggleHeaderClass()} />
-                    <Dashboard />
+                    {hasMenu && (
+                        <Suspense>
+                            <DashboardAsync />
+                        </Suspense>
+                    )}
                 </NavBar_>
             </Nav_>
         </Header_>
     );
 };
 
-export * from './Dashboard';
 export * from './Top';
 
 export * from './styling';

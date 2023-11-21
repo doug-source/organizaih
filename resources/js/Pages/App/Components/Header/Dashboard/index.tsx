@@ -1,7 +1,7 @@
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
-import { useTranslate } from '@/libraries';
+import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
 import {
     CustomersIcon,

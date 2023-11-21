@@ -33,3 +33,11 @@ export const LogoutLinkAsync = lazy(() =>
         };
     }),
 );
+
+export const DashboardAsync = lazy(() =>
+    import('@/Pages/App/Components/Header/Dashboard').then(({ Dashboard }) => {
+        return {
+            default: Dashboard,
+        };
+    }),
+);
