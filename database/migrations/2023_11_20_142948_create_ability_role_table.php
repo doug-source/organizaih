@@ -8,6 +8,61 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    private function attachInitialAbilities($roleName, $abilityNameList)
+    {
+        $roleID = DB::table('roles')->where('name', $roleName)->value('id');
+        $abilitiesIDs = DB::table('abilities')->whereIn('name', $abilityNameList)->pluck('id')->toArray();
+        Role::find($roleID)->abilities()->attach($abilitiesIDs);
+    }
+
+    private function attachSuperAdminInitialAbilities()
+    {
+        $this->attachInitialAbilities('super-admin', ['login', 'settings', 'logout']);
+    }
+
+    private function attachAdminInitialAbilities()
+    {
+        $this->attachInitialAbilities('admin', [
+            'login',
+            'settings',
+            'logout',
+            'menu',
+            'customer-screen',
+            'product-screen',
+            'inventory-screen',
+            'sale-screen',
+            'graphic-screen'
+        ]);
+    }
+
+    private function attachSellerInitialAbilities()
+    {
+        $this->attachInitialAbilities('seller', [
+            'login',
+            'settings',
+            'logout',
+            'menu',
+            'customer-screen',
+            'product-screen',
+            'inventory-screen',
+            'sale-screen',
+            'graphic-screen'
+        ]);
+    }
+
+    private function attachGuestInitialAbilities()
+    {
+        $this->attachInitialAbilities('guest', ['login']);
+    }
+
+    private function populateDatabase()
+    {
+        $this->attachSuperAdminInitialAbilities();
+        $this->attachAdminInitialAbilities();
+        $this->attachSellerInitialAbilities();
+        $this->attachGuestInitialAbilities();
+    }
+
     /**
      * Run the migrations.
      */
@@ -20,13 +75,7 @@ return new class extends Migration
             $table->unique(['ability_id', 'role_id']);
             $table->timestamps();
         });
-        $roleID = DB::table('roles')->where('name', 'super-admin')->value('id');
-        $abilitiesIDs = DB::table('abilities')->whereIn('name', [
-            'login',
-            'settings',
-            'logout',
-        ])->pluck('id')->toArray();
-        Role::find($roleID)->abilities()->attach($abilitiesIDs);
+        $this->populateDatabase();
     }
 
     /**
