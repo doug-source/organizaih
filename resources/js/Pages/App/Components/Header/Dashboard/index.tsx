@@ -1,5 +1,8 @@
-import { LogoutLink } from '@/Pages/App/Components/LogoutLink';
+import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
+import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
+import { hasAbility } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
+import { Suspense } from 'react';
 import {
     CustomersIcon,
     DashboardItem,
@@ -9,6 +12,8 @@ import {
     SaleIcon,
 } from './DashboardItem';
 import { NavbarNav_ } from './styling';
+
+const hasLogout = hasAbility(AbilitiesEnum.LOGIN);
 
 export const Dashboard = () => {
     const translate = useTranslate();
@@ -39,10 +44,16 @@ export const Dashboard = () => {
                 icon={<GraphsIcon />}
                 titleMenuKey='menu-graph'
             />
-            <DashboardItem
-                lastItem
-                icon={<LogoutLink label={translate('exit', true)} />}
-            />
+            {hasLogout && (
+                <DashboardItem
+                    lastItem
+                    icon={
+                        <Suspense>
+                            <LogoutLinkAsync label={translate('exit', true)} />
+                        </Suspense>
+                    }
+                />
+            )}
         </NavbarNav_>
     );
 };

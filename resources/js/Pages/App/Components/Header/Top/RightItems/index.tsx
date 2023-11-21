@@ -8,6 +8,7 @@ import { hasAbility } from '@/Pages/App/settings';
 import { Suspense } from 'react';
 
 const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
+const hasLogout = hasAbility(AbilitiesEnum.LOGOUT);
 
 export const RightItems = () => {
     return (
@@ -17,7 +18,11 @@ export const RightItems = () => {
                     <ConfigIconAsync />
                 </Suspense>
             )}
-            <LogoutLinkSt_ />
+            {hasLogout && (
+                <Suspense>
+                    <LogoutLinkSt_ />
+                </Suspense>
+            )}
         </RightItemsContainer_>
     );
 };

@@ -25,3 +25,11 @@ export const ConfigRoutesAsync = lazy(() =>
         return { default: ConfigRoutes };
     }),
 );
+
+export const LogoutLinkAsync = lazy(() =>
+    import('@/Pages/App/Components/LogoutLink').then(({ LogoutLink }) => {
+        return {
+            default: LogoutLink,
+        };
+    }),
+);

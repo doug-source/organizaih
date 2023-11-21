@@ -1,7 +1,11 @@
+import {
+    ExitLink_,
+    LogoutIcon_,
+} from '@/Pages/App/Components/LogoutLink/styling';
+import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { remOutput } from '@/libraries';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
-import { ExitLink_, LogoutIcon_, LogoutLink } from '../../../LogoutLink';
 import { Top_ } from '../styling';
 
 export const RightItemsContainer_ = styled.div`
@@ -21,7 +25,7 @@ export const RightItemsContainer_ = styled.div`
     }}
 `;
 
-export const LogoutLinkSt_ = styled(LogoutLink)`
+export const LogoutLinkSt_ = styled(LogoutLinkAsync)`
     ${({ theme }) => {
         const rightItemsMeasure = theme.measures.header.topItem.rightItems;
         const wideLogoutMeasure = rightItemsMeasure.wideLogout;
@@ -38,7 +42,8 @@ export const LogoutLinkSt_ = styled(LogoutLink)`
                     align-items: center;
                     text-decoration: none;
                     font-family: ${fonts.family[3]};
-                    & ${LogoutIcon_} {
+
+                    ${LogoutIcon_} {
                         width: ${remOutput(wideLogoutMeasure.svg.size)};
                         height: ${remOutput(wideLogoutMeasure.svg.size)};
                         position: relative;
