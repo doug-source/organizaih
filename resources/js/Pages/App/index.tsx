@@ -7,20 +7,19 @@ import {
     dataReducer,
     useConnectionChecker,
 } from '@/Pages/App/libraries';
+import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import {
     useStarterWindowResize,
     useWindowResizeHandler,
 } from '@/Pages/App/libraries/hooks/Window';
-import {
-    ConfigRoutes,
-    CustomerRoutes,
-    GraphRoutes,
-    InventoryRoutes,
-    ProductCategoryRoutes,
-    ProductRoutes,
-    SaleRoutes,
-} from '@/Pages/App/routes';
-import { makeEmptySelections } from '@/Pages/App/settings';
+import { ConfigRoutesAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
+import { CustomerRoutes } from '@/Pages/App/routes/Customer';
+import { GraphRoutes } from '@/Pages/App/routes/Graph';
+import { InventoryRoutes } from '@/Pages/App/routes/Inventory';
+import { ProductRoutes } from '@/Pages/App/routes/Product';
+import { ProductCategoryRoutes } from '@/Pages/App/routes/ProductCategory';
+import { SaleRoutes } from '@/Pages/App/routes/Sale';
+import { hasAbility, makeEmptySelections } from '@/Pages/App/settings';
 import {
     ContainerFluid_,
     GlobalStyle,
@@ -29,12 +28,14 @@ import {
     Spacer_,
 } from '@/Pages/App/styling';
 import { Theme } from '@/settings';
-import { Dispatch, createContext, useReducer } from 'react';
+import { Dispatch, Suspense, createContext, useReducer } from 'react';
 import { HashRouter, Outlet, Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 type AppDispatchContextArg = Dispatch<DataPayload.Skeleton> | null;
 export const AppDispatchContext = createContext<AppDispatchContextArg>(null);
+
+const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -70,7 +71,11 @@ export const App = () => {
                                 <Loading show={state.loading} />
                                 <ContainerFluid_>
                                     <Row_>
-                                        <ConfigRoutes />
+                                        {hasSettings && (
+                                            <Suspense>
+                                                <ConfigRoutesAsync />
+                                            </Suspense>
+                                        )}
                                         <CustomerRoutes />
                                         <ProductRoutes />
                                         <ProductCategoryRoutes />
