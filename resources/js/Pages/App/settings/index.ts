@@ -1,4 +1,5 @@
 import { ICustomer } from '@/Pages/App/Screens/Customer/types';
+import { AbilitiesEnum } from '@/Pages/App/libraries/enums/abilities';
 import {
     customerTargets,
     productCategoryTargets,
@@ -172,4 +173,10 @@ export const barGraphBasic = {
     paddingInner: 0.1,
     paddingOuter: 0.2,
     minItemsQty: 1,
+};
+
+const abilities = [...window.data.abilities];
+
+export const hasAbility = (hability: AbilitiesEnum) => {
+    return abilities.includes(hability);
 };
