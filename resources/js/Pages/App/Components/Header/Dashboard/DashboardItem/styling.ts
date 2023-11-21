@@ -44,8 +44,12 @@ const cssLink = css`
     }}
 `;
 
-export const NavItem_ = styled.li`
-    ${({ theme }) => {
+type NavItemProps_ = {
+    $lastItem?: boolean;
+};
+
+export const NavItem_ = styled.li<NavItemProps_>`
+    ${({ theme, $lastItem = false }) => {
         const {
             link: {
                 svg: { logout: logoutIconTheme },
@@ -64,11 +68,12 @@ export const NavItem_ = styled.li`
             font-size: ${remOutput(navItemMeasure.fontSize)};
             width: ${navItemMeasure.width};
 
-            &:last-child {
+            ${$lastItem &&
+            css`
                 @media ${wideScreen} {
                     display: none;
                 }
-            }
+            `}
 
             > ${FormLogout_} {
                 width: 100%;

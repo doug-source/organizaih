@@ -40,6 +40,7 @@ export const Dashboard = () => {
                 titleMenuKey='menu-graph'
             />
             <DashboardItem
+                lastItem
                 icon={<LogoutLink label={translate('exit', true)} />}
             />
         </NavbarNav_>
