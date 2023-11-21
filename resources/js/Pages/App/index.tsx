@@ -1,4 +1,6 @@
-import { EmptyScreen, Header, Loading } from '@/Pages/App/Components';
+import { EmptyScreen } from '@/Pages/App/Components/EmptyScreen';
+import { Header } from '@/Pages/App/Components/Header';
+import { Loading } from '@/Pages/App/Components/Loading';
 import {
     DataPayload,
     WrapContexts,

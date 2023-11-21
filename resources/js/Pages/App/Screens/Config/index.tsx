@@ -1,7 +1,5 @@
-import {
-    GateSwitcherCheckHandle,
-    LanguageSwitcher,
-} from '@/Pages/App/Components';
+import { GateSwitcherCheckHandle } from '@/Pages/App/Components/GateSwitcher';
+import { LanguageSwitcher } from '@/Pages/App/Components/LanguageSwitcher';
 import { useInitPage } from '@/Pages/App/libraries/hooks';
 import { useTranslate } from '@/libraries';
 import { endpoints } from '@/settings';

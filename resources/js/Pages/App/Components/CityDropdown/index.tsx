@@ -1,9 +1,10 @@
-import { Dropdown, FormItem } from '@/Pages/App/Components';
 import {
     useCityRequest,
     useCityResponse,
     usePreSelection,
 } from '@/Pages/App/Components/CityDropdown/libraries';
+import { Dropdown } from '@/Pages/App/Components/Dropdown';
+import { FormItem } from '@/Pages/App/Components/FormItem';
 import { ComponentPropsWithoutRef } from 'react';
 
 type FormItemProps = ComponentPropsWithoutRef<typeof FormItem>;

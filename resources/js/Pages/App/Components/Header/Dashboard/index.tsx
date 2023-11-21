@@ -1,5 +1,5 @@
+import { LogoutLink } from '@/Pages/App/Components/LogoutLink';
 import { useTranslate } from '@/libraries';
-import { LogoutLink } from '../..';
 import {
     CustomersIcon,
     DashboardItem,

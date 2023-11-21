@@ -1,4 +1,4 @@
-import { GateSwitcherCheckHandle } from '@/Pages/App/Components';
+import { GateSwitcherCheckHandle } from '@/Pages/App/Components/GateSwitcher';
 import {
     DataReducerEnum,
     useAPI,

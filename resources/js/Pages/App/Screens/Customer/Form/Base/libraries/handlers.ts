@@ -1,8 +1,6 @@
-import {
-    DatePicker,
-    ProfilePhotoInput,
-    RadioToggle,
-} from '@/Pages/App/Components';
+import { DatePicker } from '@/Pages/App/Components/DatePicker';
+import { ProfilePhotoInput } from '@/Pages/App/Components/ProfilePhotoInput';
+import { RadioToggle } from '@/Pages/App/Components/RadioToggle';
 import { CustomerReducerEnum } from '@/Pages/App/Screens/Customer/Form/libraries/enums';
 import { useCustomerDispatch } from '@/Pages/App/Screens/Customer/Form/libraries/hooks';
 import {

@@ -1,5 +1,8 @@
-import { ConfigIcon } from '../../..';
-import { LogoutLinkSt_, RightItemsContainer_ } from './styling';
+import { ConfigIcon } from '@/Pages/App/Components/ConfigIcon';
+import {
+    LogoutLinkSt_,
+    RightItemsContainer_,
+} from '@/Pages/App/Components/Header/Top/RightItems/styling';
 
 export const RightItems = () => {
     return (

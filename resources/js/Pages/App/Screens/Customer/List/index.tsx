@@ -1,10 +1,8 @@
-import {
-    Confirmation,
-    List as GenericList,
-    Pagination,
-} from '@/Pages/App/Components';
+import { Confirmation } from '@/Pages/App/Components/Confirmation';
+import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItem } from '@/Pages/App/Components/ListItem';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
+import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { ToolsType } from '@/Pages/App/Components/Tools';
 import {

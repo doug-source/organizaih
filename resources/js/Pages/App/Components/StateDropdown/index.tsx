@@ -1,4 +1,5 @@
-import { Dropdown, FormItem } from '@/Pages/App/Components';
+import { Dropdown } from '@/Pages/App/Components/Dropdown';
+import { FormItem } from '@/Pages/App/Components/FormItem';
 import {
     usePreSelection,
     useStateRequest,

@@ -1,7 +1,7 @@
+import { Header_ } from '@/Pages/App/Components/Header/styling';
 import { remOutput } from '@/libraries';
 import { fonts } from '@/settings';
 import { createGlobalStyle, css, styled } from 'styled-components';
-import { Header_ } from './Components';
 
 export const GlobalStyle = createGlobalStyle`
     ${({ theme }) => {

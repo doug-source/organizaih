@@ -1,5 +1,5 @@
-import { Tools } from '@/Pages/App/Components';
 import { FiltersBar_ } from '@/Pages/App/Components/FiltersBar';
+import { Tools } from '@/Pages/App/Components/Tools';
 import { getSvgSize } from '@/Pages/App/Screens/Customer/List/libraries';
 import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { remOutput } from '@/libraries';
