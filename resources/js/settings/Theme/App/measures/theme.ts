@@ -1,6 +1,15 @@
 import { ThemeKey } from '@/settings';
 
 export type AppThemeMeasures = {
+    anonymous: {
+        list: {
+            photo: {
+                svg: {
+                    size: number;
+                };
+            };
+        };
+    };
     backBtn: {
         margin: {
             left: number;
@@ -147,13 +156,6 @@ export type AppThemeMeasures = {
                             };
                         };
                     };
-                };
-            };
-        };
-        list: {
-            photo: {
-                svg: {
-                    size: number;
                 };
             };
         };
@@ -1467,6 +1469,11 @@ export type AppThemeMeasures = {
                     radius: Record<ThemeKey, number>;
                 };
             };
+        };
+    };
+    user: {
+        filtersBar: {
+            gap: number;
         };
     };
     wideScreen: string;

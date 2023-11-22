@@ -1,3 +1,4 @@
+import { AnonymousListIcon } from '@/Pages/App/Components/AnonymousListIcon';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItem } from '@/Pages/App/Components/ListItem';
@@ -20,10 +21,7 @@ import {
     makeClientSelection,
     makeRemoveItem,
 } from '@/Pages/App/Screens/Customer/List/libraries/handlers';
-import {
-    AnonymousSVG_,
-    Tools_,
-} from '@/Pages/App/Screens/Customer/List/styling';
+import { Tools_ } from '@/Pages/App/Screens/Customer/List/styling';
 import {
     ICustomerListData,
     SelectionTargetKey,
@@ -35,7 +33,7 @@ import {
 } from '@/Pages/App/libraries';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
-import { Suspense } from 'react';
+import { navigations } from '@/settings';
 import { useParams } from 'react-router-dom';
 
 const List = () => {
@@ -69,7 +67,7 @@ const List = () => {
                 placeholderKey='customer-filter-placeholder'
                 toolLabelKey='filter-label'
                 toolType={ToolsType.REQUEST_NAME}
-                addLink={target ? undefined : '/customers/create'}
+                addLink={target ? undefined : navigations.customer.create}
                 maxLength={columnSizeDB.customer}
                 onToolChange={makeToolChange(dispatch)}
             >
@@ -90,11 +88,7 @@ const List = () => {
                 makeItem={(data: ICustomerListData, index: number) => {
                     const image = (
                         <PhotoListItem
-                            iconNoPhoto={
-                                <Suspense>
-                                    <AnonymousSVG_ />
-                                </Suspense>
-                            }
+                            iconNoPhoto={<AnonymousListIcon />}
                             photo={data.photo}
                         />
                     );
@@ -120,7 +114,7 @@ const List = () => {
                             key={data.id}
                             contentLinked={data.name}
                             id={data.id}
-                            urlLink={`/customers/${data.id}`}
+                            urlLink={navigations.customer.show(data.id)}
                             titleLink={data.name}
                             index={index}
                             innerColumns={image}

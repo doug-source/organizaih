@@ -19,6 +19,6 @@ class CheckRequest extends VerifyRequest
      */
     public function authorize()
     {
-        return !auth()->check();
+        return auth()->check();
     }
 }

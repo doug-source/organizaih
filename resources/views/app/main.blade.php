@@ -22,6 +22,8 @@
                 addressDistrict: {!! config('database.column-sizes.address.district') !!},
                 inventoryMaxQty: {!! config('database.column-sizes.inventory.qty') !!},
                 saleMaxQty: {!! config('database.column-sizes.sale.qty') !!},
+                userName: {!! config('database.column-sizes.user.name') !!},
+                userEmail: {!! config('database.column-sizes.user.email') !!}
             },
             columnPrecisionDB: {
                 inventory: {!! config('database.columns-precisions.inventory.cost') !!},

@@ -8,4 +8,5 @@ export const enum AbilitiesEnum {
     INVENTORY_SCREEN = 7,
     SALE_SCREEN = 8,
     GRAPHIC_SCREEN = 9,
+    USER_SCREEN = 10,
 }

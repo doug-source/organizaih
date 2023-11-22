@@ -41,6 +41,8 @@ export const columnSizeDB = {
     addressDistrict: columnSizeRef.addressDistrict,
     inventoryMaxQty: columnSizeRef.inventoryMaxQty,
     saleMaxQty: columnSizeRef.saleMaxQty,
+    userName: columnSizeRef.userName,
+    userEmail: columnSizeRef.userEmail,
 };
 
 const columnPrecisionRef = window.data.columnPrecisionDB;

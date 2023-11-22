@@ -1,5 +1,6 @@
 import { AppTheme } from '..';
 import { measures } from '../measures';
+import { anonymous } from './anonymous';
 import { backBtn } from './backBtn';
 import { body } from './body';
 import { config } from './config';
@@ -37,6 +38,7 @@ export const LightTheme: AppTheme = {
     key: 'light',
     measures,
 
+    anonymous,
     backBtn,
     body,
     config,

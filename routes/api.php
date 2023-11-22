@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ProductsResourceController;
 use App\Http\Controllers\Api\SalesResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
 use App\Http\Controllers\Api\UsersResourceController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::prefix('v1')->group(function () {
 });
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix('v1')->group(function () {
+    Route::prefix(config('auth.api-version'))->group(function () {
         Route::prefix('customers')->group(function () {
             Route::get('/', [CustomersResourceController::class, 'index']);
             Route::post('/', [CustomersResourceController::class, 'store']);
@@ -83,6 +84,10 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::post('/', [SalesResourceController::class, 'store']);
             Route::put('{saleID}', [SalesResourceController::class, 'update']);
             Route::delete('{saleID}', [SalesResourceController::class, 'destroy']);
+        });
+        Route::prefix('users')->group(function () {
+            $userModel = User::class;
+            Route::get('/', [UsersResourceController::class, 'index'])->middleware("can:isSuperAdmin,$userModel");
         });
     });
 });

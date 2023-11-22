@@ -91,3 +91,11 @@ export const GraphRoutesAsync = lazy(() =>
         };
     }),
 );
+
+export const UserRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/User').then(({ UserRoutes }) => {
+        return {
+            default: UserRoutes,
+        };
+    }),
+);

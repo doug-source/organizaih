@@ -88,6 +88,14 @@ export const header: DefaultTheme['header'] = {
                                 fill: green.lighten[2],
                             },
                         },
+                        user: {
+                            path: {
+                                fill: {
+                                    front: blue.lighten[1],
+                                    back: green.lighten[3],
+                                },
+                            },
+                        },
                     },
                 },
                 pack: {

@@ -10,6 +10,7 @@ import {
     InventoryIcon,
     ProductsIcon,
     SaleIcon,
+    UsersIcon,
 } from './DashboardItem';
 import { NavbarNav_ } from './styling';
 
@@ -19,6 +20,7 @@ const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
 const hasSaleScreen = hasAbility(AbilitiesEnum.SALE_SCREEN);
 const hasGraphScreen = hasAbility(AbilitiesEnum.GRAPHIC_SCREEN);
+const hasUserScreen = hasAbility(AbilitiesEnum.USER_SCREEN);
 
 export const Dashboard = () => {
     const translate = useTranslate();
@@ -57,6 +59,13 @@ export const Dashboard = () => {
                     link='/graphs'
                     icon={<GraphsIcon />}
                     titleMenuKey='menu-graph'
+                />
+            )}
+            {hasUserScreen && (
+                <DashboardItem
+                    link='/users'
+                    icon={<UsersIcon />}
+                    titleMenuKey='users'
                 />
             )}
             {hasLogout && (

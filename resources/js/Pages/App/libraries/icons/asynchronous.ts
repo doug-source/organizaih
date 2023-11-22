@@ -167,3 +167,10 @@ export const UploadIcon = lazy(() =>
         return { default: Svg };
     }),
 );
+
+export const UsersIcon = lazy(() =>
+    import('/resources/img/users.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);

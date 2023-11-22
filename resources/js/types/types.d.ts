@@ -46,6 +46,8 @@ declare global {
                 addressDistrict: number;
                 inventoryMaxQty: number;
                 saleMaxQty: number;
+                userName: number;
+                userEmail: number;
             };
             columnPrecisionDB: {
                 inventory: number;

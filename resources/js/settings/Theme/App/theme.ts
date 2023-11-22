@@ -33,6 +33,16 @@ type overlay = {
 export type AppTheme = {
     key: ThemeKey;
     measures: AppThemeMeasures;
+
+    anonymous: {
+        list: {
+            photo: {
+                svg: {
+                    fill: string;
+                };
+            };
+        };
+    };
     backBtn: {
         icon: {
             fill: string;
@@ -90,13 +100,6 @@ export type AppTheme = {
                     male: {
                         color: string;
                     };
-                };
-            };
-        };
-        list: {
-            photo: {
-                svg: {
-                    fill: string;
                 };
             };
         };
@@ -509,6 +512,14 @@ export type AppTheme = {
                             logout: {
                                 path: {
                                     fill: string;
+                                };
+                            };
+                            user: {
+                                path: {
+                                    fill: {
+                                        front: string;
+                                        back: string;
+                                    };
                                 };
                             };
                         };

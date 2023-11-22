@@ -22,7 +22,7 @@ import {
     useLongTouchPress,
 } from '@/Pages/App/libraries/hooks';
 import { makeContextError } from '@/libraries';
-import { endpoints, redirects } from '@/settings';
+import { endpoints, navigations } from '@/settings';
 import {
     useCallback,
     useContext,
@@ -160,9 +160,15 @@ export const useConfirmYesTouch = (
         dispatch({
             type: InventoryItemsReducerEnum.TOGGLE_OPTION_CONFIRM,
         });
-        navigate(redirects.inventory.edit(touchData.inventoryItemID));
+        navigate(navigations.inventory.edit(touchData.inventoryItemID));
         setTouchData(null);
-    }, [touchData, setTouchData, navigate, dispatch, redirects.inventory.edit]);
+    }, [
+        touchData,
+        setTouchData,
+        navigate,
+        dispatch,
+        navigations.inventory.edit,
+    ]);
 };
 
 export const useConfirmNoTouch = (

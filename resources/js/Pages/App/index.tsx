@@ -20,6 +20,7 @@ import {
     ProductCategoryRoutesAsync,
     ProductRoutesAsync,
     SaleRoutesAsync,
+    UserRoutesAsync,
 } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility, makeEmptySelections } from '@/Pages/App/settings';
 import {
@@ -44,6 +45,7 @@ const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
 const hasSaleScreen = hasAbility(AbilitiesEnum.SALE_SCREEN);
 const hasGraphScreen = hasAbility(AbilitiesEnum.GRAPHIC_SCREEN);
+const hasUserScreen = hasAbility(AbilitiesEnum.USER_SCREEN);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -112,6 +114,11 @@ export const App = () => {
                                         {hasGraphScreen && (
                                             <Suspense>
                                                 <GraphRoutesAsync />
+                                            </Suspense>
+                                        )}
+                                        {hasUserScreen && (
+                                            <Suspense>
+                                                <UserRoutesAsync />
                                             </Suspense>
                                         )}
                                         <Routes>

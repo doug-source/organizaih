@@ -32,11 +32,4 @@ export const customer: DefaultTheme['measures']['customer'] = {
             },
         },
     },
-    list: {
-        photo: {
-            svg: {
-                size: 48,
-            },
-        },
-    },
 };

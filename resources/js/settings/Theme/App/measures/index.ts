@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components';
+import { anonymous } from './anonymous';
 import { backBtn } from './backBtn';
 import { body } from './body';
 import { boundaryDateInputs } from './boundaryDateInputs';
@@ -42,11 +43,13 @@ import { selectProduct } from './selectProduct';
 import { selectorsBox } from './selectorsBox';
 import { submitBtn } from './submitBtn';
 import { tools } from './tools';
+import { user } from './user';
 
 const widthLarge = '1024px';
 const widthMedium = '512px';
 
 export const measures: DefaultTheme['measures'] = {
+    anonymous,
     backBtn,
     body,
     boundaryDateInputs,
@@ -90,6 +93,7 @@ export const measures: DefaultTheme['measures'] = {
     selectCustomer,
     submitBtn,
     tools,
+    user,
 
     wideScreen: `screen and (min-width: ${widthLarge})`,
     mediumScreen: `screen and (min-width: ${widthMedium})`,

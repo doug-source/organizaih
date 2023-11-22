@@ -17,7 +17,7 @@ return new class extends Migration
 
     private function attachSuperAdminInitialAbilities()
     {
-        $this->attachInitialAbilities('super-admin', ['login', 'settings', 'logout']);
+        $this->attachInitialAbilities('super-admin', ['login', 'settings', 'logout', 'menu', 'user-screen']);
     }
 
     private function attachAdminInitialAbilities()

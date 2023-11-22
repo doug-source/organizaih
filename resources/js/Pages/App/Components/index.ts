@@ -1,4 +1,5 @@
 export * from './AddButton';
+export * from './AnonymousListIcon';
 export * from './AxisGroup';
 export * from './BackPhotoBtn';
 export * from './Bar';

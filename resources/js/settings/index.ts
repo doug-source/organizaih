@@ -4,6 +4,10 @@ export * from './styled.d';
 const { apiVersion } = window.data;
 
 export const endpoints = {
+    user: {
+        list: `/api/${apiVersion}/users`,
+        delete: (id: number) => `/api/${apiVersion}/users/${id}`,
+    },
     city: {
         list: (stateID: number) => `/api/${apiVersion}/state/${stateID}/cities`,
     },
@@ -80,8 +84,16 @@ export const endpoints = {
     },
 } as const;
 
-export const redirects = {
+export const navigations = {
     inventory: {
         edit: (id: number) => `/inventories/${id}/edit`,
+    },
+    customer: {
+        show: (id: number) => `/customers/${id}`,
+        create: '/customers/create',
+    },
+    user: {
+        show: (id: number) => `/users/${id}`,
+        create: '/users/create',
     },
 } as const;

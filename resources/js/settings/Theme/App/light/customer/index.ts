@@ -24,11 +24,4 @@ export const customer: DefaultTheme['customer'] = {
             },
         },
     },
-    list: {
-        photo: {
-            svg: {
-                fill: 'currentColor',
-            },
-        },
-    },
 };
