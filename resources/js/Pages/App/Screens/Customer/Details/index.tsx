@@ -1,10 +1,10 @@
+import { AnonymousDetailsIcon } from '@/Pages/App/Components/AnonymousDetailsIcon';
 import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
 import {
     useCustomerDetailsRequest,
     useCustomerDetailsResponse,
 } from '@/Pages/App/Screens/Customer/Details/libraries';
 import {
-    AnonymousPhoto_,
     DefineItemCustomer_,
     DetailsContainer_,
 } from '@/Pages/App/Screens/Customer/Details/styling';
@@ -32,7 +32,7 @@ const Details = () => {
             >
                 <ProfilePhotoOutput
                     url={customer.photo}
-                    iconNoPhoto={<AnonymousPhoto_ />}
+                    iconNoPhoto={<AnonymousDetailsIcon />}
                 />
             </DefineItemCustomer_>
             <DefineItemCustomer_
