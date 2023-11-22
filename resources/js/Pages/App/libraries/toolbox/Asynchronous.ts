@@ -83,3 +83,11 @@ export const SaleRoutesAsync = lazy(() =>
         };
     }),
 );
+
+export const GraphRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/Graph').then(({ GraphRoutes }) => {
+        return {
+            default: GraphRoutes,
+        };
+    }),
+);
