@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Ability;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -7,6 +8,27 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    private $abilityNames = [
+        'login',
+        'settings',
+        'logout',
+        'menu',
+        'customer-screen',
+        'product-screen',
+        'inventory-screen',
+        'sale-screen',
+        'graphic-screen'
+    ];
+
+    private function populateDatabase()
+    {
+        foreach ($this->abilityNames as $abilityName) {
+            (new Ability([
+                'name' => $abilityName
+            ]))->save();
+        }
+    }
+
     /**
      * Run the migrations.
      */
@@ -17,17 +39,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->timestamps();
         });
-        DB::table('abilities')->insert([
-            ['name' => 'login'],
-            ['name' => 'settings'],
-            ['name' => 'logout'],
-            ['name' => 'menu'],
-            ['name' => 'customer-screen'],
-            ['name' => 'product-screen'],
-            ['name' => 'inventory-screen'],
-            ['name' => 'sale-screen'],
-            ['name' => 'graphic-screen'],
-        ]);
+        $this->populateDatabase();
     }
 
     /**
