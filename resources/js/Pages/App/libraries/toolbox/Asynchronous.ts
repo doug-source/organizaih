@@ -67,3 +67,11 @@ export const ProductCategoryRoutesAsync = lazy(() =>
         },
     ),
 );
+
+export const InventoryRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/Inventory').then(({ InventoryRoutes }) => {
+        return {
+            default: InventoryRoutes,
+        };
+    }),
+);

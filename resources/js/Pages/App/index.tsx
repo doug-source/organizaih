@@ -15,11 +15,11 @@ import {
 import {
     ConfigRoutesAsync,
     CustomerRoutesAsync,
+    InventoryRoutesAsync,
     ProductCategoryRoutesAsync,
     ProductRoutesAsync,
 } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { GraphRoutes } from '@/Pages/App/routes/Graph';
-import { InventoryRoutes } from '@/Pages/App/routes/Inventory';
 import { SaleRoutes } from '@/Pages/App/routes/Sale';
 import { hasAbility, makeEmptySelections } from '@/Pages/App/settings';
 import {
@@ -41,6 +41,7 @@ const hasSettings = hasAbility(AbilitiesEnum.SETTINGS);
 const hasMenu = hasAbility(AbilitiesEnum.MENU);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
 const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
+const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -96,7 +97,11 @@ export const App = () => {
                                                 <ProductCategoryRoutesAsync />
                                             </Suspense>
                                         )}
-                                        <InventoryRoutes />
+                                        {hasInventoryScreen && (
+                                            <Suspense>
+                                                <InventoryRoutesAsync />
+                                            </Suspense>
+                                        )}
                                         <SaleRoutes />
                                         <GraphRoutes />
                                         <Routes>
