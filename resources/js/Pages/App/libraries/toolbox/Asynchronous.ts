@@ -75,3 +75,11 @@ export const InventoryRoutesAsync = lazy(() =>
         };
     }),
 );
+
+export const SaleRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/Sale').then(({ SaleRoutes }) => {
+        return {
+            default: SaleRoutes,
+        };
+    }),
+);

@@ -18,9 +18,9 @@ import {
     InventoryRoutesAsync,
     ProductCategoryRoutesAsync,
     ProductRoutesAsync,
+    SaleRoutesAsync,
 } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { GraphRoutes } from '@/Pages/App/routes/Graph';
-import { SaleRoutes } from '@/Pages/App/routes/Sale';
 import { hasAbility, makeEmptySelections } from '@/Pages/App/settings';
 import {
     ContainerFluid_,
@@ -42,6 +42,7 @@ const hasMenu = hasAbility(AbilitiesEnum.MENU);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
 const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
+const hasSaleScreen = hasAbility(AbilitiesEnum.SALE_SCREEN);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -102,7 +103,11 @@ export const App = () => {
                                                 <InventoryRoutesAsync />
                                             </Suspense>
                                         )}
-                                        <SaleRoutes />
+                                        {hasSaleScreen && (
+                                            <Suspense>
+                                                <SaleRoutesAsync />
+                                            </Suspense>
+                                        )}
                                         <GraphRoutes />
                                         <Routes>
                                             <Route

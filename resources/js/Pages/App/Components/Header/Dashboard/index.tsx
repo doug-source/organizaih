@@ -17,6 +17,7 @@ const hasLogout = hasAbility(AbilitiesEnum.LOGIN);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);
 const hasProductScreen = hasAbility(AbilitiesEnum.PRODUCT_SCREEN);
 const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
+const hasSaleScreen = hasAbility(AbilitiesEnum.SALE_SCREEN);
 
 export const Dashboard = () => {
     const translate = useTranslate();
@@ -43,11 +44,13 @@ export const Dashboard = () => {
                     titleMenuKey='menu-inventory'
                 />
             )}
-            <DashboardItem
-                link='/sales'
-                icon={<SaleIcon />}
-                titleMenuKey='menu-sale'
-            />
+            {hasSaleScreen && (
+                <DashboardItem
+                    link='/sales'
+                    icon={<SaleIcon />}
+                    titleMenuKey='menu-sale'
+                />
+            )}
             <DashboardItem
                 link='/graphs'
                 icon={<GraphsIcon />}
