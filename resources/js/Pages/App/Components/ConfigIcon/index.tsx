@@ -1,7 +1,10 @@
+import { NavLink_ } from '@/Pages/App/Components/ConfigIcon/styling';
+import { DataReducerEnum } from '@/Pages/App/libraries/enums/data';
+import { useAppDispatch } from '@/Pages/App/libraries/hooks/Contexts';
+import { UserIcon } from '@/Pages/App/libraries/icons/asynchronous';
+import { emptySpaceCharacter } from '@/Pages/App/libraries/plain';
 import { Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DataReducerEnum, UserIcon, useAppDispatch } from '../../libraries';
-import { NavLink_ } from './styling';
 
 type ConfigurationProps = {
     className?: string;
@@ -20,7 +23,7 @@ export const ConfigIcon = ({ className }: ConfigurationProps) => {
                 }
                 appDispatch({
                     type: DataReducerEnum.TITLE,
-                    payload: '\u{FEFF}',
+                    payload: emptySpaceCharacter,
                 });
             }}
         >
