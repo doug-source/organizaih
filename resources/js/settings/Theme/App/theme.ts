@@ -958,13 +958,6 @@ export type AppTheme = {
     submitBtn: stdBtn;
     tools: {
         addBtn: {
-            boxShadow: string;
-            bg: {
-                color: string;
-            };
-            border: {
-                color: string;
-            };
             svg: {
                 stroke: string;
             };

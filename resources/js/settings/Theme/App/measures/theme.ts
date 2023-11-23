@@ -1355,31 +1355,12 @@ export type AppThemeMeasures = {
     };
     tools: {
         addBtn: {
-            wide: {
-                height: number;
-            };
             svg: {
                 width: number;
                 height: string;
                 path: {
                     stroke: {
                         width: number;
-                    };
-                };
-            };
-            hover: {
-                transform: {
-                    translate: {
-                        x: number;
-                        y: number;
-                    };
-                };
-            };
-            active: {
-                transform: {
-                    translate: {
-                        x: number;
-                        y: number;
                     };
                 };
             };
