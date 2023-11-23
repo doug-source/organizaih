@@ -13,8 +13,9 @@ type ToolsProps = {
     addLink?: string;
     onAddClick?: () => void;
     onToolChange?: (value: string) => void;
-    otherFilters?: JSX.Element | null;
-    children?: ReactNode | null;
+    innerFilters?: ReactNode;
+    outerFilters?: ReactNode;
+    children?: ReactNode;
     className?: string;
 };
 
@@ -32,7 +33,8 @@ export const Tools = ({
     addLink,
     onAddClick = () => {},
     onToolChange = (f) => f,
-    otherFilters,
+    innerFilters,
+    outerFilters,
     children,
     className,
 }: ToolsProps) => {
@@ -56,8 +58,9 @@ export const Tools = ({
                             onClick={(name: string) => onToolChange(name)}
                         />
                     )}
-                    {otherFilters}
+                    {innerFilters}
                 </FiltersBar_>
+                {outerFilters}
                 <AddButton
                     link={addLink}
                     onClick={onAddClick}

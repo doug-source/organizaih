@@ -66,7 +66,7 @@ const List = () => {
             <Tools_
                 addLink='/sales/create'
                 onAddClick={makeAddClickHandler(appDispatch)}
-                otherFilters={
+                innerFilters={
                     <>
                         <InputRequest
                             placeholderKey='product-filter-placeholder'

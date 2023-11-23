@@ -3,6 +3,7 @@ import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItem } from '@/Pages/App/Components/ListItem';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
+import { NextButton } from '@/Pages/App/Components/NextButton';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { ToolsType } from '@/Pages/App/Components/Tools';
@@ -19,12 +20,17 @@ import {
     useUserResponse,
     useUsersReducer,
 } from '@/Pages/App/Screens/User/List/libraries/hooks';
-import { Tools_ } from '@/Pages/App/Screens/User/List/styling';
+import {
+    AllowSvg_,
+    AllowTextContent_,
+    Tools_,
+} from '@/Pages/App/Screens/User/List/styling';
 import { IUserListData } from '@/Pages/App/Screens/User/List/types';
 import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
 import { navigations } from '@/settings';
+import { Suspense } from 'react';
 
 const List = () => {
     const translate = useTranslate();
@@ -58,9 +64,23 @@ const List = () => {
                 placeholderKey='user-filter-placeholder'
                 toolLabelKey='filter-label'
                 toolType={ToolsType.REQUEST_NAME}
-                addLink={navigations.user.create}
                 maxLength={columnSizeDB.userName}
                 onToolChange={makeToolChange(dispatch)}
+                outerFilters={
+                    <NextButton
+                        preIcon
+                        link={navigations.user.requests}
+                        icon={
+                            <Suspense>
+                                <AllowSvg_ />
+                            </Suspense>
+                        }
+                    >
+                        <AllowTextContent_>
+                            {translate('requests', true)}
+                        </AllowTextContent_>
+                    </NextButton>
+                }
             >
                 <Pagination
                     page={state.page}

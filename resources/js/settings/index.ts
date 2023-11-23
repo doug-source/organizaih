@@ -95,6 +95,6 @@ export const navigations = {
     },
     user: {
         show: (id: number) => `/users/${id}`,
-        create: '/users/create',
+        requests: '/users/requests',
     },
 } as const;

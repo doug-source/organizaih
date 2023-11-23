@@ -217,5 +217,6 @@
     "roles": "roles",
     "abilities": "abilities",
     "role-empty-list": "no bound roles",
-    "abilities-empty-list": "no bound abilities"
+    "abilities-empty-list": "no bound abilities",
+    "requests": "requests"
 }

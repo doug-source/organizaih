@@ -59,7 +59,7 @@ export const QtyBars = <T,>({
     return (
         <QtyBarContainer_>
             <Tools_
-                otherFilters={
+                innerFilters={
                     <>
                         <InputRange
                             min={makeQty(qty)}
