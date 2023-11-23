@@ -10,6 +10,7 @@ import { datepicker } from './datepicker';
 import { defaultForm } from './defaultForm';
 import { defineItem } from './defineItem';
 import { definePhoto } from './definePhoto';
+import { details } from './details';
 import { dialog } from './dialog';
 import { dropdown } from './dropdown';
 import { entryActionsItem } from './entryActionsItem';
@@ -60,6 +61,7 @@ export const measures: DefaultTheme['measures'] = {
     defaultForm,
     defineItem,
     definePhoto,
+    details,
     dialog,
     dropdown,
     entryActionsItem,

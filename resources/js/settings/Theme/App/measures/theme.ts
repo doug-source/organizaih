@@ -133,11 +133,6 @@ export type AppThemeMeasures = {
                 gap: number;
             };
         };
-        details: {
-            container: {
-                gap: number;
-            };
-        };
         filtersBar: {
             gap: number;
         };
@@ -323,6 +318,11 @@ export type AppThemeMeasures = {
         margin: number;
         border: {
             radius: number;
+        };
+    };
+    details: {
+        container: {
+            gap: number;
         };
     };
     dialog: {

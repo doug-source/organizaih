@@ -6,11 +6,6 @@ export const customer: DefaultTheme['measures']['customer'] = {
             gap: 16,
         },
     },
-    details: {
-        container: {
-            gap: 16,
-        },
-    },
     filtersBar: {
         gap: 12,
     },

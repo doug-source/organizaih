@@ -8,4 +8,11 @@ export const anonymous: DefaultTheme['anonymous'] = {
             },
         },
     },
+    details: {
+        photo: {
+            svg: {
+                fill: 'currentColor',
+            },
+        },
+    },
 };

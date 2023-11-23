@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\App;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,6 +43,48 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Format the email_verified_at to view
+     *
+     * @return string
+     */
+    public function getEmailVerifiedAtFormattedAttribute()
+    {
+        $locale = App::getLocale();
+        if ($locale === 'pt_BR') {
+            return $this->email_verified_at ? $this->email_verified_at->format('d/m/Y') : '--';
+        }
+        return $this->email_verified_at ? $this->email_verified_at->format('m/d/Y') : '--';
+    }
+
+    /**
+     * Format the created_at to view
+     *
+     * @return string
+     */
+    public function getCreatedAtFormattedAttribute()
+    {
+        $locale = App::getLocale();
+        if ($locale === 'pt_BR') {
+            return $this->created_at->format('d/m/Y');
+        }
+        return $this->created_at->format('m/d/Y');
+    }
+
+    /**
+     * Format the updated_at to view
+     *
+     * @return string
+     */
+    public function getUpdatedAtFormattedAttribute()
+    {
+        $locale = App::getLocale();
+        if ($locale === 'pt_BR') {
+            return $this->updated_at->format('d/m/Y');
+        }
+        return $this->updated_at->format('m/d/Y');
+    }
 
     /**
      * Many-to-many relationship with roles

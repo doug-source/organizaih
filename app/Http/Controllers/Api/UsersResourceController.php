@@ -54,6 +54,28 @@ class UsersResourceController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Http\Requests\User\CheckRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(CheckRequest $request)
+    {
+        $user = User::find($request->userID);
+        $roles = $user->roles;
+        return response()->json([
+            'id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'email_verified_at' => $user->email_verified_at_formatted,
+            'created_at' => $user->created_at_formatted,
+            'updated_at' => $user->updated_at_formatted,
+            'roles' => $roles->map(fn ($role) => $role->name),
+            'abilities' => $roles->map(fn ($role) => $role->abilities)->flatten()->pluck('name')->unique()
+        ]);
+    }
+
+    /**
      * Search the users list
      *
      * @param  int  $userLoggedID

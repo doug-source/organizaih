@@ -61,6 +61,8 @@
     "user-index-title": "lista de usuarios",
     "user-filter-placeholder": "nome do usuário",
     "user-empty-list": "sem usuários cadastrados",
+    "user-show-title": "detalhes do usuário",
+    "user-email-verified-field": "data de verificação de email",
     "validation-required": "obrigatório",
     "validation-mimes": "permitido somente :mimes.",
     "validation-profile-photo-size": "tamanho máximo de foto: :size.",
@@ -210,5 +212,10 @@
     "passwords.sent": "Enviamos por e-mail seu link de redefinição de senha.",
     "passwords.throttled": "Aguarde antes de tentar novamente.",
     "passwords.token": "Token da requisição inválido.",
-    "passwords.user": "Endereço de email inválido."
+    "passwords.user": "Endereço de email inválido.",
+
+    "roles": "papéis",
+    "abilities": "habilidades",
+    "role-empty-list": "sem papéis vinculados",
+    "abilities-empty-list": "sem habilidades vinculadas"
 }

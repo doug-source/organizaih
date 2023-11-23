@@ -22,7 +22,10 @@ export const formatRequestDate = (
     return `${year}-${month}-${monthDay}`;
 };
 
-export const formatDateByString = (str: string | null) => {
+export const formatDateByString = (str: string | Date | null) => {
+    if (str instanceof Date) {
+        return str;
+    }
     const pattern = /^\d\d\/\d\d\/\d\d\d\d$/;
     if (!str || str.search(pattern) === -1) {
         return null;

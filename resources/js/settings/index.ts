@@ -6,6 +6,7 @@ const { apiVersion } = window.data;
 export const endpoints = {
     user: {
         list: `/api/${apiVersion}/users`,
+        data: (id: number) => `/api/${apiVersion}/users/${id}`,
         delete: (id: number) => `/api/${apiVersion}/users/${id}`,
     },
     city: {

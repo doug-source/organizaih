@@ -8,7 +8,7 @@ import { ReactNode } from 'react';
 
 type DefineItemProps = {
     labelText?: string;
-    valueText?: string;
+    value?: string | ReactNode;
     wrap?: boolean;
     posChildren?: boolean;
     children?: ReactNode;
@@ -18,7 +18,7 @@ type DefineItemProps = {
 
 export const DefineItem = ({
     labelText,
-    valueText,
+    value,
     posChildren,
     wrap,
     children,
@@ -36,11 +36,14 @@ export const DefineItem = ({
                         {labelText && (
                             <DefineItemLabel_>{labelText}</DefineItemLabel_>
                         )}
-                        {valueText && (
-                            <DefineItemValue_ title={valueText}>
-                                {valueText}
-                            </DefineItemValue_>
-                        )}
+                        {value &&
+                            (typeof value === 'string' ? (
+                                <DefineItemValue_ title={value}>
+                                    {value}
+                                </DefineItemValue_>
+                            ) : (
+                                <DefineItemValue_>{value}</DefineItemValue_>
+                            ))}
                     </DefineItemWrap_>
                     {children}
                 </DefineItem_>
@@ -52,7 +55,7 @@ export const DefineItem = ({
                 $similar={childrenSimilar}
             >
                 {labelText && <DefineItemLabel_>{labelText}</DefineItemLabel_>}
-                {valueText && <DefineItemValue_>{valueText}</DefineItemValue_>}
+                {value && <DefineItemValue_>{value}</DefineItemValue_>}
                 {children}
             </DefineItem_>
         );
@@ -68,9 +71,7 @@ export const DefineItem = ({
                     {labelText && (
                         <DefineItemLabel_>{labelText}</DefineItemLabel_>
                     )}
-                    {valueText && (
-                        <DefineItemValue_>{valueText}</DefineItemValue_>
-                    )}
+                    {value && <DefineItemValue_>{value}</DefineItemValue_>}
                 </DefineItemWrap_>
             </DefineItem_>
         );
@@ -82,7 +83,7 @@ export const DefineItem = ({
         >
             {children}
             {labelText && <DefineItemLabel_>{labelText}</DefineItemLabel_>}
-            {valueText && <DefineItemValue_>{valueText}</DefineItemValue_>}
+            {value && <DefineItemValue_>{value}</DefineItemValue_>}
         </DefineItem_>
     );
 };

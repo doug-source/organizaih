@@ -85,9 +85,12 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::put('{saleID}', [SalesResourceController::class, 'update']);
             Route::delete('{saleID}', [SalesResourceController::class, 'destroy']);
         });
-        Route::prefix('users')->group(function () {
-            $userModel = User::class;
-            Route::get('/', [UsersResourceController::class, 'index'])->middleware("can:isSuperAdmin,$userModel");
+        $userModel = User::class;
+        Route::middleware("can:isSuperAdmin,$userModel")->group(function () {
+            Route::prefix('users')->group(function () {
+                Route::get('/', [UsersResourceController::class, 'index']);
+                Route::get('/{userID}', [UsersResourceController::class, 'show']);
+            });
         });
     });
 });

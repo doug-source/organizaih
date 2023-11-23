@@ -42,6 +42,13 @@ export type AppTheme = {
                 };
             };
         };
+        details: {
+            photo: {
+                svg: {
+                    fill: string;
+                };
+            };
+        };
     };
     backBtn: {
         icon: {

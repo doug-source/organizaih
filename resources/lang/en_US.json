@@ -61,6 +61,8 @@
     "user-index-title": "user list",
     "user-filter-placeholder": "user's name",
     "user-empty-list": "no users registered",
+    "user-show-title": "user details",
+    "user-email-verified-field": "email verified date",
     "validation-required": "required",
     "validation-mimes": "it's only allowed :mimes.",
     "validation-profile-photo-size": "maximum photo size: :size.",
@@ -210,5 +212,10 @@
     "passwords.sent": "We have emailed your password reset link.",
     "passwords.throttled": "Please wait before retrying.",
     "passwords.token": "Password reset token invalid.",
-    "passwords.user": "Invalid email address."
+    "passwords.user": "Invalid email address.",
+
+    "roles": "roles",
+    "abilities": "abilities",
+    "role-empty-list": "no bound roles",
+    "abilities-empty-list": "no bound abilities"
 }

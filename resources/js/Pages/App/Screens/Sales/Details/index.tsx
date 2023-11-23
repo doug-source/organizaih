@@ -34,7 +34,7 @@ const Details = () => {
         <DetailsContainer_>
             <DefineItemUpper_
                 labelText={translate('customer', true) + ':'}
-                valueText={sale.customerName}
+                value={sale.customerName}
             >
                 <ProfilePhotoOutput
                     url={sale.customerPhoto}
@@ -43,7 +43,7 @@ const Details = () => {
             </DefineItemUpper_>
             <DefineItemUpper_
                 labelText={translate('registered-in', true) + ':'}
-                valueText={sale.createdAt}
+                value={sale.createdAt}
             ></DefineItemUpper_>
             <DefineItemUpper_
                 labelText={translate('product', true) + 's:'}
@@ -67,10 +67,10 @@ const Details = () => {
                                         <SaleProductsItem_>
                                             <SaleProductsItemField_
                                                 childrenSimilar
-                                                valueText={product.productName}
+                                                value={product.productName}
                                             />
                                             <SaleProductsItemField_
-                                                valueText={pluralize(
+                                                value={pluralize(
                                                     pluralRulesRef.current,
                                                     product.qty,
                                                     translate('unit'),

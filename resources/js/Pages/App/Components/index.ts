@@ -17,6 +17,7 @@ export * from './DatePicker';
 export * from './DefaultForm';
 export * from './DefineItem';
 export * from './DefinePhoto';
+export * from './DetailsContainer';
 export * from './Dialog';
 export * from './Dropdown';
 export * from './ElementGroup';

@@ -174,3 +174,10 @@ export const UsersIcon = lazy(() =>
         return { default: Svg };
     }),
 );
+
+export const AllowSVG = lazy(() =>
+    import('/resources/img/allow.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);

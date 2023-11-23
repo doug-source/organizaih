@@ -26,7 +26,7 @@ const Details = () => {
         <DetailsContainer_>
             <DefineItemProduct_
                 labelText={translate('name', true) + ':'}
-                valueText={product.name}
+                value={product.name}
             >
                 <ProfilePhotoOutput
                     url={product.photo}
@@ -35,19 +35,19 @@ const Details = () => {
             </DefineItemProduct_>
             <DefineItemProduct_
                 labelText={translate('description', true) + ':'}
-                valueText={product.description || '--'}
+                value={product.description || '--'}
             />
             <DefineItemProduct_
                 labelText={translate('obs', true) + ':'}
-                valueText={product.obs || '--'}
+                value={product.obs || '--'}
             />
             <DefineItemProduct_
                 labelText={translate('category', true) + ':'}
-                valueText={makeCategoryName(product, translate)}
+                value={makeCategoryName(product, translate)}
             />
             <DefineItemProduct_
                 labelText={translate('registered-in', true) + ':'}
-                valueText={product.created_at}
+                value={product.created_at}
             />
         </DetailsContainer_>
     );

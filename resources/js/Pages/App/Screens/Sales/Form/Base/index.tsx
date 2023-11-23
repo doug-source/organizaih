@@ -130,7 +130,7 @@ const Base = ({
                         <DefineCustomerContainer_>
                             <DefineItem_
                                 labelText={translate('customer', true) + ':'}
-                                valueText={state.customer.name}
+                                value={state.customer.name}
                                 childrenSimilar
                                 wrap
                             >

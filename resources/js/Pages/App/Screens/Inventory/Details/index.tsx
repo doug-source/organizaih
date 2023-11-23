@@ -68,7 +68,7 @@ const Details = () => {
             <DetailsContainer_>
                 <DefineItem_
                     labelText={translate('product', true) + ':'}
-                    valueText={state.inventoryItem.name}
+                    value={state.inventoryItem.name}
                 >
                     <ProfilePhotoOutput
                         url={state.inventoryItem.photo}
@@ -86,7 +86,7 @@ const Details = () => {
                                     labelText={
                                         translate('registered-in', true) + ':'
                                     }
-                                    valueText={createdAt}
+                                    value={createdAt}
                                     posChildren
                                     wrap
                                 >

@@ -21,20 +21,20 @@ const Details = () => {
         <DetailsContainer_>
             <DefineItem
                 labelText={translate('name', true) + ':'}
-                valueText={productCategory.name}
+                value={productCategory.name}
                 childrenSimilar
             />
             <DefineItem
                 labelText={translate('description', true) + ':'}
-                valueText={productCategory.description || '--'}
+                value={productCategory.description || '--'}
             />
             <DefineItem
                 labelText={translate('obs', true) + ':'}
-                valueText={productCategory.obs || '--'}
+                value={productCategory.obs || '--'}
             />
             <DefineItem
                 labelText={translate('registered-in', true) + ':'}
-                valueText={productCategory.created_at}
+                value={productCategory.created_at}
             />
         </DetailsContainer_>
     );
