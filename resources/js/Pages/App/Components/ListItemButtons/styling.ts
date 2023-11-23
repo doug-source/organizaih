@@ -1,5 +1,4 @@
-import { TextItem_ } from '@/Pages/App/Components/ListItem';
-import { remOutput } from '@/libraries';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
 export const BtnsItemContainer_ = styled.div`
@@ -16,11 +15,12 @@ export const BtnsItemContainer_ = styled.div`
     }}
 `;
 
-export const BtnsItem_ = styled(TextItem_)`
+export const BtnsItem_ = styled.div`
     ${({ theme }) => {
         const btnsMeasure = theme.measures.list.dataListItem.btns;
         return css`
             display: flex;
+            align-items: center;
             flex: 0 1 auto;
             overflow: visible;
             gap: ${remOutput(btnsMeasure.item.gap)};

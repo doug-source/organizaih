@@ -1,13 +1,22 @@
 import { DefaultTheme } from 'styled-components';
 
 export const list: DefaultTheme['measures']['list'] = {
-    dataListItem: {
+    pack: {
         border: {
             width: {
                 dark: 0,
                 light: 5,
             },
         },
+        gap: 12,
+        padding: {
+            top: 8,
+            bottom: 8,
+            left: 15,
+            right: 15,
+        },
+    },
+    dataListItem: {
         btns: {
             active: {
                 transform: {
@@ -41,13 +50,6 @@ export const list: DefaultTheme['measures']['list'] = {
             svg: {
                 size: 25,
             },
-        },
-        gap: 12,
-        padding: {
-            top: 8,
-            bottom: 8,
-            left: 15,
-            right: 15,
         },
         photo: {
             img: {

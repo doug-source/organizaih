@@ -1,7 +1,7 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { List as GenericList } from '@/Pages/App/Components/List';
-import { TextContent_ } from '@/Pages/App/Components/ListItem';
+import { ListItem } from '@/Pages/App/Components/ListItem';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
@@ -19,10 +19,7 @@ import {
     useInventoriesResponse,
     useInventoryRemotion,
 } from '@/Pages/App/Screens/Inventory/List/libraries/hooks';
-import {
-    InventoryListItem_,
-    TextItemQty_,
-} from '@/Pages/App/Screens/Inventory/List/styling';
+import { ListItemColumnQty_ } from '@/Pages/App/Screens/Inventory/List/styling';
 import {
     DeletionReducerEnum,
     useAppDispatch,
@@ -76,8 +73,9 @@ const List = () => {
                 dataList={state.list}
                 emptyListKey='inventories-empty-list'
                 makeItem={(data, index) => {
+                    const qtyText = `(${String(data.qty).padStart(2, '0')})`;
                     return (
-                        <InventoryListItem_
+                        <ListItem
                             key={data.id}
                             contentLinked={data.name}
                             id={data.id}
@@ -105,11 +103,9 @@ const List = () => {
                                         }
                                         photo={data.productPhoto}
                                     />
-                                    <TextItemQty_>
-                                        <TextContent_>{`(${String(
-                                            data.qty,
-                                        ).padStart(2, '0')})`}</TextContent_>
-                                    </TextItemQty_>
+                                    <ListItemColumnQty_ title={qtyText}>
+                                        {qtyText}
+                                    </ListItemColumnQty_>
                                 </>
                             }
                             updateBtn={false}

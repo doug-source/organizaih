@@ -1,8 +1,5 @@
-import {
-    DataListItem_,
-    TextContent_,
-    TextItem_,
-} from '@/Pages/App/Components/ListItem';
+import { ListItemColumn } from '@/Pages/App/Components/ListItemColumn';
+import { ListItemPack } from '@/Pages/App/Components/ListItemPack';
 import { MouseEventHandler, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -23,8 +20,7 @@ export const ListSelectRow = ({
     image,
     onClick = () => {},
 }: ListSelectRowProps) => (
-    <DataListItem_>
-        <div>{index + 1}</div>
+    <ListItemPack index={index}>
         {image && (
             <NavLink
                 to={`/${target}/${action}`}
@@ -33,15 +29,13 @@ export const ListSelectRow = ({
                 {image}
             </NavLink>
         )}
-        <TextItem_ title={data.name}>
-            <TextContent_>
-                <NavLink
-                    to={`/${target}/${action}`}
-                    onClick={onClick}
-                >
-                    {data.name}
-                </NavLink>
-            </TextContent_>
-        </TextItem_>
-    </DataListItem_>
+        <ListItemColumn title={data.name}>
+            <NavLink
+                to={`/${target}/${action}`}
+                onClick={onClick}
+            >
+                {data.name}
+            </NavLink>
+        </ListItemColumn>
+    </ListItemPack>
 );

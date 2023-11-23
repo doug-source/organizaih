@@ -40,6 +40,8 @@ export * from './LabelText';
 export * from './LanguageSwitcher';
 export * from './LinkedButton';
 export * from './List';
+export * from './ListItemColumn';
+export * from './ListItemPack';
 export * from './Loading';
 export * from './LogoutLink';
 export * from './NextButton';

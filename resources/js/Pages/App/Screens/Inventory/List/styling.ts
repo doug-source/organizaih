@@ -1,14 +1,9 @@
-import {
-    ListItem,
-    NavLink_,
-    TextContent_,
-    TextItem_,
-} from '@/Pages/App/Components/ListItem';
+import { ListItemColumn } from '@/Pages/App/Components/ListItemColumn';
 import { remOutput } from '@/libraries';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
 
-export const TextItemQty_ = styled(TextItem_)`
+export const ListItemColumnQty_ = styled(ListItemColumn)`
     ${({ theme }) => {
         const textItemMeasure = theme.measures.inventory.textItem;
         return css`
@@ -17,17 +12,4 @@ export const TextItemQty_ = styled(TextItem_)`
             font-size: ${remOutput(textItemMeasure.qty.fontSize)};
         `;
     }}
-`;
-
-export const InventoryListItem_ = styled(ListItem)`
-    ${TextItem_}:last-of-type {
-        flex-grow: 1;
-        ${TextContent_} {
-            flex: 1;
-            text-align: left;
-            ${NavLink_} {
-                display: block;
-            }
-        }
-    }
 `;

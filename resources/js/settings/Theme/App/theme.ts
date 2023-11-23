@@ -739,7 +739,7 @@ export type AppTheme = {
                 color: string;
             };
         };
-        dataListItem: {
+        pack: {
             bg: {
                 color: string;
             };
@@ -749,6 +749,8 @@ export type AppTheme = {
                     color: string;
                 };
             };
+        };
+        dataListItem: {
             photo: {
                 img: {
                     overview: {

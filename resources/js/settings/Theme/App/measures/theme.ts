@@ -949,10 +949,19 @@ export type AppThemeMeasures = {
         };
     };
     list: {
-        dataListItem: {
+        pack: {
             border: {
                 width: Record<ThemeKey, number>;
             };
+            gap: number;
+            padding: {
+                top: number;
+                bottom: number;
+                left: number;
+                right: number;
+            };
+        };
+        dataListItem: {
             btns: {
                 active: {
                     transform: {
@@ -983,13 +992,6 @@ export type AppThemeMeasures = {
                 svg: {
                     size: number;
                 };
-            };
-            gap: number;
-            padding: {
-                top: number;
-                bottom: number;
-                left: number;
-                right: number;
             };
             photo: {
                 img: {

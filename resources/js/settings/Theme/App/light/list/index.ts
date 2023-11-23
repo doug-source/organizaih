@@ -21,7 +21,7 @@ export const list: DefaultTheme['list'] = {
             color: blue.darken,
         },
     },
-    dataListItem: {
+    pack: {
         bg: {
             color: white[1],
         },
@@ -31,6 +31,8 @@ export const list: DefaultTheme['list'] = {
             },
         },
         color: 'inherit',
+    },
+    dataListItem: {
         photo: {
             img: {
                 overview: {
