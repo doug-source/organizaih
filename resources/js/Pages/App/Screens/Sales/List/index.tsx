@@ -2,7 +2,8 @@ import { BoundaryDateInputs } from '@/Pages/App/Components/BoundaryDateInputs';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { InputRequest } from '@/Pages/App/Components/InputRequest';
 import { List as GenericList } from '@/Pages/App/Components/List';
-import { ListItem } from '@/Pages/App/Components/ListItem';
+import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
+import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { SalesReducerEnum } from '@/Pages/App/Screens/Sales/List/libraries/enums';
@@ -26,6 +27,7 @@ import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
 import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
+import { navigations } from '@/settings';
 import { Suspense } from 'react';
 
 const List = () => {
@@ -122,10 +124,11 @@ const List = () => {
                 dataList={state.sales}
                 emptyListKey='sale-empty-list'
                 makeItem={(data, index) => (
-                    <ListItem
+                    <ListItemLinked
                         key={data.id}
-                        id={data.id}
-                        contentLinked={
+                        index={index}
+                        urlLink={navigations.sale.show(data.id)}
+                        contentLink={
                             <>
                                 <div title={data.created_at}>
                                     {data.created_at}
@@ -135,9 +138,7 @@ const List = () => {
                                 </div>
                             </>
                         }
-                        urlLink={`/sales/${data.id}`}
-                        index={index}
-                        innerColumns={
+                        firstColumns={
                             <PhotoListItem
                                 iconNoPhoto={
                                     <Suspense>
@@ -147,8 +148,14 @@ const List = () => {
                                 photo={data.customerPhoto}
                             />
                         }
-                        onUpdate={makeListItemUpdate(appDispatch)}
-                        onRemove={makeListItemRemove(dispatch, data)}
+                        lastColumns={
+                            <ListItemButtons
+                                urlLink={navigations.sale.show(data.id)}
+                                id={data.id}
+                                onUpdate={makeListItemUpdate(appDispatch)}
+                                onRemove={makeListItemRemove(dispatch, data)}
+                            />
+                        }
                     />
                 )}
             />

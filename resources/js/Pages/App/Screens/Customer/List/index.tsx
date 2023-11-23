@@ -1,7 +1,8 @@
 import { AnonymousListIcon } from '@/Pages/App/Components/AnonymousListIcon';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
-import { ListItem } from '@/Pages/App/Components/ListItem';
+import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
+import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
@@ -110,15 +111,20 @@ const List = () => {
                         );
                     }
                     return (
-                        <ListItem
+                        <ListItemLinked
                             key={data.id}
-                            contentLinked={data.name}
-                            id={data.id}
+                            index={index}
                             urlLink={navigations.customer.show(data.id)}
                             titleLink={data.name}
-                            index={index}
-                            innerColumns={image}
-                            onRemove={makeRemoveItem(dispatch, data)}
+                            contentLink={data.name}
+                            firstColumns={image}
+                            lastColumns={
+                                <ListItemButtons
+                                    urlLink={navigations.customer.show(data.id)}
+                                    id={data.id}
+                                    onRemove={makeRemoveItem(dispatch, data)}
+                                />
+                            }
                         />
                     );
                 }}

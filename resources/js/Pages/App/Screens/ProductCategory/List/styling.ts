@@ -1,8 +1,8 @@
-import { ListItem } from '@/Pages/App/Components/ListItem';
+import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
-export const ListItemProdCategory_ = styled(ListItem)`
+export const ListItemLinkedProdCategory_ = styled(ListItemLinked)`
     ${({ theme }) => {
         const {
             category: { dataListItem: dataListItemMeasure },

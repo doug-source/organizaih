@@ -1,5 +1,6 @@
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
-import { ListItem } from '@/Pages/App/Components/ListItem';
+import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
+import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { makeListHandlers } from '@/Pages/App/Screens/Product/List/libraries/handlers';
@@ -7,6 +8,7 @@ import { useProductsReducer } from '@/Pages/App/Screens/Product/List/libraries/h
 import { IProductListData } from '@/Pages/App/Screens/Product/List/types';
 import { useAppDispatch, useSelections } from '@/Pages/App/libraries/hooks';
 import { selectionTargets } from '@/Pages/App/settings';
+import { navigations } from '@/settings';
 import { Suspense, createElement } from 'react';
 
 export type AppDispatchFn = ReturnType<typeof useAppDispatch>;
@@ -28,16 +30,20 @@ export const mountItem = (
             photo: data.photo,
         });
         if (!target || !action) {
-            return createElement(ListItem, {
+            const urlLink = navigations.product.show(data.id);
+            return createElement(ListItemLinked, {
                 key: data.id,
-                contentLinked: data.name,
-                id: data.id,
-                urlLink: `/products/${data.id}`,
-                titleLink: data.name,
                 index,
-                innerColumns: image,
-                onRemove: listHandlers.makeItemRemove(dispatch),
-                onUpdate: listHandlers.makeItemUpdate(appDispatch),
+                urlLink,
+                titleLink: data.name,
+                contentLink: data.name,
+                firstColumns: image,
+                lastColumns: createElement(ListItemButtons, {
+                    urlLink,
+                    id: data.id,
+                    onRemove: listHandlers.makeItemRemove(dispatch),
+                    onUpdate: listHandlers.makeItemUpdate(appDispatch),
+                }),
             });
         }
         return createElement(ListSelectRow, {

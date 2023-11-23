@@ -87,11 +87,21 @@ export const endpoints = {
 
 export const navigations = {
     inventory: {
+        show: (id: number) => `/inventories/${id}`,
         edit: (id: number) => `/inventories/${id}/edit`,
     },
     customer: {
         show: (id: number) => `/customers/${id}`,
         create: '/customers/create',
+    },
+    product: {
+        show: (id: number) => `/products/${id}`,
+    },
+    productCategory: {
+        show: (id: number) => `/product-categories/${id}`,
+    },
+    sale: {
+        show: (id: number) => `/sales/${id}`,
     },
     user: {
         show: (id: number) => `/users/${id}`,

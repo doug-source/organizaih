@@ -1,5 +1,6 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
+import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
@@ -20,7 +21,7 @@ import {
     useProductCategoryReduce,
     useProductCategoryRemotion,
 } from '@/Pages/App/Screens/ProductCategory/List/libraries/hooks';
-import { ListItemProdCategory_ } from '@/Pages/App/Screens/ProductCategory/List/styling';
+import { ListItemLinkedProdCategory_ } from '@/Pages/App/Screens/ProductCategory/List/styling';
 import { IProductCategory } from '@/Pages/App/Screens/ProductCategory/types';
 import { DeletionReducerEnum } from '@/Pages/App/libraries';
 import {
@@ -30,6 +31,7 @@ import {
 } from '@/Pages/App/libraries/hooks';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
+import { navigations } from '@/settings';
 import { useParams } from 'react-router-dom';
 
 const List = () => {
@@ -88,7 +90,7 @@ const List = () => {
                 />
                 <GenericList
                     dataList={state.categories}
-                    emptyListKey='customer-empty-list'
+                    emptyListKey='product-category-empty-list'
                     makeItem={(data: IProductCategory, index: number) => {
                         if (action && target) {
                             return (
@@ -107,19 +109,28 @@ const List = () => {
                             );
                         }
                         return (
-                            <ListItemProdCategory_
+                            <ListItemLinkedProdCategory_
                                 key={data.id}
-                                contentLinked={data.name}
-                                id={data.id}
-                                urlLink={`/product-categories/${data.id}`}
-                                titleLink={data.name}
                                 index={index}
-                                onRemove={() => {
-                                    dispatch({
-                                        type: DeletionReducerEnum.PREPARE_DELETE,
-                                        payload: data,
-                                    });
-                                }}
+                                urlLink={navigations.productCategory.show(
+                                    data.id,
+                                )}
+                                titleLink={data.name}
+                                contentLink={data.name}
+                                lastColumns={
+                                    <ListItemButtons
+                                        urlLink={navigations.productCategory.show(
+                                            data.id,
+                                        )}
+                                        id={data.id}
+                                        onRemove={() => {
+                                            dispatch({
+                                                type: DeletionReducerEnum.PREPARE_DELETE,
+                                                payload: data,
+                                            });
+                                        }}
+                                    />
+                                }
                             />
                         );
                     }}

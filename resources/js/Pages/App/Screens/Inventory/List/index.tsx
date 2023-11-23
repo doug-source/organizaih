@@ -1,7 +1,8 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { List as GenericList } from '@/Pages/App/Components/List';
-import { ListItem } from '@/Pages/App/Components/ListItem';
+import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
+import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
@@ -27,6 +28,7 @@ import {
 } from '@/Pages/App/libraries';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
+import { navigations } from '@/settings';
 import { Suspense } from 'react';
 
 const List = () => {
@@ -75,25 +77,13 @@ const List = () => {
                 makeItem={(data, index) => {
                     const qtyText = `(${String(data.qty).padStart(2, '0')})`;
                     return (
-                        <ListItem
+                        <ListItemLinked
                             key={data.id}
-                            contentLinked={data.name}
-                            id={data.id}
-                            urlLink={`/inventories/${data.id}`}
-                            titleLink={data.name}
                             index={index}
-                            onRemove={() => {
-                                dispatch({
-                                    type: DeletionReducerEnum.PREPARE_DELETE,
-                                    payload: {
-                                        productID: data.id,
-                                        productName: data.name,
-                                        productPhoto: data.productPhoto,
-                                        qty: data.qty,
-                                    },
-                                });
-                            }}
-                            innerColumns={
+                            urlLink={navigations.inventory.show(data.id)}
+                            titleLink={data.name}
+                            contentLink={data.name}
+                            firstColumns={
                                 <>
                                     <PhotoListItem
                                         iconNoPhoto={
@@ -108,7 +98,26 @@ const List = () => {
                                     </ListItemColumnQty_>
                                 </>
                             }
-                            updateBtn={false}
+                            lastColumns={
+                                <ListItemButtons
+                                    urlLink={navigations.inventory.show(
+                                        data.id,
+                                    )}
+                                    id={data.id}
+                                    updateBtn={false}
+                                    onRemove={() => {
+                                        dispatch({
+                                            type: DeletionReducerEnum.PREPARE_DELETE,
+                                            payload: {
+                                                productID: data.id,
+                                                productName: data.name,
+                                                productPhoto: data.productPhoto,
+                                                qty: data.qty,
+                                            },
+                                        });
+                                    }}
+                                />
+                            }
                         />
                     );
                 }}
