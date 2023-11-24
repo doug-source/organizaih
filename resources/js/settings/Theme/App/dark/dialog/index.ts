@@ -9,6 +9,7 @@ import {
 import { DefaultTheme } from 'styled-components';
 
 export const dialog: DefaultTheme['dialog'] = {
+    color: white[3],
     closeIcon: {
         fill: gray[35],
     },
@@ -23,6 +24,11 @@ export const dialog: DefaultTheme['dialog'] = {
             hover: {
                 boxShadow: `${boxShadow[28]}, ${boxShadow[29]}, ${boxShadow[31]}`,
             },
+        },
+    },
+    main: {
+        paragraph: {
+            color: 'currentColor',
         },
     },
     overlay: {

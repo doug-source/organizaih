@@ -5,12 +5,18 @@ import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
 
 export const Dialog_ = styled.div`
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 3;
+    ${({ theme }) => {
+        const dialogTheme = theme.dialog;
+        return css`
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            color: ${dialogTheme.color};
+        `;
+    }}
 `;
 
 export const Overlay_ = styled.div`
@@ -104,12 +110,14 @@ export const Main_ = styled.main`
 export const Paragraph_ = styled.p`
     ${({ theme }) => {
         const mainMeasure = theme.measures.dialog.main;
+        const paragraphTheme = theme.dialog.main.paragraph;
         return css`
             display: block;
             user-select: none;
             margin: ${mainMeasure.paragraph.margin};
             font-family: ${fonts.family[4]};
             font-size: ${remOutput(mainMeasure.paragraph.fontSize)};
+            color: ${paragraphTheme.color};
         `;
     }}
 `;

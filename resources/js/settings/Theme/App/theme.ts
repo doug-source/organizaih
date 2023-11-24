@@ -245,8 +245,14 @@ export type AppTheme = {
         };
     };
     dialog: {
+        color: string;
         closeIcon: {
             fill: string;
+        };
+        main: {
+            paragraph: {
+                color: string;
+            };
         };
         footer: {
             btn: {
