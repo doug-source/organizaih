@@ -9,7 +9,7 @@ import { css, styled } from 'styled-components';
 
 export const RemoveButton_ = styled(RoundBtn_).attrs({ type: 'submit' })`
     display: flex;
-    box-shadow: ${({ theme }) => theme.list.dataListItem.btns.boxShadow};
+    box-shadow: ${({ theme }) => theme.list.btns.boxShadow};
     ${({ theme }) => {
         const dangerTheme = getDangerBtnTheme(theme);
         return css`

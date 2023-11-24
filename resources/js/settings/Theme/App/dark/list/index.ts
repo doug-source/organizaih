@@ -32,43 +32,43 @@ export const list: DefaultTheme['list'] = {
         },
         color: 'inherit',
     },
+    btns: {
+        boxShadow: `${boxShadow[0]}, ${boxShadow[1]}, ${boxShadow[2]}`,
+        primary: {
+            bg: {
+                color: gray[23],
+            },
+            border: {
+                color: gray[23],
+            },
+            svg: {
+                path: {
+                    stroke: 'currentColor',
+                    fill: 'currentColor',
+                },
+            },
+        },
+        danger: {
+            bg: {
+                color: gray[23],
+            },
+            border: {
+                color: gray[23],
+            },
+            svg: {
+                path: {
+                    stroke: 'currentColor',
+                    fill: 'currentColor',
+                },
+            },
+        },
+    },
     dataListItem: {
         photo: {
             img: {
                 overview: {
                     bg: {
                         color: white[1],
-                    },
-                },
-            },
-        },
-        btns: {
-            boxShadow: `${boxShadow[0]}, ${boxShadow[1]}, ${boxShadow[2]}`,
-            primary: {
-                bg: {
-                    color: gray[23],
-                },
-                border: {
-                    color: gray[23],
-                },
-                svg: {
-                    path: {
-                        stroke: 'currentColor',
-                        fill: 'currentColor',
-                    },
-                },
-            },
-            danger: {
-                bg: {
-                    color: gray[23],
-                },
-                border: {
-                    color: gray[23],
-                },
-                svg: {
-                    path: {
-                        stroke: 'currentColor',
-                        fill: 'currentColor',
                     },
                 },
             },

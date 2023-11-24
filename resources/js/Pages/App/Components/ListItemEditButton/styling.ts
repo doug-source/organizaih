@@ -10,7 +10,7 @@ import { css, styled } from 'styled-components';
 export const EditBtn_ = styled(NavLink)<RoundBtnProps>`
     ${RoundBtnStyle}
     display: flex;
-    box-shadow: ${({ theme }) => theme.list.dataListItem.btns.boxShadow};
+    box-shadow: ${({ theme }) => theme.list.btns.boxShadow};
     ${({ theme }) => {
         const primaryBtn = getPrimaryBtnTheme(theme);
         return css`

@@ -756,43 +756,43 @@ export type AppTheme = {
                 };
             };
         };
+        btns: {
+            boxShadow: string;
+            primary: {
+                bg: {
+                    color: string;
+                };
+                border: {
+                    color: string;
+                };
+                svg: {
+                    path: {
+                        stroke: string;
+                        fill: string;
+                    };
+                };
+            };
+            danger: {
+                bg: {
+                    color: string;
+                };
+                border: {
+                    color: string;
+                };
+                svg: {
+                    path: {
+                        stroke: string;
+                        fill: string;
+                    };
+                };
+            };
+        };
         dataListItem: {
             photo: {
                 img: {
                     overview: {
                         bg: {
                             color: string;
-                        };
-                    };
-                };
-            };
-            btns: {
-                boxShadow: string;
-                primary: {
-                    bg: {
-                        color: string;
-                    };
-                    border: {
-                        color: string;
-                    };
-                    svg: {
-                        path: {
-                            stroke: string;
-                            fill: string;
-                        };
-                    };
-                };
-                danger: {
-                    bg: {
-                        color: string;
-                    };
-                    border: {
-                        color: string;
-                    };
-                    svg: {
-                        path: {
-                            stroke: string;
-                            fill: string;
                         };
                     };
                 };

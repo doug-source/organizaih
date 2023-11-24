@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 
 export const getDangerBtnTheme = (theme: DefaultTheme) => {
-    return theme.list.dataListItem.btns.danger;
+    return theme.list.btns.danger;
 };
 
 export const getBtnsMeasures = (theme: DefaultTheme) => {
