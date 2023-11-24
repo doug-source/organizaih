@@ -1,13 +1,15 @@
 import { EmptyScreen } from '@/Pages/App/Components/EmptyScreen';
 import { Header } from '@/Pages/App/Components/Header';
 import { Loading } from '@/Pages/App/Components/Loading';
+import { Warning } from '@/Pages/App/Components/Warning';
 import {
     DataPayload,
     WrapContexts,
     dataReducer,
     useConnectionChecker,
 } from '@/Pages/App/libraries';
-import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
+import { AbilitiesEnum, DataReducerEnum } from '@/Pages/App/libraries/enums';
+import { detachErrorMessage } from '@/Pages/App/libraries/errors';
 import {
     useStarterWindowResize,
     useWindowResizeHandler,
@@ -61,6 +63,7 @@ export const App = () => {
     useConnectionChecker(dispatch);
     useStarterWindowResize(state, dispatch);
     useWindowResizeHandler(dispatch);
+    const errorMessage = detachErrorMessage(state.error);
     return (
         <HashRouter>
             <AppDispatchContext.Provider value={dispatch}>
@@ -134,6 +137,24 @@ export const App = () => {
                                     </Row_>
                                 </ContainerFluid_>
                             </Main_>
+                            <Warning
+                                show={Boolean(state.error)}
+                                text={errorMessage}
+                                textBtnKey='ok'
+                                titleKey='warning'
+                                onClick={() =>
+                                    dispatch({
+                                        type: DataReducerEnum.ERROR,
+                                        payload: null,
+                                    })
+                                }
+                                onClose={() =>
+                                    dispatch({
+                                        type: DataReducerEnum.ERROR,
+                                        payload: null,
+                                    })
+                                }
+                            />
                         </>
                     </ThemeProvider>
                 </WrapContexts>

@@ -1,5 +1,6 @@
 export * from './contexts';
 export * from './enums';
+export * from './errors';
 export * from './hooks';
 export * from './icons';
 export * from './plain';
