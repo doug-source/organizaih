@@ -45,30 +45,5 @@ export const ListItemLinked = ({
                 {contentLink}
             </NavLink_>
         </ListItem>
-
-        // <ListItemPack index={index}>
-        //     {innerColumns}
-        //     <ListItemColumn title={titleLink}>
-        //         <NavLink_
-        //             to={urlLink}
-        //             onClick={() =>
-        //                 appDispatch({
-        //                     type: DataReducerEnum.TITLE,
-        //                     payload: '',
-        //                 })
-        //             }
-        //         >
-        //             {contentLinked}
-        //         </NavLink_>
-        //     </ListItemColumn>
-        //     <ListItemButtons
-        //         urlLink={urlLink}
-        //         id={id}
-        //         removeBtn={removeBtn}
-        //         onRemove={onRemove}
-        //         updateBtn={updateBtn}
-        //         onUpdate={onUpdate}
-        //     />
-        // </ListItemPack>
     );
 };
