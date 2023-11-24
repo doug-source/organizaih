@@ -7,7 +7,6 @@ import { ListItemRemoveButton } from '@/Pages/App/Components/ListItemRemoveButto
 import {
     DataReducerEnum,
     EditSVG,
-    RemoveSVG,
     useAppDispatch,
 } from '@/Pages/App/libraries';
 import { Suspense } from 'react';
@@ -53,11 +52,7 @@ export const ListItemButtons = ({
                     <ListItemRemoveButton
                         show={removeBtn}
                         onClick={() => onRemove && onRemove(id)}
-                    >
-                        <Suspense>
-                            <RemoveSVG />
-                        </Suspense>
-                    </ListItemRemoveButton>
+                    />
                 </>
             </BtnsItem_>
         </BtnsItemContainer_>
