@@ -22,7 +22,7 @@ export const Dialog = ({
     title,
     text,
     showDialog = true,
-    onClose = () => {},
+    onClose,
     buttonSection = <></>,
 }: DialogProps) => {
     if (!showDialog) {
