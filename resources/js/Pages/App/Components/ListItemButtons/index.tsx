@@ -1,7 +1,4 @@
-import {
-    BtnsItemContainer_,
-    BtnsItem_,
-} from '@/Pages/App/Components/ListItemButtons/styling';
+import { ListItemButtonsPack } from '@/Pages/App/Components/ListItemButtonsPack';
 import { ListItemEditButton } from '@/Pages/App/Components/ListItemEditButton';
 import { ListItemRemoveButton } from '@/Pages/App/Components/ListItemRemoveButton';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
@@ -27,26 +24,22 @@ export const ListItemButtons = ({
 }: ListItemButtonsProps) => {
     const appDispatch = useAppDispatch();
     return (
-        <BtnsItemContainer_>
-            <BtnsItem_>
-                <>
-                    <ListItemEditButton
-                        show={updateBtn}
-                        to={`${urlLink}/edit`}
-                        onClick={() => {
-                            onUpdate && onUpdate();
-                            appDispatch({
-                                type: DataReducerEnum.TITLE,
-                                payload: '',
-                            });
-                        }}
-                    />
-                    <ListItemRemoveButton
-                        show={removeBtn}
-                        onClick={() => onRemove && onRemove(id)}
-                    />
-                </>
-            </BtnsItem_>
-        </BtnsItemContainer_>
+        <ListItemButtonsPack>
+            <ListItemEditButton
+                show={updateBtn}
+                to={`${urlLink}/edit`}
+                onClick={() => {
+                    onUpdate && onUpdate();
+                    appDispatch({
+                        type: DataReducerEnum.TITLE,
+                        payload: '',
+                    });
+                }}
+            />
+            <ListItemRemoveButton
+                show={removeBtn}
+                onClick={() => onRemove && onRemove(id)}
+            />
+        </ListItemButtonsPack>
     );
 };
