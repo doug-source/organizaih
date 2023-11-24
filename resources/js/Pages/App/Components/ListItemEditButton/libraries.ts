@@ -5,5 +5,5 @@ export const getPrimaryBtnTheme = (theme: DefaultTheme) => {
 };
 
 export const getBtnsMeasures = (theme: DefaultTheme) => {
-    return theme.measures.list.dataListItem.btns;
+    return theme.measures.list.btns;
 };

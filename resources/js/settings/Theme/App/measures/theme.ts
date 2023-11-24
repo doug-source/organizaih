@@ -961,38 +961,38 @@ export type AppThemeMeasures = {
                 right: number;
             };
         };
-        dataListItem: {
-            btns: {
-                active: {
-                    transform: {
-                        translate: {
-                            x: number;
-                            y: number;
-                        };
+        btns: {
+            active: {
+                transform: {
+                    translate: {
+                        x: number;
+                        y: number;
                     };
-                };
-                border: {
-                    radius: Record<ThemeKey, number>;
-                };
-                container: {
-                    flex: number;
-                    minWidth: number;
-                };
-                hover: {
-                    transform: {
-                        translate: {
-                            x: number;
-                            y: number;
-                        };
-                    };
-                };
-                item: {
-                    gap: number;
-                };
-                svg: {
-                    size: number;
                 };
             };
+            border: {
+                radius: Record<ThemeKey, number>;
+            };
+            container: {
+                flex: number;
+                minWidth: number;
+            };
+            hover: {
+                transform: {
+                    translate: {
+                        x: number;
+                        y: number;
+                    };
+                };
+            };
+            item: {
+                gap: number;
+            };
+            svg: {
+                size: number;
+            };
+        };
+        dataListItem: {
             photo: {
                 img: {
                     size: string;

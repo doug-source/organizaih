@@ -5,7 +5,7 @@ export const BtnsItemContainer_ = styled.div`
     ${({ theme }) => {
         const {
             btns: { container: containerMeasure },
-        } = theme.measures.list.dataListItem;
+        } = theme.measures.list;
         return css`
             display: flex;
             flex: ${containerMeasure.flex};
@@ -17,7 +17,7 @@ export const BtnsItemContainer_ = styled.div`
 
 export const BtnsItem_ = styled.div`
     ${({ theme }) => {
-        const btnsMeasure = theme.measures.list.dataListItem.btns;
+        const btnsMeasure = theme.measures.list.btns;
         return css`
             display: flex;
             align-items: center;

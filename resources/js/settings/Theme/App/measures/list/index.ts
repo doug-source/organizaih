@@ -16,41 +16,41 @@ export const list: DefaultTheme['measures']['list'] = {
             right: 15,
         },
     },
-    dataListItem: {
-        btns: {
-            active: {
-                transform: {
-                    translate: {
-                        x: 0,
-                        y: 0,
-                    },
+    btns: {
+        active: {
+            transform: {
+                translate: {
+                    x: 0,
+                    y: 0,
                 },
-            },
-            border: {
-                radius: {
-                    dark: 8,
-                    light: 0,
-                },
-            },
-            container: {
-                flex: 1,
-                minWidth: 105,
-            },
-            hover: {
-                transform: {
-                    translate: {
-                        x: 0,
-                        y: -2,
-                    },
-                },
-            },
-            item: {
-                gap: 3,
-            },
-            svg: {
-                size: 25,
             },
         },
+        border: {
+            radius: {
+                dark: 8,
+                light: 0,
+            },
+        },
+        container: {
+            flex: 1,
+            minWidth: 105,
+        },
+        hover: {
+            transform: {
+                translate: {
+                    x: 0,
+                    y: -2,
+                },
+            },
+        },
+        item: {
+            gap: 3,
+        },
+        svg: {
+            size: 25,
+        },
+    },
+    dataListItem: {
         photo: {
             img: {
                 size: '100%',
