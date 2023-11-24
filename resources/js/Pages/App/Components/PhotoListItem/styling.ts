@@ -46,8 +46,7 @@ export const OverviewImg_ = styled.div<OverviewProps>`
     background-size: 100% 100%;
     z-index: 0;
     background-image: ${({ $url }) => `url(/storage/app/${$url})`};
-    background-color: ${({ theme }) =>
-        theme.list.dataListItem.photo.img.overview.bg.color};
+    background-color: ${({ theme }) => theme.list.photo.img.overview.bg.color};
 
     ${Img_}:hover + & {
         opacity: 1;

@@ -63,13 +63,11 @@ export const list: DefaultTheme['list'] = {
             },
         },
     },
-    dataListItem: {
-        photo: {
-            img: {
-                overview: {
-                    bg: {
-                        color: white[1],
-                    },
+    photo: {
+        img: {
+            overview: {
+                bg: {
+                    color: white[1],
                 },
             },
         },

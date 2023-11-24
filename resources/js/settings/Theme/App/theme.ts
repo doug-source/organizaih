@@ -787,13 +787,11 @@ export type AppTheme = {
                 };
             };
         };
-        dataListItem: {
-            photo: {
-                img: {
-                    overview: {
-                        bg: {
-                            color: string;
-                        };
+        photo: {
+            img: {
+                overview: {
+                    bg: {
+                        color: string;
                     };
                 };
             };
