@@ -4,12 +4,8 @@ import {
 } from '@/Pages/App/Components/ListItemButtons/styling';
 import { ListItemEditButton } from '@/Pages/App/Components/ListItemEditButton';
 import { ListItemRemoveButton } from '@/Pages/App/Components/ListItemRemoveButton';
-import {
-    DataReducerEnum,
-    EditSVG,
-    useAppDispatch,
-} from '@/Pages/App/libraries';
-import { Suspense } from 'react';
+import { DataReducerEnum } from '@/Pages/App/libraries/enums';
+import { useAppDispatch } from '@/Pages/App/libraries/hooks';
 
 type ListItemButtonsProps = {
     updateBtn?: boolean;
@@ -44,11 +40,7 @@ export const ListItemButtons = ({
                                 payload: '',
                             });
                         }}
-                    >
-                        <Suspense>
-                            <EditSVG />
-                        </Suspense>
-                    </ListItemEditButton>
+                    />
                     <ListItemRemoveButton
                         show={removeBtn}
                         onClick={() => onRemove && onRemove(id)}

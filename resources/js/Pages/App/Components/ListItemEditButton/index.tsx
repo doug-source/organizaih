@@ -3,8 +3,9 @@ import {
     getPrimaryBtnTheme,
 } from '@/Pages/App/Components/ListItemEditButton/libraries';
 import { EditBtn_ } from '@/Pages/App/Components/ListItemEditButton/styling';
+import { EditSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { extractThemeNumber } from '@/libraries';
-import { ComponentProps } from 'react';
+import { ComponentProps, Suspense } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
@@ -27,6 +28,10 @@ export const ListItemEditButton = ({
             $borderRadius={extractThemeNumber(theme, measuresBtn.border.radius)}
             $borderColor={primaryBtn.border.color}
             {...remain}
-        />
+        >
+            <Suspense>
+                <EditSVG />
+            </Suspense>
+        </EditBtn_>
     );
 };
