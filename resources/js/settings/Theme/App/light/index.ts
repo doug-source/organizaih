@@ -33,6 +33,7 @@ import { selectCustomer } from './selectCustomer';
 import { selectProduct } from './selectProduct';
 import { submitBtn } from './submitBtn';
 import { tools } from './tools';
+import { user } from './user';
 
 export const LightTheme: AppTheme = {
     key: 'light',
@@ -71,4 +72,5 @@ export const LightTheme: AppTheme = {
     submitBtn,
     radioToggle,
     tools,
+    user,
 };

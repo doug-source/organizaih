@@ -1254,6 +1254,13 @@ export type AppThemeMeasures = {
             edgeBorderRadius: [number, number, number, number];
         };
     };
+    registerRequest: {
+        details: {
+            container: {
+                gap: number;
+            };
+        };
+    };
     requestBtn: {
         maxHeight: number;
     };

@@ -99,3 +99,13 @@ export const UserRoutesAsync = lazy(() =>
         };
     }),
 );
+
+export const RegisterRequestRoutesAsync = lazy(() =>
+    import('@/Pages/App/routes/RegisterRequest').then(
+        ({ RegisterRequestRoutes }) => {
+            return {
+                default: RegisterRequestRoutes,
+            };
+        },
+    ),
+);

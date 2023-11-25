@@ -2,6 +2,7 @@ import {
     blue,
     gradient,
     gray,
+    green,
     red,
     transparency,
     white,
@@ -59,6 +60,20 @@ export const list: DefaultTheme['list'] = {
                 path: {
                     stroke: 'currentColor',
                     fill: 'currentColor',
+                },
+            },
+        },
+        true: {
+            bg: {
+                color: green.lighten[2],
+            },
+            border: {
+                color: green.lighten[2],
+            },
+            svg: {
+                path: {
+                    stroke: '',
+                    fill: '',
                 },
             },
         },

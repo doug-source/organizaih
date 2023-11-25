@@ -218,5 +218,11 @@
     "abilities": "abilities",
     "role-empty-list": "no bound roles",
     "abilities-empty-list": "no bound abilities",
-    "requests": "requests"
+    "register-requests": "register requests",
+    "register-request": "register request",
+    "requests": "requests",
+    "request-email-filter-placeholder": "requester email",
+    "register-request-empty-list": "no requests registered",
+    "register-request-show-title": "details of the requester",
+    "register-request-allow": "allow the register"
 }

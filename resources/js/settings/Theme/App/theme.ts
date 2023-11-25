@@ -786,6 +786,20 @@ export type AppTheme = {
                     };
                 };
             };
+            true: {
+                bg: {
+                    color: string;
+                };
+                border: {
+                    color: string;
+                };
+                svg: {
+                    path: {
+                        stroke: string;
+                        fill: string;
+                    };
+                };
+            };
         };
         photo: {
             img: {
@@ -940,6 +954,18 @@ export type AppTheme = {
                         };
                     };
                     bg: string;
+                };
+            };
+        };
+    };
+    user: {
+        list: {
+            tools: {
+                nextBtn: {
+                    svg: {
+                        fill: string;
+                    };
+                    color: string;
                 };
             };
         };

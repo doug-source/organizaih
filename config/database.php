@@ -184,6 +184,9 @@ return [
         ],
         'inventory-sale' => [
             'qty_used' => env('COLUMN_SIZE_INVENTORY_SALE_QTY', '4294967295')
+        ],
+        'register-request' => [
+            'phone' => env('COLUMN_SIZE_REGISTER_REQUEST_PHONE', '11')
         ]
     ],
 

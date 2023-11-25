@@ -37,6 +37,7 @@ import { product } from './product';
 import { productCategory } from './productCategory';
 import { profilePhoto } from './profilePhoto';
 import { radioToggle } from './radioToggle';
+import { registerRequest } from './registerRequest';
 import { requestBtn } from './requestBtn';
 import { sale } from './sale';
 import { selectCustomer } from './selectCustomer';
@@ -89,6 +90,7 @@ export const measures: DefaultTheme['measures'] = {
     profilePhoto,
     radioToggle,
     requestBtn,
+    registerRequest,
     sale,
     selectorsBox,
     selectProduct,

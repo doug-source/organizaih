@@ -1,4 +1,5 @@
 import { FiltersBar_ } from '@/Pages/App/Components/FiltersBar';
+import { NextButton } from '@/Pages/App/Components/NextButton';
 import { Tools } from '@/Pages/App/Components/Tools';
 import { AllowSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { remOutput } from '@/libraries/toolbox/Styling';
@@ -8,6 +9,7 @@ export const Tools_ = styled(Tools)`
     ${({ theme }) => {
         const filtersBarMeasure = theme.measures.user.filtersBar;
         return css`
+            position: relative;
             ${FiltersBar_} {
                 gap: ${remOutput(filtersBarMeasure.gap)};
             }
@@ -15,9 +17,26 @@ export const Tools_ = styled(Tools)`
     }}
 `;
 
+export const NextButton_ = styled(NextButton)`
+    ${({ theme }) => {
+        const { nextBtn: btnTheme } = theme.user.list.tools;
+        return css`
+            position: absolute;
+            left: auto;
+            right: 0;
+            color: ${btnTheme.color};
+        `;
+    }}
+`;
+
 export const AllowSvg_ = styled(AllowSVG)`
-    width: 1rem;
-    fill: currentColor;
+    ${({ theme }) => {
+        const { svg: svgTheme } = theme.user.list.tools.nextBtn;
+        return css`
+            width: 1rem;
+            fill: ${svgTheme.fill};
+        `;
+    }}
 `;
 
 export const AllowTextContent_ = styled.div`

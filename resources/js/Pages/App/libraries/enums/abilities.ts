@@ -9,4 +9,5 @@ export const enum AbilitiesEnum {
     SALE_SCREEN = 8,
     GRAPHIC_SCREEN = 9,
     USER_SCREEN = 10,
+    REGISTER_REQUEST_SCREEN = 11,
 }

@@ -62,6 +62,20 @@ export const list: DefaultTheme['list'] = {
                 },
             },
         },
+        true: {
+            bg: {
+                color: gray[23],
+            },
+            border: {
+                color: gray[23],
+            },
+            svg: {
+                path: {
+                    stroke: 'currentColor',
+                    fill: 'currentColor',
+                },
+            },
+        },
     },
     photo: {
         img: {

@@ -33,6 +33,7 @@ import { selectCustomer } from './selectCustomer';
 import { selectProduct } from './selectProduct';
 import { submitBtn } from './submitBtn';
 import { tools } from './tools';
+import { user } from './user';
 
 export const DarkTheme: AppTheme = {
     key: 'dark',
@@ -71,4 +72,5 @@ export const DarkTheme: AppTheme = {
     selectCustomer,
     submitBtn,
     tools,
+    user,
 };

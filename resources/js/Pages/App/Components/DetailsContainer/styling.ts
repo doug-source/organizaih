@@ -1,13 +1,16 @@
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
-export const DetailsContainer_ = styled.div`
-    ${({ theme }) => {
-        const { container: containerMeasure } = theme.measures.details;
+type DetailsContainerProps_ = {
+    $gapItems?: number;
+};
+
+export const DetailsContainer_ = styled.div<DetailsContainerProps_>`
+    ${({ theme, $gapItems = theme.measures.details.container.gap }) => {
         return css`
             display: flex;
             flex-direction: column;
-            gap: ${remOutput(containerMeasure.gap)};
+            gap: ${remOutput($gapItems)};
         `;
     }}
 `;

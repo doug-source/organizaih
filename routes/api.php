@@ -7,9 +7,11 @@ use App\Http\Controllers\Api\CitiesResourceController;
 use App\Http\Controllers\Api\InventoriesResourceController;
 use App\Http\Controllers\Api\ProductCategoriesResourceController;
 use App\Http\Controllers\Api\ProductsResourceController;
+use App\Http\Controllers\Api\RegisterRequestsResourceController;
 use App\Http\Controllers\Api\SalesResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
 use App\Http\Controllers\Api\UsersResourceController;
+use App\Models\RegisterRequests;
 use App\Models\User;
 
 /*
@@ -90,6 +92,13 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::prefix('users')->group(function () {
                 Route::get('/', [UsersResourceController::class, 'index']);
                 Route::get('/{userID}', [UsersResourceController::class, 'show']);
+            });
+        });
+        $registerRequestModel = RegisterRequests::class;
+        Route::middleware("can:isSuperAdmin,$registerRequestModel")->group(function () {
+            Route::prefix('register')->group(function () {
+                Route::get('/requests', [RegisterRequestsResourceController::class, 'index']);
+                Route::get('/requests/{registerRequestID}', [RegisterRequestsResourceController::class, 'show']);
             });
         });
     });

@@ -21,6 +21,7 @@ import {
     InventoryRoutesAsync,
     ProductCategoryRoutesAsync,
     ProductRoutesAsync,
+    RegisterRequestRoutesAsync,
     SaleRoutesAsync,
     UserRoutesAsync,
 } from '@/Pages/App/libraries/toolbox/Asynchronous';
@@ -48,6 +49,9 @@ const hasInventoryScreen = hasAbility(AbilitiesEnum.INVENTORY_SCREEN);
 const hasSaleScreen = hasAbility(AbilitiesEnum.SALE_SCREEN);
 const hasGraphScreen = hasAbility(AbilitiesEnum.GRAPHIC_SCREEN);
 const hasUserScreen = hasAbility(AbilitiesEnum.USER_SCREEN);
+const hasRegisterRequestScreen = hasAbility(
+    AbilitiesEnum.REGISTER_REQUEST_SCREEN,
+);
 
 export const App = () => {
     const [state, dispatch] = useReducer(dataReducer, {
@@ -122,6 +126,11 @@ export const App = () => {
                                         {hasUserScreen && (
                                             <Suspense>
                                                 <UserRoutesAsync />
+                                            </Suspense>
+                                        )}
+                                        {hasRegisterRequestScreen && (
+                                            <Suspense>
+                                                <RegisterRequestRoutesAsync />
                                             </Suspense>
                                         )}
                                         <Routes>

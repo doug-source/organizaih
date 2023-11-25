@@ -3,7 +3,7 @@ import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
-import { NextButton } from '@/Pages/App/Components/NextButton';
+// import { NextButton } from '@/Pages/App/Components/NextButton';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { ToolsType } from '@/Pages/App/Components/Tools';
@@ -23,14 +23,24 @@ import {
 import {
     AllowSvg_,
     AllowTextContent_,
+    NextButton_,
     Tools_,
 } from '@/Pages/App/Screens/User/List/styling';
 import { IUserListData } from '@/Pages/App/Screens/User/List/types';
+import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
-import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
+import {
+    columnSizeDB,
+    hasAbility,
+    paginationSetting,
+} from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
 import { navigations } from '@/settings';
 import { Suspense } from 'react';
+
+const hasRegisterRequestScreen = hasAbility(
+    AbilitiesEnum.REGISTER_REQUEST_SCREEN,
+);
 
 const List = () => {
     const translate = useTranslate();
@@ -67,19 +77,21 @@ const List = () => {
                 maxLength={columnSizeDB.userName}
                 onToolChange={makeToolChange(dispatch)}
                 outerFilters={
-                    <NextButton
-                        preIcon
-                        link={navigations.user.requests}
-                        icon={
-                            <Suspense>
-                                <AllowSvg_ />
-                            </Suspense>
-                        }
-                    >
-                        <AllowTextContent_>
-                            {translate('requests', true)}
-                        </AllowTextContent_>
-                    </NextButton>
+                    hasRegisterRequestScreen && (
+                        <NextButton_
+                            preIcon
+                            link={navigations.registerRequest.list}
+                            icon={
+                                <Suspense>
+                                    <AllowSvg_ />
+                                </Suspense>
+                            }
+                        >
+                            <AllowTextContent_>
+                                {translate('requests', true)}
+                            </AllowTextContent_>
+                        </NextButton_>
+                    )
                 }
             >
                 <Pagination

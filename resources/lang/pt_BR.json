@@ -218,5 +218,11 @@
     "abilities": "habilidades",
     "role-empty-list": "sem papéis vinculados",
     "abilities-empty-list": "sem habilidades vinculadas",
-    "requests": "solicitações"
+    "register-requests": "Solicitações de registro",
+    "register-request": "Solicitação de registro",
+    "requests": "solicitações",
+    "request-email-filter-placeholder": "e-mail do requisitante",
+    "register-request-empty-list": "sem requisições cadastradas",
+    "register-request-show-title": "detalhes do requisitante",
+    "register-request-allow": "liberar o registro"
 }

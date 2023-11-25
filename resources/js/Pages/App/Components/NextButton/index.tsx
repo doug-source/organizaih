@@ -6,6 +6,7 @@ import { ReactNode } from 'react';
 
 type NextButtonProps = {
     link?: string;
+    className?: string;
     children?: ReactNode;
     preIcon?: boolean;
     icon: ReactNode;
@@ -14,6 +15,7 @@ type NextButtonProps = {
 
 export const NextButton = ({
     link,
+    className,
     children,
     preIcon = false,
     icon,
@@ -25,6 +27,7 @@ export const NextButton = ({
     }
     return (
         <LinkedButton
+            className={className}
             to={link}
             onClick={() => {
                 appDispatch({

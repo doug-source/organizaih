@@ -4,7 +4,9 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
+use App\Models\RegisterRequests;
 use App\Models\User;
+use App\Policies\RegisterRequestPolice;
 use App\Policies\UserPolice;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -23,7 +25,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        User::class => UserPolice::class
+        User::class => UserPolice::class,
+        RegisterRequests::class => RegisterRequestPolice::class
     ];
 
     /**

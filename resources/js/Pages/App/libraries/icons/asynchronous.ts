@@ -181,3 +181,10 @@ export const AllowSVG = lazy(() =>
         return { default: Svg };
     }),
 );
+
+export const ThumbSVG = lazy(() =>
+    import('/resources/img/thumb.svg').then((obj) => {
+        const { ReactComponent: Svg } = obj;
+        return { default: Svg };
+    }),
+);

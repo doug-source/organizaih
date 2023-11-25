@@ -83,6 +83,10 @@ export const endpoints = {
     state: {
         list: `/api/${apiVersion}/states`,
     },
+    registerRequest: {
+        list: `/api/${apiVersion}/register/requests`,
+        show: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
+    },
 } as const;
 
 export const navigations = {
@@ -105,6 +109,9 @@ export const navigations = {
     },
     user: {
         show: (id: number) => `/users/${id}`,
-        requests: '/users/requests',
+    },
+    registerRequest: {
+        list: '/register/requests',
+        show: (id?: number) => `/register/requests/${id ?? ':id'}`,
     },
 } as const;

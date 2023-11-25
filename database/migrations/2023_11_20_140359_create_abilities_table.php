@@ -18,7 +18,8 @@ return new class extends Migration
         'inventory-screen',
         'sale-screen',
         'graphic-screen',
-        'user-screen'
+        'user-screen',
+        'register-request-screen'
     ];
 
     private function populateDatabase()
