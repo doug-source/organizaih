@@ -1,13 +1,13 @@
 import { SaleDetails, SaleForm, SaleList } from '@/Pages/App/Screens/Sales';
 import { Container_ } from '@/Pages/App/routes/styling';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
-// , SaleDetails
 
 export const SaleRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/sales'
+                path={navigations.sale.list}
                 element={
                     <Container_>
                         <SaleList />
@@ -15,7 +15,7 @@ export const SaleRoutes = () => {
                 }
             />
             <Route
-                path='/sales/create'
+                path={navigations.sale.create}
                 element={
                     <Container_>
                         <SaleForm />
@@ -23,7 +23,7 @@ export const SaleRoutes = () => {
                 }
             />
             <Route
-                path='/sales/:id'
+                path={navigations.sale.show()}
                 element={
                     <Container_>
                         <SaleDetails />
@@ -31,7 +31,7 @@ export const SaleRoutes = () => {
                 }
             />
             <Route
-                path='/sales/:id/edit'
+                path={navigations.sale.edit()}
                 element={
                     <Container_>
                         <SaleForm />

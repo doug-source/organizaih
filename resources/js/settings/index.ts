@@ -136,7 +136,10 @@ export const navigations = {
         show: (id?: number) => `/product-categories/${id ?? ':id'}`,
     },
     sale: {
-        show: (id: number) => `/sales/${id}`,
+        create: '/sales/create',
+        edit: (id?: number) => `/sales/${id ?? ':id'}/edit`,
+        list: '/sales',
+        show: (id?: number) => `/sales/${id ?? ':id'}`,
     },
     user: {
         show: (id: number) => `/users/${id}`,
