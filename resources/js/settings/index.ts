@@ -110,6 +110,15 @@ export const navigations = {
         select: '/customers/select/:target',
         show: (id?: number) => `/customers/${id ?? ':id'}`,
     },
+    graph: {
+        index: '/graphs',
+        qty: {
+            sales: {
+                customers: '/graph-customers-sales-qty',
+                products: '/graph-products-sales-qty',
+            },
+        },
+    },
     product: {
         show: (id: number) => `/products/${id}`,
     },
