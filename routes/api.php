@@ -29,16 +29,21 @@ use App\Models\User;
 //     return $request->user();
 // });
 
-Route::prefix('v1')->group(function () {
+$apiVersion = config('auth.api-version');
+
+Route::prefix($apiVersion)->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-    $routeRegister = config('app.routes.urls.register_user');
-    Route::post($routeRegister, [UsersResourceController::class, 'store']);
+    $routeRegisterUser = config('app.routes.urls.register_user');
+    Route::post(ltrim($routeRegisterUser, '/'), [UsersResourceController::class, 'store']);
+
+    $routeRegisterRequest = config('app.routes.urls.register_request');
+    Route::post(ltrim($routeRegisterRequest, '/'), [RegisterRequestsResourceController::class, 'store']);
 });
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::prefix(config('auth.api-version'))->group(function () {
+Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
+    Route::prefix($apiVersion)->group(function () {
         Route::prefix('customers')->group(function () {
             Route::get('/', [CustomersResourceController::class, 'index']);
             Route::post('/', [CustomersResourceController::class, 'store']);

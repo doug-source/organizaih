@@ -12,6 +12,16 @@ class RegisterRequests extends Model
     use HasFactory;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'email',
+        'phone'
+    ];
+
+    /**
      * Format the created_at to view
      *
      * @return string

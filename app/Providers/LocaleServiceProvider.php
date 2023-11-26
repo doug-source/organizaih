@@ -14,6 +14,7 @@ class LocaleServiceProvider extends ServiceProvider
         'login.auth',
         'app.main',
         'register.main',
+        'register.request',
         'auth.forgot-password',
         'auth.reset-password'
     ];

@@ -80,7 +80,7 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        $googleClient = new GoogleClient(config('app.routes.urls.register_form'));
+        $googleClient = new GoogleClient(config('app.routes.urls.register_user_form'));
         $googleClient->init();
 
         $variables = [
@@ -97,6 +97,36 @@ class UserController extends Controller
                 ];
             }
             return view('register.main', $variables);
+        } catch (ClientException $th) {
+            return redirect()->to('/');
+        }
+    }
+
+    /**
+     * Return the user register-request view.
+     *
+     * @param Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function registerRequest(Request $request)
+    {
+        $googleClient = new GoogleClient(config('app.routes.urls.register_request_form'));
+        $googleClient->init();
+
+        $variables = [
+            'registerRequestAction' => json_encode(config('app.routes.urls.register_request')),
+            'successAction' => route('login.page'),
+            'googleAuthUrl' => $googleClient->generateAuthLink()
+        ];
+
+        try {
+            if ($googleClient->authorize($request->input('code'))) {
+                $variables = [
+                    ...$variables,
+                    ...$this->executeGoogleRegister($googleClient, ['email'])
+                ];
+            }
+            return view('register.request', $variables);
         } catch (ClientException $th) {
             return redirect()->to('/');
         }
@@ -124,12 +154,13 @@ class UserController extends Controller
     }
 
     /**
-     * Define the session's parameters used during the register and based on Google credentials
+     * Define the session's parameters used during some process based on Google credentials
      *
      * @param \App\Library\GoogleClient $googleClient
+     * @param array $fields
      * @return array The session's paramenters
      */
-    private function executeGoogleRegister(GoogleClient $googleClient)
+    private function executeGoogleRegister(GoogleClient $googleClient, $fields = ['email', 'name'])
     {
         $userFound = $this->getGoogleUser($googleClient);;
         if ($userFound) {
@@ -140,10 +171,10 @@ class UserController extends Controller
         }
         $data = $googleClient->getData();
         return [
-            'fields' => json_encode([
-                'email' => $data->email,
-                'name' => $data->name
-            ])
+            'fields' => json_encode(collect($fields)->reduce(function ($acc, $field) use (&$data) {
+                $acc[$field] = $data->$field;
+                return $acc;
+            }, []))
         ];
     }
 

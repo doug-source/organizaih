@@ -33,7 +33,6 @@ export const endpoints = {
         auth: window.data.auth?.action,
     },
     register: {
-        create: '/register',
         store: () => {
             const { action } = window.data.register;
             if (!action) {
@@ -86,6 +85,13 @@ export const endpoints = {
     registerRequest: {
         list: `/api/${apiVersion}/register/requests`,
         show: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
+        store: () => {
+            const { action } = window.data.registerRequest;
+            if (!action) {
+                return;
+            }
+            return `/api/${apiVersion}${action}`;
+        },
     },
 } as const;
 
@@ -110,7 +116,11 @@ export const navigations = {
     user: {
         show: (id: number) => `/users/${id}`,
     },
+    register: {
+        create: '/register',
+    },
     registerRequest: {
+        create: '/register-request',
         list: '/register/requests',
         show: (id?: number) => `/register/requests/${id ?? ':id'}`,
     },

@@ -8,13 +8,21 @@ const errorStatusDefault = { errors: {} };
 
 export const detachStatusServer = (
     data: typeof window.data,
-    type: 'login' | 'register-gate' | 'forgot-password' | 'reset-password',
+    type:
+        | 'login'
+        | 'register-gate'
+        | 'register-request'
+        | 'forgot-password'
+        | 'reset-password',
 ) => {
     if (type === 'login') {
         return data.auth.status;
     }
     if (type === 'register-gate') {
         return data.register.status;
+    }
+    if (type === 'register-request') {
+        return data.registerRequest.status;
     }
     return errorStatusDefault;
 };

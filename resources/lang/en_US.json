@@ -178,6 +178,7 @@
     "pass-confirm-invalid": "password and confirmation are different",
     "sign-in-google": "sign-in with Google",
     "sign-up-google": "register with Google",
+    "use-google-account": "use Google account",
     "user-already-registered": "user already registered",
 
     "verify-email-warn-title": "verify email address",
@@ -224,5 +225,8 @@
     "request-email-filter-placeholder": "requester email",
     "register-request-empty-list": "no requests registered",
     "register-request-show-title": "details of the requester",
-    "register-request-allow": "allow the register"
+    "register-request-allow": "allow the register",
+    "request-effected": "request effected",
+    "to-request": "request",
+    "optional": "optional"
 }

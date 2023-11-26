@@ -17,11 +17,15 @@ use Illuminate\Support\Facades\Cookie;
 |
 */
 
-$registerUrl = config('app.routes.urls.register_form');
 
 Route::get('/', [UserController::class, 'login'])->name('login.page');
 Route::post('/auth', [UserController::class, 'auth'])->name('auth.user');
-Route::get($registerUrl, [UserController::class, 'register']);
+
+$registerFormUrl = config('app.routes.urls.register_user_form');
+Route::get($registerFormUrl, [UserController::class, 'register']);
+
+$registerRequestFormUrl = config('app.routes.urls.register_request_form');
+Route::get($registerRequestFormUrl, [UserController::class, 'registerRequest']);
 
 Route::middleware('auth')->group(function () {
     $oneYearDuration = 365 * 24 * 60 * 1;

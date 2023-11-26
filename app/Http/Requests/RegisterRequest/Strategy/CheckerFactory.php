@@ -7,6 +7,7 @@ use App\Http\Requests\CheckerFactoryScheme;
 use App\Http\Requests\RegisterRequest\Strategy\{
     Get\Plain as GetPlain,
     Get\Show as GetShow,
+    Post\Plain as PostPlain
 };
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -20,7 +21,10 @@ class CheckerFactory implements CheckerFactoryScheme
      */
     public function getChecker(FormRequest $formRequest): Checker
     {
-        return self::selectGetChecker($formRequest);
+        if ($formRequest->isMethod('GET')) {
+            return self::selectGetChecker($formRequest);
+        }
+        return new PostPlain();
     }
 
     /**

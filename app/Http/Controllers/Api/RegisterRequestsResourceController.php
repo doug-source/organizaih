@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\RegisterRequests;
 use App\Http\Requests\RegisterRequest\CheckRequest;
+use Illuminate\Support\Facades\DB;
+use App\Models\{
+    RegisterRequests,
+    AllowedRegister,
+    User
+};
 
 class RegisterRequestsResourceController extends Controller
 {
@@ -38,6 +43,34 @@ class RegisterRequestsResourceController extends Controller
             'email' => $registerRequest->email,
             'phone' => $registerRequest->phone,
             'created_at' => $registerRequest->created_at_formatted,
+        ]);
+    }
+
+    /**
+     * Persist the specified resource.
+     *
+     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CheckRequest $request)
+    {
+        $fields = $request->only(['email', 'phone']);
+        $registerRequest = RegisterRequests::where('email', $request->email)->first();
+        if (!$registerRequest) {
+            $allowedRegister = AllowedRegister::where('email', $request->email)->first();
+            if (!$allowedRegister) {
+                $user = User::where('email', $request->email)->first();
+                if (!$user) {
+                    RegisterRequests::create($fields);
+                }
+            } else {
+                // SEND APPROVAL EMAIL
+            }
+        }
+        return response()->json([
+            'message' => 'OK',
+            'status' => 200,
+            'data' => NULL
         ]);
     }
 

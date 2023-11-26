@@ -247,8 +247,10 @@ return [
     */
     'routes' => [
         'urls' => [
-            'register_user' => '/user',
-            'register_form' => '/register',
+            'register_user' => '/store-user',
+            'register_user_form' => '/register-user',
+            'register_request' => '/store-request',
+            'register_request_form' => '/register-request',
             'login_form' => '/form'
         ]
     ],

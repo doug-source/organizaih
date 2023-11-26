@@ -178,6 +178,7 @@
     "pass-confirm-invalid": "senha e confirmação são diferentes",
     "sign-in-google": "logar com Google",
     "sign-up-google": "registrar com Google",
+    "use-google-account": "utilizar conta do Google",
     "user-already-registered": "usuário já cadastrado",
 
     "verify-email-warn-title": "verifique seu email",
@@ -224,5 +225,8 @@
     "request-email-filter-placeholder": "e-mail do requisitante",
     "register-request-empty-list": "sem requisições cadastradas",
     "register-request-show-title": "detalhes do requisitante",
-    "register-request-allow": "liberar o registro"
+    "register-request-allow": "liberar o registro",
+    "request-effected": "solicitação efetivada",
+    "to-request": "solicitar",
+    "optional": "opcional"
 }

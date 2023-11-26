@@ -14,18 +14,20 @@ type ServerInfo = {
     };
 };
 
-type RegisterFields = {
-    fields?: {
-        name: string;
-        email: string;
-    };
-};
-
 type ResetPasswordFields = {
     fields?: {
         email: string;
     };
     token: string;
+};
+
+type PossibleFields = {
+    name: string;
+    email: string;
+};
+
+type PickFields<T extends keyof PossibleFields> = {
+    fields?: Omit<PossibleFields, Exclude<keyof PossibleFields, T>>;
 };
 
 declare global {
@@ -62,7 +64,8 @@ declare global {
             tokenAuth: string;
 
             auth: ServerInfo;
-            register: ServerInfo & RegisterFields;
+            register: ServerInfo & PickFields<'name' | 'email'>;
+            registerRequest: ServerInfo & PickFields<'email'>;
             googleAuthUrl?: string;
 
             resetPassword: ServerInfo & ResetPasswordFields;
