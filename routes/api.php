@@ -36,10 +36,10 @@ Route::prefix($apiVersion)->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
     $routeRegisterUser = config('app.routes.urls.register_user');
-    Route::post(ltrim($routeRegisterUser, '/'), [UsersResourceController::class, 'store']);
+    Route::post($routeRegisterUser, [UsersResourceController::class, 'store']);
 
     $routeRegisterRequest = config('app.routes.urls.register_request');
-    Route::post(ltrim($routeRegisterRequest, '/'), [RegisterRequestsResourceController::class, 'store']);
+    Route::post($routeRegisterRequest, [RegisterRequestsResourceController::class, 'store']);
 });
 
 Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {

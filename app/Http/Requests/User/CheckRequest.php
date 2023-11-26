@@ -4,6 +4,7 @@ namespace App\Http\Requests\User;
 
 use App\Http\Requests\User\Strategy\CheckerFactory;
 use App\Http\Requests\VerifyRequest;
+use Illuminate\Support\Facades\Request;
 
 class CheckRequest extends VerifyRequest
 {
@@ -19,6 +20,10 @@ class CheckRequest extends VerifyRequest
      */
     public function authorize()
     {
+        $method = strtolower(Request::method());
+        if ($method === 'post') {
+            return !auth()->check();
+        }
         return auth()->check();
     }
 }

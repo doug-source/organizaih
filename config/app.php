@@ -247,9 +247,9 @@ return [
     */
     'routes' => [
         'urls' => [
-            'register_user' => '/store-user',
+            'register_user' => 'store-user', // to view's action
             'register_user_form' => '/register-user',
-            'register_request' => '/store-request',
+            'register_request' => 'store-request', // to view's action
             'register_request_form' => '/register-request',
             'login_form' => '/form'
         ]

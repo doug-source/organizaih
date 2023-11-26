@@ -38,7 +38,7 @@ export const endpoints = {
             if (!action) {
                 return;
             }
-            return `/api/${apiVersion}${action}`;
+            return `/api/${apiVersion}/${action}`;
         },
     },
     forgotPassword: {
@@ -90,7 +90,7 @@ export const endpoints = {
             if (!action) {
                 return;
             }
-            return `/api/${apiVersion}${action}`;
+            return `/api/${apiVersion}/${action}`;
         },
     },
 } as const;
