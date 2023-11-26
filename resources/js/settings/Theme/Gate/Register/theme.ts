@@ -3,8 +3,5 @@ import { RegisterThemeMeasures } from '@/settings/Theme/Gate/Register/measures/t
 export type RegisterTheme = {
     register: {
         measures: RegisterThemeMeasures;
-        body: {
-            color: string;
-        };
     };
 };

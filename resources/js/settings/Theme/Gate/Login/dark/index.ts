@@ -1,6 +1,5 @@
 import { LoginTheme } from '..';
 import { measures } from '../measures';
-import { body } from './body';
 import { checkbox } from './checkbox';
 import { forgotPassword } from './forgotPassword';
 import { loadingIcon } from './loadingIcon';
@@ -10,7 +9,6 @@ export const DarkTheme: LoginTheme = {
     login: {
         measures,
 
-        body,
         checkbox,
         forgotPassword,
         loadingIcon,

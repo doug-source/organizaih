@@ -3,9 +3,5 @@ import { RegisterRequestThemeMeasures } from '@/settings/Theme/Gate/RegisterRequ
 export type RegisterRequestTheme = {
     registerRequest: {
         measures: RegisterRequestThemeMeasures;
-
-        body: {
-            color: string;
-        };
     };
 };

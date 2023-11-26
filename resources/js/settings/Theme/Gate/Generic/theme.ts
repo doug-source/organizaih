@@ -4,6 +4,9 @@ export type GateGenericTheme = {
     gate: {
         measures: GateGenericThemeMeasures;
 
+        body: {
+            color: string;
+        };
         btn: {
             bg: string;
             boxShadow: string;

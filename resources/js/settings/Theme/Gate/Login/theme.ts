@@ -4,9 +4,6 @@ export type LoginTheme = {
     login: {
         measures: LoginThemeMeasures;
 
-        body: {
-            color: string;
-        };
         checkbox: {
             border: {
                 color: string;

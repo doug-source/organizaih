@@ -14,6 +14,9 @@ export const DarkTheme: GateGenericTheme = {
     gate: {
         measures,
 
+        body: {
+            color: white[1],
+        },
         btn: {
             bg: gradient.linear[0],
             boxShadow: `${boxShadow[36]}, ${boxShadow[37]}`,

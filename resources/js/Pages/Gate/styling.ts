@@ -2,7 +2,7 @@ import { createGlobalStyle, css } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     ${({ theme }) => {
-        const bodyTheme = theme.login.body;
+        const bodyTheme = theme.gate.body;
         return css`
             body {
                 margin: 0;

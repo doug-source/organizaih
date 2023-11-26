@@ -1,6 +1,7 @@
 import { measures } from '@/settings/Theme/Gate/Generic/measures';
 import { GateGenericTheme } from '@/settings/Theme/Gate/Generic/theme';
 import {
+    black,
     boxShadow,
     gray,
     green,
@@ -13,6 +14,9 @@ export const LightTheme: GateGenericTheme = {
     gate: {
         measures,
 
+        body: {
+            color: black[26],
+        },
         btn: {
             bg: 'currentColor',
             boxShadow: `none`,
