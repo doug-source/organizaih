@@ -4,13 +4,14 @@ import {
     CustomerList,
 } from '@/Pages/App/Screens/Customer';
 import { ContainerCustomer_ } from '@/Pages/App/routes/Customer/styling';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 
 export const CustomerRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/customers'
+                path={navigations.customer.list}
                 element={
                     <ContainerCustomer_>
                         <CustomerList />
@@ -18,7 +19,7 @@ export const CustomerRoutes = () => {
                 }
             />
             <Route
-                path='/customers/select/:target'
+                path={navigations.customer.select}
                 element={
                     <ContainerCustomer_>
                         <CustomerList />
@@ -26,7 +27,7 @@ export const CustomerRoutes = () => {
                 }
             />
             <Route
-                path='/customers/create'
+                path={navigations.customer.create}
                 element={
                     <ContainerCustomer_>
                         <CustomerForm />
@@ -34,7 +35,7 @@ export const CustomerRoutes = () => {
                 }
             />
             <Route
-                path='/customers/:id'
+                path={navigations.customer.show()}
                 element={
                     <ContainerCustomer_>
                         <CustomerDetails />
@@ -42,7 +43,7 @@ export const CustomerRoutes = () => {
                 }
             />
             <Route
-                path='/customers/:id/edit'
+                path={navigations.customer.edit}
                 element={
                     <ContainerCustomer_>
                         <CustomerForm />
