@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\ClientException;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Library\{
     GoogleClient,
     ResponseBuilder
@@ -146,53 +145,6 @@ class UserController extends Controller
         }
         $this->logoutUser();
         return redirect()->route('login.page')->with('authAction', json_encode(route('auth.user')));
-    }
-
-    /**
-     * Show the email notification notice
-     *
-     * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
-     */
-    public function emailVerify()
-    {
-        $paragraph_1 = Str::of(__('verify-email-warn-text'))->ucfirst();
-        $paragraph_2 = Str::of(__('verify-email-warn-text-otherwise'))->ucfirst();
-
-        return view('auth.verify-email', [
-            'title' => Str::of(__('verify-email-warn-title'))->ucfirst(),
-            'paragraph_1' => $paragraph_1,
-            'paragraph_2' => $paragraph_2,
-            'btn_text' => Str::of(__('verify-email-warn-text-btn'))->ucfirst()
-        ]);
-    }
-
-    /**
-     * Execute the Email Verification from inside of user's email's inbox
-     *
-     * @param Illuminate\Foundation\Auth\EmailVerificationRequest $request
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
-     */
-    public function emailVerifyFinal(EmailVerificationRequest $request)
-    {
-        $request->fulfill();
-        return redirect()->route('login.page');
-    }
-
-    /**
-     * Execute the email verification resend logic
-     *
-     * @param Illuminate\Http\Request $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function emailVerifyResend(Request $request)
-    {
-        $user = $request->user();
-        if ($user->hasVerifiedEmail()) {
-            return redirect()->route('login.page');
-        }
-        $user->sendEmailVerificationNotification();
-        $msg = Str::of(__('verification-link-sent'))->ucfirst();
-        return back()->with('message', $msg);
     }
 
     /**

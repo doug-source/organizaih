@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailVerifyController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
@@ -46,11 +47,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/storage/app/{folder}/{filename}', [ImageController::class, 'find']);
 
-    Route::get('/email/verify', [UserController::class, 'emailVerify'])->name('verification.notice');
+    Route::get('/email/verify', [EmailVerifyController::class, 'index'])->name('verification.notice');
 });
 
-Route::get('/email/verify/{id}/{hash}', [UserController::class, 'emailVerifyFinal'])->middleware(['auth', 'signed'])->name('verification.verify');
-Route::post('/email/verification-notification', [UserController::class, 'emailVerifyResend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+Route::get('/email/verify/{id}/{hash}', [EmailVerifyController::class, 'fromEmail'])->middleware(['auth', 'signed'])->name('verification.verify');
+Route::post('/email/verification-notification', [EmailVerifyController::class, 'resend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware('guest')->group(function () {
     Route::get('/forgot-password', [PasswordController::class, 'forgotPasswordBefore'])->name('password.request');
