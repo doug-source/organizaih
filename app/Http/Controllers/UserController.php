@@ -5,19 +5,21 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Http\Request;
-use App\Library\GoogleClient;
 use App\Models\User;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Requests\Email\CheckRequest as EmailCheckRequest;
 use App\Http\Requests\ResetPassword\CheckRequest as ResetPasswordCheckRequest;
 use Illuminate\Auth\Events\PasswordReset;
+use App\Library\{
+    GoogleClient,
+    ResponseBuilder
+};
 use Illuminate\Support\{
     Facades\Auth,
     Facades\Session,
     Facades\Password,
     Facades\Hash,
-    Stringable,
     Str
 };
 
@@ -187,23 +189,9 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials, $request->remember)) {
-            return $this->buildInvalidResponse(Str::of(__('invalid-auth'))->ucfirst());
+            return ResponseBuilder::buildInvalidResponse(Str::of(__('invalid-auth'))->ucfirst());
         }
         return response('OK', 200);
-    }
-
-    /**
-     * Build the invalid json response output
-     *
-     * @param \Illuminate\Support\Stringable|string $msg
-     * @return \Illuminate\Http\JsonResponse
-     */
-    private function buildInvalidResponse(Stringable|string $msg)
-    {
-        return response()->json([
-            'message' => $msg,
-            'errors' => ['status' => [$msg]]
-        ], 403);
     }
 
     /**
@@ -294,7 +282,7 @@ class UserController extends Controller
             $request->only('email')
         );
         if ($status !== Password::RESET_LINK_SENT) {
-            return $this->buildInvalidResponse(__($status));
+            return ResponseBuilder::buildInvalidResponse(__($status));
         }
         return response()->json(['message' => __($status)]);
     }
@@ -333,7 +321,7 @@ class UserController extends Controller
             }
         );
         if ($status !== Password::PASSWORD_RESET) {
-            return $this->buildInvalidResponse(__($status));
+            return ResponseBuilder::buildInvalidResponse(__($status));
         }
         return response()->json(['message' => __($status)]);
     }
