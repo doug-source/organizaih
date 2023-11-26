@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -52,8 +53,8 @@ Route::get('/email/verify/{id}/{hash}', [UserController::class, 'emailVerifyFina
 Route::post('/email/verification-notification', [UserController::class, 'emailVerifyResend'])->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/forgot-password', [UserController::class, 'forgotPasswordBefore'])->name('password.request');
-    Route::post('/forgot-password', [UserController::class, 'forgotPasswordAfter'])->name('password.email');
-    Route::get('/reset-password/{token}', [UserController::class, 'resetPassword'])->name('password.reset');
-    Route::post('/reset-password', [UserController::class, 'updatePassword'])->name('password.update');
+    Route::get('/forgot-password', [PasswordController::class, 'forgotPasswordBefore'])->name('password.request');
+    Route::post('/forgot-password', [PasswordController::class, 'forgotPasswordAfter'])->name('password.email');
+    Route::get('/reset-password/{token}', [PasswordController::class, 'resetPassword'])->name('password.reset');
+    Route::post('/reset-password', [PasswordController::class, 'updatePassword'])->name('password.update');
 });
