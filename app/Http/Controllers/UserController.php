@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Http\Request;
-use App\Models\User;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Library\{
@@ -33,7 +32,7 @@ class UserController extends Controller
 
         try {
             if ($googleClient->authorize($request->input('code'))) {
-                return $this->executeGoogleLogin($googleClient);
+                return $googleClient->executeGoogleLogin();
             }
             if (!Auth::check()) {
                 return view('login.auth', [
@@ -53,20 +52,6 @@ class UserController extends Controller
         } catch (ClientException $th) {
             return redirect()->to('/');
         }
-    }
-
-    /**
-     * Search the user registered based on email provided by Google credentials
-     *
-     *
-     * @param \App\Library\GoogleClient $googleClient
-     * @return ?mixed
-     */
-    private function getGoogleUser(GoogleClient $googleClient)
-    {
-        $data = $googleClient->getData();
-        $user = new User();
-        return $user->where('email', $data->email)->first();
     }
 
     /**
@@ -90,7 +75,7 @@ class UserController extends Controller
             if ($googleClient->authorize($request->input('code'))) {
                 $variables = [
                     ...$variables,
-                    ...$this->executeGoogleRegister($googleClient)
+                    ...$googleClient->executeGoogleRegister()
                 ];
             }
             return view('register.main', $variables);
@@ -120,59 +105,13 @@ class UserController extends Controller
             if ($googleClient->authorize($request->input('code'))) {
                 $variables = [
                     ...$variables,
-                    ...$this->executeGoogleRegister($googleClient, ['email'])
+                    ...$googleClient->executeGoogleRegister(['email'])
                 ];
             }
             return view('register.request', $variables);
         } catch (ClientException $th) {
             return redirect()->to('/');
         }
-    }
-
-    /**
-     * Execute the login based on Google credentials
-     *
-     * @param \App\Library\GoogleClient $googleClient
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
-     */
-    private function executeGoogleLogin(GoogleClient $googleClient)
-    {
-        $userFound = $this->getGoogleUser($googleClient);
-        if (!$userFound) {
-            return view('login.auth', [
-                'authAction' => json_encode(route('auth.user')),
-                'googleAuthUrl' => $googleClient->generateAuthLink(),
-                'authStatus' => TRUE,
-                'authMsgStatus' => 'Usuário não registrado'
-            ]);
-        }
-        Auth::login($userFound);
-        return redirect()->to('/');
-    }
-
-    /**
-     * Define the session's parameters used during some process based on Google credentials
-     *
-     * @param \App\Library\GoogleClient $googleClient
-     * @param array $fields
-     * @return array The session's paramenters
-     */
-    private function executeGoogleRegister(GoogleClient $googleClient, $fields = ['email', 'name'])
-    {
-        $userFound = $this->getGoogleUser($googleClient);;
-        if ($userFound) {
-            return [
-                'gateStatus' => TRUE,
-                'gateMsgStatus' => Str::of(__('user-already-registered'))->ucfirst()
-            ];
-        }
-        $data = $googleClient->getData();
-        return [
-            'fields' => json_encode(collect($fields)->reduce(function ($acc, $field) use (&$data) {
-                $acc[$field] = $data->$field;
-                return $acc;
-            }, []))
-        ];
     }
 
     /**

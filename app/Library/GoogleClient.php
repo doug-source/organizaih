@@ -2,10 +2,15 @@
 
 namespace App\Library;
 
+use App\Models\User;
 use Google\Client;
 use Google\Service\Oauth2\Userinfo;
 use GuzzleHttp\Client as GuzzleClient;
 use Google\Service\Oauth2 as ServiceOauth2;
+use Illuminate\Support\{
+    Facades\Auth,
+    Str
+};
 
 class GoogleClient
 {
@@ -22,6 +27,32 @@ class GoogleClient
     {
         $this->client = new Client();
         $this->redirectEndpoint = $redirectEndpoint;
+    }
+
+    /**
+     * Mount the url used to redirect after google account selection
+     *
+     * @return string
+     */
+    private function makeRedirectUrl()
+    {
+        $appUrl = config('app.url');
+        return "{$appUrl}{$this->redirectEndpoint}";
+    }
+
+    /**
+     * Search the user registered based on email provided by Google credentials
+     *
+     *
+     * @return ?mixed
+     */
+    private function getGoogleUser()
+    {
+        $data = $this->getData();
+        if (!$data) {
+            return NULL;
+        }
+        return User::where('email', $data->email)->first();
     }
 
     /**
@@ -62,14 +93,58 @@ class GoogleClient
     }
 
     /**
-     * Mount the url used to redirect after google account selection
-     *
-     * @return string
+     * Build the auth link used by user interface to login/register
      */
-    private function makeRedirectUrl()
+    public function generateAuthLink()
     {
-        $appUrl = config('app.url');
-        return "{$appUrl}{$this->redirectEndpoint}";
+        return $this->client->createAuthUrl();
+    }
+
+    /**
+     * Execute the login based on Google credentials
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function executeGoogleLogin()
+    {
+        $userFound = $this->getGoogleUser();
+        if (!$userFound) {
+            return view('login.auth', [
+                'authAction' => json_encode(route('auth.user')),
+                'googleAuthUrl' => $this->generateAuthLink(),
+                'authStatus' => TRUE,
+                'authMsgStatus' => 'Usuário não registrado'
+            ]);
+        }
+        Auth::login($userFound);
+        return redirect()->to('/');
+    }
+
+    /**
+     * Define the session's parameters used during some process based on Google credentials
+     *
+     * @param array $fields
+     * @return array The session's paramenters
+     */
+    public function executeGoogleRegister($fields = ['email', 'name'])
+    {
+        $userFound = $this->getGoogleUser();
+        if ($userFound) {
+            return [
+                'gateStatus' => TRUE,
+                'gateMsgStatus' => Str::of(__('user-already-registered'))->ucfirst()
+            ];
+        }
+        $data = $this->getData();
+        if (!$data) {
+            return [];
+        }
+        return [
+            'fields' => json_encode(collect($fields)->reduce(function ($acc, $field) use (&$data) {
+                $acc[$field] = $data->$field;
+                return $acc;
+            }, []))
+        ];
     }
 
     /**
@@ -80,13 +155,5 @@ class GoogleClient
     public function getData()
     {
         return $this->data;
-    }
-
-    /**
-     * Build the auth link used by user interface to login/register
-     */
-    public function generateAuthLink()
-    {
-        return $this->client->createAuthUrl();
     }
 }
