@@ -4,6 +4,7 @@ import {
     ProductCategoryEdit,
     ProductCategoryList,
 } from '@/Pages/App/Screens/ProductCategory';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -11,7 +12,7 @@ export const ProductCategoryRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/product-categories'
+                path={navigations.productCategory.list}
                 element={
                     <Container_>
                         <ProductCategoryList />
@@ -19,7 +20,7 @@ export const ProductCategoryRoutes = () => {
                 }
             />
             <Route
-                path='/product-categories/create'
+                path={navigations.productCategory.create}
                 element={
                     <Container_>
                         <ProductCategoryCreate />
@@ -27,7 +28,7 @@ export const ProductCategoryRoutes = () => {
                 }
             />
             <Route
-                path='/product-categories/:id/edit'
+                path={navigations.productCategory.edit()}
                 element={
                     <Container_>
                         <ProductCategoryEdit />
@@ -35,7 +36,7 @@ export const ProductCategoryRoutes = () => {
                 }
             />
             <Route
-                path='/product-categories/select/:target'
+                path={navigations.productCategory.select}
                 element={
                     <Container_>
                         <ProductCategoryList />
@@ -43,7 +44,7 @@ export const ProductCategoryRoutes = () => {
                 }
             />
             <Route
-                path='/product-categories/:id'
+                path={navigations.productCategory.show()}
                 element={
                     <Container_>
                         <ProductCategoryDetails />
