@@ -3,6 +3,7 @@ import {
     ProductForm,
     ProductList,
 } from '@/Pages/App/Screens/Product';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -10,7 +11,7 @@ export const ProductRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/products'
+                path={navigations.product.list}
                 element={
                     <Container_>
                         <ProductList />
@@ -18,7 +19,7 @@ export const ProductRoutes = () => {
                 }
             />
             <Route
-                path='/products/create'
+                path={navigations.product.create}
                 element={
                     <Container_>
                         <ProductForm />
@@ -26,7 +27,7 @@ export const ProductRoutes = () => {
                 }
             />
             <Route
-                path='/products/:id/edit'
+                path={navigations.product.edit()}
                 element={
                     <Container_>
                         <ProductForm />
@@ -34,7 +35,7 @@ export const ProductRoutes = () => {
                 }
             />
             <Route
-                path='/products/:id'
+                path={navigations.product.show()}
                 element={
                     <Container_>
                         <ProductDetails />
@@ -42,7 +43,7 @@ export const ProductRoutes = () => {
                 }
             />
             <Route
-                path='/products/select/:target'
+                path={navigations.product.select}
                 element={
                     <Container_>
                         <ProductList />

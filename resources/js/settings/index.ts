@@ -122,7 +122,11 @@ export const navigations = {
         },
     },
     product: {
-        show: (id: number) => `/products/${id}`,
+        create: '/products/create',
+        edit: (id?: number) => `/products/${id ?? ':id'}/edit`,
+        list: '/products',
+        select: '/products/select/:target',
+        show: (id?: number) => `/products/${id ?? ':id'}`,
     },
     productCategory: {
         show: (id: number) => `/product-categories/${id}`,
