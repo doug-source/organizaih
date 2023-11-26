@@ -15,13 +15,6 @@ import {
     useState,
 } from 'react';
 
-// type ErrorKeys =
-//     | 'name'
-//     | 'email'
-//     | 'password'
-//     | 'password_confirmation'
-//     | 'status';
-
 type RegisterHandlerFn = (
     name: string,
     email: string,
@@ -41,7 +34,6 @@ export const useRegisterHandler: RegisterHandlerFn = (
 ) => {
     const translate = useTranslate();
     const [processing, setProcessing] = useState(false);
-    // const [errors, setErrors] = useState<ErrorsBox>({});
     const setLoading = useLoadingDispatch();
     const handler = useCallback(
         function (evt: FormEvent<HTMLFormElement>) {
