@@ -97,8 +97,10 @@ export const endpoints = {
 
 export const navigations = {
     inventory: {
-        show: (id: number) => `/inventories/${id}`,
-        edit: (id: number) => `/inventories/${id}/edit`,
+        create: '/inventories/create',
+        edit: (id?: number) => `/inventories/${id ?? ':id'}/edit`,
+        list: '/inventories',
+        show: (id?: number) => `/inventories/${id ?? ':id'}`,
     },
     configuration: {
         index: '/configuration',

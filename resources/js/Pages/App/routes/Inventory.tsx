@@ -3,6 +3,7 @@ import {
     InventoryForm,
     InventoryList,
 } from '@/Pages/App/Screens/Inventory';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -10,7 +11,7 @@ export const InventoryRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/inventories'
+                path={navigations.inventory.list}
                 element={
                     <Container_>
                         <InventoryList />
@@ -18,7 +19,7 @@ export const InventoryRoutes = () => {
                 }
             />
             <Route
-                path='/inventories/create'
+                path={navigations.inventory.create}
                 element={
                     <Container_>
                         <InventoryForm />
@@ -26,7 +27,7 @@ export const InventoryRoutes = () => {
                 }
             />
             <Route
-                path='/inventories/:id'
+                path={navigations.inventory.show()}
                 element={
                     <Container_>
                         <InventoryDetails />
@@ -34,7 +35,7 @@ export const InventoryRoutes = () => {
                 }
             />
             <Route
-                path='/inventories/:id/edit'
+                path={navigations.inventory.edit()}
                 element={
                     <Container_>
                         <InventoryForm />
