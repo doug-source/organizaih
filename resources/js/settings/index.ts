@@ -142,7 +142,8 @@ export const navigations = {
         show: (id?: number) => `/sales/${id ?? ':id'}`,
     },
     user: {
-        show: (id: number) => `/users/${id}`,
+        list: '/users',
+        show: (id?: number) => `/users/${id ?? ':id'}`,
     },
     register: {
         create: '/register',

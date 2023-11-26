@@ -1,5 +1,6 @@
 import { UserDetails } from '@/Pages/App/Screens/User/Details';
 import { UserList } from '@/Pages/App/Screens/User/List';
+import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
 
@@ -7,7 +8,7 @@ export const UserRoutes = () => {
     return (
         <Routes>
             <Route
-                path='/users'
+                path={navigations.user.list}
                 element={
                     <Container_>
                         <UserList />
@@ -15,7 +16,7 @@ export const UserRoutes = () => {
                 }
             />
             <Route
-                path='/users/:id'
+                path={navigations.user.show()}
                 element={
                     <Container_>
                         <UserDetails />
