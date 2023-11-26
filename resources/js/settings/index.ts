@@ -100,6 +100,9 @@ export const navigations = {
         show: (id: number) => `/inventories/${id}`,
         edit: (id: number) => `/inventories/${id}/edit`,
     },
+    configuration: {
+        index: '/configuration',
+    },
     customer: {
         create: '/customers/create',
         edit: '/customers/:id/edit',
