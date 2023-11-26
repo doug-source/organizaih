@@ -44,6 +44,11 @@ class GoogleClient
         $this->client->addScope('profile');
     }
 
+    /**
+     * Catch the google account's data if the auth code is received by $code
+     *
+     * @return bool
+     */
     public function authorize($code = NULL)
     {
         if (isset($code)) {
