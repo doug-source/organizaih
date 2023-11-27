@@ -1,5 +1,5 @@
 import { RegisterRequestsReducerEnum } from '@/Pages/App/Screens/RegisterRequest/List/libraries/enums';
-import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/List/libraries/types';
+import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
 import { ErrorFromRequest } from '@/Pages/App/libraries';
 
 export namespace RegisterRequestsPayload {
