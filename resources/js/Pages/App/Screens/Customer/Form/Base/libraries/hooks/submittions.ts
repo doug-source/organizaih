@@ -76,7 +76,7 @@ const useCatchCallback = (setErrors: ErrorsSetterType): CatchCallback => {
 };
 
 const useCustomerEndpoint = (customerInput: ICustomer) => {
-    const [endpoint, setEndpoint] = useState(endpoints.customer.store);
+    const [endpoint, setEndpoint] = useState<string>(endpoints.customer.store);
     useEffect(() => {
         if (customerInput.id) {
             // edit
