@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest\CheckRequest;
-use Illuminate\Support\Facades\DB;
 use App\Models\{
     RegisterRequests,
     AllowedRegister,
@@ -72,6 +71,18 @@ class RegisterRequestsResourceController extends Controller
             'status' => 200,
             'data' => NULL
         ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(CheckRequest $request)
+    {
+        RegisterRequests::where('id', $request->validated('registerRequestID'))->delete();
+        return response('OK', 200);
     }
 
     /**

@@ -7,7 +7,8 @@ use App\Http\Requests\CheckerFactoryScheme;
 use App\Http\Requests\RegisterRequest\Strategy\{
     Get\Plain as GetPlain,
     Get\Show as GetShow,
-    Post\Plain as PostPlain
+    Post\Plain as PostPlain,
+    Delete\Plain as DeletePlain
 };
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,6 +24,9 @@ class CheckerFactory implements CheckerFactoryScheme
     {
         if ($formRequest->isMethod('GET')) {
             return self::selectGetChecker($formRequest);
+        }
+        if ($formRequest->isMethod('DELETE')) {
+            return new DeletePlain();
         }
         return new PostPlain();
     }

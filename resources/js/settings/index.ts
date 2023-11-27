@@ -83,6 +83,7 @@ export const endpoints = {
         list: `/api/${apiVersion}/states`,
     },
     registerRequest: {
+        delete: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
         list: `/api/${apiVersion}/register/requests`,
         show: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
         store: () => {

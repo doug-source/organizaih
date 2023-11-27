@@ -1,10 +1,13 @@
 import { RegisterRequestsReducerEnum } from '@/Pages/App/Screens/RegisterRequest/List/libraries/enums';
 import { RegisterRequestsPayload } from '@/Pages/App/Screens/RegisterRequest/List/libraries/types/payload';
 import { RegisterRequestsReducerState } from '@/Pages/App/Screens/RegisterRequest/List/libraries/types/state';
+import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
+import { DeletionReducerEnum, deletionReducer } from '@/Pages/App/libraries';
+import { statePaginationAfterDeletion } from '@/Pages/App/libraries/toolbox/Pagination';
 
 export const registerRequestsReducer = (
     state: RegisterRequestsReducerState,
-    action: RegisterRequestsPayload.Skeleton,
+    action: RegisterRequestsPayload.Skeleton<IRegisterRequest>,
 ): RegisterRequestsReducerState => {
     switch (action.type) {
         case RegisterRequestsReducerEnum.INIT: {
@@ -31,6 +34,29 @@ export const registerRequestsReducer = (
         case RegisterRequestsReducerEnum.CHANGE_EMAIL: {
             const email = action.payload.trim();
             return { ...state, email };
+        }
+        case DeletionReducerEnum.DELETE: {
+            return statePaginationAfterDeletion(
+                deletionReducer<IRegisterRequest, 'id'>(
+                    state,
+                    action,
+                    'requests',
+                    'id',
+                ) as RegisterRequestsReducerState,
+            );
+        }
+        case DeletionReducerEnum.CLEAR_DELETE:
+        case DeletionReducerEnum.CANCEL_DELETE:
+        case DeletionReducerEnum.PREPARE_DELETE:
+        case DeletionReducerEnum.HIDE_CONFIRM:
+        case DeletionReducerEnum.HIDE_WARNING:
+        case DeletionReducerEnum.SHOW_WARNING: {
+            return deletionReducer<IRegisterRequest, 'id'>(
+                state,
+                action,
+                'requests',
+                'id',
+            ) as RegisterRequestsReducerState;
         }
         default: {
             const actionInvalid: never = action;

@@ -1,4 +1,4 @@
-import { ErrorFromRequest } from '@/Pages/App/libraries';
+import { DeletionReducerState, ErrorFromRequest } from '@/Pages/App/libraries';
 import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
 
 export type RegisterRequestsReducerState = {
@@ -11,4 +11,4 @@ export type RegisterRequestsReducerState = {
     endpoint: string;
     email: string;
     error: (ErrorFromRequest & { customMessage?: string }) | null;
-};
+} & DeletionReducerState<IRegisterRequest, 'id'>;

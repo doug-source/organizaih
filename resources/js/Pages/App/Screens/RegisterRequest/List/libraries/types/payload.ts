@@ -1,6 +1,6 @@
 import { RegisterRequestsReducerEnum } from '@/Pages/App/Screens/RegisterRequest/List/libraries/enums';
 import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
-import { ErrorFromRequest } from '@/Pages/App/libraries';
+import { DeletionPayload, ErrorFromRequest } from '@/Pages/App/libraries';
 
 export namespace RegisterRequestsPayload {
     type Init = {
@@ -30,11 +30,12 @@ export namespace RegisterRequestsPayload {
         payload: string;
     };
 
-    export type Skeleton =
+    export type Skeleton<T> =
         | Init
         | ChangePage
         | Numeric
         | Search
         | Error
-        | Refresh;
+        | Refresh
+        | DeletionPayload.Skeleton<T>;
 }

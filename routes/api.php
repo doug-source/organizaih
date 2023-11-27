@@ -104,6 +104,7 @@ Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
             Route::prefix('register')->group(function () {
                 Route::get('/requests', [RegisterRequestsResourceController::class, 'index']);
                 Route::get('/requests/{registerRequestID}', [RegisterRequestsResourceController::class, 'show']);
+                Route::delete('/requests/{registerRequestID}', [RegisterRequestsResourceController::class, 'destroy']);
             });
         });
     });

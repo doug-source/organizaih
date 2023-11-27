@@ -1,17 +1,22 @@
 import { RegisterRequestsReducerEnum } from '@/Pages/App/Screens/RegisterRequest/List/libraries/enums';
 import { registerRequestsReducer } from '@/Pages/App/Screens/RegisterRequest/List/libraries/reducers';
+import { RegisterRequestsReducerState } from '@/Pages/App/Screens/RegisterRequest/List/libraries/types/state';
 import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
-import { DataReducerEnum } from '@/Pages/App/libraries/enums';
+import {
+    DataReducerEnum,
+    DeletionReducerEnum,
+} from '@/Pages/App/libraries/enums';
 import {
     ApiData,
     useAPI,
     useAppDispatch,
     useGenericErrorHandler,
 } from '@/Pages/App/libraries/hooks';
+import { useDeleteAPI } from '@/Pages/App/libraries/hooks/Api';
 import { paginationSetting } from '@/Pages/App/settings';
 import { formatDateByString } from '@/libraries';
 import { endpoints } from '@/settings';
-import { useEffect, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
 
 export const useRegisterRequestsReducer = () => {
     const [state, dispatch] = useReducer(registerRequestsReducer, {
@@ -24,6 +29,9 @@ export const useRegisterRequestsReducer = () => {
         error: null,
         endpoint: endpoints.registerRequest.list,
         email: '',
+        idRemoved: null,
+        preConfirm: false,
+        warning: false,
     });
     return [state, dispatch] as const;
 };
@@ -94,4 +102,43 @@ export const useRegisterRequestsResponse = (
             appDispatch({ type: DataReducerEnum.LOADING, payload: true });
         }
     }, [storeError, storeData, storeStatus, dispatch, appDispatch]);
+};
+
+export const useRegisterRequestRemotion = (dispatch: DispatchFn) => {
+    const [remotion, doRemotion] = useDeleteAPI();
+    useGenericErrorHandler(remotion.error);
+    useEffect(() => {
+        if (remotion.error) {
+            dispatch({ type: DeletionReducerEnum.CANCEL_DELETE });
+            doRemotion('');
+        } else if (remotion.status) {
+            dispatch({ type: DeletionReducerEnum.DELETE });
+        }
+    }, [remotion.error, remotion.status, dispatch, doRemotion]);
+    return [doRemotion] as const;
+};
+
+export const useConfirmationYes = (
+    dispatch: DispatchFn,
+    doRemotion: ReturnType<typeof useDeleteAPI>[1],
+    idRemoved: RegisterRequestsReducerState['idRemoved'],
+) => {
+    const appDispatch = useAppDispatch();
+    return useCallback(() => {
+        if (idRemoved === null) {
+            return;
+        }
+        dispatch({ type: DeletionReducerEnum.HIDE_CONFIRM });
+        doRemotion(endpoints.registerRequest.delete(idRemoved));
+        appDispatch({
+            type: DataReducerEnum.LOADING,
+            payload: true,
+        });
+    }, [dispatch, appDispatch, endpoints.registerRequest.delete, idRemoved]);
+};
+
+export const useConfirmationCancel = (dispatch: DispatchFn) => {
+    return useCallback(() => {
+        dispatch({ type: DeletionReducerEnum.CANCEL_DELETE });
+    }, [dispatch]);
 };

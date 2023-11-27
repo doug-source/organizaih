@@ -1,15 +1,21 @@
+import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItemButtonsPack } from '@/Pages/App/Components/ListItemButtonsPack';
 import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
+import { ListItemRemoveButton } from '@/Pages/App/Components/ListItemRemoveButton';
 import { ListItemTrueButton } from '@/Pages/App/Components/ListItemTrueButton';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
 import {
     makeChangeGroup,
     makeChangePage,
+    makeRemoveItem,
     makeToolChange,
 } from '@/Pages/App/Screens/RegisterRequest/List/libraries/handlers';
 import {
+    useConfirmationCancel,
+    useConfirmationYes,
+    useRegisterRequestRemotion,
     useRegisterRequestsCall,
     useRegisterRequestsReducer,
     useRegisterRequestsResponse,
@@ -36,6 +42,9 @@ const List = () => {
         dispatch,
     );
     const translate = useTranslate();
+    const [doRemotion] = useRegisterRequestRemotion(dispatch);
+    const onConfirm = useConfirmationYes(dispatch, doRemotion, state.idRemoved);
+    const onConfirmCancel = useConfirmationCancel(dispatch);
     return (
         <>
             <Tools
@@ -76,11 +85,22 @@ const List = () => {
                                         )}
                                         show
                                     />
+                                    <ListItemRemoveButton
+                                        show
+                                        onClick={makeRemoveItem(dispatch, data)}
+                                    />
                                 </ListItemButtonsPack>
                             }
                         />
                     );
                 }}
+            />
+            <Confirmation
+                question={translate('question-remove', true)}
+                showConfirm={Boolean(state.idRemoved && state.preConfirm)}
+                onYes={onConfirm}
+                onNo={onConfirmCancel}
+                onClose={onConfirmCancel}
             />
         </>
     );
