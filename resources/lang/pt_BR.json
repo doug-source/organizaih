@@ -228,5 +228,6 @@
     "register-request-allow": "liberar o registro",
     "request-effected": "solicitação efetivada",
     "to-request": "solicitar",
-    "optional": "opcional"
+    "optional": "opcional",
+    "question-approve": "aprovar esse item?"
 }

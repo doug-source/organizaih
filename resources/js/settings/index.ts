@@ -83,6 +83,9 @@ export const endpoints = {
         list: `/api/${apiVersion}/states`,
     },
     registerRequest: {
+        approval: (id: number) => {
+            return `/api/${apiVersion}/register/requests/${id}/approval`;
+        },
         delete: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
         list: `/api/${apiVersion}/register/requests`,
         show: (id: number) => `/api/${apiVersion}/register/requests/${id}`,

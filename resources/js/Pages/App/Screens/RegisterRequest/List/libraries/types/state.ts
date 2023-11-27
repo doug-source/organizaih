@@ -11,4 +11,5 @@ export type RegisterRequestsReducerState = {
     endpoint: string;
     email: string;
     error: (ErrorFromRequest & { customMessage?: string }) | null;
+    idApproved: number | null;
 } & DeletionReducerState<IRegisterRequest, 'id'>;

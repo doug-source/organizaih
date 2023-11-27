@@ -228,5 +228,6 @@
     "register-request-allow": "allow the register",
     "request-effected": "request effected",
     "to-request": "request",
-    "optional": "optional"
+    "optional": "optional",
+    "question-approve": "approve this item?"
 }

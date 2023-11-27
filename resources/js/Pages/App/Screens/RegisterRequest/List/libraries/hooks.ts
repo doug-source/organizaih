@@ -32,6 +32,7 @@ export const useRegisterRequestsReducer = () => {
         idRemoved: null,
         preConfirm: false,
         warning: false,
+        idApproved: null,
     });
     return [state, dispatch] as const;
 };
@@ -118,7 +119,7 @@ export const useRegisterRequestRemotion = (dispatch: DispatchFn) => {
     return [doRemotion] as const;
 };
 
-export const useConfirmationYes = (
+export const useRemotionConfirmationYes = (
     dispatch: DispatchFn,
     doRemotion: ReturnType<typeof useDeleteAPI>[1],
     idRemoved: RegisterRequestsReducerState['idRemoved'],
@@ -137,8 +138,53 @@ export const useConfirmationYes = (
     }, [dispatch, appDispatch, endpoints.registerRequest.delete, idRemoved]);
 };
 
-export const useConfirmationCancel = (dispatch: DispatchFn) => {
+export const useRemoveConfirmationCancel = (dispatch: DispatchFn) => {
     return useCallback(() => {
         dispatch({ type: DeletionReducerEnum.CANCEL_DELETE });
+    }, [dispatch]);
+};
+
+export const useRegisterRequestApproval = (dispatch: DispatchFn) => {
+    const [remotion, doRemotion] = useDeleteAPI();
+    useGenericErrorHandler(remotion.error);
+    useEffect(() => {
+        if (remotion.error) {
+            dispatch({ type: RegisterRequestsReducerEnum.CANCEL_APPROVAL });
+            doRemotion('');
+        } else if (remotion.status) {
+            dispatch({ type: RegisterRequestsReducerEnum.APPROVAL });
+        }
+    }, [remotion.error, remotion.status, dispatch, doRemotion]);
+    return [doRemotion] as const;
+};
+
+export const useApprovalConfirmationYes = (
+    dispatch: DispatchFn,
+    doApproval: ReturnType<typeof useRegisterRequestApproval>[0],
+    idApproved: RegisterRequestsReducerState['idApproved'],
+) => {
+    const appDispatch = useAppDispatch();
+    return useCallback(() => {
+        if (idApproved === null) {
+            return;
+        }
+        dispatch({ type: DeletionReducerEnum.HIDE_CONFIRM });
+        doApproval(endpoints.registerRequest.approval(idApproved));
+        appDispatch({
+            type: DataReducerEnum.LOADING,
+            payload: true,
+        });
+    }, [
+        dispatch,
+        appDispatch,
+        idApproved,
+        doApproval,
+        endpoints.registerRequest.approval,
+    ]);
+};
+
+export const useApprovalConfirmationCancel = (dispatch: DispatchFn) => {
+    return useCallback(() => {
+        dispatch({ type: RegisterRequestsReducerEnum.CANCEL_APPROVAL });
     }, [dispatch]);
 };

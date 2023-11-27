@@ -35,6 +35,32 @@ export const registerRequestsReducer = (
             const email = action.payload.trim();
             return { ...state, email };
         }
+        case RegisterRequestsReducerEnum.APPROVAL: {
+            const total = state.total.filter(
+                (item) => item.id !== state.idApproved,
+            );
+            return statePaginationAfterDeletion({
+                ...state,
+                total,
+                requests: total,
+                idApproved: null,
+            });
+        }
+        case RegisterRequestsReducerEnum.CANCEL_APPROVAL:
+        case RegisterRequestsReducerEnum.CLEAR_APPROVAL: {
+            return {
+                ...state,
+                idApproved: null,
+                preConfirm: false,
+            };
+        }
+        case RegisterRequestsReducerEnum.PREPARE_APPROVAL: {
+            return {
+                ...state,
+                idApproved: action.payload.id,
+                preConfirm: true,
+            };
+        }
         case DeletionReducerEnum.DELETE: {
             return statePaginationAfterDeletion(
                 deletionReducer<IRegisterRequest, 'id'>(

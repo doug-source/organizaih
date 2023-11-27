@@ -81,7 +81,27 @@ class RegisterRequestsResourceController extends Controller
      */
     public function destroy(CheckRequest $request)
     {
-        RegisterRequests::where('id', $request->validated('registerRequestID'))->delete();
+        RegisterRequests::destroy($request->validated('registerRequestID'));
+        return response('OK', 200);
+    }
+
+    /**
+     * Execute the register request's approval.
+     *
+     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
+     * @return \Illuminate\Http\Response
+     */
+    public function approve(CheckRequest $request)
+    {
+        $registerRequestID = $request->validated('registerRequestID');
+        $registerRequest = RegisterRequests::find($registerRequestID);
+        RegisterRequests::destroy($registerRequestID);
+        $fields = ['email' => $registerRequest->email];
+        if ($registerRequest->phone) {
+            $fields['phone'] = $registerRequest->phone;
+        }
+        AllowedRegister::create($fields);
+        // SEND EMAIL
         return response('OK', 200);
     }
 

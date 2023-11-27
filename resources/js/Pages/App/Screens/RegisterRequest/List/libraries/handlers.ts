@@ -43,3 +43,15 @@ export const makeRemoveItem = (
         });
     };
 };
+
+export const makeApprovalItem = (
+    dispatch: DispatchFn,
+    data: IRegisterRequest,
+) => {
+    return () => {
+        dispatch({
+            type: RegisterRequestsReducerEnum.PREPARE_APPROVAL,
+            payload: data,
+        });
+    };
+};

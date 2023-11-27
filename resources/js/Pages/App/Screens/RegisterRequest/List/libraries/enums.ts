@@ -7,4 +7,9 @@ export const enum RegisterRequestsReducerEnum {
     CHANGE_QTY = 'change-qty',
     ERROR = 'error',
     REFRESH = 'refresh',
+
+    APPROVAL = 'approval',
+    CLEAR_APPROVAL = 'clear-approval',
+    CANCEL_APPROVAL = 'cancel-approval',
+    PREPARE_APPROVAL = 'prepare-approval',
 }

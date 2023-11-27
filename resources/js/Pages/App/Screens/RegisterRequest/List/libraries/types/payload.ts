@@ -25,17 +25,33 @@ export namespace RegisterRequestsPayload {
     type Refresh = {
         type: RegisterRequestsReducerEnum.REFRESH;
     };
-    type Search = {
+    type ChangeEmail = {
         type: RegisterRequestsReducerEnum.CHANGE_EMAIL;
         payload: string;
+    };
+
+    type Delete = {
+        type: RegisterRequestsReducerEnum.APPROVAL;
+    };
+    type Undefined = {
+        type:
+            | RegisterRequestsReducerEnum.CLEAR_APPROVAL
+            | RegisterRequestsReducerEnum.CANCEL_APPROVAL;
+    };
+    type PrepareApproval<T> = {
+        type: RegisterRequestsReducerEnum.PREPARE_APPROVAL;
+        payload: T;
     };
 
     export type Skeleton<T> =
         | Init
         | ChangePage
         | Numeric
-        | Search
+        | ChangeEmail
         | Error
         | Refresh
+        | Delete
+        | Undefined
+        | PrepareApproval<T>
         | DeletionPayload.Skeleton<T>;
 }

@@ -105,6 +105,7 @@ Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
                 Route::get('/requests', [RegisterRequestsResourceController::class, 'index']);
                 Route::get('/requests/{registerRequestID}', [RegisterRequestsResourceController::class, 'show']);
                 Route::delete('/requests/{registerRequestID}', [RegisterRequestsResourceController::class, 'destroy']);
+                Route::delete('/requests/{registerRequestID}/approval', [RegisterRequestsResourceController::class, 'approve']);
             });
         });
     });

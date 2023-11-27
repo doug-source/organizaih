@@ -7,18 +7,22 @@ import { ListItemTrueButton } from '@/Pages/App/Components/ListItemTrueButton';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
 import {
+    makeApprovalItem,
     makeChangeGroup,
     makeChangePage,
     makeRemoveItem,
     makeToolChange,
 } from '@/Pages/App/Screens/RegisterRequest/List/libraries/handlers';
 import {
-    useConfirmationCancel,
-    useConfirmationYes,
+    useApprovalConfirmationCancel,
+    useApprovalConfirmationYes,
+    useRegisterRequestApproval,
     useRegisterRequestRemotion,
     useRegisterRequestsCall,
     useRegisterRequestsReducer,
     useRegisterRequestsResponse,
+    useRemotionConfirmationYes,
+    useRemoveConfirmationCancel,
 } from '@/Pages/App/Screens/RegisterRequest/List/libraries/hooks';
 import { IRegisterRequest } from '@/Pages/App/Screens/RegisterRequest/types';
 import { useInitPage } from '@/Pages/App/libraries/hooks';
@@ -43,8 +47,20 @@ const List = () => {
     );
     const translate = useTranslate();
     const [doRemotion] = useRegisterRequestRemotion(dispatch);
-    const onConfirm = useConfirmationYes(dispatch, doRemotion, state.idRemoved);
-    const onConfirmCancel = useConfirmationCancel(dispatch);
+    const onRemoveConfirm = useRemotionConfirmationYes(
+        dispatch,
+        doRemotion,
+        state.idRemoved,
+    );
+    const onRemoveConfirmCancel = useRemoveConfirmationCancel(dispatch);
+
+    const [doApproval] = useRegisterRequestApproval(dispatch);
+    const onApprovalConfirm = useApprovalConfirmationYes(
+        dispatch,
+        doApproval,
+        state.idApproved,
+    );
+    const onApprovalConfirmCancel = useApprovalConfirmationCancel(dispatch);
     return (
         <>
             <Tools
@@ -83,6 +99,10 @@ const List = () => {
                                             'register-request-allow',
                                             true,
                                         )}
+                                        onClick={makeApprovalItem(
+                                            dispatch,
+                                            data,
+                                        )}
                                         show
                                     />
                                     <ListItemRemoveButton
@@ -98,9 +118,16 @@ const List = () => {
             <Confirmation
                 question={translate('question-remove', true)}
                 showConfirm={Boolean(state.idRemoved && state.preConfirm)}
-                onYes={onConfirm}
-                onNo={onConfirmCancel}
-                onClose={onConfirmCancel}
+                onYes={onRemoveConfirm}
+                onNo={onRemoveConfirmCancel}
+                onClose={onRemoveConfirmCancel}
+            />
+            <Confirmation
+                question={translate('question-approve', true)}
+                showConfirm={Boolean(state.idApproved && state.preConfirm)}
+                onYes={onApprovalConfirm}
+                onNo={onApprovalConfirmCancel}
+                onClose={onApprovalConfirmCancel}
             />
         </>
     );

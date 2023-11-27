@@ -34,7 +34,7 @@ class Plain implements Checker
             'registerRequestID.required' => Str::of(__('validation-required'))->ucfirst(),
             'registerRequestID.integer' => Str::of(__('validation-integer'))->ucfirst(),
             'registerRequestID.min' => Str::of(__('validation-min', ['size' => '1']))->ucfirst(),
-            'registerRequestID.exists' => Str::of(__('validation-invalid-female', ['subject' =>  Str::of(__('sale'))->ucfirst()]))->ucfirst(),
+            'registerRequestID.exists' => Str::of(__('validation-invalid-female', ['subject' =>  Str::of(__('register-request'))->ucfirst()]))->ucfirst(),
         ];
     }
 }

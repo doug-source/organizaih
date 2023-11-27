@@ -9,5 +9,15 @@ class AllowedRegister extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'email',
+        'phone'
+    ];
+
     protected $table = 'allowed_registers';
 }
