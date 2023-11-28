@@ -35,7 +35,7 @@ export const useRegisterRequestHandler: RegisterHandlerFn = (
         function (evt: FormEvent<HTMLFormElement>) {
             evt.preventDefault();
 
-            const url = endpoints.registerRequest.store();
+            const url = endpoints.registerRequest.store;
             if (typeof url === 'undefined' || processing === true) {
                 return;
             }

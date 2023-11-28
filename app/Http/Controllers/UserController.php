@@ -61,11 +61,16 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        $googleClient = new GoogleClient(config('app.routes.urls.register_user_form'));
+        $googleClient = new GoogleClient(route('register.user.form'));
         $googleClient->init();
 
         $variables = [
-            'registerAction' => json_encode(config('app.routes.urls.register_user')),
+            'registerAction' => json_encode(
+                route(
+                    name: 'register.user',
+                    absolute: false
+                )
+            ),
             'successAction' => route('login.page'),
             'googleAuthUrl' => $googleClient->generateAuthLink()
         ];
@@ -91,11 +96,16 @@ class UserController extends Controller
      */
     public function registerRequest(Request $request)
     {
-        $googleClient = new GoogleClient(config('app.routes.urls.register_request_form'));
+        $googleClient = new GoogleClient(route('register.request.form'));
         $googleClient->init();
 
         $variables = [
-            'registerRequestAction' => json_encode(config('app.routes.urls.register_request')),
+            'registerRequestAction' => json_encode(
+                route(
+                    name: 'register.request',
+                    absolute: false
+                )
+            ),
             'successAction' => route('login.page'),
             'googleAuthUrl' => $googleClient->generateAuthLink()
         ];

@@ -33,13 +33,7 @@ export const endpoints = {
         auth: window.data.auth?.action,
     },
     register: {
-        store: () => {
-            const { action } = window.data.register;
-            if (!action) {
-                return;
-            }
-            return `/api/${apiVersion}/${action}`;
-        },
+        store: window.data?.register?.action,
     },
     forgotPassword: {
         create: '/forgot-password',
@@ -89,13 +83,7 @@ export const endpoints = {
         delete: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
         list: `/api/${apiVersion}/register/requests`,
         show: (id: number) => `/api/${apiVersion}/register/requests/${id}`,
-        store: () => {
-            const { action } = window.data.registerRequest;
-            if (!action) {
-                return;
-            }
-            return `/api/${apiVersion}/${action}`;
-        },
+        store: window.data?.registerRequest?.action,
     },
 } as const;
 
