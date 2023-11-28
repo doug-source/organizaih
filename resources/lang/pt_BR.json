@@ -229,5 +229,9 @@
     "request-effected": "solicitação efetivada",
     "to-request": "solicitar",
     "optional": "opcional",
-    "question-approve": "aprovar esse item?"
+    "question-approve": "aprovar esse item?",
+    "register-approval": "aprovação de registro",
+    "congratulations": "parabéns",
+    "pre-register-user-text-1": "a partir de agora, você poderá registrar sua nova conta",
+    "pre-register-user-text-2": "cadastre seus dados clicando no botão abaixo"
 }

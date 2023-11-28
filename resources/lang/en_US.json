@@ -229,5 +229,9 @@
     "request-effected": "request effected",
     "to-request": "request",
     "optional": "optional",
-    "question-approve": "approve this item?"
+    "question-approve": "approve this item?",
+    "register-approval": "register approval",
+    "congratulations": "congratulations",
+    "pre-register-user-text-1": "from now on, you can register your new account",
+    "pre-register-user-text-2": "register your data clicking the button below"
 }

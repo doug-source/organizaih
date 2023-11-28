@@ -15,6 +15,7 @@ use Illuminate\Support\{
     Facades\Session,
     Str
 };
+use Illuminate\Support\Facades\URL;
 
 class UserController extends Controller
 {
@@ -61,16 +62,19 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
+        if (!$request->hasValidSignatureWhileIgnoring(['code'])) {
+            abort(401);
+        }
         $googleClient = new GoogleClient(route('register.user.form'));
         $googleClient->init();
 
+        $signedURL = URL::temporarySignedRoute(
+            name: 'register.user',
+            expiration: now()->addMinutes(15),
+            absolute: false
+        );
         $variables = [
-            'registerAction' => json_encode(
-                route(
-                    name: 'register.user',
-                    absolute: false
-                )
-            ),
+            'registerAction' => json_encode($signedURL),
             'successAction' => route('login.page'),
             'googleAuthUrl' => $googleClient->generateAuthLink()
         ];

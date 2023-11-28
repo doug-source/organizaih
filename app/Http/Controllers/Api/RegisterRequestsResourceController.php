@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest\CheckRequest;
+use App\Mail\AllowedRegister as AllowedRegisterMail;
 use App\Models\{
     RegisterRequests,
     AllowedRegister,
     User
 };
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Str;
 
 class RegisterRequestsResourceController extends Controller
 {
@@ -101,7 +105,17 @@ class RegisterRequestsResourceController extends Controller
             $fields['phone'] = $registerRequest->phone;
         }
         AllowedRegister::create($fields);
-        // SEND EMAIL
+
+        Mail::to($registerRequest->email)->send(new AllowedRegisterMail([
+            'fromName' => config('app.name'),
+            'fromEmai' => config('mail.from.address'),
+            'subject' => Str::of(__('register-approval'))->ucfirst(),
+            'url' => URL::temporarySignedRoute(
+                'register.user.form',
+                now()->addMinutes(15)
+            )
+        ]));
+
         return response('OK', 200);
     }
 

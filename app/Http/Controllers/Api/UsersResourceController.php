@@ -39,6 +39,10 @@ class UsersResourceController extends Controller
      */
     public function store(CheckRequest $request)
     {
+        if (!$request->hasValidSignature()) {
+            abort(401);
+        }
+
         $fields = $request->only(['name', 'email', 'password']);
         $user = User::create($fields);
         event(new Registered($user));
