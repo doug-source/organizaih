@@ -2,6 +2,7 @@ export type DefaultErrorKeys =
     | 'name'
     | 'email'
     | 'password'
-    | 'password_confirmation';
+    | 'password_confirmation'
+    | 'token';
 
 export type ErrorKeys = DefaultErrorKeys | 'status';

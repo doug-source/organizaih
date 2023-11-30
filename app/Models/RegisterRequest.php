@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\App;
 
-class RegisterRequests extends Model
+class RegisterRequest extends Model
 {
     use HasFactory;
 

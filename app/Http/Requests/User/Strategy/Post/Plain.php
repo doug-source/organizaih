@@ -4,6 +4,7 @@ namespace App\Http\Requests\User\Strategy\Post;
 
 use App\Http\Requests\Checker;
 use App\Rules\PasswordValid;
+use App\Rules\AllowedRegisterRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Str;
 
@@ -15,10 +16,23 @@ class Plain implements Checker
     /** @var int */
     private $userEmailMaxSize = 0;
 
-    public function __construct()
+    /** @var int */
+    private $tokenMaxSize = 0;
+
+    /** @var string */
+    private $email;
+
+    /** @var string */
+    private $token;
+
+    public function __construct(FormRequest $formRequest)
     {
         $this->userNameMaxSize = config('database.column-sizes.user.name');
         $this->userEmailMaxSize = config('database.column-sizes.user.email');
+        $this->tokenMaxSize = config('database.column-sizes.allowed-register.token');
+
+        $this->email = $formRequest->input('email');
+        $this->token = $formRequest->query('token');
     }
 
     /**
@@ -51,6 +65,11 @@ class Plain implements Checker
                 'required',
                 'confirmed',
                 new PasswordValid()
+            ],
+            'token' => [
+                'required',
+                "max:{$this->tokenMaxSize}",
+                new AllowedRegisterRule($this->email, $this->token)
             ]
         ];
     }
@@ -70,6 +89,9 @@ class Plain implements Checker
 
             'password.required' => Str::of(__('validation-required'))->ucfirst(),
             'password.confirmed' => Str::of(__('pass-confirm-invalid'))->ucfirst(),
+
+            'token.required' => Str::of(__('validation-required'))->ucfirst(),
+            'token.max' => Str::of(__('validation-max', ['size' => $this->tokenMaxSize]))->ucfirst(),
         ];
     }
 }

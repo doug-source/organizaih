@@ -189,7 +189,8 @@ return [
             'phone' => env('COLUMN_SIZE_REGISTER_REQUEST_PHONE', '11')
         ],
         'allowed-register' => [
-            'phone' => env('COLUMN_SIZE_ALLOWED_REGISTER_PHONE', '11')
+            'phone' => env('COLUMN_SIZE_ALLOWED_REGISTER_PHONE', '11'),
+            'token' => env('COLUMN_SIZE_ALLOWED_REGISTER_TOKEN', '40')
         ]
     ],
 

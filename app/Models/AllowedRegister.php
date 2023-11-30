@@ -16,8 +16,19 @@ class AllowedRegister extends Model
      */
     protected $fillable = [
         'email',
-        'phone'
+        'phone',
+        'token',
+        'expiration_data'
     ];
 
     protected $table = 'allowed_registers';
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'expiration_data' => 'datetime',
+    ];
 }

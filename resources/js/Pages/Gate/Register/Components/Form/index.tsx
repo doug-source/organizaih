@@ -1,10 +1,10 @@
 import { Button } from '@/Pages/Gate/Components/Button';
 import { FieldError } from '@/Pages/Gate/Components/FieldError';
 import { FieldSuccess } from '@/Pages/Gate/Components/FieldSuccess';
-import { GoogleCredentials } from '@/Pages/Gate/Components/GoogleCredentials';
 import { InputLabel } from '@/Pages/Gate/Components/InputLabel';
 import { Row } from '@/Pages/Gate/Components/Row';
 import { TextInput } from '@/Pages/Gate/Components/TextInput';
+import { detachStatusError } from '@/Pages/Gate/Register/Components/Form/libraries';
 import { useRegisterFields } from '@/Pages/Gate/Register/libraries/contexts/hooks';
 import { RegisterReducerEnum } from '@/Pages/Gate/Register/libraries/enums';
 import { useRegisterReducer } from '@/Pages/Gate/Register/libraries/hooks/reducers';
@@ -29,7 +29,7 @@ export const Form = () => {
         setSuccessMsg,
         dispatch,
     );
-    const statusError = state.errors.status || serverErrors.status?.shift();
+    const statusError = detachStatusError(state.errors, serverErrors);
     return (
         <form onSubmit={registerHandler}>
             <Row $show={Boolean(statusError)}>
@@ -129,11 +129,6 @@ export const Form = () => {
                     }
                 />
             </Row>
-            <GoogleCredentials
-                show={!fields}
-                link={window.data.googleAuthUrl ?? ''}
-                text={translate('sign-up-google', true)}
-            />
             <Button
                 type='submit'
                 disabled={processing}

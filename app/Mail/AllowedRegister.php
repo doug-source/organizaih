@@ -47,7 +47,7 @@ class AllowedRegister extends Mailable
                 'btnText' => Str::of(__('click-here'))->ucfirst(),
                 'paragraph_1' => Str::of(__('pre-register-user-text-1'))->ucfirst(),
                 'paragraph_2' => Str::of(__('pre-register-user-text-2'))->ucfirst(),
-                'regards' => Str::of(__('regards'))->ucfirst()
+                'regards' => Str::of(__('regards'))->ucfirst(),
             ]
         );
     }

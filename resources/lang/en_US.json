@@ -170,6 +170,7 @@
     "user": "user",
     "users": "users",
     "registration-effected": "registration effected",
+    "registration-expired": "registration expired",
     "min-letters": "letters minimum quantity: :min",
     "min-uppercases": "uppercases minimum quantity: :min",
     "min-lowercases": "lowercases minimum quantity: :min",
@@ -233,5 +234,6 @@
     "register-approval": "register approval",
     "congratulations": "congratulations",
     "pre-register-user-text-1": "from now on, you can register your new account",
-    "pre-register-user-text-2": "register your data clicking the button below"
+    "pre-register-user-text-2": "register your data clicking the button below",
+    "registration-invalid-token": "register token invalid"
 }

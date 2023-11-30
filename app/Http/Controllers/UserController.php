@@ -55,41 +55,22 @@ class UserController extends Controller
     }
 
     /**
-     * Return the user register view.
+     * Return the user register form view.
      *
      * @param Illuminate\Http\Request $request
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
     public function register(Request $request)
     {
-        if (!$request->hasValidSignatureWhileIgnoring(['code'])) {
-            abort(401);
-        }
-        $googleClient = new GoogleClient(route('register.user.form'));
-        $googleClient->init();
-
-        $signedURL = URL::temporarySignedRoute(
+        $url = route(
             name: 'register.user',
-            expiration: now()->addMinutes(15),
+            parameters: ['token' => $request->token],
             absolute: false
         );
-        $variables = [
-            'registerAction' => json_encode($signedURL),
+        return view('register.main', [
+            'registerAction' => json_encode($url),
             'successAction' => route('login.page'),
-            'googleAuthUrl' => $googleClient->generateAuthLink()
-        ];
-
-        try {
-            if ($googleClient->authorize($request->input('code'))) {
-                $variables = [
-                    ...$variables,
-                    ...$googleClient->executeGoogleRegister()
-                ];
-            }
-            return view('register.main', $variables);
-        } catch (ClientException $th) {
-            return redirect()->to('/');
-        }
+        ]);
     }
 
     /**

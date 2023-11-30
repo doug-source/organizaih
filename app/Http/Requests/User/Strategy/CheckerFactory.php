@@ -25,7 +25,7 @@ class CheckerFactory implements CheckerFactoryScheme
         if ($formRequest->isMethod('GET')) {
             return self::selectGetChecker($formRequest);
         }
-        return new PostPlain();
+        return new PostPlain($formRequest);
     }
 
     /**

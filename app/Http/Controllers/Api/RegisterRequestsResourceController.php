@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest\CheckRequest;
 use App\Mail\AllowedRegister as AllowedRegisterMail;
 use App\Models\{
-    RegisterRequests,
+    RegisterRequest,
     AllowedRegister,
     User
 };
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
@@ -40,7 +42,7 @@ class RegisterRequestsResourceController extends Controller
      */
     public function show(CheckRequest $request)
     {
-        $registerRequest = RegisterRequests::find($request->registerRequestID);
+        $registerRequest = RegisterRequest::find($request->registerRequestID);
         return response()->json([
             'id' => $registerRequest->id,
             'email' => $registerRequest->email,
@@ -57,17 +59,22 @@ class RegisterRequestsResourceController extends Controller
      */
     public function store(CheckRequest $request)
     {
-        $fields = $request->only(['email', 'phone']);
-        $registerRequest = RegisterRequests::where('email', $request->email)->first();
-        if (!$registerRequest) {
-            $allowedRegister = AllowedRegister::where('email', $request->email)->first();
-            if (!$allowedRegister) {
-                $user = User::where('email', $request->email)->first();
-                if (!$user) {
-                    RegisterRequests::create($fields);
+        $userQuery = User::where('email', $request->email);
+        if (!$userQuery->exists()) {
+            $registerRequest = RegisterRequest::where('email', $request->email)->first();
+            if (!$registerRequest) {
+                $allowedRegister = AllowedRegister::where('email', $request->email)->first();
+                if (!$allowedRegister) {
+                    RegisterRequest::create($request->only(['email', 'phone']));
+                } else if (Carbon::now()->greaterThan(Carbon::parse($allowedRegister->expiration_data))) {
+                    $token = bin2hex(random_bytes(20));
+                    $expire = config('app.register.expire');
+                    DB::table('allowed_registers')->where('id', $allowedRegister->id)->update([
+                        'token' => $token,
+                        'expiration_data' => now()->addHours($expire)
+                    ]);
+                    $this->sendApprovalMail($request->email, $token);
                 }
-            } else {
-                // SEND APPROVAL EMAIL
             }
         }
         return response()->json([
@@ -85,7 +92,7 @@ class RegisterRequestsResourceController extends Controller
      */
     public function destroy(CheckRequest $request)
     {
-        RegisterRequests::destroy($request->validated('registerRequestID'));
+        RegisterRequest::destroy($request->validated('registerRequestID'));
         return response('OK', 200);
     }
 
@@ -98,25 +105,43 @@ class RegisterRequestsResourceController extends Controller
     public function approve(CheckRequest $request)
     {
         $registerRequestID = $request->validated('registerRequestID');
-        $registerRequest = RegisterRequests::find($registerRequestID);
-        RegisterRequests::destroy($registerRequestID);
-        $fields = ['email' => $registerRequest->email];
+        $registerRequest = RegisterRequest::find($registerRequestID);
+        RegisterRequest::destroy($registerRequestID);
+        $token = bin2hex(random_bytes(20));
+        $expire = config('app.register.expire');
+        $fields = [
+            'email' => $registerRequest->email,
+            'token' => $token,
+            'expiration_data' => now()->addHours($expire)
+        ];
         if ($registerRequest->phone) {
             $fields['phone'] = $registerRequest->phone;
         }
         AllowedRegister::create($fields);
 
-        Mail::to($registerRequest->email)->send(new AllowedRegisterMail([
-            'fromName' => config('app.name'),
-            'fromEmai' => config('mail.from.address'),
-            'subject' => Str::of(__('register-approval'))->ucfirst(),
-            'url' => URL::temporarySignedRoute(
-                'register.user.form',
-                now()->addMinutes(15)
-            )
-        ]));
+        $this->sendApprovalMail($registerRequest->email, $token);
 
         return response('OK', 200);
+    }
+
+    /**
+     * Send the register request's approval mail.
+     *
+     * @param  string $email
+     * @param  string $token
+     */
+    private function sendApprovalMail(string $email, string $token)
+    {
+        Mail::to($email)->send(new AllowedRegisterMail([
+            'fromName' => config('app.name'),
+            'fromEmail' => config('mail.from.address'),
+            'subject' => Str::of(__('register-approval'))->ucfirst(),
+            'url' => URL::temporarySignedRoute(
+                name: 'register.user.form',
+                expiration: now()->addMinutes(15),
+                parameters: ['token' => $token]
+            ),
+        ]));
     }
 
     /**
@@ -129,7 +154,7 @@ class RegisterRequestsResourceController extends Controller
      */
     private function searchRegisterRequests($paginate = FALSE, $perPage = 3, $email = NULL)
     {
-        $query = RegisterRequests::select('id', 'email', 'phone', 'created_at');
+        $query = RegisterRequest::select('id', 'email', 'phone', 'created_at');
         if ($email) {
             $query = $query->where([
                 ['email', 'like', "%{$email}%"]

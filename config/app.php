@@ -258,6 +258,13 @@ return [
     /*
     * Email used as first super-admin account
     */
-    'super_admin_mail' => env('SUPER_ADMIN_EMAIL', 'fake@mysite.com')
+    'super_admin_mail' => env('SUPER_ADMIN_EMAIL', 'fake@mysite.com'),
+
+    /*
+    * Timeout to register a user (in hours)
+    */
+    'register' => [
+        'expire' => env('REGISTER_EXPIRATION_DATA_HOURS', 2)
+    ]
 
 ];

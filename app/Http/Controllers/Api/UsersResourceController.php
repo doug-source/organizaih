@@ -7,6 +7,8 @@ use App\Models\AllowedRegister;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\User\CheckRequest;
+use App\Models\Role;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 
 class UsersResourceController extends Controller
@@ -39,22 +41,32 @@ class UsersResourceController extends Controller
      */
     public function store(CheckRequest $request)
     {
-        if (!$request->hasValidSignature()) {
-            abort(401);
-        }
-
+        $allowed = DB::table('allowed_registers')->where('email', $request->email)->first();
         $fields = $request->only(['name', 'email', 'password']);
         $user = User::create($fields);
         event(new Registered($user));
 
-        $allowed = DB::table('allowed_registers')->where('email', $request->email)->first();
         AllowedRegister::destroy($allowed->id);
+
+        $this->applyDefaultUserRole($user);
 
         return response()->json([
             'message' => 'OK',
             'status' => 200,
             'data' => NULL
         ]);
+    }
+
+    /**
+     * Apply the role default to user
+     *
+     * @param  \App\Models\User $user
+     */
+    private function applyDefaultUserRole(User $user)
+    {
+        $roleID = DB::table('roles')->where('name', 'seller')->value('id');
+        $role = Role::find($roleID);
+        $user->roles()->save($role);
     }
 
     /**

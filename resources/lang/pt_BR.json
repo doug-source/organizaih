@@ -170,6 +170,7 @@
     "user": "usuário",
     "users": "usuários",
     "registration-effected": "registro efetivado",
+    "registration-expired": "registro expirado",
     "min-letters": "quantidade mínima de letras: :min",
     "min-uppercases": "quantidade mínima de maiúsculas: :min",
     "min-lowercases": "quantidade mínima de minúsculas: :min",
@@ -233,5 +234,6 @@
     "register-approval": "aprovação de registro",
     "congratulations": "parabéns",
     "pre-register-user-text-1": "a partir de agora, você poderá registrar sua nova conta",
-    "pre-register-user-text-2": "cadastre seus dados clicando no botão abaixo"
+    "pre-register-user-text-2": "cadastre seus dados clicando no botão abaixo",
+    "registration-invalid-token": "token de registro inválido"
 }

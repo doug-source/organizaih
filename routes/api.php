@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\RegisterRequestsResourceController;
 use App\Http\Controllers\Api\SalesResourceController;
 use App\Http\Controllers\Api\StatesResourceController;
 use App\Http\Controllers\Api\UsersResourceController;
-use App\Models\RegisterRequests;
+use App\Models\RegisterRequest;
 use App\Models\User;
 
 /*
@@ -105,7 +105,7 @@ Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
                 Route::get('/{userID}', [UsersResourceController::class, 'show']);
             });
         });
-        $registerRequestModel = RegisterRequests::class;
+        $registerRequestModel = RegisterRequest::class;
         Route::middleware("can:isSuperAdmin,$registerRequestModel")->group(function () {
             Route::prefix('register')->group(function () {
                 Route::get('/requests', [RegisterRequestsResourceController::class, 'index']);

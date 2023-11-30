@@ -27,22 +27,13 @@ $registerFormUrl = config('app.routes.urls.register_user_form');
 Route::get(
     $registerFormUrl,
     [UserController::class, 'register']
-)->name('register.user.form');
+)->name('register.user.form')->middleware('signed');
 
 $registerRequestFormUrl = config('app.routes.urls.register_request_form');
 Route::get(
     $registerRequestFormUrl,
     [UserController::class, 'registerRequest']
 )->name('register.request.form');
-
-Route::get('/mailable', function () {
-    return new App\Mail\AllowedRegister([
-        'url' => 'foo',
-        'fromEmail' => 'foo',
-        'fromName' => 'foo',
-        'subject' => 'foo'
-    ]);
-});
 
 Route::middleware('auth')->group(function () {
     $oneYearDuration = 365 * 24 * 60 * 1;

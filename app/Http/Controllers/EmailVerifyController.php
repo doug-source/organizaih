@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class EmailVerifyController extends Controller

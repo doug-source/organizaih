@@ -4,7 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
-use App\Models\RegisterRequests;
+use App\Models\RegisterRequest;
 use App\Models\User;
 use App\Policies\RegisterRequestPolice;
 use App\Policies\UserPolice;
@@ -26,7 +26,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         User::class => UserPolice::class,
-        RegisterRequests::class => RegisterRequestPolice::class
+        RegisterRequest::class => RegisterRequestPolice::class
     ];
 
     /**
