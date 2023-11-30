@@ -81,7 +81,12 @@ class UserController extends Controller
      */
     public function registerRequest(Request $request)
     {
-        $googleClient = new GoogleClient(route('register.request.form'));
+        $googleClient = new GoogleClient(
+            route(
+                name: 'register.request.form',
+                absolute: false
+            )
+        );
         $googleClient->init();
 
         $variables = [
