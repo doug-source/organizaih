@@ -11,6 +11,7 @@ export * from './CategoryTools';
 export * from './CityDropdown';
 export * from './CloseDialogIcon';
 export * from './ConfigIcon';
+export * from './ConfigLegend';
 export * from './Confirmation';
 export * from './CustomersSales';
 export * from './DatePicker';
