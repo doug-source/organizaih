@@ -235,5 +235,8 @@
     "congratulations": "parabéns",
     "pre-register-user-text-1": "a partir de agora, você poderá registrar sua nova conta",
     "pre-register-user-text-2": "cadastre seus dados clicando no botão abaixo",
-    "registration-invalid-token": "token de registro inválido"
+    "registration-invalid-token": "token de registro inválido",
+
+    "profile": "perfil",
+    "profile-show-title": "detalhes do perfil"
 }

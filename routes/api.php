@@ -98,6 +98,8 @@ Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
             Route::put('{saleID}', [SalesResourceController::class, 'update']);
             Route::delete('{saleID}', [SalesResourceController::class, 'destroy']);
         });
+        Route::get('/users/self', [UsersResourceController::class, 'showSelf']);
+
         $userModel = User::class;
         Route::middleware("can:isSuperAdmin,$userModel")->group(function () {
             Route::prefix('users')->group(function () {

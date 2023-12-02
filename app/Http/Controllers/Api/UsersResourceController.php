@@ -92,6 +92,20 @@ class UsersResourceController extends Controller
     }
 
     /**
+     * Display the user logged data.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function showSelf()
+    {
+        $user = auth()->user();
+        return response()->json([
+            'name' => $user->name,
+            'email' => $user->email,
+        ]);
+    }
+
+    /**
      * Search the users list
      *
      * @param  int  $userLoggedID

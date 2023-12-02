@@ -235,5 +235,8 @@
     "congratulations": "congratulations",
     "pre-register-user-text-1": "from now on, you can register your new account",
     "pre-register-user-text-2": "register your data clicking the button below",
-    "registration-invalid-token": "register token invalid"
+    "registration-invalid-token": "register token invalid",
+
+    "profile": "profile",
+    "profile-show-title": "profile's details"
 }

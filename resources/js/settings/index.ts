@@ -8,6 +8,9 @@ export const endpoints = {
         list: `/api/${apiVersion}/users`,
         data: (id: number) => `/api/${apiVersion}/users/${id}`,
         delete: (id: number) => `/api/${apiVersion}/users/${id}`,
+        self: {
+            data: `/api/${apiVersion}/users/self`,
+        },
     },
     city: {
         list: (stateID: number) => `/api/${apiVersion}/state/${stateID}/cities`,
@@ -96,6 +99,9 @@ export const navigations = {
     },
     configuration: {
         index: '/configuration',
+        profile: {
+            show: '/configuration/profile',
+        },
     },
     customer: {
         create: '/customers/create',

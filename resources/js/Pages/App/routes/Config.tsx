@@ -1,4 +1,5 @@
 import { Config } from '@/Pages/App/Screens/Config';
+import { ProfileDetails } from '@/Pages/App/Screens/Profile/Details';
 import { navigations } from '@/settings';
 import { Outlet, Route, Routes } from 'react-router-dom';
 import { Container_ } from './styling';
@@ -11,6 +12,14 @@ export const ConfigRoutes = () => {
                 element={
                     <Container_>
                         <Config />
+                    </Container_>
+                }
+            />
+            <Route
+                path={navigations.configuration.profile.show}
+                element={
+                    <Container_>
+                        <ProfileDetails />
                     </Container_>
                 }
             />

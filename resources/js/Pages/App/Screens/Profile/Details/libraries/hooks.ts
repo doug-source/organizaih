@@ -1,17 +1,17 @@
-import { DataReducerEnum } from '@/Pages/App/libraries';
+import { DataReducerEnum } from '@/Pages/App/libraries/enums';
 import {
     useAPI,
     useAppDispatch,
     useGenericErrorHandler,
 } from '@/Pages/App/libraries/hooks';
-import { formatDateByString } from '@/libraries';
 import { IUser } from '@/libraries/types';
 import { endpoints } from '@/settings';
 import { useEffect, useState } from 'react';
 
-export const useUserDetailsRequest = (id: number) => {
-    const endpoint = (id && endpoints.user.data(id)) || '';
-    const [store] = useAPI<IUser, { pagination: false }>(endpoint);
+export const useUserDetailsRequest = () => {
+    const [store] = useAPI<IUser, { pagination: false }>(
+        endpoints.user.self.data,
+    );
     useGenericErrorHandler(store.error);
     return [store] as const;
 };
@@ -26,14 +26,7 @@ export const useUserDetailsResponse = (store: Store) => {
         if (store.error || !store.data) {
             return;
         }
-        setUser({
-            ...store.data,
-            email_verified_at: formatDateByString(store.data.email_verified_at),
-            created_at: formatDateByString(store.data.created_at),
-            updated_at: formatDateByString(store.data.updated_at),
-            roles: store.data.roles,
-            abilities: store.data.abilities,
-        });
+        setUser(store.data);
         appDispatch({ type: DataReducerEnum.LOADING, payload: false });
     }, [store.error, store.data, setUser, appDispatch]);
     return [user] as const;
