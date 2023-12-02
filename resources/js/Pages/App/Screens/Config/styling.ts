@@ -80,8 +80,10 @@ export const ThemeIconWrapper_ = styled.div`
 export const GateSwitcher_ = styled(GateSwitcher)`
     ${({ theme }) => {
         const labelMeasure = theme.measures.gateSwitcher.label;
+        const gateSwitcherMeasure = theme.measures.config.gateSwitcher;
         return css`
             justify-content: space-around;
+            padding-bottom: ${remOutput(gateSwitcherMeasure.padding.bottom)};
             ${SwitchInput_} + ${SwitchLabel_} {
                 color: inherit;
                 font-family: ${fonts.family[1]};

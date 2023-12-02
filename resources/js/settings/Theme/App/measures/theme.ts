@@ -80,6 +80,11 @@ export type AppThemeMeasures = {
                 };
             };
         };
+        gateSwitcher: {
+            padding: {
+                bottom: number;
+            };
+        };
         icon: {
             size: number;
             wrapper: {

@@ -1,12 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
 export const config: DefaultTheme['measures']['config'] = {
-    icon: {
-        size: 38,
-        wrapper: {
-            gap: 8,
-        },
-    },
     fieldset: {
         border: {
             width: 1,
@@ -35,6 +29,17 @@ export const config: DefaultTheme['measures']['config'] = {
             margin: {
                 top: 8,
             },
+        },
+    },
+    gateSwitcher: {
+        padding: {
+            bottom: 8,
+        },
+    },
+    icon: {
+        size: 38,
+        wrapper: {
+            gap: 8,
         },
     },
     langSwitcher: {
