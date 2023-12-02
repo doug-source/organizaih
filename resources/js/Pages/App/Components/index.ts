@@ -65,4 +65,5 @@ export * from './StateDropdown';
 export * from './SubmitBtn';
 export * from './Tools';
 export * from './UserDetailsPack';
+export * from './UserInfoConfig';
 export * from './Warning';

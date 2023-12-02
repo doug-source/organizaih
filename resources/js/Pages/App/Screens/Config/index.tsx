@@ -1,8 +1,7 @@
 import { ConfigLegend } from '@/Pages/App/Components/ConfigLegend';
-import { DetailsIcon } from '@/Pages/App/Components/DetailsIcon';
-import { EditIcon } from '@/Pages/App/Components/EditIcon';
 import { GateSwitcherCheckHandle } from '@/Pages/App/Components/GateSwitcher';
 import { LanguageSwitcher } from '@/Pages/App/Components/LanguageSwitcher';
+import { UserInfoConfig } from '@/Pages/App/Components/UserInfoConfig';
 import {
     useThemeClickHandler,
     useThemingRequest,
@@ -17,36 +16,9 @@ import {
 } from '@/Pages/App/Screens/Config/styling';
 import { useInitPage } from '@/Pages/App/libraries/hooks';
 import { useTranslate } from '@/libraries';
-import { endpoints, navigations } from '@/settings';
+import { endpoints } from '@/settings';
 import { Suspense, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { styled, useTheme } from 'styled-components';
-
-const DetailsIcon_ = styled(DetailsIcon)`
-    width: 2.25rem;
-    height: 2.25rem;
-`;
-
-const BarItems_ = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    padding-bottom: 0.5rem;
-`;
-
-const NavLink_ = styled(NavLink)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-`;
-
-const EditIcon_ = styled(EditIcon)`
-    width: 2.25rem;
-    height: 2.25rem;
-    fill: #2d3e50;
-`;
+import { useTheme } from 'styled-components';
 
 export const Config = () => {
     useInitPage('configuration', false);
@@ -100,12 +72,7 @@ export const Config = () => {
             </Fieldset_>
             <Fieldset_>
                 <ConfigLegend>{translate('profile', true)}:</ConfigLegend>
-                <BarItems_>
-                    <NavLink_ to={navigations.configuration.profile.show}>
-                        <DetailsIcon_ />
-                        <span>Detalhes</span>
-                    </NavLink_>
-                </BarItems_>
+                <UserInfoConfig />
             </Fieldset_>
         </div>
     );
