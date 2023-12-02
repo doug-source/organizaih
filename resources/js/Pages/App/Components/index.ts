@@ -20,6 +20,7 @@ export * from './DefinePhoto';
 export * from './DetailsContainer';
 export * from './Dialog';
 export * from './Dropdown';
+export * from './EditIcon';
 export * from './ElementGroup';
 export * from './EmptyScreen';
 export * from './EntryDataItem';
