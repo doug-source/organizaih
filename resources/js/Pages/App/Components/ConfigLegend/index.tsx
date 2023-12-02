@@ -3,6 +3,6 @@ import { HTMLAttributes } from 'react';
 
 type ConfigLegendProps = HTMLAttributes<HTMLLegendElement>;
 
-export const ConfigLegend = ({ children }: ConfigLegendProps) => (
-    <Legend_>{children}</Legend_>
+export const ConfigLegend = ({ children, ...remain }: ConfigLegendProps) => (
+    <Legend_ {...remain}>{children}</Legend_>
 );
