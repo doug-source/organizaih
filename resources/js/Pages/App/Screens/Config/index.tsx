@@ -1,3 +1,4 @@
+import { ConfigLegend } from '@/Pages/App/Components/ConfigLegend';
 import { DetailsIcon } from '@/Pages/App/Components/DetailsIcon';
 import { EditIcon } from '@/Pages/App/Components/EditIcon';
 import { GateSwitcherCheckHandle } from '@/Pages/App/Components/GateSwitcher';
@@ -11,7 +12,6 @@ import {
     DayModeIcon_,
     Fieldset_,
     GateSwitcher_,
-    Legend_,
     NightModeIcon_,
     ThemeIconWrapper_,
 } from '@/Pages/App/Screens/Config/styling';
@@ -62,11 +62,11 @@ export const Config = () => {
     return (
         <div>
             <Fieldset_>
-                <Legend_>{translate('language', true)}:</Legend_>
+                <ConfigLegend>{translate('language', true)}:</ConfigLegend>
                 <LanguageSwitcher />
             </Fieldset_>
             <Fieldset_>
-                <Legend_>{translate('theme', true)}:</Legend_>
+                <ConfigLegend>{translate('theme', true)}:</ConfigLegend>
                 <GateSwitcher_
                     label=''
                     value={theme.key === 'dark'}
@@ -99,7 +99,7 @@ export const Config = () => {
                 />
             </Fieldset_>
             <Fieldset_>
-                <Legend_>{translate('profile', true)}:</Legend_>
+                <ConfigLegend>{translate('profile', true)}:</ConfigLegend>
                 <BarItems_>
                     <NavLink_ to={navigations.configuration.profile.show}>
                         <DetailsIcon_ />
