@@ -105,6 +105,20 @@ export type AppThemeMeasures = {
                 };
             };
         };
+        userInfo: {
+            barItems: {
+                gap: number;
+                padding: {
+                    bottom: number;
+                };
+            };
+            link: {
+                gap: number;
+            };
+            icon: {
+                size: number;
+            };
+        };
     };
     confirmDialog: {
         footer: {

@@ -56,4 +56,18 @@ export const config: DefaultTheme['measures']['config'] = {
             },
         },
     },
+    userInfo: {
+        barItems: {
+            gap: 32,
+            padding: {
+                bottom: 8,
+            },
+        },
+        link: {
+            gap: 8,
+        },
+        icon: {
+            size: 36,
+        },
+    },
 };

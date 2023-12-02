@@ -41,6 +41,7 @@
     "obs": "observation",
     "description": "description",
     "category": "category",
+    "details": "details",
     "customer-empty-list": "no customer registered",
     "customer-new-register": "customer saved!",
     "customer-no-belong": "this customer does not belong to you.",

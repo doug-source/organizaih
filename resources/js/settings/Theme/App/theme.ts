@@ -72,6 +72,21 @@ export type AppTheme = {
                 };
             };
         };
+        userInfo: {
+            icon: {
+                details: {
+                    glass: {
+                        fill: string;
+                    };
+                    frame: {
+                        fill: string;
+                    };
+                };
+                edit: {
+                    fill: string;
+                };
+            };
+        };
     };
     confirmDialog: {
         footer: {

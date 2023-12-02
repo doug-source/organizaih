@@ -20,6 +20,7 @@ export const blue = {
     18: '#00adf2',
     19: '#2fb5d1',
     20: '#1e90ff',
+    21: '#2e79bd',
     darken: '#4949c8',
     lighten: {
         0: '#c0e0e6',
@@ -49,6 +50,7 @@ export const gray = {
     7: '#868688',
     8: '#4e4e4e',
     9: '#6b7280',
+    10: '#2d3e50',
     12: '#b3b3b3',
     13: '#b1b1b1',
     14: '#cccccc',
