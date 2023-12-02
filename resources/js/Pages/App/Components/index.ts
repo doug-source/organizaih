@@ -63,6 +63,7 @@ export * from './SelectProduct';
 export * from './SelectorsBox';
 export * from './StateDropdown';
 export * from './SubmitBtn';
+export * from './ThemeSwitcher';
 export * from './Tools';
 export * from './UserDetailsPack';
 export * from './UserInfoConfig';
