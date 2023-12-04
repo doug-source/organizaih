@@ -84,6 +84,7 @@ class UsersResourceController extends Controller
             'name' => $user->name,
             'email' => $user->email,
             'email_verified_at' => $user->email_verified_at_formatted,
+            'phone' => $user->phone,
             'created_at' => $user->created_at_formatted,
             'updated_at' => $user->updated_at_formatted,
             'roles' => $roles->map(fn ($role) => $role->name),
@@ -102,6 +103,7 @@ class UsersResourceController extends Controller
         return response()->json([
             'name' => $user->name,
             'email' => $user->email,
+            'phone' => $user->phone
         ]);
     }
 

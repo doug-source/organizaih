@@ -6,6 +6,8 @@ export interface IUser {
     email: string;
     email_verified_at: Date | null;
     password?: string;
+    phone?: string | null;
+    photo?: string | null;
     created_at: Date | null;
     updated_at: Date | null;
     roles: string[];

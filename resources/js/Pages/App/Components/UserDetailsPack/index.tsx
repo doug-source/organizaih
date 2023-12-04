@@ -20,13 +20,17 @@ export const UserDetailsPack = ({ user, children }: UserDetailsPackProps) => {
                 value={user.name}
             >
                 <ProfilePhotoOutput
-                    url={null}
+                    url={user.photo ?? null}
                     iconNoPhoto={<AnonymousDetailsIcon />}
                 />
             </DefineItem>
             <DefineItem
                 labelText={translate('Email', true) + ':'}
                 value={user.email}
+            />
+            <DefineItem
+                labelText={translate('phone', true) + ':'}
+                value={user.phone ?? '---'}
             />
             {children}
         </DetailsContainer>

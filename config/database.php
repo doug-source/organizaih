@@ -152,6 +152,8 @@ return [
         'user' => [
             'name' => env('COLUMN_SIZE_USER_NAME', '250'),
             'email' => env('COLUMN_SIZE_USER_EMAIL', '250'),
+            'phone' => env('COLUMN_SIZE_USER_PHONE'),
+            'photo' => env('COLUMN_SIZE_USER_PHOTO')
         ],
         'customer' => [
             'name' => env('COLUMN_SIZE_CUSTOMER_NAME', '250'),
