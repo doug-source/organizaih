@@ -52,6 +52,38 @@ class RegisterRequestsResourceController extends Controller
     }
 
     /**
+     * Handle the phone if it is not null, removing all non-digits
+     *
+     * @param ?string $phone
+     * @return ?string
+     */
+    private function handlePhone(?string $phone): ?string
+    {
+        if (!$phone) {
+            return $phone;
+        }
+        return preg_replace('|[^\d]|', '', $phone);
+    }
+
+    /**
+     * Update the model's phone if the phone is different
+     *
+     * @param mixed $model
+     * @param ?string $phone
+     * @return void
+     */
+    private function updateModelPhone($model, $phone)
+    {
+        if ($model->phone === $phone) {
+            return;
+        }
+
+        $model->update([
+            'phone' => $phone
+        ]);
+    }
+
+    /**
      * Persist the specified resource.
      *
      * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
@@ -62,19 +94,29 @@ class RegisterRequestsResourceController extends Controller
         $userQuery = User::where('email', $request->email);
         if (!$userQuery->exists()) {
             $registerRequest = RegisterRequest::where('email', $request->email)->first();
+            $phone = $this->handlePhone($request->phone);
             if (!$registerRequest) {
                 $allowedRegister = AllowedRegister::where('email', $request->email)->first();
                 if (!$allowedRegister) {
-                    RegisterRequest::create($request->only(['email', 'phone']));
-                } else if (Carbon::now()->greaterThan(Carbon::parse($allowedRegister->expiration_data))) {
-                    $token = bin2hex(random_bytes(20));
-                    $expire = config('app.register.expire');
-                    DB::table('allowed_registers')->where('id', $allowedRegister->id)->update([
-                        'token' => $token,
-                        'expiration_data' => now()->addHours($expire)
+                    RegisterRequest::create([
+                        'email' => $request->email,
+                        'phone' => $phone
                     ]);
+                } else {
+                    $token = $allowedRegister->token;
+                    if (Carbon::now()->greaterThan(Carbon::parse($allowedRegister->expiration_data))) {
+                        $token = bin2hex(random_bytes(20));
+                        $expire = config('app.register.expire');
+                        DB::table('allowed_registers')->where('id', $allowedRegister->id)->update([
+                            'token' => $token,
+                            'expiration_data' => now()->addHours($expire)
+                        ]);
+                    }
+                    $this->updateModelPhone($allowedRegister, $phone);
                     $this->sendApprovalMail($request->email, $token);
                 }
+            } else {
+                $this->updateModelPhone($registerRequest, $phone);
             }
         }
         return response()->json([

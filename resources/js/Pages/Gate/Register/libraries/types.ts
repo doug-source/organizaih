@@ -1,6 +1,7 @@
 export type DefaultErrorKeys =
     | 'name'
     | 'email'
+    | 'phone'
     | 'password'
     | 'password_confirmation'
     | 'token';

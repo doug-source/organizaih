@@ -11,6 +11,7 @@ use App\Http\Requests\User\Strategy\{
     Get\Show as GetShow,
     Post\Plain as PostPlain
 };
+use App\Http\Requests\User\Strategy\Get\RegisterForm;
 
 class CheckerFactory implements CheckerFactoryScheme
 {
@@ -39,6 +40,9 @@ class CheckerFactory implements CheckerFactoryScheme
         $path = $formRequest->decodedPath();
         if (preg_match('|^api\/v\d+\/users\/\d+$|', $path) === 1) {
             return new GetShow();
+        }
+        if (preg_match('|^register-user$|', $path) === 1) {
+            return new RegisterForm();
         }
         return new GetPlain();
     }

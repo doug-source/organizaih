@@ -24,6 +24,7 @@ export const Form = () => {
     const [processing, registerHandler] = useRegisterHandler(
         state.name,
         state.email,
+        state.phone,
         state.password,
         state.password_confirmation,
         setSuccessMsg,
@@ -50,9 +51,8 @@ export const Form = () => {
                     id='name'
                     name='name'
                     value={state.name}
-                    isFocused={!fields}
+                    isFocused
                     autoComplete='no'
-                    readOnly={Boolean(fields)}
                     onChange={(evt) =>
                         dispatch({
                             type: RegisterReducerEnum.CHANGE_NAME,
@@ -75,10 +75,26 @@ export const Form = () => {
                     name='email'
                     value={state.email}
                     autoComplete='no'
-                    readOnly={Boolean(fields)}
+                    readOnly
+                />
+            </Row>
+            <Row>
+                <div>
+                    <InputLabel
+                        htmlFor='phone'
+                        value={translate('phone', true)}
+                    />
+                    <FieldError message={state.errors.phone} />
+                </div>
+                <TextInput
+                    id='phone'
+                    name='phone'
+                    value={state.phone}
+                    autoComplete='no'
+                    readOnly={Boolean(fields?.phone)}
                     onChange={(evt) =>
                         dispatch({
-                            type: RegisterReducerEnum.CHANGE_EMAIL,
+                            type: RegisterReducerEnum.CHANGE_PHONE,
                             payload: evt.target.value,
                         })
                     }
@@ -97,7 +113,6 @@ export const Form = () => {
                     type='password'
                     name='password'
                     value={state.password}
-                    isFocused={Boolean(fields)}
                     autoComplete='no'
                     onChange={(evt) =>
                         dispatch({

@@ -35,6 +35,20 @@ class UsersResourceController extends Controller
     }
 
     /**
+     * Handle the phone if it is not null, removing all non-digits
+     *
+     * @param ?string $phone
+     * @return ?string
+     */
+    private function handlePhone(?string $phone): ?string
+    {
+        if (!$phone) {
+            return $phone;
+        }
+        return preg_replace('|[^\d]|', '', $phone);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\User\CheckRequest $request
@@ -42,7 +56,8 @@ class UsersResourceController extends Controller
     public function store(CheckRequest $request)
     {
         $allowed = DB::table('allowed_registers')->where('email', $request->email)->first();
-        $fields = $request->only(['name', 'email', 'password']);
+        $phone = $this->handlePhone($allowed->phone ?? $request->phone);
+        $fields = [...$request->only(['name', 'email', 'password']), 'phone' => $phone];
         $user = User::create($fields);
         event(new Registered($user));
 

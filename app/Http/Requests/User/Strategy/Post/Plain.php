@@ -61,6 +61,10 @@ class Plain implements Checker
                 'unique:App\Models\User,email',
                 'exists:allowed_registers,email'
             ],
+            'phone' => [
+                'nullable',
+                'regex:/\d{2}\s?(\d{4}[\s-]?\d{4}|\d{5}[\s-]?\d{4})$/'
+            ],
             'password' => [
                 'required',
                 'confirmed',
@@ -86,6 +90,8 @@ class Plain implements Checker
             'email.max' => Str::of(__('validation-max', ['size' => $this->userEmailMaxSize]))->ucfirst(),
             'email.unique' => Str::of(__('validation-invalid-male', ['subject' => __('user')]))->ucfirst(),
             'email.exists' => Str::of(__('validation-invalid-male', ['subject' => __('user')]))->ucfirst(),
+
+            'phone.regex' => Str::of(__('validation-invalid-male', ['subject' => __('phone')]))->ucfirst(),
 
             'password.required' => Str::of(__('validation-required'))->ucfirst(),
             'password.confirmed' => Str::of(__('pass-confirm-invalid'))->ucfirst(),

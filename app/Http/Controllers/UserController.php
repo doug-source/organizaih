@@ -15,7 +15,8 @@ use Illuminate\Support\{
     Facades\Session,
     Str
 };
-use Illuminate\Support\Facades\URL;
+use App\Http\Requests\User\CheckRequest as UserCheckRequest;
+use App\Models\AllowedRegister;
 
 class UserController extends Controller
 {
@@ -57,17 +58,22 @@ class UserController extends Controller
     /**
      * Return the user register form view.
      *
-     * @param Illuminate\Http\Request $request
+     * @param \App\Http\Requests\User\CheckRequest $request
      * @return \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function register(Request $request)
+    public function register(UserCheckRequest $request)
     {
+        $allowed = AllowedRegister::where('token', $request->validated('token'))->first();
         $url = route(
             name: 'register.user',
             parameters: ['token' => $request->token],
             absolute: false
         );
         return view('register.main', [
+            'fields' => json_encode([
+                'email' => $allowed->email,
+                'phone' => $allowed->phone
+            ]),
             'registerAction' => json_encode($url),
             'successAction' => route('login.page'),
         ]);

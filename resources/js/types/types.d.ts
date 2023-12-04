@@ -24,6 +24,7 @@ type ResetPasswordFields = {
 type PossibleFields = {
     name: string;
     email: string;
+    phone: string | null;
 };
 
 type PickFields<T extends keyof PossibleFields> = {
@@ -64,7 +65,7 @@ declare global {
             tokenAuth: string;
 
             auth: ServerInfo;
-            register: ServerInfo & PickFields<'name' | 'email'>;
+            register: ServerInfo & PickFields<'name' | 'email' | 'phone'>;
             registerRequest: ServerInfo & PickFields<'email'>;
             googleAuthUrl?: string;
 

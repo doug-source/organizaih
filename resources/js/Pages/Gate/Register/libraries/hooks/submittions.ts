@@ -15,11 +15,14 @@ import {
     useState,
 } from 'react';
 
+type State = ReturnType<typeof useRegisterReducer>[0];
+
 type RegisterHandlerFn = (
-    name: string,
-    email: string,
-    password: string,
-    password_confirmation: string,
+    name: State['name'],
+    email: State['email'],
+    phone: State['phone'],
+    password: State['password'],
+    password_confirmation: State['password_confirmation'],
     setSuccessMsg: Dispatch<SetStateAction<string>>,
     dispatch: ReturnType<typeof useRegisterReducer>[1],
 ) => readonly [boolean, (evt: FormEvent<HTMLFormElement>) => void];
@@ -27,6 +30,7 @@ type RegisterHandlerFn = (
 export const useRegisterHandler: RegisterHandlerFn = (
     name,
     email,
+    phone,
     password,
     password_confirmation,
     setSuccessMsg,
@@ -49,6 +53,9 @@ export const useRegisterHandler: RegisterHandlerFn = (
             formData.append('email', email);
             formData.append('password', password);
             formData.append('password_confirmation', password_confirmation);
+            if (phone) {
+                formData.append('phone', phone);
+            }
 
             setProcessing(true);
             setLoading && setLoading(true);

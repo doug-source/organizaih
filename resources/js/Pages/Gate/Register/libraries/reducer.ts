@@ -5,6 +5,7 @@ import { ErrorsBox } from '@/Pages/Gate/libraries/types';
 export type RegisterReducerState = {
     name: string;
     email: string;
+    phone: string;
     password: string;
     password_confirmation: string;
     errors: ErrorsBox<ErrorKeys>;
@@ -18,6 +19,10 @@ namespace RegisterPayload {
     type ChangeEmail = {
         type: RegisterReducerEnum.CHANGE_EMAIL;
         payload: RegisterReducerState['email'];
+    };
+    type ChangePhone = {
+        type: RegisterReducerEnum.CHANGE_PHONE;
+        payload: RegisterReducerState['phone'];
     };
     type ChangePassword = {
         type: RegisterReducerEnum.CHANGE_PASSWORD;
@@ -35,6 +40,7 @@ namespace RegisterPayload {
     export type Skeleton =
         | ChangeName
         | ChangeEmail
+        | ChangePhone
         | ChangePassword
         | ChangePasswordConfirmation
         | TriggerErrors;
@@ -55,6 +61,12 @@ export const registerReducer = (
             return {
                 ...state,
                 email: action.payload,
+            };
+        }
+        case RegisterReducerEnum.CHANGE_PHONE: {
+            return {
+                ...state,
+                phone: action.payload,
             };
         }
         case RegisterReducerEnum.CHANGE_PASSWORD: {

@@ -24,6 +24,12 @@ class CheckRequest extends VerifyRequest
         if ($method === 'post') {
             return !auth()->check();
         }
+        if (
+            $method === 'get' &&
+            Request::getPathInfo() === config('app.routes.urls.register_user_form')
+        ) {
+            return !auth()->check();
+        }
         return auth()->check();
     }
 }
