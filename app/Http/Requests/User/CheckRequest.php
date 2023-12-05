@@ -22,6 +22,13 @@ class CheckRequest extends VerifyRequest
     {
         $method = strtolower(Request::method());
         if ($method === 'post') {
+            $route = route(
+                name: 'users.self.update',
+                absolute: false
+            );
+            if (Request::getPathInfo() === $route) {
+                return auth()->check();
+            }
             return !auth()->check();
         }
         if (

@@ -1151,6 +1151,13 @@ export type AppThemeMeasures = {
             };
         };
     };
+    photoFormItem: {
+        label: {
+            margin: {
+                left: number;
+            };
+        };
+    };
     previewPhotoInput: {
         marginRight: number;
         svg: {

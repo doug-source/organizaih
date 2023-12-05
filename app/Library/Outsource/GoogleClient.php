@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Library;
+namespace App\Library\Outsource;
 
 use App\Models\User;
 use Google\Client;

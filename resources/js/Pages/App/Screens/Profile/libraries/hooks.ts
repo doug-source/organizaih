@@ -8,7 +8,7 @@ import { IUser } from '@/libraries/types';
 import { endpoints } from '@/settings';
 import { useEffect, useState } from 'react';
 
-export const useUserDetailsRequest = () => {
+export const useUserRequest = () => {
     const [store] = useAPI<IUser, { pagination: false }>(
         endpoints.user.self.data,
     );
@@ -16,9 +16,9 @@ export const useUserDetailsRequest = () => {
     return [store] as const;
 };
 
-type Store = ReturnType<typeof useUserDetailsRequest>[0];
+type Store = ReturnType<typeof useUserRequest>[0];
 
-export const useUserDetailsResponse = (store: Store) => {
+export const useUserResponse = (store: Store) => {
     const appDispatch = useAppDispatch();
     const [user, setUser] = useState<IUser>();
 

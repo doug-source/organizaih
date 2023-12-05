@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest\CheckRequest;
+use App\Library\Converters\Phone as PhoneConverter;
 use App\Mail\AllowedRegister as AllowedRegisterMail;
 use App\Models\{
     RegisterRequest,
@@ -52,20 +53,6 @@ class RegisterRequestsResourceController extends Controller
     }
 
     /**
-     * Handle the phone if it is not null, removing all non-digits
-     *
-     * @param ?string $phone
-     * @return ?string
-     */
-    private function handlePhone(?string $phone): ?string
-    {
-        if (!$phone) {
-            return $phone;
-        }
-        return preg_replace('|[^\d]|', '', $phone);
-    }
-
-    /**
      * Update the model's phone if the phone is different
      *
      * @param mixed $model
@@ -94,7 +81,7 @@ class RegisterRequestsResourceController extends Controller
         $userQuery = User::where('email', $request->email);
         if (!$userQuery->exists()) {
             $registerRequest = RegisterRequest::where('email', $request->email)->first();
-            $phone = $this->handlePhone($request->phone);
+            $phone = PhoneConverter::clear($request->phone);
             if (!$registerRequest) {
                 $allowedRegister = AllowedRegister::where('email', $request->email)->first();
                 if (!$allowedRegister) {

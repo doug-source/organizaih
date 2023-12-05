@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Library\ResponseBuilder;
+use App\Library\Builders\Response as ResponseBuilder;
 use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Requests\{
     Email\CheckRequest as EmailCheckRequest,
@@ -38,7 +38,7 @@ class PasswordController extends Controller
             $request->only('email')
         );
         if ($status !== Password::RESET_LINK_SENT) {
-            return ResponseBuilder::buildInvalidResponse(__($status));
+            return ResponseBuilder::invalidJSON(__($status));
         }
         return response()->json(['message' => __($status)]);
     }
@@ -77,7 +77,7 @@ class PasswordController extends Controller
             }
         );
         if ($status !== Password::PASSWORD_RESET) {
-            return ResponseBuilder::buildInvalidResponse(__($status));
+            return ResponseBuilder::invalidJSON(__($status));
         }
         return response()->json(['message' => __($status)]);
     }

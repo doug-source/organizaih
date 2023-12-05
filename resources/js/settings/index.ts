@@ -10,6 +10,7 @@ export const endpoints = {
         delete: (id: number) => `/api/${apiVersion}/users/${id}`,
         self: {
             data: `/api/${apiVersion}/users/self`,
+            update: `/api/${apiVersion}/users/self/update`,
         },
     },
     city: {
@@ -101,6 +102,7 @@ export const navigations = {
         index: '/configuration',
         profile: {
             show: '/configuration/profile',
+            edit: '/configuration/profile/edit',
         },
     },
     customer: {

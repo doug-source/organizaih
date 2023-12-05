@@ -239,5 +239,6 @@
     "registration-invalid-token": "token de registro inválido",
 
     "profile": "perfil",
-    "profile-show-title": "detalhes do perfil"
+    "profile-show-title": "detalhes do perfil",
+    "profile-edit-title": "editar perfil"
 }

@@ -99,6 +99,7 @@ Route::middleware('auth:sanctum')->group(function () use ($apiVersion) {
             Route::delete('{saleID}', [SalesResourceController::class, 'destroy']);
         });
         Route::get('/users/self', [UsersResourceController::class, 'showSelf']);
+        Route::post('/users/self/update', [UsersResourceController::class, 'editSelf'])->name('users.self.update');
 
         $userModel = User::class;
         Route::middleware("can:isSuperAdmin,$userModel")->group(function () {

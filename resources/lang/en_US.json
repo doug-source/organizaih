@@ -239,5 +239,6 @@
     "registration-invalid-token": "register token invalid",
 
     "profile": "profile",
-    "profile-show-title": "profile's details"
+    "profile-show-title": "profile's details",
+    "profile-edit-title": "edit profile"
 }

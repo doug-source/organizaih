@@ -7,8 +7,8 @@ use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\ClientException;
 use App\Library\{
-    GoogleClient,
-    ResponseBuilder
+    Outsource\GoogleClient,
+    Builders\Response as ResponseBuilder
 };
 use Illuminate\Support\{
     Facades\Auth,
@@ -128,7 +128,7 @@ class UserController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials, $request->remember)) {
-            return ResponseBuilder::buildInvalidResponse(Str::of(__('invalid-auth'))->ucfirst());
+            return ResponseBuilder::invalidJSON(Str::of(__('invalid-auth'))->ucfirst());
         }
         return response('OK', 200);
     }

@@ -8,8 +8,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\User\CheckRequest;
 use App\Models\Role;
-use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use App\Library\Converters\Phone as PhoneConverter;
+use App\Library\Builders\Response as ResponseBuilder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class UsersResourceController extends Controller
 {
@@ -35,20 +39,6 @@ class UsersResourceController extends Controller
     }
 
     /**
-     * Handle the phone if it is not null, removing all non-digits
-     *
-     * @param ?string $phone
-     * @return ?string
-     */
-    private function handlePhone(?string $phone): ?string
-    {
-        if (!$phone) {
-            return $phone;
-        }
-        return preg_replace('|[^\d]|', '', $phone);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param \App\Http\Requests\User\CheckRequest $request
@@ -56,7 +46,7 @@ class UsersResourceController extends Controller
     public function store(CheckRequest $request)
     {
         $allowed = DB::table('allowed_registers')->where('email', $request->email)->first();
-        $phone = $this->handlePhone($allowed->phone ?? $request->phone);
+        $phone = PhoneConverter::clear($allowed->phone ?? $request->phone);
         $fields = [...$request->only(['name', 'email', 'password']), 'phone' => $phone];
         $user = User::create($fields);
         event(new Registered($user));
@@ -118,8 +108,39 @@ class UsersResourceController extends Controller
         return response()->json([
             'name' => $user->name,
             'email' => $user->email,
-            'phone' => $user->phone
+            'phone' => $user->phone,
+            'photo' => $user->photo
         ]);
+    }
+
+    /**
+     * Filter just the request fields modified.
+     *
+     * @return array<array-key, string>
+     */
+    private function detachRequest(Request $request, Authenticatable|Model|null $user)
+    {
+        $filePath = self::handleFile($request, $user, 'photo', 'user-photos');
+        $inputs = collect([
+            ...$request->only(['name', 'photo', 'phone']),
+            ...($filePath ? ['photo' => $filePath] : [])
+        ])->filter(fn ($val, $key) => $user->$key !== $val)->toArray();
+        return $inputs;
+    }
+
+    /**
+     * Update the user logged data.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function editSelf(CheckRequest $request)
+    {
+        $user = auth()->user();
+        $fields = $this->detachRequest($request, $user);
+        if ($fields) {
+            User::where('id', $user->id)->update($fields);
+        }
+        return ResponseBuilder::successJSON();
     }
 
     /**

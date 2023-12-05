@@ -43,6 +43,8 @@ export const columnSizeDB = {
     saleMaxQty: columnSizeRef.saleMaxQty,
     userName: columnSizeRef.userName,
     userEmail: columnSizeRef.userEmail,
+    userPhone: columnSizeRef.userPhone,
+    userPhoto: columnSizeRef.userPhoto,
 };
 
 const columnPrecisionRef = window.data.columnPrecisionDB;

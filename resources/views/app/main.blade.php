@@ -24,6 +24,8 @@
                 saleMaxQty: {!! config('database.column-sizes.sale.qty') !!},
                 userName: {!! config('database.column-sizes.user.name') !!},
                 userEmail: {!! config('database.column-sizes.user.email') !!},
+                userPhone: {!! config('database.column-sizes.user.phone') !!},
+                userPhoto: {!! config('database.column-sizes.user.photo') !!},
             },
             columnPrecisionDB: {
                 inventory: {!! config('database.columns-precisions.inventory.cost') !!},

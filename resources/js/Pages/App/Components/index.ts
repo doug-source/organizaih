@@ -1,5 +1,6 @@
 export * from './AddButton';
 export * from './AnonymousDetailsIcon';
+export * from './AnonymousIcon';
 export * from './AnonymousListIcon';
 export * from './AxisGroup';
 export * from './BackPhotoBtn';
@@ -51,6 +52,7 @@ export * from './Loading';
 export * from './LogoutLink';
 export * from './NextButton';
 export * from './Pagination';
+export * from './PhotoFormItem';
 export * from './PreviewPhotoInput';
 export * from './ProductsSales';
 export * from './ProfilePhotoInput';

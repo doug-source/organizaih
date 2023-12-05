@@ -1,6 +1,7 @@
 import {
     BarItems_,
     DetailsIcon_,
+    EditIcon_,
     NavLink_,
 } from '@/Pages/App/Components/UserInfoConfig/styling';
 import { useTranslate } from '@/libraries/hooks';
@@ -13,6 +14,10 @@ export const UserInfoConfig = () => {
             <NavLink_ to={navigations.configuration.profile.show}>
                 <DetailsIcon_ />
                 <span>{translate('details', true)}</span>
+            </NavLink_>
+            <NavLink_ to={navigations.configuration.profile.edit}>
+                <EditIcon_ />
+                <span>{translate('edit', true)}</span>
             </NavLink_>
         </BarItems_>
     );

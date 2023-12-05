@@ -51,6 +51,8 @@ declare global {
                 saleMaxQty: number;
                 userName: number;
                 userEmail: number;
+                userPhone: number;
+                userPhoto: number;
             };
             columnPrecisionDB: {
                 inventory: number;

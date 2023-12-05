@@ -1,19 +1,19 @@
-import { UserDetailsPack } from '@/Pages/App/Components/UserDetailsPack';
+import { UserEditionPack } from '@/Pages/App/Components/UserEditionPack';
 import {
     useUserRequest,
     useUserResponse,
 } from '@/Pages/App/Screens/Profile/libraries/hooks';
 import { useInitPage } from '@/Pages/App/libraries/hooks';
 
-const Details = () => {
-    useInitPage('profile-show-title');
+const Edition = () => {
+    useInitPage('profile-edit-title');
     const [store] = useUserRequest();
     const [user] = useUserResponse(store);
 
     if (store.error || !user) {
         return null;
     }
-    return <UserDetailsPack user={user} />;
+    return <UserEditionPack user={user} />;
 };
 
-export { Details as ProfileDetails };
+export { Edition as ProfileEdition };
