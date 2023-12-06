@@ -26,12 +26,15 @@ final class Response
      * @param mixed $data
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function successJSON($data = NULL)
+    public static function successJSON($data = NULL, $options = 0)
     {
-        return response()->json([
-            'message' => 'OK',
-            'status' => 200,
-            'data' => $data
-        ]);
+        return response()->json(
+            data: [
+                'message' => 'OK',
+                'status' => 200,
+                'data' => $data
+            ],
+            options: $options
+        );
     }
 }

@@ -1,4 +1,6 @@
+import { detachUserPhotoPath } from '@/Pages/App/Components/UserEditionPack/libraries';
 import { useFormData } from '@/Pages/App/Components/UserEditionPack/libraries/hooks';
+import { ThenableCallback } from '@/Pages/App/Components/UserEditionPack/libraries/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
 import { DataReducerEnum, useAppDispatch } from '@/Pages/App/libraries';
 import { IUser } from '@/libraries/types';
@@ -6,8 +8,6 @@ import { endpoints, navigations } from '@/settings';
 import axios from 'axios';
 import { FormEvent, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-type ThenableCallback = (response: { status: number }) => void;
 
 const useThenableCallback = (): ThenableCallback => {
     const appDispatch = useAppDispatch();
@@ -23,6 +23,13 @@ const useThenableCallback = (): ThenableCallback => {
                         type: DataReducerEnum.LOADING,
                         payload: false,
                     });
+                    const photoPath = detachUserPhotoPath(response);
+                    if (photoPath !== null) {
+                        appDispatch({
+                            type: DataReducerEnum.CHANGE_USER_PHOTO,
+                            payload: photoPath,
+                        });
+                    }
                     navigate(navigations.configuration.index);
                     break;
                 }
