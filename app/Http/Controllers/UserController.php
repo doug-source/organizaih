@@ -50,7 +50,7 @@ class UserController extends Controller
                 'tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken,
                 'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('id')->unique(),
                 'userPhoto' => json_encode($userLogged->photo),
-                'userName' => json_encode($userLogged->name)
+                'userName' => json_encode(explode(' ', $userLogged->name)[0])
             ]);
         } catch (ClientException $th) {
             return redirect()->to('/');
