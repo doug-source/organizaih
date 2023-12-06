@@ -63,7 +63,7 @@ export const App = () => {
         selections: makeEmptySelections(),
         photo: undefined,
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
-        userPhoto: null,
+        userPhoto: window.data.userPhoto,
     });
     useConnectionChecker(dispatch);
     useStarterWindowResize(state, dispatch);
@@ -79,6 +79,7 @@ export const App = () => {
                     windowWidth={state.windowWidth}
                     statusloading={state.loading}
                     photo={state.photo}
+                    userPhoto={state.userPhoto}
                 >
                     <ThemeProvider theme={state.theme}>
                         <>

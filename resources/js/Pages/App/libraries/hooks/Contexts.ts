@@ -5,6 +5,7 @@ import {
     PhotoContext,
     SelectionsContext,
     TitleContext,
+    UserPhotoContext,
     WindowSizesContext,
 } from '@/Pages/App/libraries';
 import { makeContextError } from '@/libraries';
@@ -52,4 +53,8 @@ export const useLoadingStatus = () => {
 
 export const usePhotoFile = () => {
     return useContext(PhotoContext);
+};
+
+export const useUserPhoto = () => {
+    return useContext(UserPhotoContext);
 };
