@@ -33,10 +33,13 @@ const useThenableCallback = (): ThenableCallback => {
                             payload: photoPath,
                         });
                     }
-                    appDispatch({
-                        type: DataReducerEnum.CHANGE_USER_NAME,
-                        payload: detachUserFirstName(response),
-                    });
+                    const userName = detachUserFirstName(response).trim();
+                    if (userName) {
+                        appDispatch({
+                            type: DataReducerEnum.CHANGE_USER_NAME,
+                            payload: userName,
+                        });
+                    }
                     navigate(navigations.configuration.index);
                     break;
                 }
