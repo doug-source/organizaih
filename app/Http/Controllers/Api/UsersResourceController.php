@@ -125,6 +125,9 @@ class UsersResourceController extends Controller
             ...$request->only(['name', 'photo', 'phone']),
             ...($filePath ? ['photo' => $filePath] : [])
         ])->filter(fn ($val, $key) => $user->$key !== $val)->toArray();
+        if (!array_key_exists('phone', $inputs)) {
+            $inputs['phone'] = NULL;
+        }
         return $inputs;
     }
 
