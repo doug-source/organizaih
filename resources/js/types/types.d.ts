@@ -35,7 +35,6 @@ declare global {
     interface Window {
         init: (Component: FunctionComponent<{}>) => void;
         data: {
-            userNameLogged: string;
             columnSizeDB: {
                 productCategory: number;
                 productCategoryDescription: number;
@@ -74,6 +73,7 @@ declare global {
             resetPassword: ServerInfo & ResetPasswordFields;
             abilities: number[];
             userPhoto: string | null;
+            userName: string;
         };
         axios: AxiosStatic;
     }

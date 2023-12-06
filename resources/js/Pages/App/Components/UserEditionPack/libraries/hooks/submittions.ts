@@ -1,4 +1,7 @@
-import { detachUserPhotoPath } from '@/Pages/App/Components/UserEditionPack/libraries';
+import {
+    detachUserFirstName,
+    detachUserPhotoPath,
+} from '@/Pages/App/Components/UserEditionPack/libraries';
 import { useFormData } from '@/Pages/App/Components/UserEditionPack/libraries/hooks';
 import { ThenableCallback } from '@/Pages/App/Components/UserEditionPack/libraries/types';
 import { ErrorsSetterType, ErrorsType } from '@/Pages/App/Screens/types';
@@ -30,6 +33,10 @@ const useThenableCallback = (): ThenableCallback => {
                             payload: photoPath,
                         });
                     }
+                    appDispatch({
+                        type: DataReducerEnum.CHANGE_USER_NAME,
+                        payload: detachUserFirstName(response),
+                    });
                     navigate(navigations.configuration.index);
                     break;
                 }

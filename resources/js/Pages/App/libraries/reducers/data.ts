@@ -194,6 +194,12 @@ export const dataReducer = (
                 userPhoto: action.payload,
             };
         }
+        case DataReducerEnum.CHANGE_USER_NAME: {
+            return {
+                ...state,
+                userName: action.payload,
+            };
+        }
         default: {
             const actionInvalid: never = action;
             throw new Error('Type invalid.', { cause: actionInvalid });

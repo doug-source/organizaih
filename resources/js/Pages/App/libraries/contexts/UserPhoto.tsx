@@ -1,7 +1,7 @@
 import { ReactNode, createContext } from 'react';
 
 type UserPhotoProps = {
-    value: string | null;
+    value: typeof window.data.userPhoto;
     children?: ReactNode;
 };
 

@@ -7,6 +7,7 @@ export const enum DataReducerEnum {
     CHANGE_THEME = 'change-theme',
     CHANGE_PHOTO = 'change-photo',
     CHANGE_USER_PHOTO = 'change-user-photo',
+    CHANGE_USER_NAME = 'change-user-name',
 
     SELECTION_TARGET = 'selection-target',
     SELECTION_ACTION = 'selection-action',

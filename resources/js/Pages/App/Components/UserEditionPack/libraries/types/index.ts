@@ -9,6 +9,6 @@ export type ErrorsBox<T> = Partial<Record<RecordKeys<T>, string>>;
 export type ThenableCallback = (response: {
     status: number;
     data: {
-        data: { photo?: string };
+        data: { photo?: string; name?: string };
     };
 }) => void;

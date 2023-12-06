@@ -64,6 +64,7 @@ export const App = () => {
         photo: undefined,
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
         userPhoto: window.data.userPhoto,
+        userName: window.data.userName,
     });
     useConnectionChecker(dispatch);
     useStarterWindowResize(state, dispatch);
@@ -80,6 +81,7 @@ export const App = () => {
                     statusloading={state.loading}
                     photo={state.photo}
                     userPhoto={state.userPhoto}
+                    userName={state.userName}
                 >
                     <ThemeProvider theme={state.theme}>
                         <>

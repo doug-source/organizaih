@@ -80,6 +80,10 @@ export namespace DataPayload {
         type: DataReducerEnum.CHANGE_USER_PHOTO;
         payload: DataReducerState['userPhoto'];
     };
+    type ChangeUserName = {
+        type: DataReducerEnum.CHANGE_USER_NAME;
+        payload: DataReducerState['userName'];
+    };
     type SelectionCustomer = {
         type: DataReducerEnum.SELECTION_CUSTOMER;
         payload: {
@@ -113,5 +117,6 @@ export namespace DataPayload {
         | ChangeTheme
         | ChangePhoto
         | ChangeUserPhoto
+        | ChangeUserName
         | SelectionCustomer;
 }

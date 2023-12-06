@@ -39,7 +39,8 @@
             apiVersion: '{!! config('auth.api-version') !!}',
             tokenAuth: '{!! $tokenAuth !!}',
             abilities: {!! $abilities !!},
-            userPhoto: {!! $userPhoto !!}
+            userPhoto: {!! $userPhoto !!},
+            userName: {!! $userName !!}
         };
     </script>
     @vite('resources/js/app.ts')

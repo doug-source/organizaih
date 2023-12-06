@@ -5,6 +5,7 @@ import {
     PhotoContext,
     SelectionsContext,
     TitleContext,
+    UserNameContext,
     UserPhotoContext,
     WindowSizesContext,
 } from '@/Pages/App/libraries';
@@ -57,4 +58,8 @@ export const usePhotoFile = () => {
 
 export const useUserPhoto = () => {
     return useContext(UserPhotoContext);
+};
+
+export const useUserName = () => {
+    return useContext(UserNameContext);
 };

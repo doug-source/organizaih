@@ -53,5 +53,6 @@ export type DataReducerState = {
     selections: ReducerSelections;
     photo?: File;
     theme: DefaultTheme;
-    userPhoto: string | null;
+    userPhoto: typeof window.data.userPhoto;
+    userName: typeof window.data.userName;
 };

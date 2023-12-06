@@ -16,3 +16,14 @@ export const detachUserPhotoPath = (
     } = response;
     return photoPath ?? null;
 };
+
+export const detachUserFirstName = (
+    response: Parameters<ThenableCallback>[0],
+) => {
+    const {
+        data: {
+            data: { name: userName },
+        },
+    } = response;
+    return (userName ?? '').replace(/^(.+)\s.*$/gi, '$1');
+};

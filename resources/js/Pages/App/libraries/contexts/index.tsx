@@ -6,6 +6,7 @@ import { Locale } from './Locale';
 import { Photo } from './Photo';
 import { Selections } from './Selections';
 import { Title } from './Title';
+import { UserName } from './UserName';
 import { UserPhoto } from './UserPhoto';
 import { WindowSizes } from './WindowSizes';
 
@@ -31,6 +32,7 @@ type WrapContextsProps = {
     windowHeight: ComponentProps<typeof WindowSizes>['height'];
     photo: ComponentProps<typeof Photo>['value'];
     userPhoto: ComponentProps<typeof UserPhoto>['value'];
+    userName: ComponentProps<typeof UserName>['value'];
     children: ReactNode;
 };
 
@@ -43,6 +45,7 @@ export const WrapContexts = ({
     statusloading,
     photo,
     userPhoto,
+    userName,
 }: WrapContextsProps) => {
     return (
         <WindowSizes
@@ -56,9 +59,11 @@ export const WrapContexts = ({
                             <Selections value={selections}>
                                 <Photo value={photo}>
                                     <UserPhoto value={userPhoto}>
-                                        <Translate value={info.translate}>
-                                            {children}
-                                        </Translate>
+                                        <UserName value={userName}>
+                                            <Translate value={info.translate}>
+                                                {children}
+                                            </Translate>
+                                        </UserName>
                                     </UserPhoto>
                                 </Photo>
                             </Selections>
@@ -75,5 +80,6 @@ export { LocaleContext } from './Locale';
 export { PhotoContext } from './Photo';
 export { SelectionsContext } from './Selections';
 export { TitleContext } from './Title';
+export { UserNameContext } from './UserName';
 export { UserPhotoContext } from './UserPhoto';
 export { WindowSizesContext } from './WindowSizes';
