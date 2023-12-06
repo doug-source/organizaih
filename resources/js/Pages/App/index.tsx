@@ -63,6 +63,7 @@ export const App = () => {
         selections: makeEmptySelections(),
         photo: undefined,
         theme: window.data.themeKey === 'light' ? Theme.light : Theme.dark,
+        userPhoto: null,
     });
     useConnectionChecker(dispatch);
     useStarterWindowResize(state, dispatch);

@@ -76,6 +76,10 @@ export namespace DataPayload {
         type: DataReducerEnum.CHANGE_PHOTO;
         payload?: DataReducerState['photo'];
     };
+    type ChangeUserPhoto = {
+        type: DataReducerEnum.CHANGE_USER_PHOTO;
+        payload: DataReducerState['userPhoto'];
+    };
     type SelectionCustomer = {
         type: DataReducerEnum.SELECTION_CUSTOMER;
         payload: {
@@ -108,5 +112,6 @@ export namespace DataPayload {
         | WindowResize
         | ChangeTheme
         | ChangePhoto
+        | ChangeUserPhoto
         | SelectionCustomer;
 }
