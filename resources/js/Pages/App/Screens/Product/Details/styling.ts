@@ -2,7 +2,7 @@ import {
     DefineItem,
     DefineItemValue_,
 } from '@/Pages/App/Components/DefineItem';
-import { mixinPhoto } from '@/Pages/App/Components/DefinePhoto';
+import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';

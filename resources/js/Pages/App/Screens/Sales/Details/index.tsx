@@ -37,6 +37,7 @@ const Details = () => {
                 value={sale.customerName}
             >
                 <ProfilePhotoOutput
+                    absolute
                     url={sale.customerPhoto}
                     iconNoPhoto={<AnonymousPhoto_ />}
                 />
@@ -61,6 +62,7 @@ const Details = () => {
                                 >
                                     <>
                                         <PhotoProduct_
+                                            absolute
                                             url={product.productPhoto}
                                             iconNoPhoto={<AnonymousProduct_ />}
                                         />

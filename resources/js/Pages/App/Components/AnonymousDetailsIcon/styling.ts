@@ -1,4 +1,4 @@
-import { mixinPhoto } from '@/Pages/App/Components/DefinePhoto';
+import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { css, styled } from 'styled-components';
 

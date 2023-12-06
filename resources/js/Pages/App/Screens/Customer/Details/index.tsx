@@ -29,6 +29,7 @@ const Details = () => {
                 $sex={sex}
             >
                 <ProfilePhotoOutput
+                    absolute
                     url={customer.photo}
                     iconNoPhoto={<AnonymousDetailsIcon />}
                 />

@@ -73,6 +73,7 @@ declare global {
 
             resetPassword: ServerInfo & ResetPasswordFields;
             abilities: number[];
+            userPhoto: string | null;
         };
         axios: AxiosStatic;
     }

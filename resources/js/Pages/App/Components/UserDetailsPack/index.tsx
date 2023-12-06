@@ -20,6 +20,7 @@ export const UserDetailsPack = ({ user, children }: UserDetailsPackProps) => {
                 value={user.name}
             >
                 <ProfilePhotoOutput
+                    absolute
                     url={user.photo ?? null}
                     iconNoPhoto={<AnonymousDetailsIcon />}
                 />

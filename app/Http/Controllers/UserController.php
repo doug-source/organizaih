@@ -48,7 +48,8 @@ class UserController extends Controller
 
             return view('app.main', [
                 'tokenAuth' => $userLogged->createToken('auth-app')->plainTextToken,
-                'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('id')->unique()
+                'abilities' => $userLogged->roles->map(fn ($role) => $role->abilities)->flatten()->pluck('id')->unique(),
+                'userPhoto' => json_encode($userLogged->photo)
             ]);
         } catch (ClientException $th) {
             return redirect()->to('/');

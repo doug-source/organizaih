@@ -29,6 +29,7 @@ const Details = () => {
                 value={product.name}
             >
                 <ProfilePhotoOutput
+                    absolute
                     url={product.photo}
                     iconNoPhoto={<AnonymousPhoto_ />}
                 />

@@ -135,6 +135,7 @@ const Base = ({
                                 wrap
                             >
                                 <ProfilePhotoOutput
+                                    absolute
                                     iconNoPhoto={<AnonymousPhoto_ />}
                                     url={state.customer.photo}
                                 />

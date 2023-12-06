@@ -15,7 +15,7 @@ export const RightItems = () => {
         <RightItemsContainer_>
             {hasSettings && (
                 <Suspense>
-                    <ConfigIconAsync />
+                    <ConfigIconAsync url={window.data.userPhoto} />
                 </Suspense>
             )}
             {hasLogout && (

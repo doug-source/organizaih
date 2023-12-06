@@ -3,9 +3,14 @@ import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
 import { NavBar_, Top_ } from '../..';
 
-export const Heading2_ = styled.h2`
-    ${({ theme }) => {
+type HeadingProps = {
+    $hasPhoto: boolean;
+};
+
+export const Heading2_ = styled.h2<HeadingProps>`
+    ${({ theme, $hasPhoto }) => {
         const topItemTheme = theme.measures.header.topItem;
+        const definePhotoMeasure = theme.measures.definePhoto;
         const {
             leftItems: { heading2 },
             rightItems: {
@@ -17,15 +22,19 @@ export const Heading2_ = styled.h2`
             padding: { left: paddLeftTopItem },
         } = topItemTheme;
 
+        const photoSize = $hasPhoto ? definePhotoMeasure.size / 2 : 0;
+
         const widthToRemove =
             1 * mLeftRightItemSpacing + // only one item
             // no wide-logout
-            paddLeftTopItem;
+            paddLeftTopItem +
+            photoSize;
 
         const widthToRemoveWide =
             2 * mLeftRightItemSpacing + // two items
             wideLogoutSvgSize +
-            paddLeftTopItem;
+            paddLeftTopItem +
+            photoSize;
 
         const { wideScreen, mediumScreen } = theme.measures;
 

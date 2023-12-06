@@ -1,5 +1,5 @@
 import { DefineItem, DefineItemWrap_ } from '@/Pages/App/Components/DefineItem';
-import { mixinPhoto } from '@/Pages/App/Components/DefinePhoto';
+import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
 import { Anonymous } from '@/Pages/App/Components/ProfilePhotoOutput/icon';

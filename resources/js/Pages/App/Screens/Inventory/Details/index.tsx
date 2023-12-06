@@ -71,6 +71,7 @@ const Details = () => {
                     value={state.inventoryItem.name}
                 >
                     <ProfilePhotoOutput
+                        absolute
                         url={state.inventoryItem.photo}
                         iconNoPhoto={<AnonymousPhoto_ />}
                     />

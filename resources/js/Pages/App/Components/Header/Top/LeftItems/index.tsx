@@ -6,7 +6,7 @@ import { Heading2_, TitleSpan_ } from './styling';
 export const LeftItems = () => {
     const title = useTitle();
     return (
-        <Heading2_>
+        <Heading2_ $hasPhoto={Boolean(window.data.userPhoto)}>
             <BrandItem />
             <Routes>
                 <Route

@@ -3,7 +3,10 @@ import {
     DefineItemValue_,
     DefineItemWrap_,
 } from '@/Pages/App/Components/DefineItem';
-import { PhotoItem_, mixinPhoto } from '@/Pages/App/Components/DefinePhoto';
+import {
+    PhotoItem_,
+    mixinPhoto,
+} from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { Anonymous } from '@/Pages/App/Components/ProfilePhotoOutput/icon';
 import {

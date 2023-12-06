@@ -154,7 +154,7 @@ export const SelectProductSVG = lazy(() =>
     }),
 );
 
-export const UserIcon = lazy(() =>
+export const UserSVG = lazy(() =>
     import('/resources/img/user.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

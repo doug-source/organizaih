@@ -1,16 +1,17 @@
 import { NavLink_ } from '@/Pages/App/Components/ConfigIcon/styling';
+import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
+import { UserIcon } from '@/Pages/App/Components/UserIcon';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums/data';
 import { useAppDispatch } from '@/Pages/App/libraries/hooks/Contexts';
-import { UserIcon } from '@/Pages/App/libraries/icons/asynchronous';
 import { emptySpaceCharacter } from '@/Pages/App/libraries/plain';
-import { Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 
 type ConfigurationProps = {
+    url: string | null;
     className?: string;
 };
 
-export const ConfigIcon = ({ className }: ConfigurationProps) => {
+export const ConfigIcon = ({ url, className }: ConfigurationProps) => {
     const { pathname } = useLocation();
     const appDispatch = useAppDispatch();
     return (
@@ -27,9 +28,10 @@ export const ConfigIcon = ({ className }: ConfigurationProps) => {
                 });
             }}
         >
-            <Suspense>
-                <UserIcon />
-            </Suspense>
+            <ProfilePhotoOutput
+                url={url}
+                iconNoPhoto={<UserIcon />}
+            />
         </NavLink_>
     );
 };
