@@ -1,9 +1,9 @@
 import {
     RemoveFutureBtn_,
-    RemoveRedSVG_,
+    RemoveRedIcon_,
 } from '@/Pages/App/Components/ItemEditor/FutureBtns/RemoveBtn/styling';
 import { useTranslate } from '@/libraries/hooks';
-import { MouseEventHandler, Suspense } from 'react';
+import { MouseEventHandler } from 'react';
 
 type RemoveBtnProps = {
     onRemove?: MouseEventHandler<HTMLButtonElement>;
@@ -16,9 +16,7 @@ export const RemoveBtn = ({ onRemove = () => {} }: RemoveBtnProps) => {
             title={translate('edit', true)}
             onClick={onRemove}
         >
-            <Suspense>
-                <RemoveRedSVG_ />
-            </Suspense>
+            <RemoveRedIcon_ />
         </RemoveFutureBtn_>
     );
 };

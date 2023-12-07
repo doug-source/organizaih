@@ -75,6 +75,7 @@ export * from './PulldownIcon';
 export * from './QtyBars';
 export * from './QtyGraph';
 export * from './RadioToggle';
+export * from './RemoveRedIcon';
 export * from './RequestBtn';
 export * from './SaleIcon';
 export * from './SelectCustomer';

@@ -1,9 +1,8 @@
 import {
     RemoveItemIncludedBtn_,
-    RemoveRedSVG_,
+    RemoveRedIcon_,
 } from '@/Pages/App/Components/ItemSaver/List/IncludeBtns/RemoveBtn/styling';
-import { useTranslate } from '@/libraries';
-import { Suspense } from 'react';
+import { useTranslate } from '@/libraries/hooks';
 
 type RemoveBtnProps = {
     onRemove?: () => void;
@@ -16,9 +15,7 @@ export const RemoveBtn = ({ onRemove = () => {} }: RemoveBtnProps) => {
             title={translate('remove', true)}
             onClick={onRemove}
         >
-            <Suspense>
-                <RemoveRedSVG_ />
-            </Suspense>
+            <RemoveRedIcon_ />
         </RemoveItemIncludedBtn_>
     );
 };

@@ -1,5 +1,5 @@
-import { RemoveRedSVG } from '@/Pages/App/libraries/icons/asynchronous';
-import { remOutput } from '@/libraries';
+import { RemoveRedIcon } from '@/Pages/App/Components/RemoveRedIcon';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
 export const RemoveFutureBtn_ = styled.button`
@@ -15,7 +15,7 @@ export const RemoveFutureBtn_ = styled.button`
     }}
 `;
 
-export const RemoveRedSVG_ = styled(RemoveRedSVG)`
+export const RemoveRedIcon_ = styled(RemoveRedIcon)`
     ${({ theme }) => {
         const iconTheme = theme.itemEditor.futureBtns.remove.icon;
         const iconMeasure = theme.measures.itemEditor.futureBtns.remove.icon;

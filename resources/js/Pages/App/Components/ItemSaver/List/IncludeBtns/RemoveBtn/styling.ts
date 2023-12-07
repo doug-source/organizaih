@@ -1,4 +1,4 @@
-import { RemoveRedSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { RemoveRedIcon } from '@/Pages/App/Components/RemoveRedIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
@@ -13,7 +13,7 @@ export const RemoveItemIncludedBtn_ = styled.button`
     }}
 `;
 
-export const RemoveRedSVG_ = styled(RemoveRedSVG)`
+export const RemoveRedIcon_ = styled(RemoveRedIcon)`
     ${({ theme }) => {
         const iconTheme = theme.itemSaver.list.includeItem.btns.include;
         const {
