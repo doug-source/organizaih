@@ -21,6 +21,7 @@ export * from './ConfigLegend';
 export * from './Confirmation';
 export * from './CustomerIcon';
 export * from './CustomersSales';
+export * from './DashboardItem';
 export * from './DatePicker';
 export * from './DefaultForm';
 export * from './DefineItem';
