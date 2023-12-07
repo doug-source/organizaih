@@ -129,7 +129,11 @@ class UsersResourceController extends Controller
         if ($fields) {
             User::where('id', $user->id)->update($fields);
         }
-        return ResponseBuilder::successJSON($fields, JSON_FORCE_OBJECT);
+        return ResponseBuilder::successJSON(
+            data: $fields,
+            options: JSON_FORCE_OBJECT,
+            complete: TRUE
+        );
     }
 
     /**

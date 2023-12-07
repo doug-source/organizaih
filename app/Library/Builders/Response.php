@@ -23,17 +23,22 @@ final class Response
     /**
      * Build the invalid json response output
      *
-     * @param mixed $data
-     * @return \Illuminate\Http\JsonResponse
+     * @param mixed|null $data
      */
-    public static function successJSON($data = NULL, $options = 0)
+    public static function successJSON($data = NULL, $options = 0, bool $complete = false)
     {
+        if ($complete) {
+            return response()->json(
+                data: [
+                    'message' => 'OK',
+                    'status' => 200,
+                    'data' => $data
+                ],
+                options: $options
+            );
+        }
         return response()->json(
-            data: [
-                'message' => 'OK',
-                'status' => 200,
-                'data' => $data
-            ],
+            data: $data,
             options: $options
         );
     }
