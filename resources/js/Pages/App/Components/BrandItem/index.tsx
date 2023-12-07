@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { DataReducerEnum, useAppDispatch } from '../../libraries';
 import { BrandIcon_, NavLink_ } from './styling';
 
@@ -19,9 +18,7 @@ export const BrandItem = ({ className }: BrandItemProps) => {
                 });
             }}
         >
-            <Suspense>
-                <BrandIcon_ />
-            </Suspense>
+            <BrandIcon_ />
         </NavLink_>
     );
 };

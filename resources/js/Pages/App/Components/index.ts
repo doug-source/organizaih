@@ -7,6 +7,7 @@ export * from './BackFileIcon';
 export * from './BackPhotoBtn';
 export * from './Bar';
 export * from './BoundaryDateInputs';
+export * from './BrandIcon';
 export * from './BrandItem';
 export * from './CategoryBtn';
 export * from './CategoryTools';

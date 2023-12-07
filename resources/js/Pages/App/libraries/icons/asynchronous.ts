@@ -21,7 +21,7 @@ export const BackFileSVG = lazy(() =>
     }),
 );
 
-export const BrandIcon = lazy(() =>
+export const BrandSVG = lazy(() =>
     import('/resources/img/brand.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

@@ -1,4 +1,4 @@
-import { BrandIcon } from '@/Pages/App/libraries/icons/asynchronous';
+import { BrandIcon } from '@/Pages/App/Components/BrandIcon';
 import { remOutput } from '@/libraries';
 import { NavLink } from 'react-router-dom';
 import { css, styled } from 'styled-components';
