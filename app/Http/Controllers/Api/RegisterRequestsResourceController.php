@@ -58,7 +58,6 @@ class RegisterRequestsResourceController extends Controller
         if ($model->phone === $phone) {
             return;
         }
-
         $model->update([
             'phone' => $phone
         ]);
