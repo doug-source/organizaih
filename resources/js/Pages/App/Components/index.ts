@@ -3,6 +3,7 @@ export * from './AddIcon';
 export * from './AnonymousDetailsIcon';
 export * from './AnonymousIcon';
 export * from './AnonymousListIcon';
+export * from './ArrowIcon';
 export * from './AxisGroup';
 export * from './BackFileIcon';
 export * from './BackPhotoBtn';

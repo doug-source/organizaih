@@ -1,5 +1,5 @@
+import { ArrowIcon } from '@/Pages/App/Components/ArrowIcon';
 import { commafyList, remifyList } from '@/Pages/App/libraries';
-import { ArrowSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
@@ -16,7 +16,7 @@ export const IncludeFutureBtn_ = styled.button`
     }}
 `;
 
-export const ArrowSVG_ = styled(ArrowSVG)`
+export const ArrowIcon_ = styled(ArrowIcon)`
     ${({ theme }) => {
         const iconTheme = theme.itemEditor.futureBtns.include.icon;
         const iconMeasure = theme.measures.itemEditor.futureBtns.include.icon;

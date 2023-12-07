@@ -1,9 +1,9 @@
 import {
-    ArrowSVG_,
+    ArrowIcon_,
     IncludeFutureBtn_,
 } from '@/Pages/App/Components/ItemEditor/FutureBtns/IncludeBtn/styling';
 import { useTranslate } from '@/libraries';
-import { MouseEventHandler, Suspense } from 'react';
+import { MouseEventHandler } from 'react';
 
 type IncludeBtnProps = {
     minQty?: number;
@@ -23,9 +23,7 @@ export const IncludeBtn = ({
             title={translate('include', true)}
             onClick={onInclude}
         >
-            <Suspense>
-                <ArrowSVG_ />
-            </Suspense>
+            <ArrowIcon_ />
         </IncludeFutureBtn_>
     );
 };
