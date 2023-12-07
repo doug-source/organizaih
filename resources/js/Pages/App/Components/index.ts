@@ -45,6 +45,7 @@ export * from './InputForm';
 export * from './InputHidden';
 export * from './InputNumber';
 export * from './InputRange';
+export * from './InventoryIcon';
 export * from './ItemEditor';
 export * from './ItemEditorNotice';
 export * from './ItemSaver';

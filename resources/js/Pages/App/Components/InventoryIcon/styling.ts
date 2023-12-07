@@ -1,7 +1,7 @@
-import { InventorySVG } from '@/Pages/App/libraries';
+import { InventorySVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { css, styled } from 'styled-components';
 
-export const InventorySVG_ = styled(InventorySVG)`
+export const InventoryIcon_ = styled(InventorySVG)`
     ${({ theme }) => {
         const {
             inventoryIcon: { paperLeaf: leafTheme },

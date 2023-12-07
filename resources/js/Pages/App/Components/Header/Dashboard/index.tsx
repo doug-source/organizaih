@@ -1,5 +1,6 @@
 import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
 import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
+import { InventoryIcon } from '@/Pages/App/Components/InventoryIcon';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
@@ -7,7 +8,6 @@ import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
 import {
     DashboardItem,
-    InventoryIcon,
     ProductsIcon,
     SaleIcon,
     UsersIcon,
