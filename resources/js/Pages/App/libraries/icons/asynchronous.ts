@@ -35,7 +35,7 @@ export const CalendarIcon = lazy(() =>
     }),
 );
 
-export const CategorySVG = lazy(() =>
+export const ProductCategorySVG = lazy(() =>
     import('/resources/img/category.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

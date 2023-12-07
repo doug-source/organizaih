@@ -1,4 +1,4 @@
-import { CategorySVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { ProductCategoryIcon } from '@/Pages/App/Components/ProductCategoryIcon';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
@@ -17,7 +17,7 @@ export const CategoriesBtnText_ = styled.div`
     }}
 `;
 
-export const CategorySVG_ = styled(CategorySVG)`
+export const ProductCategoryIcon_ = styled(ProductCategoryIcon)`
     ${({ theme }) => {
         const btnTheme = theme.productCategory.tools.categoriesBtn;
         const svgMeasure = theme.measures.productCategory.tools.categoriesBtn;

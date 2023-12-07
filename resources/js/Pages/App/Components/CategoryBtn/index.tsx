@@ -1,10 +1,9 @@
 import {
     CategoriesBtnText_,
-    CategorySVG_,
+    ProductCategoryIcon_,
 } from '@/Pages/App/Components/CategoryBtn/styling';
 import { LinkedButton } from '@/Pages/App/Components/LinkedButton';
 import { useTranslate } from '@/libraries';
-import { Suspense } from 'react';
 
 type CategoriesBtnProps = {
     show?: boolean;
@@ -17,9 +16,7 @@ export const CategoryBtn = ({ show = true }: CategoriesBtnProps) => {
     }
     return (
         <LinkedButton to='/product-categories'>
-            <Suspense>
-                <CategorySVG_ />
-            </Suspense>
+            <ProductCategoryIcon_ />
             <CategoriesBtnText_>
                 {translate('list-categories', true)}
             </CategoriesBtnText_>
