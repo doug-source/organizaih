@@ -40,5 +40,4 @@ export const DashboardItem = ({
     );
 };
 
-export * from './SaleIcon';
 export * from './UsersIcon';

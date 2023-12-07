@@ -71,6 +71,7 @@ export * from './QtyBars';
 export * from './QtyGraph';
 export * from './RadioToggle';
 export * from './RequestBtn';
+export * from './SaleIcon';
 export * from './SelectCustomer';
 export * from './SelectProduct';
 export * from './SelectorsBox';
