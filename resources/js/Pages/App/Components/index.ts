@@ -10,6 +10,7 @@ export * from './Bar';
 export * from './BoundaryDateInputs';
 export * from './BrandIcon';
 export * from './BrandItem';
+export * from './CalendarIcon';
 export * from './CategoryBtn';
 export * from './CategoryTools';
 export * from './CityDropdown';

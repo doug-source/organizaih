@@ -12,7 +12,7 @@ import {
 import { useLocale } from '@/Pages/App/libraries/hooks';
 import { DateManager } from '@/libraries';
 import { YearRangeType } from '@/libraries/types';
-import { Suspense, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 type DatePickerProps = {
     date?: Date | null;
@@ -49,9 +49,7 @@ export const DatePicker = ({
                     placeholder={placeholder}
                 />
                 <DatepickerInputGroup_>
-                    <Suspense>
-                        <CalendarIcon_ onClick={() => setCalendarOpen(true)} />
-                    </Suspense>
+                    <CalendarIcon_ onClick={() => setCalendarOpen(true)} />
                     <DatepickerInput_
                         readOnly
                         onClick={() => setCalendarOpen(true)}
