@@ -58,6 +58,7 @@ export * from './ListItemColumn';
 export * from './ListItemPack';
 export * from './Loading';
 export * from './LogoutLink';
+export * from './NavLinkItem';
 export * from './NextButton';
 export * from './Pagination';
 export * from './PhotoFormItem';

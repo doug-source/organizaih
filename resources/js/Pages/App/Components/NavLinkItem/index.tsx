@@ -1,6 +1,6 @@
+import { NavLinkItemLabel_ } from '@/Pages/App/Components/NavLinkItem/styling';
 import { useTranslate } from '@/libraries';
 import { NavLink } from 'react-router-dom';
-import { NavLinkItemLabel_ } from './styling';
 
 type NavLinkItemProps = {
     icon: JSX.Element;

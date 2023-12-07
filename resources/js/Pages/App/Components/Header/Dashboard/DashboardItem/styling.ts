@@ -2,10 +2,10 @@ import {
     ExitLink_,
     FormLogout_,
 } from '@/Pages/App/Components/LogoutLink/styling';
+import { NavLinkItem } from '@/Pages/App/Components/NavLinkItem';
 import { remOutput } from '@/libraries';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
-import { NavLinkItem } from './NavLinkItem';
 
 const cssLink = css`
     ${({ theme }) => {
