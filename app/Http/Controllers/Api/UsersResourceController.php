@@ -30,9 +30,7 @@ class UsersResourceController extends Controller
         if ($request->email) {
             $parameters[] = trim($request->email);
         }
-        return response()->json(
-            $this->searchUsers(...$parameters)
-        );
+        return ResponseBuilder::successJSON($this->searchUsers(...$parameters));
     }
 
     /**
@@ -50,11 +48,7 @@ class UsersResourceController extends Controller
 
         $this->applyDefaultUserRole($user);
 
-        return response()->json([
-            'message' => 'OK',
-            'status' => 200,
-            'data' => NULL
-        ]);
+        return ResponseBuilder::successJSON();
     }
 
     /**
@@ -74,7 +68,7 @@ class UsersResourceController extends Controller
     {
         $user = User::find($request->userID);
         $roles = $user->roles;
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'id' => $user->id,
             'name' => $user->name,
             'email' => $user->email,
@@ -93,7 +87,7 @@ class UsersResourceController extends Controller
     public function showSelf()
     {
         $user = auth()->user();
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'name' => $user->name,
             'email' => $user->email,
             'phone' => $user->phone,

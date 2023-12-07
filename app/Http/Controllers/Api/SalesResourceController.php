@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SaleController;
 use App\Http\Requests\Sale\CheckRequest;
 use App\Models\Sale;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class SalesResourceController extends Controller
 {
@@ -19,7 +20,7 @@ class SalesResourceController extends Controller
         $dtStart = $request->input('dtStart');
         $dtEnd = $request->input('dtEnd');
 
-        return response()->json(
+        return ResponseBuilder::successJSON(
             SaleController::searchSalesToIndex(
                 TRUE,
                 $request->input('group', 3),
@@ -42,7 +43,7 @@ class SalesResourceController extends Controller
             $request->validated('customerID'),
             json_decode($request->input('items'), TRUE)
         );
-        return response('OK', 200);
+        return ResponseBuilder::successJSON();
     }
 
     /**
@@ -52,7 +53,7 @@ class SalesResourceController extends Controller
     {
         $saleID = $request->validated('saleID');
         $userID = auth()->user()->id;
-        return response()->json(SaleController::organizeSale(
+        return ResponseBuilder::successJSON(SaleController::organizeSale(
             SaleController::searchSale($userID, $saleID, TRUE)
         ));
     }

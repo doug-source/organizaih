@@ -9,6 +9,7 @@ use App\Models\{
     Inventory,
     InventoryItem,
 };
+use App\Library\Builders\Response as ResponseBuilder;
 
 class InventoriesResourceController extends Controller
 {
@@ -28,7 +29,7 @@ class InventoriesResourceController extends Controller
         if (!is_null($search)) {
             $query = $query->where('productName', 'like', "%{$search}%");
         }
-        return response()->json(
+        return ResponseBuilder::successJSON(
             $query->paginate($group)
         );
     }
@@ -48,7 +49,7 @@ class InventoriesResourceController extends Controller
         if (is_null($summary)) {
             return json_encode($summary);
         }
-        return response()->json($summary);
+        return ResponseBuilder::successJSON($summary);
     }
 
     /**
@@ -84,7 +85,7 @@ class InventoriesResourceController extends Controller
      */
     public function show(CheckRequest $request)
     {
-        return response()->json(
+        return ResponseBuilder::successJSON(
             InventoriesController::organizeInventoryShow(
                 InventoriesController::searchInventoryShow([$request->validated('productID')])
             )
@@ -103,7 +104,7 @@ class InventoriesResourceController extends Controller
             return $acc + $saleItem->pivot->qty_used;
         }, 0);
         $product = $inventoryItem->product()->select('id', 'name', 'photo')->first();
-        return response()->json(
+        return ResponseBuilder::successJSON(
             [
                 'productID' => $product->id,
                 'productName' => $product->name,

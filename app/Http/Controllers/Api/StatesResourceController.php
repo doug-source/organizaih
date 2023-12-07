@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\State;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class StatesResourceController extends Controller
 {
@@ -12,7 +13,7 @@ class StatesResourceController extends Controller
      */
     public function index()
     {
-        return response()->json(State::select(
+        return ResponseBuilder::successJSON(State::select(
             'id',
             'acronym',
             'name'

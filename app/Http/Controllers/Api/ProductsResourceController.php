@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class ProductsResourceController extends Controller
 {
@@ -51,7 +52,7 @@ class ProductsResourceController extends Controller
     {
         $product = Product::find($request->validated('productID'));
         $category = $product->product_category;
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'id' => $product->id,
             'name' => $product->name,
             'photo' => $product->photo,

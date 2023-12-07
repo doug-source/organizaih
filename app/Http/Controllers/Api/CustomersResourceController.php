@@ -7,6 +7,7 @@ use App\Http\Requests\Customer\CheckRequest;
 use App\Models\Address;
 use App\Models\Customer;
 use Illuminate\Support\Facades\File;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class CustomersResourceController extends Controller
 {
@@ -18,7 +19,7 @@ class CustomersResourceController extends Controller
     public function index(CheckRequest $request)
     {
         $search = trim($request->search ?? '');
-        return response()->json(
+        return ResponseBuilder::successJSON(
             $this->searchCustomers(TRUE, $request->input('group', 3), $search)
         );
     }
@@ -98,7 +99,7 @@ class CustomersResourceController extends Controller
         $address = $customer->address;
         $city = $address->city;
         $state = $city->state;
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'birthday_formatted' => $customer->birthday_formatted,
             'address_id' => $customer->address_id,
             'id' => $customer->id,

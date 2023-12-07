@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCategory\CheckRequest;
 use App\Models\ProductCategory;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class ProductCategoriesResourceController extends Controller
 {
@@ -58,7 +59,7 @@ class ProductCategoriesResourceController extends Controller
     public function show(CheckRequest $request)
     {
         $productCategory = ProductCategory::find($request->validated('productCategoryID'));
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'id' => $productCategory->id,
             'name' => $productCategory->name,
             'description' => $productCategory->description,
@@ -85,7 +86,7 @@ class ProductCategoriesResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CheckRequest $request, $productCategoryID)
+    public function destroy(CheckRequest $request)
     {
         $productCategory = ProductCategory::find($request->validated('productCategoryID'));
         $productCategory->delete();

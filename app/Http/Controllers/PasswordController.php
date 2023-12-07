@@ -40,7 +40,7 @@ class PasswordController extends Controller
         if ($status !== Password::RESET_LINK_SENT) {
             return ResponseBuilder::invalidJSON(__($status));
         }
-        return response()->json(['message' => __($status)]);
+        return ResponseBuilder::successJSON(['message' => __($status)]);
     }
 
     /**
@@ -79,6 +79,6 @@ class PasswordController extends Controller
         if ($status !== Password::PASSWORD_RESET) {
             return ResponseBuilder::invalidJSON(__($status));
         }
-        return response()->json(['message' => __($status)]);
+        return ResponseBuilder::successJSON(['message' => __($status)]);
     }
 }

@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class CitiesResourceController extends Controller
 {
@@ -28,7 +29,7 @@ class CitiesResourceController extends Controller
         ]);
 
         $stateEntity = State::find($stateID);
-        return response()->json(City::select(
+        return ResponseBuilder::successJSON(City::select(
             'id',
             'name',
             'state_id'

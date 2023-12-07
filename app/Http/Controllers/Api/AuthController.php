@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class AuthController extends Controller
 {
@@ -18,7 +19,7 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials)) {
             return $this->buildInvalidAuth();
         }
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'message' => 'Authorized',
             'status' => 200,
             'data' => [
@@ -33,7 +34,7 @@ class AuthController extends Controller
     private function buildInvalidAuth()
     {
         $msg = Str::of(__('forbidden-access'))->ucfirst();
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'message' => $msg,
             'status' => 403,
             'errors' => ['status' => [$msg]]
@@ -46,7 +47,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'message' => 'Token Revoked',
             'status' => 200,
         ]);

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
+use App\Library\Builders\Response as ResponseBuilder;
 
 class RegisterRequestsResourceController extends Controller
 {
@@ -28,7 +29,7 @@ class RegisterRequestsResourceController extends Controller
         if ($request->email) {
             $parameters[] = trim($request->email);
         }
-        return response()->json(
+        return ResponseBuilder::successJSON(
             $this->searchRegisterRequests(...$parameters)
         );
     }
@@ -39,7 +40,7 @@ class RegisterRequestsResourceController extends Controller
     public function show(CheckRequest $request)
     {
         $registerRequest = RegisterRequest::find($request->registerRequestID);
-        return response()->json([
+        return ResponseBuilder::successJSON([
             'id' => $registerRequest->id,
             'email' => $registerRequest->email,
             'phone' => $registerRequest->phone,
@@ -96,11 +97,7 @@ class RegisterRequestsResourceController extends Controller
                 $this->updateModelPhone($registerRequest, $phone);
             }
         }
-        return response()->json([
-            'message' => 'OK',
-            'status' => 200,
-            'data' => NULL
-        ]);
+        return ResponseBuilder::successJSON();
     }
 
     /**
