@@ -1,10 +1,10 @@
+import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
 import {
-    CustomersIcon,
     DashboardItem,
     GraphsIcon,
     InventoryIcon,
@@ -29,7 +29,7 @@ export const Dashboard = () => {
             {hasCustomerScreen && (
                 <DashboardItem
                     link='/customers'
-                    icon={<CustomersIcon />}
+                    icon={<CustomerIcon />}
                     titleMenuKey='menu-customer'
                 />
             )}

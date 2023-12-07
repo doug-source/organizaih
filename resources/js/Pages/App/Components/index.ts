@@ -19,6 +19,7 @@ export * from './ConfigFieldset';
 export * from './ConfigIcon';
 export * from './ConfigLegend';
 export * from './Confirmation';
+export * from './CustomerIcon';
 export * from './CustomersSales';
 export * from './DatePicker';
 export * from './DefaultForm';

@@ -1,19 +1,7 @@
-import { CustomerSVG } from '@/Pages/App/libraries';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
+import { CustomerSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { css, styled } from 'styled-components';
 
-type CustomersIconProps = ComponentPropsWithoutRef<'svg'>;
-
-const CustomersIconItem = ({ className, ...remain }: CustomersIconProps) => (
-    <Suspense>
-        <CustomerSVG
-            className={className}
-            {...remain}
-        />
-    </Suspense>
-);
-
-export const CustomersIcon = styled(CustomersIconItem)`
+export const CustomerIcon_ = styled(CustomerSVG)`
     ${({ theme }) => {
         const {
             navItem: {

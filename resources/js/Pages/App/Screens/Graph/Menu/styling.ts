@@ -1,4 +1,4 @@
-import { CustomersIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/CustomersIcon';
+import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
 import { GraphsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/GraphsIcon';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import {
@@ -104,7 +104,7 @@ export const ProductsIcon_ = styled(ProductsIcon)`
     }}
 `;
 
-export const CustomersIcon_ = styled(CustomersIcon)`
+export const CustomersIcon_ = styled(CustomerIcon)`
     ${miniStyle}
     ${({ theme }) => {
         const customerTheme = theme.graph.menu.item.icon.bars.customer;
