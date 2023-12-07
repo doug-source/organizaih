@@ -1,4 +1,5 @@
-import { PulldownIcon, commafyList, remifyList } from '@/Pages/App/libraries';
+import { PulldownIcon } from '@/Pages/App/Components/PulldownIcon';
+import { commafyList, remifyList } from '@/Pages/App/libraries';
 import { remOutput } from '@/libraries';
 import { css, styled } from 'styled-components';
 
@@ -28,18 +29,10 @@ export const TopWrapBtn_ = styled.button`
     }}
 `;
 
-export const Icon_ = styled(PulldownIcon)`
-    ${({ theme }) => {
-        const pulldownTheme = theme.header.topItem.pulldown;
-        return css`
-            .mark {
-                fill: ${pulldownTheme.mark.fill};
-            }
-            ${TopWrapBtn_}.closer & {
-                transition-property: transform;
-                transition-duration: 0.5s;
-                transform: rotateX(3.14rad);
-            }
-        `;
-    }}
+export const PulldownIcon_ = styled(PulldownIcon)`
+    ${TopWrapBtn_}.closer & {
+        transition-property: transform;
+        transition-duration: 0.5s;
+        transform: rotateX(3.14rad);
+    }
 `;

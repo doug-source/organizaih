@@ -1,7 +1,7 @@
+import { Pulldown } from '@/Pages/App/Components/Pulldown';
 import { useToggleSecondWord } from '@/Pages/App/libraries';
 import { ComponentPropsWithoutRef } from 'react';
 import { LeftItems } from './LeftItems';
-import { Pulldown } from './Pulldown';
 import { RightItems } from './RightItems';
 import { useBackHistoryTouch } from './libraries';
 import { Top_ } from './styling';

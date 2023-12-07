@@ -1,7 +1,9 @@
-import { useToggleSecondWord } from '@/Pages/App/libraries';
-import { Suspense } from 'react';
-import { makePulldownClick } from './libraries';
-import { Icon_, TopWrapBtn_ } from './styling';
+import { makePulldownClick } from '@/Pages/App/Components/Pulldown/libraries';
+import {
+    PulldownIcon_,
+    TopWrapBtn_,
+} from '@/Pages/App/Components/Pulldown/styling';
+import { useToggleSecondWord } from '@/Pages/App/libraries/hooks';
 
 type PulldownProps = {
     toggleContainerClass: ReturnType<typeof useToggleSecondWord>[1];
@@ -22,9 +24,7 @@ export const Pulldown = ({
                 onTopWrappped,
             )}
         >
-            <Suspense>
-                <Icon_ />
-            </Suspense>
+            <PulldownIcon_ />
         </TopWrapBtn_>
     );
 };

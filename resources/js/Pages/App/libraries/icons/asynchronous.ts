@@ -112,7 +112,7 @@ export const ProductSVG = lazy(() =>
     }),
 );
 
-export const PulldownIcon = lazy(() =>
+export const PulldownSVG = lazy(() =>
     import('/resources/img/pulldown.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
