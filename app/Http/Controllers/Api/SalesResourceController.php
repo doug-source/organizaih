@@ -11,9 +11,6 @@ class SalesResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function index(CheckRequest $request)
     {
@@ -36,9 +33,6 @@ class SalesResourceController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function store(CheckRequest $request)
     {
@@ -53,9 +47,6 @@ class SalesResourceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -68,9 +59,6 @@ class SalesResourceController extends Controller
 
     /**
      * Display the products related with sales.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function showByProductQty(CheckRequest $request)
     {
@@ -84,9 +72,6 @@ class SalesResourceController extends Controller
 
     /**
      * Display the quantity of 'products' sold and grouped
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function showProductQty(CheckRequest $request)
     {
@@ -97,9 +82,6 @@ class SalesResourceController extends Controller
 
     /**
      * Display the customers related with sales.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function showCustomerQty(CheckRequest $request)
     {
@@ -110,9 +92,6 @@ class SalesResourceController extends Controller
 
     /**
      * Display the customers related with sales.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function showByCustomerQty(CheckRequest $request)
     {
@@ -126,9 +105,6 @@ class SalesResourceController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function update(CheckRequest $request)
     {
@@ -153,9 +129,6 @@ class SalesResourceController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param \App\Http\Requests\Sale\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function destroy(CheckRequest $request)
     {

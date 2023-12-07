@@ -21,8 +21,6 @@ class RegisterRequestsResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @param App\Http\Requests\RegisterRequest\CheckRequest $request
      */
     public function index(CheckRequest $request)
     {
@@ -37,9 +35,6 @@ class RegisterRequestsResourceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Http\Requests\RegisterRequest\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -57,7 +52,6 @@ class RegisterRequestsResourceController extends Controller
      *
      * @param mixed $model
      * @param ?string $phone
-     * @return void
      */
     private function updateModelPhone($model, $phone)
     {
@@ -72,9 +66,6 @@ class RegisterRequestsResourceController extends Controller
 
     /**
      * Persist the specified resource.
-     *
-     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function store(CheckRequest $request)
     {
@@ -115,9 +106,6 @@ class RegisterRequestsResourceController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function destroy(CheckRequest $request)
     {
@@ -127,9 +115,6 @@ class RegisterRequestsResourceController extends Controller
 
     /**
      * Execute the register request's approval.
-     *
-     * @param  \App\Http\Requests\RegisterRequest\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function approve(CheckRequest $request)
     {
@@ -155,9 +140,6 @@ class RegisterRequestsResourceController extends Controller
 
     /**
      * Send the register request's approval mail.
-     *
-     * @param  string $email
-     * @param  string $token
      */
     private function sendApprovalMail(string $email, string $token)
     {

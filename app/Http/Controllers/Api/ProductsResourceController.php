@@ -13,9 +13,6 @@ class ProductsResourceController extends Controller
 {
     /**
      * Returns the product list on json format
-     *
-     * @param \App\Http\Requests\Product\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function index(CheckRequest $request)
     {
@@ -27,9 +24,6 @@ class ProductsResourceController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Product\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(CheckRequest $request)
     {
@@ -52,9 +46,6 @@ class ProductsResourceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Http\Requests\Product\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -78,9 +69,6 @@ class ProductsResourceController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\Product\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function update(CheckRequest $request)
     {
@@ -110,9 +98,6 @@ class ProductsResourceController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Http\Requests\Product\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function destroy(CheckRequest $request)
     {
@@ -194,7 +179,6 @@ class ProductsResourceController extends Controller
      * Checks if the productCategory's name contains the default option value
      *
      * @param  string  $name
-     * @return bool
      */
     private function containsDefaultCategoryName($name)
     {

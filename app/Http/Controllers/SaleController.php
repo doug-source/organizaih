@@ -13,8 +13,6 @@ class SaleController
 {
     /**
      * Return the date pattern based on current locale_code
-     *
-     * @return string
      */
     public static function getDatePattern()
     {
@@ -27,10 +25,6 @@ class SaleController
 
     /**
      * Convert the string based on date pattern
-     *
-     * @param  string  $text
-     * @param  string  $pattern
-     * @return  string
      */
     public static function formatDateString(string $text, string $pattern)
     {
@@ -43,10 +37,7 @@ class SaleController
     /**
      * Storage the sales instance and sale_items instances related
      *
-     * @param  int  $userID
-     * @param  int  $customerID
-     * @param  array  $userItems
-     * @param  App\Models\Sale  $sale optional
+     * @param  App\Models\Sale|null  $sale optional
      */
     public static function storeSales(int $userID, int $customerID, array $userItems, ?Sale $sale = NULL)
     {
@@ -242,7 +233,6 @@ class SaleController
      *  in last hour, minute and second too
      *
      * @param  string  $dtStart
-     * @return  string
      */
     private static function dettachEndDate($dtStart)
     {
@@ -256,8 +246,8 @@ class SaleController
      *  with the greatest qty in desc order
      *
      * @param  int  $userID
-     * @param  int  $qty
-     * @param  ?string  $dtStart
+     * @param  int|null  $qty
+     * @param  string|null  $dtStart
      * @return  \Illuminate\Database\Eloquent\Collection
      */
     public static function searchByProducts($userID, $qty = NULL, $dtStart = NULL)
@@ -302,7 +292,7 @@ class SaleController
      *  Query info in database tables about quantity of 'products' sold and grouped
      *
      * @param  int  $userID
-     * @param  ?string  $dtStart
+     * @param  string|null  $dtStart
      * @return  \Illuminate\Database\Eloquent\Collection
      */
     public static function searchProductCount($userID, $dtStart = NULL)
@@ -341,8 +331,8 @@ class SaleController
      *  with the greatest qty in desc order
      *
      * @param  int  $userID
-     * @param  int  $qty
-     * @param  ?string  $dtStart
+     * @param  int|null  $qty
+     * @param  string|null  $dtStart
      * @return  \Illuminate\Database\Eloquent\Collection
      */
     public static function searchByCustomers($userID, $qty = NULL, $dtStart = NULL)
@@ -387,7 +377,7 @@ class SaleController
      *  Query info in database tables about quantity of 'customers buyer' and grouped
      *
      * @param  int  $userID
-     * @param  ?string  $dtStart
+     * @param  string|null  $dtStart
      * @return  \Illuminate\Database\Eloquent\Collection
      */
     public static function searchCustomerCount($userID, $dtStart = NULL)

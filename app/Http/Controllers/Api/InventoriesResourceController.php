@@ -16,7 +16,6 @@ class InventoriesResourceController extends Controller
      * Display a listing of the resource.
      *
      * @param  App\Http\Requests\Inventory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function index(CheckRequest $request)
     {
@@ -38,7 +37,6 @@ class InventoriesResourceController extends Controller
      * Display a complete innventory summary to an only product.
      *
      * @param  App\Http\Requests\Inventory\CheckRequest  $request
-     * @return  \Illuminate\Http\Response
      */
     public function summary(CheckRequest $request)
     {
@@ -83,7 +81,6 @@ class InventoriesResourceController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Http\Requests\Inventory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -98,7 +95,6 @@ class InventoriesResourceController extends Controller
      * Display the specified inventory_items instance.
      *
      * @param  \App\Http\Requests\Inventory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function showItem(CheckRequest $request)
     {

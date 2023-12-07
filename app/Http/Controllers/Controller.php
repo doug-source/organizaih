@@ -16,10 +16,6 @@ class Controller extends BaseController
     /**
      * Handle the file submit logic
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Illuminate\Database\Eloquent\Model $model
-     * @param string $name
-     * @param string $folderName
      * @return string|null The new file's path
      */
     protected static function handleFile(Request $request, Model $model, string $name, string $folderName)

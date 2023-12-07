@@ -19,9 +19,6 @@ class UsersResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @param \App\Http\Requests\User\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function index(CheckRequest $request)
     {
@@ -40,8 +37,6 @@ class UsersResourceController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param \App\Http\Requests\User\CheckRequest $request
      */
     public function store(CheckRequest $request)
     {
@@ -64,8 +59,6 @@ class UsersResourceController extends Controller
 
     /**
      * Apply the role default to user
-     *
-     * @param  \App\Models\User $user
      */
     private function applyDefaultUserRole(User $user)
     {
@@ -76,9 +69,6 @@ class UsersResourceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Http\Requests\User\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -99,8 +89,6 @@ class UsersResourceController extends Controller
 
     /**
      * Display the user logged data.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function showSelf()
     {
@@ -133,8 +121,6 @@ class UsersResourceController extends Controller
 
     /**
      * Update the user logged data.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function editSelf(CheckRequest $request)
     {

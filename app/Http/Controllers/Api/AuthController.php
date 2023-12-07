@@ -11,9 +11,6 @@ class AuthController extends Controller
 {
     /**
      * Execute the API login.
-     *
-     * @param Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
@@ -32,8 +29,6 @@ class AuthController extends Controller
 
     /**
      * Build the invalid Authentication response
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     private function buildInvalidAuth()
     {
@@ -47,9 +42,6 @@ class AuthController extends Controller
 
     /**
      * Execute the API logout.
-     *
-     * @param Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
      */
     public function logout(Request $request)
     {

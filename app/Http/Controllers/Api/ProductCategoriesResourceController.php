@@ -37,9 +37,6 @@ class ProductCategoriesResourceController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\ProductCategory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(CheckRequest $request)
     {
@@ -57,9 +54,6 @@ class ProductCategoriesResourceController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Http\Requests\ProductCategory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
@@ -75,10 +69,6 @@ class ProductCategoriesResourceController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\ProductCategory\CheckRequest  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(CheckRequest $request)
     {
@@ -94,9 +84,6 @@ class ProductCategoriesResourceController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Http\Requests\ProductCategory\CheckRequest  $request
-     * @return \Illuminate\Http\Response
      */
     public function destroy(CheckRequest $request, $productCategoryID)
     {

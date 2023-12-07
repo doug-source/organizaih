@@ -10,8 +10,6 @@ class InventoriesController
 {
     /**
      * Return the date pattern based on current locale_code
-     *
-     * @return string
      */
     private static function getDatePattern()
     {
@@ -24,10 +22,6 @@ class InventoriesController
 
     /**
      * Convert the string based on date pattern
-     *
-     * @param  string  $text
-     * @param  string  $pattern
-     * @return  string
      */
     private static function formatDateString(string $text, string $pattern)
     {
@@ -283,7 +277,6 @@ class InventoriesController
      *  Used by App\Http\Controllers\Api\InventoriesResourceController->destroy
      *
      * @param  int  $userID
-     * @param  array  $productListID
      */
     public static function offInventoryItems($userID, $productListID = [])
     {
@@ -333,9 +326,6 @@ class InventoriesController
     /**
      *  Execute the remotion of one InventoryItem (if it is not used by any sales)
      *  Used by App\Http\Controllers\Api\InventoriesResourceController->destroyItem
-     *
-     * @param  int  $inventoryItemID
-     * @param  bool  $checkEmptyInventory
      */
     public static function destroyInventoryItem(InventoryItem $inventoryItem, $checkEmptyInventory = TRUE)
     {

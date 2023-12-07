@@ -123,8 +123,6 @@ class UserController extends Controller
 
     /**
      * Execute the Authentication
-     *
-     * @param \App\Http\Requests\Auth\CheckRequest $request
      */
     public function auth(CheckRequest $request)
     {
@@ -138,7 +136,6 @@ class UserController extends Controller
     /**
      * Execute the Web logout.
      *
-     * @param Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function logout(Request $request)

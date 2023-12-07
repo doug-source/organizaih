@@ -14,7 +14,6 @@ class CustomersResourceController extends Controller
      * Returns the customer list on json format
      *
      * @param \App\Http\Requests\Customer\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function index(CheckRequest $request)
     {
@@ -92,7 +91,6 @@ class CustomersResourceController extends Controller
      * Display the specified resource.
      *
      * @param \App\Http\Requests\Customer\CheckRequest $request
-     * @return \Illuminate\Http\Response
      */
     public function show(CheckRequest $request)
     {
