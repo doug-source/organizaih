@@ -98,7 +98,7 @@ export const NightModeIcon = lazy(() =>
     }),
 );
 
-export const PlusSVG = lazy(() =>
+export const AddSVG = lazy(() =>
     import('/resources/img/add.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

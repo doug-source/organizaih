@@ -1,6 +1,6 @@
-import { PlusSVG_ } from '@/Pages/App/Components/AddButton/styling';
+import { AddIcon_ } from '@/Pages/App/Components/AddButton/styling';
 import { NextButton } from '@/Pages/App/Components/NextButton';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 type NextButtonProps = ComponentPropsWithoutRef<typeof NextButton>;
 
@@ -16,11 +16,7 @@ export const AddButton = ({
 }: AddButtonProps) => {
     return (
         <NextButton
-            icon={
-                <Suspense>
-                    <PlusSVG_ />
-                </Suspense>
-            }
+            icon={<AddIcon_ />}
             link={link}
             preIcon={preIcon}
             onClick={onClick}

@@ -2,11 +2,11 @@ import {
     getAddBtnMeasures,
     getAddBtnTheme,
 } from '@/Pages/App/Components/AddButton/libraries';
-import { PlusSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { AddIcon } from '@/Pages/App/Components/AddIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
-export const PlusSVG_ = styled(PlusSVG)`
+export const AddIcon_ = styled(AddIcon)`
     ${({ theme }) => {
         const addBtnTheme = getAddBtnTheme(theme);
         const addBtnMeasures = getAddBtnMeasures(theme);

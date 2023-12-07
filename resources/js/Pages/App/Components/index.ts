@@ -1,4 +1,5 @@
 export * from './AddButton';
+export * from './AddIcon';
 export * from './AnonymousDetailsIcon';
 export * from './AnonymousIcon';
 export * from './AnonymousListIcon';
