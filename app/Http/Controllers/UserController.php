@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\CheckRequest;
 use Illuminate\Http\Request;
 use GuzzleHttp\Exception\ClientException;
 use App\Library\{
@@ -15,7 +14,10 @@ use Illuminate\Support\{
     Facades\Session,
     Str
 };
-use App\Http\Requests\User\CheckRequest as UserCheckRequest;
+use App\Http\Requests\{
+    Auth\CheckRequest,
+    User\CheckRequest as UserCheckRequest
+};
 use App\Models\AllowedRegister;
 
 class UserController extends Controller
