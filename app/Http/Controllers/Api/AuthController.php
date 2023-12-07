@@ -17,7 +17,9 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (!Auth::attempt($credentials)) {
-            return $this->buildInvalidAuth();
+            return ResponseBuilder::invalidJSON(
+                Str::of(__('forbidden-access'))->ucfirst()
+            );
         }
         return ResponseBuilder::successJSON([
             'message' => 'Authorized',
@@ -26,19 +28,6 @@ class AuthController extends Controller
                 'token' => $request->user()->createToken('auth-app')->plainTextToken
             ]
         ]);
-    }
-
-    /**
-     * Build the invalid Authentication response
-     */
-    private function buildInvalidAuth()
-    {
-        $msg = Str::of(__('forbidden-access'))->ucfirst();
-        return ResponseBuilder::successJSON([
-            'message' => $msg,
-            'status' => 403,
-            'errors' => ['status' => [$msg]]
-        ], 403);
     }
 
     /**
