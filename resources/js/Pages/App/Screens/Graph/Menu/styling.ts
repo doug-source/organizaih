@@ -1,5 +1,5 @@
 import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
-import { GraphsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/GraphsIcon';
+import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
 import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import {
     ButtonLinked_,
@@ -30,7 +30,7 @@ export const Title_ = styled.div`
     }}
 `;
 
-export const GraphsIcon_ = styled(GraphsIcon)`
+export const GraphsIcon_ = styled(GraphIcon)`
     ${({ theme }) => {
         const iconTheme = theme.graph.menu.item.icon;
         const iconMeasure = theme.measures.graph.menu.item.icon;

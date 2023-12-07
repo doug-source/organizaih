@@ -1,4 +1,5 @@
 import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
+import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
@@ -6,7 +7,6 @@ import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
 import {
     DashboardItem,
-    GraphsIcon,
     InventoryIcon,
     ProductsIcon,
     SaleIcon,
@@ -57,7 +57,7 @@ export const Dashboard = () => {
             {hasGraphScreen && (
                 <DashboardItem
                     link='/graphs'
-                    icon={<GraphsIcon />}
+                    icon={<GraphIcon />}
                     titleMenuKey='menu-graph'
                 />
             )}

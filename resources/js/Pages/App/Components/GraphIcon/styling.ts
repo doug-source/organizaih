@@ -1,7 +1,7 @@
+import { GraphSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { css, styled } from 'styled-components';
-import { GraphsIconItem } from './Item';
 
-export const GraphsIcon = styled(GraphsIconItem)`
+export const GraphIcon_ = styled(GraphSVG)`
     ${({ theme }) => {
         const {
             navItem: { navLink: navLinkMeasure },

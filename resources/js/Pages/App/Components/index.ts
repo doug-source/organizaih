@@ -37,6 +37,7 @@ export * from './EntryDataItem';
 export * from './FiltersBar';
 export * from './FormItem';
 export * from './GateSwitcher';
+export * from './GraphIcon';
 export * from './Header';
 export * from './InputField';
 export * from './InputFilter';
