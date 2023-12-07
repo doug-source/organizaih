@@ -3,12 +3,13 @@ import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
 import { InventoryIcon } from '@/Pages/App/Components/InventoryIcon';
 import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { SaleIcon } from '@/Pages/App/Components/SaleIcon';
+import { UsersIcon } from '@/Pages/App/Components/UsersIcon';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
-import { DashboardItem, UsersIcon } from './DashboardItem';
+import { DashboardItem } from './DashboardItem';
 import { NavbarNav_ } from './styling';
 
 const hasLogout = hasAbility(AbilitiesEnum.LOGIN);

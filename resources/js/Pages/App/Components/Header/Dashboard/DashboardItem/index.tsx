@@ -39,5 +39,3 @@ export const DashboardItem = ({
         </NavItem_>
     );
 };
-
-export * from './UsersIcon';

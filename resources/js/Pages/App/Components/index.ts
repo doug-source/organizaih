@@ -82,4 +82,5 @@ export * from './Tools';
 export * from './UserDetailsPack';
 export * from './UserIcon';
 export * from './UserInfoConfig';
+export * from './UsersIcon';
 export * from './Warning';

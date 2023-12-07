@@ -168,7 +168,7 @@ export const UploadIcon = lazy(() =>
     }),
 );
 
-export const UsersIcon = lazy(() =>
+export const UsersSVG = lazy(() =>
     import('/resources/img/users.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

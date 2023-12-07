@@ -1,7 +1,7 @@
-import { UsersIcon } from '@/Pages/App/libraries/icons/asynchronous';
+import { UsersSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { css, styled } from 'styled-components';
 
-export const UsersSVG_ = styled(UsersIcon)`
+export const UsersIcon_ = styled(UsersSVG)`
     ${({ theme }) => {
         const {
             navItem: {
