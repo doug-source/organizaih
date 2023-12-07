@@ -1,5 +1,5 @@
 import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
+import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { commafyList, remifyList } from '@/Pages/App/libraries';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';

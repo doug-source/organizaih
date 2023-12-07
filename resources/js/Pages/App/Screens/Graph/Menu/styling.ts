@@ -1,10 +1,10 @@
 import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
 import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import {
     ButtonLinked_,
     LinkedButton,
 } from '@/Pages/App/Components/LinkedButton';
+import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';

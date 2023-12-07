@@ -63,6 +63,7 @@ export * from './Pagination';
 export * from './PhotoFormItem';
 export * from './PreviewPhotoInput';
 export * from './ProductCategoryIcon';
+export * from './ProductsIcon';
 export * from './ProductsSales';
 export * from './ProfilePhotoInput';
 export * from './ProfilePhotoOutput';

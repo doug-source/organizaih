@@ -1,6 +1,6 @@
 import { DefineItem, DefineItemWrap_ } from '@/Pages/App/Components/DefineItem';
 import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
+import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 

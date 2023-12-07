@@ -1,19 +1,7 @@
 import { ProductSVG } from '@/Pages/App/libraries';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
 import { css, styled } from 'styled-components';
 
-type SvgIconProps = ComponentPropsWithoutRef<'svg'>;
-
-const ProductsIconItem = ({ className, ...remain }: SvgIconProps) => (
-    <Suspense>
-        <ProductSVG
-            className={className}
-            {...remain}
-        />
-    </Suspense>
-);
-
-export const ProductsIcon = styled(ProductsIconItem)`
+export const ProductsIcon_ = styled(ProductSVG)`
     ${({ theme }) => {
         const {
             navItem: {

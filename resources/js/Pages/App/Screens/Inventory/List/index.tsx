@@ -1,10 +1,10 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
 import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
+import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { Tools, ToolsType } from '@/Pages/App/Components/Tools';
 import {
     makeAddClick,
@@ -29,7 +29,6 @@ import {
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
 import { navigations } from '@/settings';
-import { Suspense } from 'react';
 
 const List = () => {
     const appDispatch = useAppDispatch();
@@ -86,11 +85,7 @@ const List = () => {
                             firstColumns={
                                 <>
                                     <PhotoListItem
-                                        iconNoPhoto={
-                                            <Suspense>
-                                                <ProductsIcon />
-                                            </Suspense>
-                                        }
+                                        iconNoPhoto={<ProductsIcon />}
                                         photo={data.productPhoto}
                                     />
                                     <ListItemColumnQty_ title={qtyText}>

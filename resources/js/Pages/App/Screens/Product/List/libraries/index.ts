@@ -1,15 +1,15 @@
-import { ProductsIcon } from '@/Pages/App/Components/Header/Dashboard/DashboardItem/ProductsIcon';
 import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
 import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
 import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
+import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { makeListHandlers } from '@/Pages/App/Screens/Product/List/libraries/handlers';
 import { useProductsReducer } from '@/Pages/App/Screens/Product/List/libraries/hooks';
 import { IProductListData } from '@/Pages/App/Screens/Product/List/types';
 import { useAppDispatch, useSelections } from '@/Pages/App/libraries/hooks';
 import { selectionTargets } from '@/Pages/App/settings';
 import { navigations } from '@/settings';
-import { Suspense, createElement } from 'react';
+import { createElement } from 'react';
 
 export type AppDispatchFn = ReturnType<typeof useAppDispatch>;
 export type SelectionTargetKey = (typeof selectionTargets.product)[number];
@@ -21,9 +21,7 @@ export const mountItem = (
     appDispatch: AppDispatchFn,
 ) => {
     const listHandlers = makeListHandlers();
-    const iconNoPhoto = createElement(Suspense, {
-        children: createElement(ProductsIcon),
-    });
+    const iconNoPhoto = createElement(ProductsIcon);
     return (data: IProductListData, index: number) => {
         const image = createElement(PhotoListItem, {
             iconNoPhoto,
