@@ -3,9 +3,9 @@ import {
     getDangerBtnTheme,
 } from '@/Pages/App/Components/ListItemRemoveButton/libraries';
 import { RemoveButton_ } from '@/Pages/App/Components/ListItemRemoveButton/styling';
-import { RemoveSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { RemoveIcon } from '@/Pages/App/Components/RemoveIcon';
 import { extractThemeNumber } from '@/libraries';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { useTheme } from 'styled-components';
 
 type ListItemRemoveButtonProps = ComponentPropsWithoutRef<'button'> & {
@@ -28,9 +28,7 @@ export const ListItemRemoveButton = ({
             $borderColor={dangerTheme.border.color}
             {...remain}
         >
-            <Suspense>
-                <RemoveSVG />
-            </Suspense>
+            <RemoveIcon />
         </RemoveButton_>
     );
 };
