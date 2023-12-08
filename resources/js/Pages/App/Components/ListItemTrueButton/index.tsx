@@ -3,9 +3,9 @@ import {
     getTrueBtnTheme,
 } from '@/Pages/App/Components/ListItemTrueButton/libraries';
 import { TrueButton_ } from '@/Pages/App/Components/ListItemTrueButton/styling';
-import { ThumbSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { ThumbIcon } from '@/Pages/App/Components/ThumbIcon';
 import { extractThemeNumber } from '@/libraries/toolbox/Styling';
-import { ComponentPropsWithoutRef, Suspense } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 import { useTheme } from 'styled-components';
 
 type ListItemTrueButtonProps = ComponentPropsWithoutRef<typeof TrueButton_> & {
@@ -28,9 +28,7 @@ export const ListItemTrueButton = ({
             $borderColor={trueBtn.border.color}
             {...remain}
         >
-            <Suspense>
-                <ThumbSVG />
-            </Suspense>
+            <ThumbIcon />
         </TrueButton_>
     );
 };

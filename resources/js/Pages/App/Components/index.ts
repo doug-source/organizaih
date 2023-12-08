@@ -85,6 +85,7 @@ export * from './SelectorsBox';
 export * from './StateDropdown';
 export * from './SubmitBtn';
 export * from './ThemeSwitcher';
+export * from './ThumbIcon';
 export * from './Tools';
 export * from './UserDetailsPack';
 export * from './UserIcon';
