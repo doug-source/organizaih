@@ -1,3 +1,4 @@
+import { AnonymousIcon } from '@/Pages/App/Components/AnonymousIcon';
 import {
     DefineItem,
     DefineItemValue_,
@@ -8,7 +9,6 @@ import {
     mixinPhoto,
 } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
-import { Anonymous } from '@/Pages/App/Components/ProfilePhotoOutput/icon';
 import {
     SelectCustomer,
     SelectCustomerSVG_,
@@ -98,7 +98,7 @@ export const SaleDataTopRow_ = styled.div`
     }}
 `;
 
-export const AnonymousPhoto_ = styled(Anonymous)`
+export const AnonymousPhoto_ = styled(AnonymousIcon)`
     ${mixinPhoto}
 `;
 

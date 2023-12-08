@@ -1,8 +1,8 @@
+import { AnonymousIcon } from '@/Pages/App/Components/AnonymousIcon';
 import { DefineItem, DefineItemWrap_ } from '@/Pages/App/Components/DefineItem';
 import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
-import { Anonymous } from '@/Pages/App/Components/ProfilePhotoOutput/icon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
@@ -49,7 +49,7 @@ export const DetailsContainer_ = styled.div`
     }}
 `;
 
-export const AnonymousPhoto_ = styled(Anonymous)`
+export const AnonymousPhoto_ = styled(AnonymousIcon)`
     ${mixinPhoto}
 `;
 
