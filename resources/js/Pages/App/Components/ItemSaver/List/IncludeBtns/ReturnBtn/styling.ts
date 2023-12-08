@@ -1,4 +1,4 @@
-import { ArrowSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { ArrowIcon } from '@/Pages/App/Components/ArrowIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
@@ -13,7 +13,7 @@ export const ReturnItemIncludedBtn_ = styled.button`
     }}
 `;
 
-export const ArrowSVG_ = styled(ArrowSVG)`
+export const ArrowIcon_ = styled(ArrowIcon)`
     ${({ theme }) => {
         const iconTheme = theme.itemSaver.list.includeItem.btns.return;
         const {
