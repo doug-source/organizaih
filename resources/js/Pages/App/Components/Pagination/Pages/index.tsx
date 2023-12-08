@@ -1,3 +1,4 @@
+import { ArrowIcon } from '@/Pages/App/Components/ArrowIcon';
 import {
     PagBar_,
     PagBtns_,
@@ -5,9 +6,7 @@ import {
     PagNextBtn_,
     PagPrevBtn_,
 } from '@/Pages/App/Components/Pagination/Pages/styling';
-import { ArrowSVG } from '@/Pages/App/libraries';
 import { useTranslate } from '@/libraries';
-import { Suspense } from 'react';
 
 type PagesProps = {
     page: number;
@@ -31,16 +30,12 @@ export const Pages = ({
                 <PagPrevBtn_
                     onClick={() => onChangePage(Math.max(page - 1, 1))}
                 >
-                    <Suspense>
-                        <ArrowSVG />
-                    </Suspense>
+                    <ArrowIcon />
                 </PagPrevBtn_>
                 <PagNextBtn_
                     onClick={() => onChangePage(Math.min(page + 1, lastPage))}
                 >
-                    <Suspense>
-                        <ArrowSVG />
-                    </Suspense>
+                    <ArrowIcon />
                 </PagNextBtn_>
             </PagBtns_>
         </PagBar_>
