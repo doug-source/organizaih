@@ -1,12 +1,10 @@
+import { DayModeIcon } from '@/Pages/App/Components/DayModeIcon';
 import {
     GateSwitcher,
     SwitchInput_,
     SwitchLabel_,
 } from '@/Pages/App/Components/GateSwitcher';
-import {
-    DayModeIcon,
-    NightModeIcon,
-} from '@/Pages/App/libraries/icons/asynchronous';
+import { NightModeIcon } from '@/Pages/App/Components/NightModeIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';

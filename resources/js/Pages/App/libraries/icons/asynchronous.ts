@@ -56,7 +56,7 @@ export const CustomerSVG = lazy(() =>
     }),
 );
 
-export const DayModeIcon = lazy(() =>
+export const DayModeSVG = lazy(() =>
     import('/resources/img/day-mode.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
@@ -91,7 +91,7 @@ export const LogoutSVG = lazy(() =>
     }),
 );
 
-export const NightModeIcon = lazy(() =>
+export const NightModeSVG = lazy(() =>
     import('/resources/img/night-mode.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

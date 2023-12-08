@@ -12,7 +12,7 @@ import {
 } from '@/Pages/App/Components/ThemeSwitcher/styling';
 import { useTranslate } from '@/libraries/hooks';
 import { endpoints } from '@/settings';
-import { Suspense, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTheme } from 'styled-components';
 
 export const ThemeSwitcher = () => {
@@ -31,9 +31,7 @@ export const ThemeSwitcher = () => {
             value={theme.key === 'dark'}
             offLabel={
                 <ThemeIconWrapper_>
-                    <Suspense>
-                        <NightModeIcon_ />
-                    </Suspense>
+                    <NightModeIcon_ />
                     <span onClick={themeClickHandler}>
                         {translate('dark', true)}
                     </span>
@@ -41,9 +39,7 @@ export const ThemeSwitcher = () => {
             }
             onLabel={
                 <ThemeIconWrapper_>
-                    <Suspense>
-                        <DayModeIcon_ />
-                    </Suspense>
+                    <DayModeIcon_ />
                     <span onClick={themeClickHandler}>
                         {translate('light', true)}
                     </span>
