@@ -9,10 +9,8 @@ import {
     mixinPhoto,
 } from '@/Pages/App/Components/DefinePhotoAbsolute';
 import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
-import {
-    SelectCustomer,
-    SelectCustomerSVG_,
-} from '@/Pages/App/Components/SelectCustomer';
+import { SelectCustomer } from '@/Pages/App/Components/SelectCustomer';
+import { SelectCustomerIcon_ } from '@/Pages/App/Components/SelectCustomer/styling';
 import {
     SelectProduct,
     SelectProductSVG_,
@@ -156,7 +154,7 @@ export const SelectCustomer_ = styled(SelectCustomer)`
             customerInfo: { icon: iconMeasure },
         } = theme.measures.sale.form.base.saleSelectors;
         return css`
-            ${SelectCustomerSVG_} {
+            ${SelectCustomerIcon_} {
                 width: ${remOutput(iconMeasure.size)};
                 height: ${remOutput(iconMeasure.size)};
             }

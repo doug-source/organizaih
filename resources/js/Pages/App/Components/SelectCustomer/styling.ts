@@ -1,8 +1,8 @@
-import { SelectCustomerSVG } from '@/Pages/App/libraries/icons/asynchronous';
+import { SelectCustomerIcon } from '@/Pages/App/Components/SelectCustomerIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
-export const SelectCustomerSVG_ = styled(SelectCustomerSVG)`
+export const SelectCustomerIcon_ = styled(SelectCustomerIcon)`
     ${({ theme }) => {
         const iconsTheme = theme.selectCustomer.icon;
         const iconMeasure = theme.measures.selectCustomer.icon;

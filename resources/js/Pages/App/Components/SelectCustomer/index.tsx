@@ -1,5 +1,5 @@
-import { SelectCustomerSVG_ } from '@/Pages/App/Components/SelectCustomer/styling';
-import { MouseEventHandler, Suspense } from 'react';
+import { SelectCustomerIcon_ } from '@/Pages/App/Components/SelectCustomer/styling';
+import { MouseEventHandler } from 'react';
 import { NavLink } from 'react-router-dom';
 
 type SelectCustomerProps = {
@@ -24,9 +24,7 @@ export const SelectCustomer = ({
             to={`/customers/select/${target}`}
             onClick={onSelectionClick}
         >
-            <Suspense>
-                <SelectCustomerSVG_ />
-            </Suspense>
+            <SelectCustomerIcon_ />
         </NavLink>
     );
 };

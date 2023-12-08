@@ -81,6 +81,7 @@ export * from './RemoveRedIcon';
 export * from './RequestBtn';
 export * from './SaleIcon';
 export * from './SelectCustomer';
+export * from './SelectCustomerIcon';
 export * from './SelectProduct';
 export * from './SelectorsBox';
 export * from './StateDropdown';
