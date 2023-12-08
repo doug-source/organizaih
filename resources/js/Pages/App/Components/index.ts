@@ -59,6 +59,7 @@ export * from './ListItemButtonsPack';
 export * from './ListItemColumn';
 export * from './ListItemPack';
 export * from './Loading';
+export * from './LogoutIcon';
 export * from './LogoutLink';
 export * from './NavLinkItem';
 export * from './NextButton';

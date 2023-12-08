@@ -84,7 +84,7 @@ export const InventorySVG = lazy(() =>
     }),
 );
 
-export const LogoutIcon = lazy(() =>
+export const LogoutSVG = lazy(() =>
     import('/resources/img/logout.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };

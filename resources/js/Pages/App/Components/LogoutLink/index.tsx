@@ -2,7 +2,6 @@ import { useTokenRequest } from '@/libraries';
 import {
     ComponentPropsWithoutRef,
     MouseEvent as ReactMouseEvent,
-    Suspense,
     useRef,
 } from 'react';
 import { ExitLink_, FormLogout_, LogoutIcon_ } from './styling';
@@ -43,9 +42,7 @@ export const LogoutLink = ({ label, className }: LogoutLinkProps) => {
                     }
                 }}
             >
-                <Suspense>
-                    <LogoutIcon_ />
-                </Suspense>
+                <LogoutIcon_ />
                 {Boolean(label) && <div>{label}</div>}
             </ExitLink_>
         </FormLogout_>

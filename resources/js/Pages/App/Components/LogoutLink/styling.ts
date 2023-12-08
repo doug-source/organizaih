@@ -1,5 +1,5 @@
+import { LogoutIcon } from '@/Pages/App/Components/LogoutIcon';
 import { css, styled } from 'styled-components';
-import { LogoutIcon } from '../../libraries';
 
 export const FormLogout_ = styled.form``;
 
