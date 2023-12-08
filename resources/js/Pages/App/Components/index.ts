@@ -83,6 +83,7 @@ export * from './SaleIcon';
 export * from './SelectCustomer';
 export * from './SelectCustomerIcon';
 export * from './SelectProduct';
+export * from './SelectProductIcon';
 export * from './SelectorsBox';
 export * from './StateDropdown';
 export * from './SubmitBtn';

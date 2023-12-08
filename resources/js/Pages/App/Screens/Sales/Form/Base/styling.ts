@@ -13,7 +13,7 @@ import { SelectCustomer } from '@/Pages/App/Components/SelectCustomer';
 import { SelectCustomerIcon_ } from '@/Pages/App/Components/SelectCustomer/styling';
 import {
     SelectProduct,
-    SelectProductSVG_,
+    SelectProductIcon_,
 } from '@/Pages/App/Components/SelectProduct';
 import { commafyList, remifyList } from '@/Pages/App/libraries/toolbox/Array';
 import { remOutput } from '@/libraries/toolbox/Styling';
@@ -140,7 +140,7 @@ export const SelectProduct_ = styled(SelectProduct)`
             customerInfo: { icon: iconMeasure },
         } = theme.measures.sale.form.base.saleSelectors;
         return css`
-            ${SelectProductSVG_} {
+            ${SelectProductIcon_} {
                 width: ${remOutput(iconMeasure.size)};
                 height: ${remOutput(iconMeasure.size)};
             }
