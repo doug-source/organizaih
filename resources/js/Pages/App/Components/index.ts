@@ -88,6 +88,7 @@ export * from './SubmitBtn';
 export * from './ThemeSwitcher';
 export * from './ThumbIcon';
 export * from './Tools';
+export * from './UploadIcon';
 export * from './UserDetailsPack';
 export * from './UserIcon';
 export * from './UserInfoConfig';

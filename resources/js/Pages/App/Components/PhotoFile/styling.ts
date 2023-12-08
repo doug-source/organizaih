@@ -1,4 +1,4 @@
-import { UploadIcon } from '@/Pages/App/libraries/icons/asynchronous';
+import { UploadIcon } from '@/Pages/App/Components/UploadIcon';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 

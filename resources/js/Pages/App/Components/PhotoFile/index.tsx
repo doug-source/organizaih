@@ -6,7 +6,7 @@ import {
     UploadIcon_,
 } from '@/Pages/App/Components/PhotoFile/styling';
 import { usePhotoFile } from '@/Pages/App/libraries/hooks/Contexts';
-import { ForwardedRef, Suspense, useRef } from 'react';
+import { ForwardedRef, useRef } from 'react';
 
 type PhotoFileProps = {
     onChange?: (value: string) => void;
@@ -19,9 +19,7 @@ export const PhotoFile = ({ onChange, forwardedRef }: PhotoFileProps) => {
     const photoFile = usePhotoFile();
     return (
         <FileUpload_>
-            <Suspense>
-                <UploadIcon_ />
-            </Suspense>
+            <UploadIcon_ />
             <h3>{photoFile?.name ?? 'Click box to upload'}</h3>
             <InputFile_
                 ref={makePhotoRef(forwardedRef, photoInputRef)}
