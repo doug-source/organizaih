@@ -14,31 +14,29 @@ export const GraphRoutes = () => {
             <Route
                 path={navigations.graph.index}
                 element={
-                    <Suspense>
-                        <Container_>
-                            <GraphMenu />
-                        </Container_>
-                    </Suspense>
+                    <Container_>
+                        <GraphMenu />
+                    </Container_>
                 }
             />
             <Route
                 path={navigations.graph.qty.sales.products}
                 element={
-                    <Suspense>
-                        <Container_>
+                    <Container_>
+                        <Suspense>
                             <GraphProductsSales />
-                        </Container_>
-                    </Suspense>
+                        </Suspense>
+                    </Container_>
                 }
             />
             <Route
                 path={navigations.graph.qty.sales.customers}
                 element={
-                    <Suspense>
-                        <Container_>
+                    <Container_>
+                        <Suspense>
                             <GraphCustomersSales />
-                        </Container_>
-                    </Suspense>
+                        </Suspense>
+                    </Container_>
                 }
             />
             <Route
