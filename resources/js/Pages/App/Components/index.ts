@@ -23,6 +23,7 @@ export * from './ConfigLegend';
 export * from './Confirmation';
 export * from './CustomerIcon';
 export * from './CustomersSales';
+export * from './Dashboard';
 export * from './DashboardItem';
 export * from './DatePicker';
 export * from './DayModeIcon';

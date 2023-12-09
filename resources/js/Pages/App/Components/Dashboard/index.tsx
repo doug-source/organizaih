@@ -1,4 +1,5 @@
 import { CustomerIcon } from '@/Pages/App/Components/CustomerIcon';
+import { NavbarNav_ } from '@/Pages/App/Components/Dashboard/styling';
 import { DashboardItem } from '@/Pages/App/Components/DashboardItem';
 import { GraphIcon } from '@/Pages/App/Components/GraphIcon';
 import { InventoryIcon } from '@/Pages/App/Components/InventoryIcon';
@@ -10,7 +11,6 @@ import { LogoutLinkAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
 import { hasAbility } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries/hooks';
 import { Suspense } from 'react';
-import { NavbarNav_ } from './styling';
 
 const hasLogout = hasAbility(AbilitiesEnum.LOGIN);
 const hasCustomerScreen = hasAbility(AbilitiesEnum.CUSTOMER_SCREEN);

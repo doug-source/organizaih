@@ -1,6 +1,6 @@
-import { remOutput } from '@/libraries';
+import { NavBar_ } from '@/Pages/App/Components/Header/styling';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
-import { NavBar_ } from '../styling';
 
 export const NavbarNav_ = styled.ul`
     ${({ theme }) => {
