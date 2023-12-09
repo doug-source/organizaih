@@ -1,4 +1,4 @@
-import { remOutput } from '@/libraries';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
 export const Top_ = styled.div`

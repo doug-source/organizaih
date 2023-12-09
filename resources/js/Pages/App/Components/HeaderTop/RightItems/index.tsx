@@ -1,7 +1,7 @@
 import {
     LogoutLinkSt_,
     RightItemsContainer_,
-} from '@/Pages/App/Components/Header/Top/RightItems/styling';
+} from '@/Pages/App/Components/HeaderTop/RightItems/styling';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { useUserPhoto } from '@/Pages/App/libraries/hooks';
 import { ConfigIconAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';

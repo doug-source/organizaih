@@ -1,11 +1,14 @@
 import { BrandItem } from '@/Pages/App/Components/BrandItem';
 import {
+    Heading2_,
+    TitleSpan_,
+} from '@/Pages/App/Components/HeaderTop/LeftItems/styling';
+import {
     useTitle,
     useUserName,
     useUserPhoto,
 } from '@/Pages/App/libraries/hooks/Contexts';
 import { Route, Routes } from 'react-router-dom';
-import { Heading2_, TitleSpan_ } from './styling';
 
 export const LeftItems = () => {
     const title = useTitle();

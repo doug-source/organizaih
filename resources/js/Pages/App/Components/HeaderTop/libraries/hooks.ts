@@ -1,4 +1,4 @@
-import { useTouchDirection } from '@/Pages/App/libraries';
+import { useTouchDirection } from '@/Pages/App/libraries/hooks';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 

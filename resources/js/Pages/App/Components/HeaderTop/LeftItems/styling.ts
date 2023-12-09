@@ -1,7 +1,8 @@
-import { remOutput } from '@/libraries';
+import { NavBar_ } from '@/Pages/App/Components/Header/styling';
+import { Top_ } from '@/Pages/App/Components/HeaderTop/styling';
+import { remOutput } from '@/libraries/toolbox/Styling';
 import { fonts } from '@/settings';
 import { css, styled } from 'styled-components';
-import { NavBar_, Top_ } from '../..';
 
 type HeadingProps = {
     $hasPhoto: boolean;

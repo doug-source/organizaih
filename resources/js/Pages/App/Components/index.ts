@@ -43,6 +43,7 @@ export * from './FormItem';
 export * from './GateSwitcher';
 export * from './GraphIcon';
 export * from './Header';
+export * from './HeaderTop';
 export * from './InputField';
 export * from './InputFilter';
 export * from './InputForm';

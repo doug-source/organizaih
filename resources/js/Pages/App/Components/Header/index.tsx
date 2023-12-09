@@ -1,5 +1,5 @@
 import { Header_, Nav_, NavBar_ } from '@/Pages/App/Components/Header/styling';
-import { Top } from '@/Pages/App/Components/Header/Top';
+import { HeaderTop } from '@/Pages/App/Components/HeaderTop';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
 import { useToggleSecondWord } from '@/Pages/App/libraries/hooks';
 import { DashboardAsync } from '@/Pages/App/libraries/toolbox/Asynchronous';
@@ -16,7 +16,7 @@ export const Header = () => {
         <Header_ className={headerClass}>
             <Nav_>
                 <NavBar_ className={pathname === '/' ? 'dashboard' : ''}>
-                    <Top onTopWrappped={() => toggleHeaderClass()} />
+                    <HeaderTop onTopWrappped={() => toggleHeaderClass()} />
                     {hasMenu && (
                         <Suspense>
                             <DashboardAsync />
@@ -27,7 +27,5 @@ export const Header = () => {
         </Header_>
     );
 };
-
-export * from './Top';
 
 export * from './styling';
