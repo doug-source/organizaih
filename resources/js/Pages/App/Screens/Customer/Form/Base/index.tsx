@@ -1,3 +1,4 @@
+import { AnonymousIcon } from '@/Pages/App/Components/AnonymousIcon';
 import { CityDropdown } from '@/Pages/App/Components/CityDropdown';
 import { DatePicker } from '@/Pages/App/Components/DatePicker';
 import { DefaultForm } from '@/Pages/App/Components/DefaultForm';
@@ -33,10 +34,9 @@ import {
     useErrors,
     useErrorsSetter,
 } from '@/Pages/App/Screens/Customer/Form/libraries/hooks';
-import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { columnSizeDB, sexSettingList } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
-import { ComponentPropsWithoutRef, Suspense, useRef } from 'react';
+import { ComponentPropsWithoutRef, useRef } from 'react';
 import { useTheme } from 'styled-components';
 
 type BaseProps = {
@@ -82,11 +82,7 @@ export const Base = ({ preSelection = false, ...remain }: BaseProps) => {
             >
                 <ProfilePhotoInput
                     ref={inputFile}
-                    iconNoPhoto={
-                        <Suspense>
-                            <AnonymousSVG />
-                        </Suspense>
-                    }
+                    iconNoPhoto={<AnonymousIcon />}
                     photo={customer.photo}
                     photoChosen={customer.photoChosen}
                     onChange={makePhotoChange(dispatch)}

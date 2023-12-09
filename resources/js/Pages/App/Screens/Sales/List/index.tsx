@@ -1,3 +1,4 @@
+import { AnonymousIcon } from '@/Pages/App/Components/AnonymousIcon';
 import { BoundaryDateInputs } from '@/Pages/App/Components/BoundaryDateInputs';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { InputRequest } from '@/Pages/App/Components/InputRequest';
@@ -24,11 +25,9 @@ import {
 } from '@/Pages/App/Screens/Sales/List/libraries/hooks';
 import { Tools_ } from '@/Pages/App/Screens/Sales/List/styling';
 import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
-import { AnonymousSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { columnSizeDB, paginationSetting } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
 import { navigations } from '@/settings';
-import { Suspense } from 'react';
 
 const List = () => {
     const translate = useTranslate();
@@ -140,11 +139,7 @@ const List = () => {
                         }
                         firstColumns={
                             <PhotoListItem
-                                iconNoPhoto={
-                                    <Suspense>
-                                        <AnonymousSVG />
-                                    </Suspense>
-                                }
+                                iconNoPhoto={<AnonymousIcon />}
                                 photo={data.customerPhoto}
                             />
                         }
