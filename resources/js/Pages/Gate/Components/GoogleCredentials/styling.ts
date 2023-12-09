@@ -1,4 +1,4 @@
-import { Google } from '@/Components/Icons/Google';
+import { GoogleIcon } from '@/Components/GoogleIcon';
 import { Row } from '@/Pages/Gate/Components/Row';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
@@ -20,7 +20,7 @@ export const GoogleRow_ = styled(Row)`
     }}
 `;
 
-export const GoogleIcon_ = styled(Google)`
+export const GoogleIcon_ = styled(GoogleIcon)`
     ${({ theme }) => {
         const iconMeasure = theme.gate.measures.googleCredentials.icon;
         return css`

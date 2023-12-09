@@ -1,5 +1,5 @@
 export * from './Button';
-export * from './Icons';
+export * from './GoogleIcon';
 export * from './Input';
 export * from './LoadingIcon';
 export * from './RoundButton';
