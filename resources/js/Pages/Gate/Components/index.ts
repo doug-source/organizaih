@@ -1,6 +1,7 @@
 export * from './Button';
 export * from './FieldError';
 export * from './FieldSuccess';
+export * from './GateIcon';
 export * from './GoogleCredentials';
 export * from './HeadingForm';
 export * from './InputLabel';

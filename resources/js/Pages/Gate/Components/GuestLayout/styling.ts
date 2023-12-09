@@ -1,5 +1,6 @@
-import { GateIcon, remOutput } from '@/libraries';
-import styled, { css } from 'styled-components';
+import { GateIcon } from '@/Pages/Gate/Components/GateIcon';
+import { remOutput } from '@/libraries/toolbox/Styling';
+import { css, styled } from 'styled-components';
 
 export const Container_ = styled.div`
     ${({ theme }) => {

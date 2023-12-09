@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
-export const GateIcon = lazy(() =>
-    import('/resources/img/GateIcon.svg').then((obj) => {
+export const GateSVG = lazy(() =>
+    import('/resources/img/gate.svg').then((obj) => {
         const { ReactComponent: Svg } = obj;
         return { default: Svg };
     }),
