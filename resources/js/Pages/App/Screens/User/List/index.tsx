@@ -2,8 +2,6 @@ import { AnonymousListIcon } from '@/Pages/App/Components/AnonymousListIcon';
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
 import { List as GenericList } from '@/Pages/App/Components/List';
 import { ListItemLinked } from '@/Pages/App/Components/ListItemLinked';
-import { ListSelectRow } from '@/Pages/App/Components/ListSelectRow';
-// import { NextButton } from '@/Pages/App/Components/NextButton';
 import { Pagination } from '@/Pages/App/Components/Pagination';
 import { PhotoListItem } from '@/Pages/App/Components/PhotoListItem';
 import { ToolsType } from '@/Pages/App/Components/Tools';
@@ -21,14 +19,14 @@ import {
     useUsersReducer,
 } from '@/Pages/App/Screens/User/List/libraries/hooks';
 import {
-    AllowSvg_,
+    AllowIcon_,
     AllowTextContent_,
     NextButton_,
     Tools_,
 } from '@/Pages/App/Screens/User/List/styling';
 import { IUserListData } from '@/Pages/App/Screens/User/List/types';
 import { AbilitiesEnum } from '@/Pages/App/libraries/enums';
-import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
+import { useInitPage } from '@/Pages/App/libraries/hooks';
 import {
     columnSizeDB,
     hasAbility,
@@ -36,7 +34,6 @@ import {
 } from '@/Pages/App/settings';
 import { useTranslate } from '@/libraries';
 import { navigations } from '@/settings';
-import { Suspense } from 'react';
 
 const hasRegisterRequestScreen = hasAbility(
     AbilitiesEnum.REGISTER_REQUEST_SCREEN,
@@ -44,14 +41,6 @@ const hasRegisterRequestScreen = hasAbility(
 
 const List = () => {
     const translate = useTranslate();
-    const appDispatch = useAppDispatch();
-    // const { target } = useParams() as { target: SelectionTargetKey };
-    const target = undefined;
-
-    // const selection = useSelections();
-    // const { action } = selection;
-    const action = undefined;
-
     useInitPage('user-index-title');
     const [state, dispatch] = useUsersReducer();
     const [store] = useUserRequest(
@@ -81,11 +70,7 @@ const List = () => {
                         <NextButton_
                             preIcon
                             link={navigations.registerRequest.list}
-                            icon={
-                                <Suspense>
-                                    <AllowSvg_ />
-                                </Suspense>
-                            }
+                            icon={<AllowIcon_ />}
                         >
                             <AllowTextContent_>
                                 {translate('requests', true)}
@@ -115,23 +100,6 @@ const List = () => {
                             photo={null}
                         />
                     );
-                    if (action && target) {
-                        return (
-                            <ListSelectRow
-                                key={data.id}
-                                data={data}
-                                index={index}
-                                action={action}
-                                target={target}
-                                image={image}
-                                // onClick={makeClientSelection(
-                                //     appDispatch,
-                                //     target,
-                                //     data,
-                                // )}
-                            />
-                        );
-                    }
                     return (
                         <ListItemLinked
                             key={data.id}

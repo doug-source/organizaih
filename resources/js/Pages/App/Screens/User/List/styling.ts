@@ -1,7 +1,7 @@
+import { AllowIcon } from '@/Pages/App/Components/AllowIcon';
 import { FiltersBar_ } from '@/Pages/App/Components/FiltersBar';
 import { NextButton } from '@/Pages/App/Components/NextButton';
 import { Tools } from '@/Pages/App/Components/Tools';
-import { AllowSVG } from '@/Pages/App/libraries/icons/asynchronous';
 import { remOutput } from '@/libraries/toolbox/Styling';
 import { css, styled } from 'styled-components';
 
@@ -29,7 +29,7 @@ export const NextButton_ = styled(NextButton)`
     }}
 `;
 
-export const AllowSvg_ = styled(AllowSVG)`
+export const AllowIcon_ = styled(AllowIcon)`
     ${({ theme }) => {
         const { svg: svgTheme } = theme.user.list.tools.nextBtn;
         return css`
