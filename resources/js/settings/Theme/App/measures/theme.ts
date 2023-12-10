@@ -1201,12 +1201,6 @@ export type AppThemeMeasures = {
                 size: number;
             };
         };
-        defineItem: {
-            container: {
-                gap: number;
-                height: string;
-            };
-        };
         form: {
             base: {
                 formItem: {

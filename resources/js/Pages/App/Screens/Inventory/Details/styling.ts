@@ -32,11 +32,6 @@ export const DefineItem_ = styled(DefineItem)`
     }}
 `;
 
-export const DetailsContainer_ = styled.div`
-    display: flex;
-    flex-direction: column;
-`;
-
 export const AnonymousPhoto_ = styled(ProductsIcon)`
     ${({ theme }) => {
         const defineItemTheme = theme.product.defineItem;

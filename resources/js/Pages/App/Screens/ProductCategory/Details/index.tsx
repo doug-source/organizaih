@@ -1,9 +1,9 @@
 import { DefineItem } from '@/Pages/App/Components/DefineItem';
+import { DetailsContainer } from '@/Pages/App/Components/DetailsContainer';
 import {
     useCategoryProductRequest,
     useCategoryProductResponse,
 } from '@/Pages/App/Screens/ProductCategory/Details/libraries/hooks';
-import { DetailsContainer_ } from '@/Pages/App/Screens/ProductCategory/Details/styling';
 import { useInitPage } from '@/Pages/App/libraries';
 import { useTranslate } from '@/libraries';
 
@@ -18,7 +18,7 @@ const Details = () => {
         return null;
     }
     return (
-        <DetailsContainer_>
+        <DetailsContainer>
             <DefineItem
                 labelText={translate('name', true) + ':'}
                 value={productCategory.name}
@@ -36,7 +36,7 @@ const Details = () => {
                 labelText={translate('registered-in', true) + ':'}
                 value={productCategory.created_at}
             />
-        </DetailsContainer_>
+        </DetailsContainer>
     );
 };
 

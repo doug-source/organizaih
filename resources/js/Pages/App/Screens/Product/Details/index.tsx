@@ -1,3 +1,4 @@
+import { DetailsContainer } from '@/Pages/App/Components/DetailsContainer';
 import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
 import { makeCategoryName } from '@/Pages/App/Screens/Product/Details/libraries';
 import {
@@ -7,7 +8,6 @@ import {
 import {
     AnonymousPhoto_,
     DefineItemProduct_,
-    DetailsContainer_,
 } from '@/Pages/App/Screens/Product/Details/styling';
 import { useInitPage } from '@/Pages/App/libraries';
 import { useTranslate } from '@/libraries';
@@ -23,7 +23,7 @@ const Details = () => {
         return null;
     }
     return (
-        <DetailsContainer_>
+        <DetailsContainer>
             <DefineItemProduct_
                 labelText={translate('name', true) + ':'}
                 value={product.name}
@@ -50,7 +50,7 @@ const Details = () => {
                 labelText={translate('registered-in', true) + ':'}
                 value={product.created_at}
             />
-        </DetailsContainer_>
+        </DetailsContainer>
     );
 };
 

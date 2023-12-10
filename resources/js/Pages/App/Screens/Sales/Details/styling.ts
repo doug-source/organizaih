@@ -1,6 +1,7 @@
 import { AnonymousIcon } from '@/Pages/App/Components/AnonymousIcon';
 import { DefineItem, DefineItemWrap_ } from '@/Pages/App/Components/DefineItem';
 import { mixinPhoto } from '@/Pages/App/Components/DefinePhotoAbsolute';
+import { DetailsContainer } from '@/Pages/App/Components/DetailsContainer';
 import { ProductsIcon } from '@/Pages/App/Components/ProductsIcon';
 import { ProfilePhotoOutput } from '@/Pages/App/Components/ProfilePhotoOutput';
 import { remOutput } from '@/libraries/toolbox/Styling';
@@ -36,17 +37,8 @@ export const DefineItemUpper_ = styled(DefineItem)`
     }}
 `;
 
-export const DetailsContainer_ = styled.div`
-    ${({ theme }) => {
-        const defineItemsMeasure = theme.measures.sale.details.defineItems;
-        return css`
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: ${remOutput(defineItemsMeasure.container.gap)};
-            flex: 1;
-        `;
-    }}
+export const DetailsContainer_ = styled(DetailsContainer)`
+    flex: 1;
 `;
 
 export const AnonymousPhoto_ = styled(AnonymousIcon)`

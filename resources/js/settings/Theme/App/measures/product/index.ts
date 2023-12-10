@@ -36,12 +36,6 @@ export const product: DefaultTheme['measures']['product'] = {
             size: 110,
         },
     },
-    defineItem: {
-        container: {
-            gap: 16,
-            height: '100%',
-        },
-    },
     form: {
         base: {
             formItem: {

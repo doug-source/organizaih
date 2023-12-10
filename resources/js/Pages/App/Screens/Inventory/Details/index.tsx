@@ -1,4 +1,5 @@
 import { Confirmation } from '@/Pages/App/Components/Confirmation';
+import { DetailsContainer } from '@/Pages/App/Components/DetailsContainer';
 import { EntryDataItem } from '@/Pages/App/Components/EntryDataItem';
 import { EntryList } from '@/Pages/App/Components/EntryList';
 import { ListItemButtons } from '@/Pages/App/Components/ListItemButtons';
@@ -23,7 +24,6 @@ import {
 import {
     AnonymousPhoto_,
     DefineItem_,
-    DetailsContainer_,
 } from '@/Pages/App/Screens/Inventory/Details/styling';
 import { DataReducerEnum } from '@/Pages/App/libraries/enums';
 import { useAppDispatch, useInitPage } from '@/Pages/App/libraries/hooks';
@@ -65,7 +65,7 @@ const Details = () => {
             setTouchData={setTouchData}
             touchListeners={touchListeners}
         >
-            <DetailsContainer_>
+            <DetailsContainer>
                 <DefineItem_
                     labelText={translate('product', true) + ':'}
                     value={state.inventoryItem.name}
@@ -173,7 +173,7 @@ const Details = () => {
                         );
                     },
                 )}
-            </DetailsContainer_>
+            </DetailsContainer>
             <Confirmation
                 showConfirm={Boolean(state.itemDataRemoved && state.preConfirm)}
                 question={translate('question-remove', true) + '?'}

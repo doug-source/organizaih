@@ -18,6 +18,7 @@ import { useInitPage } from '@/Pages/App/libraries/hooks';
 import { pluralize } from '@/Pages/App/libraries/toolbox/I18n';
 import { useTranslate } from '@/libraries/hooks';
 import { Fragment, useRef } from 'react';
+import { useTheme } from 'styled-components';
 
 const Details = () => {
     const translate = useTranslate();
@@ -27,11 +28,14 @@ const Details = () => {
     const [sale] = useSaleResponse(store);
     const pluralRulesRef = useRef(new Intl.PluralRules('en-US'));
 
+    const theme = useTheme();
+    const { defineItems: defineItemsMeasure } = theme.measures.sale.details;
+
     if (store.error || !sale) {
         return null;
     }
     return (
-        <DetailsContainer_>
+        <DetailsContainer_ gapItems={defineItemsMeasure.container.gap}>
             <DefineItemUpper_
                 labelText={translate('customer', true) + ':'}
                 value={sale.customerName}
