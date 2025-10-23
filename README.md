@@ -1,4 +1,4 @@
-# Sistema de gestão de clientes e estoque
+# Sistema de gestão de clientes, produtos e estoque
 
 ## Sobre o sistema
 
